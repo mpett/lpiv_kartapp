@@ -1,0 +1,4 @@
+{
+    "v8Version": "7.4.288.25",
+    "mksnapshotParams": "--profile_deserialization --turbo_instruction_scheduling"
+}

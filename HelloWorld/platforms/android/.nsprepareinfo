@@ -1,0 +1,20 @@
+{
+	"nativePlatformStatus": "3",
+	"appFilesHashes": {
+		"C:\\Users\\Martin\\sample\\HelloWorld\\app\\app.css": "2b19f4a58f4bff38d0b376d6c5bfc29f39be776b",
+		"C:\\Users\\Martin\\sample\\HelloWorld\\app\\app.js": "0163ed8874a99daf48aa643490627e02ee1ed1b0",
+		"C:\\Users\\Martin\\sample\\HelloWorld\\app\\CODE_OF_CONDUCT.md": "3d921a467f0dc791385eb1d5db82d88e11d620e0",
+		"C:\\Users\\Martin\\sample\\HelloWorld\\app\\main-page.js": "efbbd8b8b69b63c07cabed64f6bdc7f7561e97ab",
+		"C:\\Users\\Martin\\sample\\HelloWorld\\app\\LICENSE": "6ddc49e6362739b571c8534657821f6bbc6d09e1",
+		"C:\\Users\\Martin\\sample\\HelloWorld\\app\\main-page.xml": "cb216699cc03ac41b6560f177b092cf8a9fb99e8",
+		"C:\\Users\\Martin\\sample\\HelloWorld\\app\\README.md": "c6d550a2f77eb68587dea464b008d9216fa7790d",
+		"C:\\Users\\Martin\\sample\\HelloWorld\\app\\package.json": "959ddceb83ea9a3719e2daf27e8726bbd61b6c16",
+		"C:\\Users\\Martin\\sample\\HelloWorld\\app\\images\\apple.jpg": "c033a7a48829675b73f5d1db5360ffd53a737e01"
+	},
+	"release": false,
+	"bundle": true,
+	"changesRequireBuild": false,
+	"time": "Wed Jun 19 2019 14:43:45 GMT+0200 (GMT+02:00)",
+	"changesRequireBuildTime": "Wed Jun 19 2019 12:41:28 GMT+0200 (GMT+02:00)",
+	"projectFileHash": "ce10bd8fcbba554c8d39e45bda86a6004ceff6b581abd7faa406cea9638954aa"
+}

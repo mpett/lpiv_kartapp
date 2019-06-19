@@ -1,0 +1,5 @@
+C:\Users\Martin\sample\HelloWorld\platforms\android\app\src\main\assets\app\bundle.js
+C:\Users\Martin\sample\HelloWorld\platforms\android\app\src\main\assets\app\runtime.js
+C:\Users\Martin\sample\HelloWorld\platforms\android\app\src\main\assets\app\starter.js
+C:\Users\Martin\sample\HelloWorld\platforms\android\app\src\main\assets\app\tns-java-classes.js
+C:\Users\Martin\sample\HelloWorld\platforms\android\app\src\main\assets\app\vendor.js
