@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Wed Jun 19 16:21:54 CEST 2019
+#Thu Jun 20 10:50:11 CEST 2019
 20.base=C\:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\merged_assets\\debug\\out
 143.base=C\:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\merged_assets\\debug\\out
 237.path=app/tns_modules/nativescript-theme-core/scss/skins/purple/_index.scss
@@ -164,7 +164,7 @@
 372.set=ASSET
 120.baseType=DIRECTORY
 16.set=ASSET
-265.path=lib/armeabi-v7a/libNativeScript.so
+265.path=app/tns_modules/tns-core-modules/ui/text-view/text-view.js
 298.path=app/tns_modules/tns-core-modules/ui/animation/animation.js
 295.set=ASSET
 81.base=C\:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\merged_assets\\debug\\out
@@ -407,7 +407,7 @@
 140.base=C\:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\merged_assets\\debug\\out
 234.path=app/tns_modules/tns-core-modules/ui/tab-view/tab-view-common.js
 36.set=ASSET
-267.path=internal/livesync.js
+267.path=app/tns_modules/nativescript-theme-core/scss/_light.scss
 50.base=C\:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\merged_assets\\debug\\out
 369.baseType=DIRECTORY
 83.base=C\:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\merged_assets\\debug\\out
@@ -558,7 +558,7 @@
 342.set=ASSET
 262.path=app/tns_modules/tns-core-modules/ui/core/weak-event-listener/package.json
 295.path=app/tns_modules/nativescript-theme-core/scss/utilities/_index.scss
-265.set=NATIVE_RESOURCE
+265.set=ASSET
 125.path=app/tns_modules/nativescript-theme-core/css/lime.css
 143.set=ASSET
 86.baseType=DIRECTORY
@@ -802,7 +802,7 @@
 56.baseType=DIRECTORY
 362.set=ASSET
 62.baseType=DIRECTORY
-264.path=app/tns_modules/tns-core-modules/ui/text-view/text-view.js
+264.path=app/tns_modules/tns-core-modules/ui/builder/component-builder/component-builder.js
 90.baseType=DIRECTORY
 104.baseType=DIRECTORY
 132.baseType=DIRECTORY
@@ -1045,7 +1045,7 @@
 174.set=ASSET
 233.path=app/tns_modules/tns-core-modules/globals/package.json
 26.set=ASSET
-266.path=app/tns_modules/nativescript-theme-core/scss/_light.scss
+266.path=internal/livesync.js
 299.path=app/tns_modules/tns-core-modules/application-settings/application-settings-common.js
 82.base=C\:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\merged_assets\\debug\\out
 129.path=app/tns_modules/tns-core-modules/utils/lazy.js
@@ -1167,7 +1167,7 @@
 50.set=ASSET
 301.set=ASSET
 357.path=app/tns_modules/tns-core-modules/globals/decorators.js
-263.base=C\:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\merged_assets\\debug\\out
+263.base=C\:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\0
 87.path=app/tns_modules/tns-core-modules/ui/builder/binding-builder.js
 297.baseType=DIRECTORY
 296.base=C\:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\merged_assets\\debug\\out
@@ -1245,7 +1245,7 @@
 340.set=ASSET
 90.base=C\:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\merged_assets\\debug\\out
 214.base=C\:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\merged_assets\\debug\\out
-263.set=ASSET
+263.set=NATIVE_RESOURCE
 38.path=app/tns_modules/tns-core-modules/ui/layouts/wrap-layout/wrap-layout.js
 141.set=ASSET
 247.base=C\:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\merged_assets\\debug\\out
@@ -1408,7 +1408,7 @@ count=379
 70.set=ASSET
 321.set=ASSET
 359.path=app/tns_modules/tns-core-modules/platform/platform.js
-265.base=C\:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\transforms\\mergeJniLibs\\debug\\0
+265.base=C\:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\merged_assets\\debug\\out
 89.path=app/tns_modules/tns-core-modules/ui/web-view/web-view-common.js
 298.base=C\:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\merged_assets\\debug\\out
 244.set=ASSET
@@ -1437,7 +1437,7 @@ count=379
 241.baseType=DIRECTORY
 230.path=app/tns_modules/tns-core-modules/profiling/profiling.js
 352.set=ASSET
-263.path=app/tns_modules/tns-core-modules/ui/builder/component-builder/component-builder.js
+263.path=lib/armeabi-v7a/libNativeScript.so
 68.baseType=DIRECTORY
 6.baseType=DIRECTORY
 74.baseType=DIRECTORY

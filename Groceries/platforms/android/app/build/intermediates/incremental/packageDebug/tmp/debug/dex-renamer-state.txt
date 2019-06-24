@@ -1,4 +1,4 @@
-#Wed Jun 19 16:21:53 CEST 2019
+#Mon Jun 24 08:44:01 CEST 2019
 base.0=C\:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 path.0=classes.dex
 renamed.0=classes.dex

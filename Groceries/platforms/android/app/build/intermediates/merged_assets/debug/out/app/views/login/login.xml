@@ -1,7 +1,10 @@
-<Page>
-    <TextField hint="Email Address" keyboardType="email" autocorrect="false" autocapitalizationType="none" />
-    <TextField hint="Password" secure="true" />
+<Page loaded="loaded">
+    <StackLayout>
+        <Image src="res://logo" stretch="none" horizontalAlignment="center" />
+        <TextField id="email" text="{{ email }}" hint="Email Address" keyboardType="email" autocorrect="false" autocapitalizationType="none" />
+        <TextField hint="Password" text="{{ password }}" secure="true" />
 
-    <Button text="Sign in" />
-    <Button text="Sign up for Groceries" />
+        <Button text="Sign in" tap="signIn" />
+        <Button text="Sign up for Groceries" class="link" tap="register" />
+    </StackLayout>
 </Page>

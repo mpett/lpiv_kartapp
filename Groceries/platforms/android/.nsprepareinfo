@@ -1,22 +1,22 @@
 {
 	"nativePlatformStatus": "3",
 	"appFilesHashes": {
-		"C:\\Users\\Martin\\sample\\Groceries\\app\\app.css": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
 		"C:\\Users\\Martin\\sample\\Groceries\\app\\views\\list\\list.js": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
 		"C:\\Users\\Martin\\sample\\Groceries\\app\\views\\login\\login.css": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
-		"C:\\Users\\Martin\\sample\\Groceries\\app\\views\\login\\login.js": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+		"C:\\Users\\Martin\\sample\\Groceries\\app\\app.css": "6e34ab1f1c26b776b6cde492872e7814e8eeccb7",
 		"C:\\Users\\Martin\\sample\\Groceries\\app\\app.js": "9ee4ca2ef410aa6e4cbd6dcb94175a6c3152d4d2",
 		"C:\\Users\\Martin\\sample\\Groceries\\app\\package.json": "82e97d15dab3b714ae084e4ff71572e729ea2e45",
-		"C:\\Users\\Martin\\sample\\Groceries\\app\\platform.ios.css": "c388d679494c419ad29f75ecea18916ad4c94bc6",
 		"C:\\Users\\Martin\\sample\\Groceries\\app\\platform.android.css": "c2b2298f4eadbf28d1e31f4e4949840343b0f15f",
-		"C:\\Users\\Martin\\sample\\Groceries\\app\\README.md": "c8f98a5aa76e9c68b874f2d986c47887ecf291e0",
+		"C:\\Users\\Martin\\sample\\Groceries\\app\\platform.ios.css": "c388d679494c419ad29f75ecea18916ad4c94bc6",
 		"C:\\Users\\Martin\\sample\\Groceries\\app\\shared\\utils\\ios-swipe-delete.js": "9e53cfa50b8ffc800577cf369fc02d0305f6bc7a",
+		"C:\\Users\\Martin\\sample\\Groceries\\app\\README.md": "c8f98a5aa76e9c68b874f2d986c47887ecf291e0",
 		"C:\\Users\\Martin\\sample\\Groceries\\app\\shared\\config.js": "04201dc45a8fb2143588af41dfe461c8911f204f",
 		"C:\\Users\\Martin\\sample\\Groceries\\app\\shared\\view-models\\grocery-list-view-model.js": "c60131df24ff3dc48a003f398ae308a0610aaba7",
 		"C:\\Users\\Martin\\sample\\Groceries\\app\\views\\list\\list.css": "a23f40d42eeb4a3a260e46ae6200131ba69a1c88",
 		"C:\\Users\\Martin\\sample\\Groceries\\app\\shared\\view-models\\user-view-model.js": "299d6db6b89cbd5e540895873b739c185dae1904",
 		"C:\\Users\\Martin\\sample\\Groceries\\app\\views\\list\\list.xml": "66d557bc2d6a615b31d8ae685b0a40aa521fc27b",
-		"C:\\Users\\Martin\\sample\\Groceries\\app\\views\\login\\login.xml": "b473012b4428ea9b6f5f06acc577c1635d8a324a",
+		"C:\\Users\\Martin\\sample\\Groceries\\app\\views\\login\\login.js": "cfaeef2f3f5f746381c9eef57e56f93ea46017e0",
+		"C:\\Users\\Martin\\sample\\Groceries\\app\\views\\login\\login.xml": "10b76758db57c2564208c7a615f99ac46914f489",
 		"C:\\Users\\Martin\\sample\\Groceries\\app\\views\\register\\register.js": "0e7de3cc720dbe889b759dd6e91c9cbbd0170084",
 		"C:\\Users\\Martin\\sample\\Groceries\\app\\views\\register\\register.xml": "629baa5c69bda3171b9b1eb1d0ff7f684609bd6b",
 		"C:\\Users\\Martin\\sample\\Groceries\\app\\images\\apple.jpg": "c033a7a48829675b73f5d1db5360ffd53a737e01"
@@ -24,7 +24,7 @@
 	"release": false,
 	"bundle": false,
 	"changesRequireBuild": false,
-	"time": "Wed Jun 19 2019 16:48:58 GMT+0200 (GMT+02:00)",
-	"changesRequireBuildTime": "Wed Jun 19 2019 15:21:18 GMT+0200 (GMT+02:00)",
+	"time": "Thu Jun 20 2019 16:07:19 GMT+0200 (GMT+02:00)",
+	"changesRequireBuildTime": "Thu Jun 20 2019 10:49:57 GMT+0200 (GMT+02:00)",
 	"projectFileHash": "11b0e4d3944cd89c2c469f9beeaa19df57e28e1f11f085fb78ddbca32058238d"
 }

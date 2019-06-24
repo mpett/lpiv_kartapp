@@ -176,12 +176,12 @@
         "source": "C:\\Users\\Martin\\.gradle\\caches\\transforms-2\\files-2.1\\3f3891cb7dfd07ffd01b698f62e087b6\\res\\layout\\abc_popup_menu_item_layout.xml"
     },
     {
-        "merged": "C:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
-        "source": "C:\\Users\\Martin\\.gradle\\caches\\transforms-2\\files-2.1\\3f3891cb7dfd07ffd01b698f62e087b6\\res\\drawable-xxxhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png"
-    },
-    {
         "merged": "C:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_hint_foreground_material_dark.xml.flat",
         "source": "C:\\Users\\Martin\\.gradle\\caches\\transforms-2\\files-2.1\\3f3891cb7dfd07ffd01b698f62e087b6\\res\\color\\abc_hint_foreground_material_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi-v4_abc_ic_menu_paste_mtrl_am_alpha.png.flat",
+        "source": "C:\\Users\\Martin\\.gradle\\caches\\transforms-2\\files-2.1\\3f3891cb7dfd07ffd01b698f62e087b6\\res\\drawable-xxxhdpi-v4\\abc_ic_menu_paste_mtrl_am_alpha.png"
     },
     {
         "merged": "C:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\color-v23_abc_tint_spinner.xml.flat",
@@ -452,6 +452,10 @@
         "source": "C:\\Users\\Martin\\.gradle\\caches\\transforms-2\\files-2.1\\2e8e9df3c0d247174baf8a2a7fed6553\\res\\layout\\notification_media_cancel_action.xml"
     },
     {
+        "merged": "C:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_tivala.png.flat",
+        "source": "C:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\src\\main\\res\\drawable-mdpi\\tivala.png"
+    },
+    {
         "merged": "C:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_tab_indicator_material.xml.flat",
         "source": "C:\\Users\\Martin\\.gradle\\caches\\transforms-2\\files-2.1\\3f3891cb7dfd07ffd01b698f62e087b6\\res\\drawable\\abc_tab_indicator_material.xml"
     },
@@ -526,6 +530,10 @@
     {
         "merged": "C:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable_abc_list_selector_background_transition_holo_dark.xml.flat",
         "source": "C:\\Users\\Martin\\.gradle\\caches\\transforms-2\\files-2.1\\3f3891cb7dfd07ffd01b698f62e087b6\\res\\drawable\\abc_list_selector_background_transition_holo_dark.xml"
+    },
+    {
+        "merged": "C:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_tiv.png.flat",
+        "source": "C:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\src\\main\\res\\drawable-ldpi\\tiv.png"
     },
     {
         "merged": "C:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\interpolator-v21_mtrl_fast_out_linear_in.xml.flat",
@@ -1276,6 +1284,10 @@
         "source": "C:\\Users\\Martin\\.gradle\\caches\\transforms-2\\files-2.1\\3f3891cb7dfd07ffd01b698f62e087b6\\res\\drawable-xxhdpi-v4\\abc_btn_radio_to_on_mtrl_000.png"
     },
     {
+        "merged": "C:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi_tiv.png.flat",
+        "source": "C:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\src\\main\\res\\drawable-mdpi\\tiv.png"
+    },
+    {
         "merged": "C:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\color_abc_primary_text_material_dark.xml.flat",
         "source": "C:\\Users\\Martin\\.gradle\\caches\\transforms-2\\files-2.1\\3f3891cb7dfd07ffd01b698f62e087b6\\res\\color\\abc_primary_text_material_dark.xml"
     },
@@ -1374,6 +1386,10 @@
     {
         "merged": "C:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\color_mtrl_tabs_ripple_color.xml.flat",
         "source": "C:\\Users\\Martin\\.gradle\\caches\\transforms-2\\files-2.1\\1e75406c59611b06776841454669c4ad\\res\\color\\mtrl_tabs_ripple_color.xml"
+    },
+    {
+        "merged": "C:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-ldpi_tivala.png.flat",
+        "source": "C:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\src\\main\\res\\drawable-ldpi\\tivala.png"
     },
     {
         "merged": "C:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout_select_dialog_item_material.xml.flat",
@@ -1632,6 +1648,10 @@
         "source": "C:\\Users\\Martin\\.gradle\\caches\\transforms-2\\files-2.1\\3f3891cb7dfd07ffd01b698f62e087b6\\res\\drawable-xxxhdpi-v4\\abc_ic_menu_cut_mtrl_alpha.png"
     },
     {
+        "merged": "C:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_tiv.png.flat",
+        "source": "C:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\src\\main\\res\\drawable-hdpi\\tiv.png"
+    },
+    {
         "merged": "C:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_design_ic_visibility_off.png.flat",
         "source": "C:\\Users\\Martin\\.gradle\\caches\\transforms-2\\files-2.1\\1e75406c59611b06776841454669c4ad\\res\\drawable-mdpi-v4\\design_ic_visibility_off.png"
     },
@@ -1662,6 +1682,10 @@
     {
         "merged": "C:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\animator_mtrl_fab_transformation_sheet_expand_spec.xml.flat",
         "source": "C:\\Users\\Martin\\.gradle\\caches\\transforms-2\\files-2.1\\1e75406c59611b06776841454669c4ad\\res\\animator\\mtrl_fab_transformation_sheet_expand_spec.xml"
+    },
+    {
+        "merged": "C:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi_tivala.png.flat",
+        "source": "C:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\src\\main\\res\\drawable-hdpi\\tivala.png"
     },
     {
         "merged": "C:\\Users\\Martin\\sample\\Groceries\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-mdpi-v4_abc_ic_menu_cut_mtrl_alpha.png.flat",
