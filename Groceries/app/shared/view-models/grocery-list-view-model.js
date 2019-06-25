@@ -24,6 +24,27 @@ function GroceryListViewModel(items) {
             });
     };
 
+    viewModel.add = function (name) {
+        return fetchModule.fetch(baseUrl, {
+            method: "POST",
+            body: JSON.stringify({ Name: name }),
+            headers: {
+                "Content-Type" : "application/json",
+                "Authorization" : "Kinvey " + config.token
+            }
+        })
+            .then(handleErrors)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (data) {
+                viewModel.push({
+                    id: data._id,
+                    name: data.Name
+                });
+            });
+    }
+
     viewModel.empty = function () {
         while (viewModel.length) {
             viewModel.pop();
