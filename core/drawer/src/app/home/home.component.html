@@ -1,0 +1,28 @@
+<ActionBar class="action-bar">
+    <!-- 
+    Use the NavigationButton as a side-drawer button in Android
+    because ActionItems are shown on the right side of the ActionBar
+    -->
+    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+    <!-- 
+    Use the ActionItem for IOS with position set to left. Using the
+    NavigationButton as a side-drawer button in iOS is not possible,
+    because its function is to always navigate back in the application.
+    -->
+    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
+        ios.position="left">
+    </ActionItem>
+    <Label class="action-bar-title" text="Översikt"></Label>
+</ActionBar>
+
+<GridLayout class="page page-content">
+    <ListView [items]="countries" (itemTap)="onItemTap($event)" class="list-group">
+        <ng-template let-country="item" let-i="index" let-odd="odd" let-even="even">
+            <!-- The item template can only have a single root view container (e.g. GridLayout, StackLayout, etc.)-->
+            <StackLayout orientation="horizontal" class="list-group-item">
+                <Label text="Country: " textWrap="true"></Label>
+                <Label [text]="country.name"></Label>
+            </StackLayout>
+        </ng-template>
+    </ListView>
+</GridLayout>

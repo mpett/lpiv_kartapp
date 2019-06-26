@@ -1,13 +1,13 @@
 var frameModule = require('ui/frame');
-var observableModule = require('data/observable');
+var UserViewModel = require("../../shared/view-models/user-view-model");
+var dialogsModule = require("ui/dialogs");
 
+var user = new UserViewModel({
+    email: 'martin@tivala.se',
+    password: 'password'
+});
 var page;
 var email;
-
-var user = new observableModule.fromObject({
-    email: "user@domain.com",
-    password: "password"
-});
 
 exports.loaded = function(args) {
     page = args.object;
@@ -15,8 +15,18 @@ exports.loaded = function(args) {
 };
 
 exports.signIn = function() {
-    email = page.getViewById('email');
-    console.log(email.text);
+    user.login()
+        .catch(function (error) {
+            console.log(error);
+            dialogsModule.alert({
+                message: "Could not login.",
+                okButtonText: "Ok"
+            });
+            return Promise.reject();
+        })
+        .then(function() {
+            frameModule.topmost().navigate("views/list/list");
+        });
 };
 
 exports.register = function() {

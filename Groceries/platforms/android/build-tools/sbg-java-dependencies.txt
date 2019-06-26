@@ -5,6 +5,7 @@ C:\Users\Martin\sample\Groceries\platforms\android\app\build\exploded-dependenci
 C:\Users\Martin\sample\Groceries\platforms\android\app\build\exploded-dependencies\09d6093573d4fa05bcde8f58865848b9\classes.jar
 C:\Users\Martin\sample\Groceries\platforms\android\app\build\exploded-dependencies\0c0d90e0a995c76f6e82f5f26de1578c\classes.jar
 C:\Users\Martin\sample\Groceries\platforms\android\app\build\exploded-dependencies\16bb0a7be06468833a936ca64bcb2caa\classes.jar
+C:\Users\Martin\sample\Groceries\platforms\android\app\build\exploded-dependencies\291bbbe3d2d046b6e074e36bc379ba05\classes.jar
 C:\Users\Martin\sample\Groceries\platforms\android\app\build\exploded-dependencies\32631c08dafe8a98fa3178384efbc341\classes.jar
 C:\Users\Martin\sample\Groceries\platforms\android\app\build\exploded-dependencies\357be9a4510a77d9af39aa7c55143d62\classes.jar
 C:\Users\Martin\sample\Groceries\platforms\android\app\build\exploded-dependencies\37d138be550b8ca8fdc9d9660c8012fc\classes.jar

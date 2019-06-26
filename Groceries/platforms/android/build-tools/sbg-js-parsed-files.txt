@@ -3,6 +3,7 @@ C:\Users\Martin\sample\Groceries\platforms\android\app\src\main\assets\app\share
 C:\Users\Martin\sample\Groceries\platforms\android\app\src\main\assets\app\shared\utils\ios-swipe-delete.js
 C:\Users\Martin\sample\Groceries\platforms\android\app\src\main\assets\app\shared\view-models\grocery-list-view-model.js
 C:\Users\Martin\sample\Groceries\platforms\android\app\src\main\assets\app\shared\view-models\user-view-model.js
+C:\Users\Martin\sample\Groceries\platforms\android\app\src\main\assets\app\tns_modules\nativescript-social-share\social-share.js
 C:\Users\Martin\sample\Groceries\platforms\android\app\src\main\assets\app\tns_modules\tns-core-modules\application\application-common.js
 C:\Users\Martin\sample\Groceries\platforms\android\app\src\main\assets\app\tns_modules\tns-core-modules\application\application.js
 C:\Users\Martin\sample\Groceries\platforms\android\app\src\main\assets\app\tns_modules\tns-core-modules\application-settings\application-settings-common.js
