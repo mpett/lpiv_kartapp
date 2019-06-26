@@ -13,9 +13,20 @@
         ios.position="left">
     </ActionItem>
     <Label class="action-bar-title" text="Sök"></Label>
+    <SearchBar  hint="Sök" (clear)="onClear($event)" (submit)="onSubmit($event)"></SearchBar>
+    
+    
 </ActionBar>
 
+
+
 <GridLayout class="page page-content">
-    <Label class="page-icon fa" text="&#xf002;"></Label>
-    <Label class="page-placeholder" text="<!-- Page content goes here -->"></Label>
+        
+    <ListView row="0" [items]="myItems" class="list-group">
+            <ng-template let-item="item">
+                <GridLayout class="item list-group-item">
+                    <Label [text]="item.name" class="list-group-item-heading"></Label>
+                </GridLayout>
+            </ng-template>
+    </ListView>
 </GridLayout>
