@@ -3,14 +3,11 @@ import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 import * as app from "tns-core-modules/application";
 import { Component, ChangeDetectionStrategy, OnInit } from "@angular/core";
 
-class Country {
+class Producer {
     constructor(public name: string) {}
 }
 
-let europianCountries = ["Austria", "Belgium", "Bulgaria", "Croatia", "Cyprus", "Czech Republic",
-    "Denmark", "Estonia", "Finland", "France", "Germany", "Greece", "Hungary", "Ireland", "Italy",
-    "Latvia", "Lithuania", "Luxembourg", "Malta", "Netherlands", "Poland", "Portugal", "Romania", "Slovakia",
-    "Slovenia", "Spain", "Sweden", "United Kingdom"];
+let localProducers = ["Adelsåsens Vilt AB", "Resville Mathantverk", "Kullans Lycka", "Stadsnära Lantbruk", "Bondfrun", "Gården Partihandel", "Wästgötarna"];
 
 @Component({
     selector: "Home",
@@ -19,19 +16,15 @@ let europianCountries = ["Austria", "Belgium", "Bulgaria", "Croatia", "Cyprus", 
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-
-
 export class HomeComponent implements OnInit {
 
-    public countries: Array<Country>;
-
-    
+    public producers: Array<Producer>;
 
     constructor() {
-        this.countries = [];
+        this.producers = [];
 
-        for (let i = 0; i < europianCountries.length; i++) {
-            this.countries.push(new Country(europianCountries[i]));
+        for (let i = 0; i < localProducers.length; i++) {
+            this.producers.push(new Producer(localProducers[i]));
         }
 
         // Use the component constructor to inject providers.
@@ -44,5 +37,9 @@ export class HomeComponent implements OnInit {
     onDrawerButtonTap(): void {
         const sideDrawer = <RadSideDrawer>app.getRootView();
         sideDrawer.showDrawer();
+    }
+
+    onItemTap(args):void {
+        console.dir(args);
     }
 }
