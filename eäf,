@@ -1,0 +1,89 @@
+[33mcommit 0c650635174f1334c7dab4f3c6736f3da994a230[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Martin Pettersson <kontakt@martinpettersson.se>
+Date:   Wed Jun 26 14:39:20 2019 +0200
+
+    Search function
+
+[33mcommit e153796a79d6998145aca84974c66d89c938b95c[m
+Author: Martin Pettersson <kontakt@martinpettersson.se>
+Date:   Wed Jun 26 13:29:19 2019 +0200
+
+    Update
+
+[33mcommit a80f2e0dc74869b8e1cc578b0e251de6307652e2[m
+Author: Martin Pettersson <kontakt@martinpettersson.se>
+Date:   Wed Jun 26 11:03:35 2019 +0200
+
+    Color codes, menu names and such.
+
+[33mcommit 859da8b6501187ec17c58456bfbadc2f84f04ac7[m
+Author: Martin Pettersson <kontakt@martinpettersson.se>
+Date:   Wed Jun 26 10:36:16 2019 +0200
+
+    Producers, overview, list
+
+[33mcommit 22b3d0f4ce94779d3786c390ecf93503b663d0f9[m
+Author: Martin Pettersson <kontakt@martinpettersson.se>
+Date:   Wed Jun 26 09:47:17 2019 +0200
+
+    Started on drawer app
+
+[33mcommit fcf8c083c25faed84a96f5cae01f9d14ec2d93f9[m
+Author: Martin Pettersson <kontakt@martinpettersson.se>
+Date:   Tue Jun 25 09:11:35 2019 +0200
+
+    Fading list animation.
+
+[33mcommit e600c9b3d5347229453e2487cd05b5852abab43c[m
+Author: Martin Pettersson <kontakt@martinpettersson.se>
+Date:   Tue Jun 25 09:03:12 2019 +0200
+
+    Spinning activity indicator
+
+[33mcommit aaa9c1a89e50fc2ee2aca1f4d573d7794e64eea0[m
+Author: Martin Pettersson <kontakt@martinpettersson.se>
+Date:   Tue Jun 25 08:56:52 2019 +0200
+
+    Grid Layout
+
+[33mcommit e55d2bd8d0cd877313bbad518f7dc2e8e269469c[m
+Author: Martin Pettersson <kontakt@martinpettersson.se>
+Date:   Tue Jun 25 08:17:27 2019 +0200
+
+    Grocery list array functions
+
+[33mcommit b4e336af99274b5116fb3d3fe0d0d5f6c3ca583c[m
+Author: Martin Pettersson <kontakt@martinpettersson.se>
+Date:   Tue Jun 25 08:06:02 2019 +0200
+
+    List code behind file
+
+[33mcommit e5aa7f9c72a02a48944bc3c3dcdb7cfc3a81a6bc[m
+Author: Martin Pettersson <kontakt@martinpettersson.se>
+Date:   Mon Jun 24 10:43:17 2019 +0200
+
+    xml list view
+
+[33mcommit 0b9a8a6fe5466b834490e2432b2239560c900119[m
+Author: Martin Pettersson <kontakt@martinpettersson.se>
+Date:   Mon Jun 24 10:34:35 2019 +0200
+
+    Sign in function in login code behind file
+
+[33mcommit 34b4d383e36f17a443385ef137db245aadcdb4bf[m
+Author: Martin Pettersson <kontakt@martinpettersson.se>
+Date:   Mon Jun 24 10:04:40 2019 +0200
+
+    Login function in user view model.
+
+[33mcommit 6c891cea7c6c1d0e514d643bb2c812e84618d895[m
+Author: Martin Pettersson <kontakt@martinpettersson.se>
+Date:   Mon Jun 24 08:46:20 2019 +0200
+
+    Friday changes
+
+[33mcommit 39dcb8294b7266dab830d042e9f9b73eea23b04b[m
+Author: Martin Pettersson <kontakt@martinpettersson.se>
+Date:   Wed Jun 19 16:56:39 2019 +0200
+
+    Initial commit

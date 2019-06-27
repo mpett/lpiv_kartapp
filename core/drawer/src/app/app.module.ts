@@ -5,6 +5,9 @@ import { NativeScriptUISideDrawerModule } from "nativescript-ui-sidedrawer/angul
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 
+import { registerElement } from "nativescript-angular/element-registry";
+registerElement("Mapbox", () => require("nativescript-mapbox").MapboxView);
+
 @NgModule({
     bootstrap: [
         AppComponent
