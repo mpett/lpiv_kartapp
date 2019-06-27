@@ -5,11 +5,11 @@ import * as app from "tns-core-modules/application";
 import * as geolocation from "nativescript-geolocation";
 
 @Component({
-    selector: "Browse",
+    selector: "Map",
     moduleId: module.id,
-    templateUrl: "./browse.component.html"
+    templateUrl: "./map.component.html"
 })
-export class BrowseComponent implements OnInit {
+export class MapComponent implements OnInit {
 
     currentLat: number;
     currentLng: number;

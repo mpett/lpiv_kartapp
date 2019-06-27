@@ -2,17 +2,14 @@ import { NgModule } from "@angular/core";
 import { Routes } from "@angular/router";
 import { NativeScriptRouterModule } from "nativescript-angular/router";
 
-import { BrowseComponent } from "./browse.component";
-
-import { registerElement } from "nativescript-angular/element-registry";
-registerElement("Mapbox", () => require("nativescript-mapbox").MapboxView);
+import { MapComponent } from "./map.component";
 
 const routes: Routes = [
-    { path: "", component: BrowseComponent }
+    { path: "", component: MapComponent }
 ];
 
 @NgModule({
     imports: [NativeScriptRouterModule.forChild(routes)],
     exports: [NativeScriptRouterModule]
 })
-export class BrowseRoutingModule { }
+export class MapRoutingModule { }
