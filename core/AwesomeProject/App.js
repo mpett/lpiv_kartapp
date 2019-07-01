@@ -7,38 +7,79 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, Text, View, Button, SafeAreaView} from 'react-native';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
+import type { Region } from 'react-native-maps';
+
+const SKÖVDE = {
+  latitude: 58.3903,
+  longitude: 13.8461,
+  latitudeDelta: 0.02,
+  longitudeDelta: 0.02
+};
+
+const MARIESTAD = {
+  latitude: 58.7101,
+  longitude: 13.8213,
+  latitudeDelta: 0.02,
+  longitudeDelta: 0.02
+};
+
+const TÖREBODA = {
+  latitude: 58.7055,
+  longitude: 14.1261,
+  latitudeDelta: 0.02,
+  longitudeDelta: 0.02
+};
+
+const VÄSTRA_GÖTALAND = {
+  latitude: 58.2528,
+  longitude: 13.0596,
+  latitudeDelta: 2.5,
+  longitudeDelta: 2.5
+};
 
 type Props = {};
-export default class App extends Component<Props> {
+type State = { region: ?Region, }
+
+export default class App extends Component<Props, State> {
+  
+  constructor(props: Props) {
+    super(props);
+    this.state = { region: VÄSTRA_GÖTALAND };
+  }
+
+  // Button handlers
+  _showSkövde = (): void => { this.setState({ region: SKÖVDE }) };
+  _showMariestad = (): void => { this.setState({ region: MARIESTAD }) };
+  _showTöreboda = (): void => { this.setState({ region: TÖREBODA }) };
+
   render() {
-    return <MapView provider={ PROVIDER_GOOGLE } style={ { flex: 1 } } />
+    return (
+      <View style={ styles.container }>
+        <MapView
+          provider={ PROVIDER_GOOGLE }
+          region={ this.state.region }
+          style={ styles.mapViewContainer } />
+
+        <View style={ styles.buttonsContainer }>
+          <Button title={ 'Skövde' } onPress={ this._showSkövde } />
+          <Button title={ 'Mariestad' } onPress={ this._showMariestad } />
+          <Button title={ 'Töreboda' } onPress={ this._showTöreboda } />
+        </View>
+        <SafeAreaView />
+      </View>
+    );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  container: { flex: 1, backgroundColor: 'white' },
+  mapViewContainer: { flex: 1 },
+  buttonsContainer: {
+    flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    paddingVertical: 16
+  }
 });
