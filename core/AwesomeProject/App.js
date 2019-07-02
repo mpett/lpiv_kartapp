@@ -12,6 +12,11 @@ import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
 import type { Region } from 'react-native-maps';
 
+export interface LatLng {
+  latitude: number;
+  longitude: number
+}
+
 const SKÖVDE = {
   latitude: 58.3903,
   longitude: 13.8461,
