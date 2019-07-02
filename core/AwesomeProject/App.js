@@ -38,6 +38,34 @@ const TÖREBODA = {
   longitudeDelta: 0.02
 };
 
+const GÖTEBORG = {
+  latitude: 57.7089,
+  longitude: 11.9746,
+  latitudeDelta: 0.02,
+  longitudeDelta: 0.02
+};
+
+const LIDKÖPING = {
+  latitude: 58.5035,
+  longitude: 13.1571,
+  latitudeDelta: 0.02,
+  longitudeDelta: 0.02
+};
+
+const TROLLHÄTTAN = {
+  latitude: 58.2835,
+  longitude: 12.2858,
+  latitudeDelta: 0.02,
+  longitudeDelta: 0.02
+};
+
+const BORÅS = {
+  latitude: 57.7210,
+  longitude: 12.9398,
+  latitudeDelta: 0.02,
+  longitudeDelta: 0.02
+};
+
 const VÄSTRA_GÖTALAND = {
   latitude: 58.2528,
   longitude: 13.0596,
@@ -71,7 +99,8 @@ export default class App extends Component<Props, State> {
           <Marker coordinate = {{
             latitude: SKÖVDE.latitude,
             longitude: SKÖVDE.longitude
-          }} />
+          }}>
+          </Marker>
 
           <Marker coordinate = {{
             latitude: MARIESTAD.latitude,
@@ -81,6 +110,26 @@ export default class App extends Component<Props, State> {
           <Marker coordinate = {{
             latitude: TÖREBODA.latitude,
             longitude: TÖREBODA.longitude
+          }} />
+
+          <Marker coordinate = {{
+            latitude: GÖTEBORG.latitude,
+            longitude: GÖTEBORG.longitude
+          }} />
+
+          <Marker coordinate = {{
+            latitude: LIDKÖPING.latitude,
+            longitude: LIDKÖPING.longitude
+          }} />
+
+          <Marker coordinate = {{
+            latitude: TROLLHÄTTAN.latitude,
+            longitude: TROLLHÄTTAN.longitude
+          }} />
+
+          <Marker coordinate = {{
+            latitude: BORÅS.latitude,
+            longitude: BORÅS.longitude
           }} />
         </MapView>
 
