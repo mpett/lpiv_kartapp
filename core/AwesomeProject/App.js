@@ -67,6 +67,21 @@ export default class App extends Component<Props, State> {
           provider={ PROVIDER_GOOGLE }
           region={ this.state.region }
           style={ styles.mapViewContainer }>
+
+          <Marker coordinate = {{
+            latitude: SKÖVDE.latitude,
+            longitude: SKÖVDE.longitude
+          }} />
+
+          <Marker coordinate = {{
+            latitude: MARIESTAD.latitude,
+            longitude: MARIESTAD.longitude
+          }} />
+
+          <Marker coordinate = {{
+            latitude: TÖREBODA.latitude,
+            longitude: TÖREBODA.longitude
+          }} />
         </MapView>
 
         <View style={ styles.buttonsContainer }>
