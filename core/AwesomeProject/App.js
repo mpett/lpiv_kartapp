@@ -94,6 +94,18 @@ export default class App extends Component<Props, State> {
   _showMariestad = (): void => { this.setState({ region: MARIESTAD }) };
   _showTöreboda = (): void => { this.setState({ region: TÖREBODA }) };
 
+  renderMarkers() {
+    return a.map((item, key) => {
+      return (
+        <Marker coordinate = {{
+          latitude: item.latitude,
+          longitude: item.longitude
+        }} key={key}>
+        </Marker>
+      );
+    } )
+  }
+
   render() {
     return (
       <View style={ styles.container }>
@@ -102,43 +114,10 @@ export default class App extends Component<Props, State> {
           region={ this.state.region }
           style={ styles.mapViewContainer }>
 
-          <Marker coordinate = {{
-            latitude: SKÖVDE.latitude,
-            longitude: SKÖVDE.longitude
-          }}>
-          </Marker>
-
-          <Marker coordinate = {{
-            latitude: MARIESTAD.latitude,
-            longitude: MARIESTAD.longitude,
-            name: "lol"
-
-          }} />
-
-          <Marker coordinate = {{
-            latitude: TÖREBODA.latitude,
-            longitude: TÖREBODA.longitude
-          }} />
-
-          <Marker coordinate = {{
-            latitude: GÖTEBORG.latitude,
-            longitude: GÖTEBORG.longitude
-          }} />
-
-          <Marker coordinate = {{
-            latitude: LIDKÖPING.latitude,
-            longitude: LIDKÖPING.longitude
-          }} />
-
-          <Marker coordinate = {{
-            latitude: TROLLHÄTTAN.latitude,
-            longitude: TROLLHÄTTAN.longitude
-          }} />
-
-          <Marker coordinate = {{
-            latitude: BORÅS.latitude,
-            longitude: BORÅS.longitude
-          }} />
+          {
+            this.renderMarkers()
+          }
+          
         </MapView>
 
         <View style={ styles.buttonsContainer }>
