@@ -17,6 +17,8 @@ export interface LatLng {
   longitude: number
 }
 
+let a = new Array();
+
 const SKÖVDE = {
   latitude: 58.3903,
   longitude: 13.8461,
@@ -73,6 +75,10 @@ const VÄSTRA_GÖTALAND = {
   longitudeDelta: 2.5
 };
 
+a.push(SKÖVDE); a.push(MARIESTAD); a.push(TÖREBODA); 
+a.push(GÖTEBORG); a.push(LIDKÖPING); a.push(TROLLHÄTTAN); 
+a.push(BORÅS); 
+
 type Props = {};
 type State = { region: ?Region, }
 
@@ -104,7 +110,9 @@ export default class App extends Component<Props, State> {
 
           <Marker coordinate = {{
             latitude: MARIESTAD.latitude,
-            longitude: MARIESTAD.longitude
+            longitude: MARIESTAD.longitude,
+            name: "lol"
+
           }} />
 
           <Marker coordinate = {{
