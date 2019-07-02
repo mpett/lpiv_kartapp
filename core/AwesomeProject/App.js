@@ -66,7 +66,8 @@ export default class App extends Component<Props, State> {
         <MapView
           provider={ PROVIDER_GOOGLE }
           region={ this.state.region }
-          style={ styles.mapViewContainer } />
+          style={ styles.mapViewContainer }>
+        </MapView>
 
         <View style={ styles.buttonsContainer }>
           <Button title={ 'Skövde' } onPress={ this._showSkövde } />
