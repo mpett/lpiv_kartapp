@@ -17,7 +17,7 @@ export interface LatLng {
   longitude: number
 }
 
-let a = new Array();
+let locations = new Array();
 
 const SKÖVDE = {
   latitude: 58.3903,
@@ -75,9 +75,9 @@ const VÄSTRA_GÖTALAND = {
   longitudeDelta: 2.5
 };
 
-a.push(SKÖVDE); a.push(MARIESTAD); a.push(TÖREBODA); 
-a.push(GÖTEBORG); a.push(LIDKÖPING); a.push(TROLLHÄTTAN); 
-a.push(BORÅS); 
+locations.push(SKÖVDE); locations.push(MARIESTAD); locations.push(TÖREBODA); 
+locations.push(GÖTEBORG); locations.push(LIDKÖPING); locations.push(TROLLHÄTTAN); 
+locations.push(BORÅS); 
 
 type Props = {};
 type State = { region: ?Region, }
@@ -95,11 +95,11 @@ export default class App extends Component<Props, State> {
   _showTöreboda = (): void => { this.setState({ region: TÖREBODA }) };
 
   renderMarkers() {
-    return a.map((item, key) => {
+    return locations.map((location, key) => {
       return (
         <Marker coordinate = {{
-          latitude: item.latitude,
-          longitude: item.longitude
+          latitude: location.latitude,
+          longitude: location.longitude
         }} key={key}>
         </Marker>
       );
