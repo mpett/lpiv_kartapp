@@ -6,13 +6,6 @@ class HomeScreen extends React.Component {
   
   static navigationOptions = {
     title: 'Hemsida',
-    headerStyle: {
-      backgroundColor: '#f4511e',
-    },
-    headerTintColor: '#fff',
-    headerTitleStyle: {
-      fontWeight: 'bold',
-    },
   };
 
   render() {
@@ -77,6 +70,25 @@ class DetailsScreen extends React.Component {
   }
 }
 
+const RootStack = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Details: DetailsScreen,
+  },
+  {
+    initialRouteName: 'Home',
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#f4511e',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },
+  }
+);
+
 const AppNavigator = createStackNavigator(
   {
     Home: HomeScreen,
@@ -87,7 +99,7 @@ const AppNavigator = createStackNavigator(
   }
 );
 
-const AppContainer = createAppContainer(AppNavigator);
+const AppContainer = createAppContainer(RootStack);
 
 export default class App extends React.Component {
   render() {
