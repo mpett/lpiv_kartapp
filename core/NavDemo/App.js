@@ -29,9 +29,11 @@ class HomeScreen extends React.Component {
 
 class DetailsScreen extends React.Component {
 
-  static navigationOptions = {
-    title: 'Hemsida'
-  }
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: navigation.getParam('otherParam', 'Detta är en nästad detaljskärm med parametrar.'),
+    };
+  };
 
   render() {
     // Get the parameter, provide a fallback value if it is not available.
