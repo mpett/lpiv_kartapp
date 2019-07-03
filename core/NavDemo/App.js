@@ -12,9 +12,25 @@ class HomeScreen extends React.Component {
   }
 }
 
-const AppNavigator = createStackNavigator({
-  Home: HomeScreen
-});
+class DetailsScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <Text>Detta är detaljskärmen</Text>
+      </View>
+    );
+  }
+}
+
+const AppNavigator = createStackNavigator(
+  {
+    Home: HomeScreen,
+    Details: DetailsScreen
+  },
+  {
+    initialRouteName: "Home"
+  }
+);
 
 const AppContainer = createAppContainer(AppNavigator);
 
