@@ -22,8 +22,16 @@ class DetailsScreen extends React.Component {
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Text>Detta är detaljskärmen</Text>
         <Button 
-          title = "Gå till detaljskärmen en gång till"
-          onpress = { () => this.props.navigation.push('Details') }
+          title = "Gå till detaljskärmen igen"
+          onPress = {() => this.props.navigation.push('Details')}
+        />
+        <Button 
+          title = "Gå hem"
+          onPress = {() => this.props.navigation.navigate('Home')}
+        />
+        <Button 
+          title = "Gå tillbaka"
+          onPress = {() => this.props.navigation.goBack()}
         />
       </View>
     );
