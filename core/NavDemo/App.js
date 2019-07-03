@@ -3,6 +3,11 @@ import { Button, View, Text } from "react-native";
 import { createStackNavigator, createAppContainer } from "react-navigation";
 
 class HomeScreen extends React.Component {
+  
+  static navigationOptions = {
+    title: 'Hemsida'
+  }
+
   render() {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
@@ -23,6 +28,11 @@ class HomeScreen extends React.Component {
 }
 
 class DetailsScreen extends React.Component {
+
+  static navigationOptions = {
+    title: 'Hemsida'
+  }
+
   render() {
     // Get the parameter, provide a fallback value if it is not available.
 
