@@ -4,9 +4,9 @@ function heapsort(a) {
         heapify(a, n, i);
     }
     for (var i = n - 1; i >= 0; i--) {
-        var tmp = a[i];
-        a[i] = a[0];
-        a[0] = tmp;
+        var tmp = a[0];
+        a[0] = a[i];
+        a[i] = tmp;
         heapify(a, i, 0);
     }
 }
@@ -21,9 +21,9 @@ function heapify(a, n, i) {
         hi = r;
     }
     if (hi != i) {
-        var tmp = a[hi];
-        a[hi] = a[i];
-        a[i] = tmp;
+        var tmp = a[i];
+        a[i] = a[hi];
+        a[hi] = tmp;
         heapify(a, n, hi);
     }
 }
@@ -45,9 +45,9 @@ function partition(a, lo, hi) {
             a[j] = tmp_1;
         }
     }
-    var tmp = a[i + 1];
-    a[i + 1] = a[hi];
-    a[hi] = tmp;
+    var tmp = a[hi];
+    a[hi] = a[i + 1];
+    a[i + 1] = tmp;
     return i + 1;
 }
 function sieve(n) {
@@ -72,15 +72,15 @@ function sieve(n) {
 }
 function main() {
     console.log("Hello World");
-    var a = [2121, 5, 8, 8, 85, 85, 4, 984, 6, 654, -984, 554, 45, 8];
+    var a = [231, 561, 87, 4896, 9, 8, 46, -61, 651, -51651, 65, 5, 6, 7, 0, 0, 0, -541];
     console.log(a);
     heapsort(a);
     console.log(a);
-    var b = [6514, 1, 7, 219, 81, 8, 854, 96, 85, -6516, 652, 6, -5161, -651, 54];
+    var b = [651, 1, 7, 8, 85, 96, 1, 6898, 1, 8964, 48615, 615, 96, 6, 1, -1561, -1541, 1, 74];
     console.log(b);
     quicksort(b, 0, b.length - 1);
     console.log(b);
-    var c = sieve(23425334);
+    var c = sieve(5846123);
     console.log(c[c.length - 1]);
 }
 main();
