@@ -61,6 +61,10 @@ class DetailsScreen extends React.Component {
           title = "Gå tillbaka"
           onPress = {() => this.props.navigation.goBack()}
         />
+        <Button 
+          title = "Uppdatera titeln"
+          onPress = {() => this.props.navigation.setParams({ otherParam: 'Uppdaterad!' })}
+        />
       </View>
     );
   }
