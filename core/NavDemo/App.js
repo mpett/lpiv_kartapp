@@ -1,11 +1,23 @@
 import React from "react";
-import { Button, View, Text } from "react-native";
+import { Button, View, Text, Image } from "react-native";
 import { createStackNavigator, createAppContainer } from "react-navigation";
+
+class LogoTitle extends React.Component {
+  render() {
+    return (
+      <Image
+        source={require('./tivala.png')}
+        style={{ width: 30, height: 30 }}
+      />
+    );
+  }
+}
 
 class HomeScreen extends React.Component {
   
   static navigationOptions = {
-    title: 'Hemsida',
+    // headerTitle instead of title
+    headerTitle: <LogoTitle />,
   };
 
   render() {
