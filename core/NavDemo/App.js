@@ -5,8 +5,15 @@ import { createStackNavigator, createAppContainer } from "react-navigation";
 class HomeScreen extends React.Component {
   
   static navigationOptions = {
-    title: 'Hemsida'
-  }
+    title: 'Hemsida',
+    headerStyle: {
+      backgroundColor: '#f4511e',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+  };
 
   render() {
     return (
