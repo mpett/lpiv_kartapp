@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text } from "react-native";
+import { Button, View, Text } from "react-native";
 import { createStackNavigator, createAppContainer } from "react-navigation";
 
 class HomeScreen extends React.Component {
@@ -7,6 +7,10 @@ class HomeScreen extends React.Component {
     return (
       <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
         <Text>Detta är hemskärmen</Text>
+        <Button 
+          title = "Gå till detaljskärmen"
+          onPress = {() => this.props.navigation.navigate('Details')}
+        />
       </View>
     );
   }
