@@ -15,16 +15,33 @@ class LogoTitle extends React.Component {
 
 class HomeScreen extends React.Component {
   
-  static navigationOptions = {
-    // headerTitle instead of title
-    headerTitle: <LogoTitle />,
-    headerRight: (
-      <Button  
-        onPress = {() => alert('Du har tryckt på knappen')}
-        title = "Knapp"
-        color = "green"
-      />
-    ),
+  static navigationOptions =  ({ navigation }) => {
+    return {
+      // headerTitle instead of title
+      headerTitle: <LogoTitle />,
+      headerRight: (
+        <Button  
+          onPress = {
+            navigation.getParam('increaseCount')
+          }
+          title = "Knapp + 1"
+          color = "green"
+        />
+      ),
+    };
+  };
+
+  componentDidMount() {
+    this.props.navigation.setParams({ increaseCount: this._increaseCount });
+  }
+
+  state = {
+    count: 0,
+  };
+
+  _increaseCount = () => {    
+    this.setState({ count: this.state.count + 1 });
+    
   };
 
   render() {
