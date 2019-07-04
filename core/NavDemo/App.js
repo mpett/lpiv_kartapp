@@ -18,6 +18,13 @@ class HomeScreen extends React.Component {
   static navigationOptions = {
     // headerTitle instead of title
     headerTitle: <LogoTitle />,
+    headerRight: (
+      <Button  
+        onPress = {() => alert('Du har tryckt på knappen')}
+        title = "Knapp"
+        color = "green"
+      />
+    ),
   };
 
   render() {

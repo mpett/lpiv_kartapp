@@ -34,6 +34,32 @@ function heapify(a:number[], n:number, i:number): void {
     }
 }
 
+function sieve(n:number):number[] {
+    var a:boolean[] = new Array(n);
+
+    for (let i:number = 2; i < n; i++) {
+        a[i] = true;
+    }
+
+    for (let i:number = 2; i < Math.sqrt(n); i++) {
+        for (let j:number = i*i; j < n; j += i) {
+            if (a[j]) {
+                a[j] = false;
+            }
+        } 
+    }
+
+    var b:number[] = new Array();
+
+    for (let i:number = 0; i < n; i++) {
+        if (a[i]) {
+            b.push(i);
+        }
+    }
+    
+    return b;
+}
+
 function quicksort(a:number[], lo:number, hi:number): void {
     if (lo < hi) {
         let p:number = partition(a, lo, hi);
@@ -55,51 +81,25 @@ function partition(a:number[], lo:number, hi:number): number {
         }
     }
 
-    var tmp:number = a[hi];
-    a[hi] = a[i+1];
-    a[i+1] = tmp;
-    
+    var tmp:number = a[i+1];
+    a[i+1] = a[hi];
+    a[hi] = tmp;
+
     return i+1;
 }
 
-function sieve(n:number): number[] {
-    var a:boolean[] = new Array(n);
-
-    for (let i:number = 2; i < n; i++) {
-        a[i] = true;
-    }
-
-    for (let i:number = 2; i < Math.sqrt(n); i++) {
-        for (let j:number = i*i; j < n; j += i) {
-            if (a[j]) {
-                a[j] = false;
-            }
-        }
-    }
-
-    var b:number[] = new Array();
-
-    for (let i:number = 0; i < n; i++) {
-        if (a[i]) {
-            b.push(i);
-        }
-    }
-    
-    return b;
-}
-
 function main(): void {
-    console.log("Hello World");
-    var a:number[] = [231,561,87,4896,9,8,46,-61,651,-51651,65,5,6,7,0,0,0,-541];
+    console.log("Hello World!");
+    var a:number[] = [3215,5,78,85,8,7654,4,-5411,54,75,996,-61,6,4,7,2,6,54,8];
     console.log(a);
     heapsort(a);
     console.log(a);
-    var b:number[] = [651,1,7,8,85,96,1,6898,1,8964,48615,615,96,6,1,-1561,-1541,1,74];
+    var b:number[] = [2161,8,4,7,1984,58,8,515,8,161,85,651,8,-651,54,-651,654,77,14,7,-5];
     console.log(b);
     quicksort(b, 0, b.length - 1);
     console.log(b);
-    var c:number[] = sieve(5846123);
-    console.log(c[c.length - 1]);
+    var primes:number[] = sieve(54895321);
+    console.log(primes[primes.length - 1]);
 }
 
 main();
