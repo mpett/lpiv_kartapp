@@ -14,9 +14,17 @@ class LogoTitle extends React.Component {
 }
 
 class HomeScreen extends React.Component {
-  
   static navigationOptions =  ({ navigation }) => {
+    const params = navigation.state.params || {};
+
     return {
+      headerLeft: (
+        <Button
+          onPress={() => navigation.navigate('MyModal')}
+          title="Info"
+          color="green"
+        />
+      ),
       // headerTitle instead of title
       headerTitle: <LogoTitle />,
       headerRight: (
@@ -57,6 +65,22 @@ class HomeScreen extends React.Component {
               otherParam: 'En strängparameter.'
             });
           }}
+        />
+      </View>
+    );
+  }
+}
+
+class ModalScreen extends React.Component {
+  render() {
+    return(
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }} >
+        <Text style={{ fontSize: 30 }}>
+          Detta är en modal!
+        </Text>
+        <Button 
+          onPress={() => this.props.navigation.goBack()}
+          title="Hej då"
         />
       </View>
     );
@@ -113,10 +137,14 @@ class DetailsScreen extends React.Component {
   }
 }
 
-const RootStack = createStackNavigator(
+const MainStack = createStackNavigator(
   {
-    Home: HomeScreen,
-    Details: DetailsScreen,
+    Home: {
+      screen: HomeScreen,
+    },
+    Details: {
+      screen: DetailsScreen,
+    },
   },
   {
     initialRouteName: 'Home',
@@ -132,13 +160,18 @@ const RootStack = createStackNavigator(
   }
 );
 
-const AppNavigator = createStackNavigator(
+const RootStack = createStackNavigator(
   {
-    Home: HomeScreen,
-    Details: DetailsScreen
+    Main: {
+      screen: MainStack,
+    },
+    MyModal: {
+      screen: ModalScreen,
+    },
   },
   {
-    initialRouteName: "Home"
+    mode: 'modal',
+    headerMode: 'none',
   }
 );
 
