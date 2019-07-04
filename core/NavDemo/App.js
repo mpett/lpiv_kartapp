@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, View, Text, Image } from "react-native";
-import { createStackNavigator, createAppContainer } from "react-navigation";
+import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
 
 class LogoTitle extends React.Component {
   render() {
@@ -175,7 +175,22 @@ const RootStack = createStackNavigator(
   }
 );
 
-const AppContainer = createAppContainer(RootStack);
+const TabNavigator = createBottomTabNavigator(
+  {
+    Äta: {
+      screen: MainStack,
+    },
+    Fika: {
+      screen: ModalScreen,
+    },
+  },
+  {
+    mode: 'modal',
+    headerMode: 'none',
+  }
+)
+
+const AppContainer = createAppContainer(TabNavigator);
 
 export default class App extends React.Component {
   render() {
