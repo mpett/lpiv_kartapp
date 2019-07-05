@@ -1,7 +1,79 @@
 import React, { Component } from "react";
-import { Button, View, Text, Image } from "react-native";
+import { Button, View, Text, Image, StyleSheet } from "react-native";
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
-import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+
+import type { Region } from 'react-native-maps';
+
+export interface LatLng {
+  latitude: number;
+  longitude: number
+}
+
+let locations = new Array();
+
+const SKÖVDE = {
+  latitude: 58.3903,
+  longitude: 13.8461,
+  latitudeDelta: 0.02,
+  longitudeDelta: 0.02
+};
+
+const MARIESTAD = {
+  latitude: 58.7101,
+  longitude: 13.8213,
+  latitudeDelta: 0.02,
+  longitudeDelta: 0.02
+};
+
+const TÖREBODA = {
+  latitude: 58.7055,
+  longitude: 14.1261,
+  latitudeDelta: 0.02,
+  longitudeDelta: 0.02
+};
+
+const GÖTEBORG = {
+  latitude: 57.7089,
+  longitude: 11.9746,
+  latitudeDelta: 0.02,
+  longitudeDelta: 0.02
+};
+
+const LIDKÖPING = {
+  latitude: 58.5035,
+  longitude: 13.1571,
+  latitudeDelta: 0.02,
+  longitudeDelta: 0.02
+};
+
+const TROLLHÄTTAN = {
+  latitude: 58.2835,
+  longitude: 12.2858,
+  latitudeDelta: 0.02,
+  longitudeDelta: 0.02
+};
+
+const BORÅS = {
+  latitude: 57.7210,
+  longitude: 12.9398,
+  latitudeDelta: 0.02,
+  longitudeDelta: 0.02
+};
+
+const VÄSTRA_GÖTALAND = {
+  latitude: 58.2528,
+  longitude: 13.0596,
+  latitudeDelta: 2.5,
+  longitudeDelta: 2.5
+};
+
+locations.push(SKÖVDE); locations.push(MARIESTAD); locations.push(TÖREBODA); 
+locations.push(GÖTEBORG); locations.push(LIDKÖPING); locations.push(TROLLHÄTTAN); 
+locations.push(BORÅS); 
+
+type Props = {};
+type State = { region: ?Region, }
 
 class LogoTitle extends React.Component {
   render() {
@@ -72,9 +144,55 @@ class HomeScreen extends React.Component {
   }
 }
 
+class MapScreen extends React.Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = { region: VÄSTRA_GÖTALAND };
+  }
+
+  renderMarkers() {
+    return locations.map((location, key) => {
+      return (
+        <Marker coordinate = {{
+          latitude: location.latitude,
+          longitude: location.longitude
+        }} key={key}>
+        </Marker>
+      );
+    } )
+  }
+
+  render() {
+    return (
+      <View style={ styles.container }>
+        <MapView
+          provider={ PROVIDER_GOOGLE }
+          region={ this.state.region }
+          style={ styles.mapViewContainer }>
+
+          {
+            this.renderMarkers()
+          }
+          
+        </MapView>
+      </View>
+    );
+  }
+}
+
 class BusinessScreen extends React.Component {
   render() {
-    return <MapView provider={ PROVIDER_GOOGLE } style={ { flex: 1 } } />
+    return(
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }} >
+        <Text style={{ fontSize: 30 }}>
+          Business Screen
+        </Text>
+        <Button 
+          onPress={() => alert("Du har tryckt på knappen.")}
+          title="Köp köp köp"
+        />
+      </View>
+    );
   }
 }
 
@@ -188,15 +306,25 @@ const TabNavigator = createBottomTabNavigator(
       screen: RootStack,
     },
     Fika: {
-      screen: BusinessScreen,
+      screen: MapScreen,
     },
     Handla: {
-      screen: ModalScreen,
+      screen: BusinessScreen,
     },
   }
 )
 
 const AppContainer = createAppContainer(TabNavigator);
+
+const styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: 'white' },
+  mapViewContainer: { flex: 1 },
+  buttonsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    paddingVertical: 16
+  }
+});
 
 export default class App extends React.Component {
   render() {
