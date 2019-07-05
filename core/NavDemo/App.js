@@ -178,15 +178,14 @@ const RootStack = createStackNavigator(
 const TabNavigator = createBottomTabNavigator(
   {
     Äta: {
-      screen: MainStack,
+      screen: RootStack,
     },
     Fika: {
+      screen: HomeScreen,
+    },
+    Handla: {
       screen: ModalScreen,
     },
-  },
-  {
-    mode: 'modal',
-    headerMode: 'none',
   }
 )
 

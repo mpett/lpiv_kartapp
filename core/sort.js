@@ -1,3 +1,12 @@
+function shuffle(a) {
+    var n = a.length;
+    for (var i = n - 1; i >= 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = a[i];
+        a[i] = a[j];
+        a[j] = tmp;
+    }
+}
 function heapsort(a) {
     var n = a.length;
     for (var i = Math.floor(n / 2 - 1); i >= 0; i--) {
@@ -20,12 +29,35 @@ function heapify(a, n, i) {
     if (r < n && a[r] > a[hi]) {
         hi = r;
     }
-    if (hi != i) {
+    if (i != hi) {
         var tmp = a[i];
         a[i] = a[hi];
         a[hi] = tmp;
         heapify(a, n, hi);
     }
+}
+function quicksort(a, lo, hi) {
+    if (lo < hi) {
+        var p = partition(a, lo, hi);
+        quicksort(a, lo, p - 1);
+        quicksort(a, p + 1, hi);
+    }
+}
+function partition(a, lo, hi) {
+    var i = lo - 1;
+    var pivot = a[hi];
+    for (var j = lo; j < hi; j++) {
+        if (pivot > a[j]) {
+            i++;
+            var tmp_1 = a[i];
+            a[i] = a[j];
+            a[j] = tmp_1;
+        }
+    }
+    var tmp = a[i + 1];
+    a[i + 1] = a[hi];
+    a[hi] = tmp;
+    return i + 1;
 }
 function sieve(n) {
     var a = new Array(n);
@@ -47,40 +79,27 @@ function sieve(n) {
     }
     return b;
 }
-function quicksort(a, lo, hi) {
-    if (lo < hi) {
-        var p = partition(a, lo, hi);
-        quicksort(a, p + 1, hi);
-        quicksort(a, lo, p - 1);
-    }
-}
-function partition(a, lo, hi) {
-    var pivot = a[hi];
-    var i = lo - 1;
-    for (var j = lo; j < hi; j++) {
-        if (pivot > a[j]) {
-            i++;
-            var tmp_1 = a[i];
-            a[i] = a[j];
-            a[j] = tmp_1;
-        }
-    }
-    var tmp = a[i + 1];
-    a[i + 1] = a[hi];
-    a[hi] = tmp;
-    return i + 1;
-}
 function main() {
     console.log("Hello World!");
-    var a = [3215, 5, 78, 85, 8, 7654, 4, -5411, 54, 75, 996, -61, 6, 4, 7, 2, 6, 54, 8];
+    var a = [21321, 8, 51, 651, 7, 1, 984, 5, 14, 6981, 65, 651, 684, 5, -651, -161, 1, 8];
     console.log(a);
     heapsort(a);
     console.log(a);
-    var b = [2161, 8, 4, 7, 1984, 58, 8, 515, 8, 161, 85, 651, 8, -651, 54, -651, 654, 77, 14, 7, -5];
+    heapsort(a);
+    console.log(a);
+    var b = [12, 656, 85, 5, 9, 6, 2, 62, 65, 6651, 51, 8, 651, 1, 8, -323, 51, -651];
     console.log(b);
     quicksort(b, 0, b.length - 1);
     console.log(b);
-    var primes = sieve(54895321);
+    var primes = sieve(9239800);
     console.log(primes[primes.length - 1]);
+    shuffle(primes);
+    console.log(primes);
+    heapsort(primes);
+    console.log(primes);
+    shuffle(primes);
+    console.log(primes);
+    quicksort(primes, 0, primes.length - 1);
+    console.log(primes);
 }
 main();
