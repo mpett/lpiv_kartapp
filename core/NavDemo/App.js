@@ -1,6 +1,7 @@
-import React from "react";
+import React, { Component } from "react";
 import { Button, View, Text, Image } from "react-native";
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 
 class LogoTitle extends React.Component {
   render() {
@@ -73,17 +74,7 @@ class HomeScreen extends React.Component {
 
 class BusinessScreen extends React.Component {
   render() {
-    return(
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }} >
-        <Text style={{ fontSize: 30 }}>
-          Business Center
-        </Text>
-        <Button 
-          onPress={() => alert("Du har tryckt på knappen.")}
-          title="Köp köp köp"
-        />
-      </View>
-    );
+    return <MapView provider={ PROVIDER_GOOGLE } style={ { flex: 1 } } />
   }
 }
 
