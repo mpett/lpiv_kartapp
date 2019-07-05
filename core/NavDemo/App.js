@@ -71,6 +71,22 @@ class HomeScreen extends React.Component {
   }
 }
 
+class BusinessScreen extends React.Component {
+  render() {
+    return(
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }} >
+        <Text style={{ fontSize: 30 }}>
+          Business Center
+        </Text>
+        <Button 
+          onPress={() => alert("Du har tryckt på knappen.")}
+          title="Köp köp köp"
+        />
+      </View>
+    );
+  }
+}
+
 class ModalScreen extends React.Component {
   render() {
     return(
@@ -181,7 +197,7 @@ const TabNavigator = createBottomTabNavigator(
       screen: RootStack,
     },
     Fika: {
-      screen: HomeScreen,
+      screen: BusinessScreen,
     },
     Handla: {
       screen: ModalScreen,
