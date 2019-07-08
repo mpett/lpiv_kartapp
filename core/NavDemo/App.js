@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import { Button, ThemeProvider, ListItem } from 'react-native-elements';
@@ -74,6 +74,66 @@ locations.push(GÖTEBORG); locations.push(LIDKÖPING); locations.push(TROLLHÄTT
 locations.push(BORÅS); 
 
 const producer_list = [
+  {
+    name: 'Bossgårdens Grönsaker',
+    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/90ygod4pqwuf0b2.jpg',
+    type: 'Frukt och grönt'
+  },
+  {
+    name: 'Stjärnegärdet Gourmet',
+    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/8i12tkxe5n4feos.jpg',
+    type: 'Bageri och spannmål'
+  },
+  {
+    name: 'Bossgårdens Grönsaker',
+    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/90ygod4pqwuf0b2.jpg',
+    type: 'Frukt och grönt'
+  },
+  {
+    name: 'Stjärnegärdet Gourmet',
+    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/8i12tkxe5n4feos.jpg',
+    type: 'Bageri och spannmål'
+  },
+  {
+    name: 'Bossgårdens Grönsaker',
+    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/90ygod4pqwuf0b2.jpg',
+    type: 'Frukt och grönt'
+  },
+  {
+    name: 'Stjärnegärdet Gourmet',
+    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/8i12tkxe5n4feos.jpg',
+    type: 'Bageri och spannmål'
+  },
+  {
+    name: 'Bossgårdens Grönsaker',
+    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/90ygod4pqwuf0b2.jpg',
+    type: 'Frukt och grönt'
+  },
+  {
+    name: 'Stjärnegärdet Gourmet',
+    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/8i12tkxe5n4feos.jpg',
+    type: 'Bageri och spannmål'
+  },
+  {
+    name: 'Bossgårdens Grönsaker',
+    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/90ygod4pqwuf0b2.jpg',
+    type: 'Frukt och grönt'
+  },
+  {
+    name: 'Stjärnegärdet Gourmet',
+    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/8i12tkxe5n4feos.jpg',
+    type: 'Bageri och spannmål'
+  },
+  {
+    name: 'Bossgårdens Grönsaker',
+    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/90ygod4pqwuf0b2.jpg',
+    type: 'Frukt och grönt'
+  },
+  {
+    name: 'Stjärnegärdet Gourmet',
+    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/8i12tkxe5n4feos.jpg',
+    type: 'Bageri och spannmål'
+  },
   {
     name: 'Bossgårdens Grönsaker',
     logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/90ygod4pqwuf0b2.jpg',
@@ -197,18 +257,20 @@ class MapScreen extends React.Component<Props, State> {
 class BusinessScreen extends React.Component {
   render() {
     return(
-      <View>
-        {
-          producer_list.map((l, i) => (
-            <ListItem 
-              key={i}
-              leftAvatar={{ source: { uri: l.logo_url } }}
-              title={l.name}
-              subtitle={l.type}
-            />
-          ))
-        }
-      </View>
+      <ScrollView>
+        <View>
+          {
+            producer_list.map((l, i) => (
+              <ListItem 
+                key={i}
+                leftAvatar={{ source: { uri: l.logo_url } }}
+                title={l.name}
+                subtitle={l.type}
+              />
+            ))
+          }
+        </View>
+      </ScrollView>
     );
   }
 }
