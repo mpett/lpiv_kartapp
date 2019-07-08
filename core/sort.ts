@@ -1,17 +1,7 @@
-function shuffle(a:number[]): void {
-    var n:number = a.length;
-    for (let i:number = n - 1; i >= 0; i--) {
-        let j:number = Math.floor(Math.random() * (i+1));
-        let tmp:number = a[i];
-        a[i] = a[j];
-        a[j] = tmp;
-    }
-}
-
 function heapsort(a:number[]): void {
     var n:number = a.length;
 
-    for (let i:number = Math.floor(n/2-1); i >= 0; i--) {
+    for (let i:number = Math.floor(n/2 - 1); i >= 0; i--) {
         heapify(a, n, i);
     }
 
@@ -36,7 +26,7 @@ function heapify(a:number[], n:number, i:number): void {
         hi = r;
     }
 
-    if (i != hi) {
+    if (hi != i) {
         let tmp:number = a[i];
         a[i] = a[hi];
         a[hi] = tmp;
@@ -47,8 +37,8 @@ function heapify(a:number[], n:number, i:number): void {
 function quicksort(a:number[], lo:number, hi:number): void {
     if (lo < hi) {
         let p:number = partition(a, lo, hi);
-        quicksort(a, lo, p-1);
         quicksort(a, p+1, hi);
+        quicksort(a, lo, p-1);
     }
 }
 
@@ -65,14 +55,14 @@ function partition(a:number[], lo:number, hi:number): number {
         }
     }
 
-    var tmp:number = a[i+1];
+    let tmp:number = a[i+1];
     a[i+1] = a[hi];
     a[hi] = tmp;
 
     return i+1;
 }
 
-function sieve(n:number): number[] {
+function sieve(n:number):number[] {
     var a:boolean[] = new Array(n);
 
     for (let i:number = 2; i < n; i++) {
@@ -100,25 +90,15 @@ function sieve(n:number): number[] {
 
 function main(): void {
     console.log("Hello World!");
-    var a:number[] = [21321,8,51,651,7,1,984,5,14,6981,65,651,684,5,-651,-161,1,8];
+    var a:number[] = [3217,54187,8,841,96,5,654,-654,8,651,479,6,-57,-954,1,0,0,321];
     console.log(a);
     heapsort(a);
     console.log(a);
-    heapsort(a);
-    console.log(a);
-    var b:number[] = [12,656,85,5,9,6,2,62,65,6651,51,8,651,1,8,-323,51,-651];
+    var b:number[] = [3217,65,8,1,7,5,9,-651,-654,-654,8758,4,87,5,7,351,7,1678,684,-6541,4];
     console.log(b);
     quicksort(b, 0, b.length - 1);
     console.log(b);
-    var primes = sieve(9239800);
-    console.log(primes[primes.length - 1]);
-    shuffle(primes);
-    console.log(primes);
-    heapsort(primes);
-    console.log(primes);
-    shuffle(primes);
-    console.log(primes);
-    quicksort(primes, 0, primes.length - 1);
+    var primes:number[] = sieve(1589647);
     console.log(primes);
 }
 
