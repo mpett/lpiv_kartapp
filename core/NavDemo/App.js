@@ -1,7 +1,8 @@
 import React, { Component } from "react";
-import { Button, View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet } from "react-native";
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+import { Button, ThemeProvider } from 'react-native-elements';
 
 import type { Region } from 'react-native-maps';
 
