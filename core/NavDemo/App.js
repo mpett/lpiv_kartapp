@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
-import { Button, ThemeProvider } from 'react-native-elements';
+import { Button, ThemeProvider, ListItem } from 'react-native-elements';
 
 import type { Region } from 'react-native-maps';
 
@@ -72,6 +72,19 @@ const VÄSTRA_GÖTALAND = {
 locations.push(SKÖVDE); locations.push(MARIESTAD); locations.push(TÖREBODA); 
 locations.push(GÖTEBORG); locations.push(LIDKÖPING); locations.push(TROLLHÄTTAN); 
 locations.push(BORÅS); 
+
+const list = [
+  {
+    name: 'Amy Farha',
+    avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+    subtitle: 'Vice President'
+  },
+  {
+    name: 'Chris Jackson',
+    avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
+    subtitle: 'Vice Chairman'
+  },
+]
 
 type Props = {};
 type State = { region: ?Region, }
