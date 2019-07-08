@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
-import { Button, ThemeProvider, ListItem } from 'react-native-elements';
+import { Button, ThemeProvider, ListItem, Card, Icon } from 'react-native-elements';
 
 import type { Region } from 'react-native-maps';
 
@@ -85,64 +85,64 @@ const producer_list = [
     type: 'Bageri och spannmål'
   },
   {
-    name: 'Bossgårdens Grönsaker',
-    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/90ygod4pqwuf0b2.jpg',
-    type: 'Frukt och grönt'
+    name: 'Ehrenhofers Lamm & Vilt',
+    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/d6gq2vao23j7l45.jpg',
+    type: 'Kött och chark'
   },
   {
-    name: 'Stjärnegärdet Gourmet',
-    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/8i12tkxe5n4feos.jpg',
+    name: 'Qvänum Mat & Malt AB',
+    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/m8f6urjy8hsyfe3.jpg',
+    type: 'Dryck'
+  },
+  {
+    name: 'Skeby Gårdar AB',
+    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/e8vpvc8hycb74xc.jpg',
     type: 'Bageri och spannmål'
   },
   {
-    name: 'Bossgårdens Grönsaker',
-    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/90ygod4pqwuf0b2.jpg',
+    name: 'Söråsen',
+    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/fq3y7mhjj4c86j3.jpg',
+    type: 'Fisk och skaldjur'
+  },
+  {
+    name: 'Sommarhagens gårdsmejeri',
+    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/ammj7islftlacgh.jpg',
+    type: 'Mejeri'
+  },
+  {
+    name: 'Torggummans ägg',
+    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/lt7044o0kxpyp1m.png',
+    type: 'Ägg'
+  },
+  {
+    name: 'ÖstraGärde Gård',
+    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/hfok6bdk49tm2nt.png',
     type: 'Frukt och grönt'
   },
   {
-    name: 'Stjärnegärdet Gourmet',
-    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/8i12tkxe5n4feos.jpg',
+    name: 'Bärby självplock',
+    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/m4nlu6p3nuacu48.png',
     type: 'Bageri och spannmål'
   },
   {
-    name: 'Bossgårdens Grönsaker',
-    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/90ygod4pqwuf0b2.jpg',
-    type: 'Frukt och grönt'
+    name: 'Kullans Lycka',
+    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/f2sf93ctvmd9mn7.jpg',
+    type: 'Kött och chark'
   },
   {
-    name: 'Stjärnegärdet Gourmet',
+    name: 'Honungshuset HB',
+    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/37y4xju5cku7ae8.jpg',
+    type: 'Honung'
+  },
+  {
+    name: 'Claessons Charkuteri',
+    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/g2za84wp4wb3sl4.png',
+    type: 'Kött och chark'
+  },
+  {
+    name: 'Dalis Gård',
     logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/8i12tkxe5n4feos.jpg',
-    type: 'Bageri och spannmål'
-  },
-  {
-    name: 'Bossgårdens Grönsaker',
-    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/90ygod4pqwuf0b2.jpg',
-    type: 'Frukt och grönt'
-  },
-  {
-    name: 'Stjärnegärdet Gourmet',
-    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/8i12tkxe5n4feos.jpg',
-    type: 'Bageri och spannmål'
-  },
-  {
-    name: 'Bossgårdens Grönsaker',
-    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/90ygod4pqwuf0b2.jpg',
-    type: 'Frukt och grönt'
-  },
-  {
-    name: 'Stjärnegärdet Gourmet',
-    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/8i12tkxe5n4feos.jpg',
-    type: 'Bageri och spannmål'
-  },
-  {
-    name: 'Bossgårdens Grönsaker',
-    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/90ygod4pqwuf0b2.jpg',
-    type: 'Frukt och grönt'
-  },
-  {
-    name: 'Stjärnegärdet Gourmet',
-    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/8i12tkxe5n4feos.jpg',
-    type: 'Bageri och spannmål'
+    type: 'Fisk och skaldjur'
   },
 ]
 
@@ -254,6 +254,29 @@ class MapScreen extends React.Component<Props, State> {
   }
 }
 
+class ProducerScreen extends React.Component {
+  static navigationOptions = ({ navigation, navigationOptions }) => {
+    const { params } = navigation.state;
+
+    return {
+      title: params ? params.otherParam : 'Detaljskärm med parameter.',
+      // These values are used instead of the shared configuration
+      headerStyle: {
+        backgroundColor: navigationOptions.headerTintColor,
+      },
+      headerTintColor: navigationOptions.headerStyle.backgroundColor,
+    };
+  };
+
+  render() {
+    return(
+      <View>
+        <Text>Producentskärmen</Text>
+      </View>
+    )
+  }
+}
+
 class BusinessScreen extends React.Component {
   render() {
     return(
@@ -262,6 +285,13 @@ class BusinessScreen extends React.Component {
           {
             producer_list.map((l, i) => (
               <ListItem 
+                onPress = {() => {
+                  // Navigate to details route with parameter
+                  this.props.navigation.navigate('Producer', {
+                    itemId: 86,
+                    otherParam: l.name,
+                  });
+                }}
                 key={i}
                 leftAvatar={{ source: { uri: l.logo_url } }}
                 title={l.name}
@@ -278,15 +308,25 @@ class BusinessScreen extends React.Component {
 class ModalScreen extends React.Component {
   render() {
     return(
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }} >
-        <Text style={{ fontSize: 30 }}>
-          Detta är en modal!
-        </Text>
-        <Button 
-          onPress={() => this.props.navigation.goBack()}
-          title="Hej då"
-        />
-      </View>
+      <ScrollView>
+        <View>
+          <Card
+            title='HELLO WORLD'
+            image={{ uri: 'https://lokalproducerativast.se/wp-content/uploads/producers/8i12tkxe5n4feos.jpg' }}>
+            <Text style={{marginBottom: 10}}>
+              The idea with React Native Elements is more about component structure than actual design.
+            </Text>
+            <Button
+              backgroundColor='#03A9F4'
+              buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+              title='VIEW NOW' />
+          </Card>
+          <Button 
+            onPress={() => this.props.navigation.goBack()}
+            title="Hej då"
+          />
+        </View>
+      </ScrollView>
     );
   }
 }
@@ -348,6 +388,9 @@ const MainStack = createStackNavigator(
     },
     Details: {
       screen: DetailsScreen,
+    },
+    Producer: {
+      screen: ProducerScreen,
     },
   },
   {
