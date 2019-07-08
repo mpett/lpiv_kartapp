@@ -269,9 +269,15 @@ class ProducerScreen extends React.Component {
   };
 
   render() {
+    const { navigation } = this.props;
+    const itemId = navigation.getParam('itemId', 'NO-ID');
+    const otherParam = navigation.getParam('otherParam', 'finns ej');
+
     return(
       <View>
         <Text>Producentskärmen</Text>
+        <Text>itemId: {JSON.stringify(itemId)}</Text>
+        <Text>otherParam: {JSON.stringify(otherParam)}</Text>
       </View>
     )
   }
