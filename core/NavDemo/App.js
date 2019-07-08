@@ -73,16 +73,16 @@ locations.push(SKÖVDE); locations.push(MARIESTAD); locations.push(TÖREBODA);
 locations.push(GÖTEBORG); locations.push(LIDKÖPING); locations.push(TROLLHÄTTAN); 
 locations.push(BORÅS); 
 
-const list = [
+const producer_list = [
   {
-    name: 'Amy Farha',
-    avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
-    subtitle: 'Vice President'
+    name: 'Bossgårdens Grönsaker',
+    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/90ygod4pqwuf0b2.jpg',
+    type: 'Frukt och grönt'
   },
   {
-    name: 'Chris Jackson',
-    avatar_url: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg',
-    subtitle: 'Vice Chairman'
+    name: 'Stjärnegärdet Gourmet',
+    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/8i12tkxe5n4feos.jpg',
+    type: 'Bageri och spannmål'
   },
 ]
 
@@ -199,12 +199,12 @@ class BusinessScreen extends React.Component {
     return(
       <View>
         {
-          list.map((l, i) => (
+          producer_list.map((l, i) => (
             <ListItem 
               key={i}
-              leftAvatar={{ source: { uri: l.avatar_url } }}
+              leftAvatar={{ source: { uri: l.logo_url } }}
               title={l.name}
-              subtitle={l.subtitle}
+              subtitle={l.type}
             />
           ))
         }
