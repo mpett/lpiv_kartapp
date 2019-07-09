@@ -280,7 +280,7 @@ class ProducerScreen extends React.Component {
           title={JSON.stringify(otherParam)}
           image={{ uri: logo_image }}>
           <Text style={{marginBottom: 10}}>
-            The idea with React Native Elements is more about component structure than actual design.
+            Här bör det stå något om {otherParam}.
           </Text>
           <Button
             backgroundColor='#03A9F4'
