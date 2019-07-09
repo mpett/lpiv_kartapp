@@ -196,7 +196,6 @@ class HomeScreen extends React.Component {
 
   _increaseCount = () => {    
     this.setState({ count: this.state.count + 1 });
-    
   };
 
   render() {
@@ -233,7 +232,7 @@ class MapScreen extends React.Component<Props, State> {
         }} key={key}>
         </Marker>
       );
-    } )
+    })
   }
 
   render() {
@@ -380,8 +379,6 @@ class DetailsScreen extends React.Component {
   };
 
   render() {
-    // Get the parameter, provide a fallback value if it is not available.
-
     const { navigation } = this.props;
     const itemId = navigation.getParam('itemId', 'NO-ID');
     const otherParam = navigation.getParam('otherParam', 'finns ej');
@@ -471,10 +468,7 @@ const BusinessStack = createStackNavigator(
         fontWeight: 'bold',
       },
     },  
-    
-    
   },
-  
 )
 
 const TabNavigator = createBottomTabNavigator(
