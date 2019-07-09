@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React from "react";
 import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
-import { Button, ThemeProvider, ListItem, Card, Icon } from 'react-native-elements';
+import { Button, ListItem, Card, SearchBar } from 'react-native-elements';
 
 import type { Region } from 'react-native-maps';
 
@@ -268,6 +268,8 @@ class ProducerScreen extends React.Component {
     };
   };
 
+  
+
   render() {
     const { navigation } = this.props;
     const itemId = navigation.getParam('itemId', 'NO-ID');
@@ -293,10 +295,25 @@ class ProducerScreen extends React.Component {
 }
 
 class BusinessScreen extends React.Component {
+  state = {
+    search: '',
+  };
+
+  updateSearch = search => {
+    this.setState({ search });
+  };
+
   render() {
+    const { search } = this.state;
+
     return(
       <ScrollView>
         <View>
+          <SearchBar 
+              placeholder="Sök producent..."
+              onChangeText={this.updateSearch}
+              value={search}
+          />
           {
             producer_list.map((l, i) => (
               <ListItem 
@@ -405,9 +422,6 @@ const MainStack = createStackNavigator(
     Details: {
       screen: DetailsScreen,
     },
-    Producer: {
-      screen: ProducerScreen,
-    },
   },
   {
     initialRouteName: 'Home',
@@ -456,8 +470,11 @@ const BusinessStack = createStackNavigator(
       headerTitleStyle: {
         fontWeight: 'bold',
       },
-    },
-  }
+    },  
+    
+    
+  },
+  
 )
 
 const TabNavigator = createBottomTabNavigator(
@@ -471,7 +488,7 @@ const TabNavigator = createBottomTabNavigator(
     Handla: {
       screen: BusinessStack,
     },
-  }
+  },
 )
 
 const AppContainer = createAppContainer(TabNavigator);
