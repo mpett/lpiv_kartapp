@@ -272,12 +272,21 @@ class ProducerScreen extends React.Component {
     const { navigation } = this.props;
     const itemId = navigation.getParam('itemId', 'NO-ID');
     const otherParam = navigation.getParam('otherParam', 'finns ej');
+    const logo_image = navigation.getParam('image', '404');
 
     return(
       <View>
-        <Text>Producentskärmen</Text>
-        <Text>itemId: {JSON.stringify(itemId)}</Text>
-        <Text>otherParam: {JSON.stringify(otherParam)}</Text>
+        <Card
+          title={JSON.stringify(otherParam)}
+          image={{ uri: logo_image }}>
+          <Text style={{marginBottom: 10}}>
+            The idea with React Native Elements is more about component structure than actual design.
+          </Text>
+          <Button
+            backgroundColor='#03A9F4'
+            buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+            title='VIEW NOW' />
+        </Card>
       </View>
     )
   }
@@ -296,6 +305,7 @@ class BusinessScreen extends React.Component {
                   this.props.navigation.navigate('Producer', {
                     itemId: 86,
                     otherParam: l.name,
+                    image: l.logo_url,
                   });
                 }}
                 key={i}
