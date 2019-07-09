@@ -438,6 +438,28 @@ const RootStack = createStackNavigator(
   }
 );
 
+const BusinessStack = createStackNavigator(
+  {
+    Business: {
+      screen: BusinessScreen,
+    },
+    Producer: {
+      screen: ProducerScreen,
+    },
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#f4511e',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },
+  }
+)
+
 const TabNavigator = createBottomTabNavigator(
   {
     Äta: {
@@ -447,7 +469,7 @@ const TabNavigator = createBottomTabNavigator(
       screen: MapScreen,
     },
     Handla: {
-      screen: BusinessScreen,
+      screen: BusinessStack,
     },
   }
 )
