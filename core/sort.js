@@ -1,38 +1,30 @@
-function mergesort(a, n) {
-    if (n < 2) {
-        return;
+function shuffle(a) {
+    var _a;
+    for (var i = a.length - 1; i > 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        _a = [a[j], a[i]], a[i] = _a[0], a[j] = _a[1];
     }
-    var mid = Math.floor(n / 2);
-    var l = new Array(mid);
-    var r = new Array(n - mid);
-    for (var i = 0; i < mid; i++) {
-        l[i] = a[i];
-    }
-    for (var i = mid; i < n; i++) {
-        r[i - mid] = a[i];
-    }
-    mergesort(l, mid);
-    mergesort(r, n - mid);
-    merge(a, l, r, mid, n - mid);
+    return a;
 }
-function merge(a, l, r, left, right) {
-    var i = 0;
-    var j = 0;
-    var k = 0;
-    while (i < left && j < right) {
-        if (l[i] <= r[j]) {
-            a[k++] = l[i++];
+function sieve(n) {
+    var a = new Array(n);
+    for (var i = 2; i < n; i++) {
+        a[i] = true;
+    }
+    for (var i = 2; i < Math.sqrt(n); i++) {
+        for (var j = i * i; j < n; j += i) {
+            if (a[j]) {
+                a[j] = false;
+            }
         }
-        else {
-            a[k++] = r[j++];
+    }
+    var b = new Array();
+    for (var i = 0; i < n; i++) {
+        if (a[i]) {
+            b.push(i);
         }
     }
-    while (i < left) {
-        a[k++] = l[i++];
-    }
-    while (j < right) {
-        a[k++] = r[j++];
-    }
+    return b;
 }
 function heapsort(a) {
     var n = a.length;
@@ -86,42 +78,22 @@ function partition(a, lo, hi) {
     a[hi] = tmp;
     return i + 1;
 }
-function sieve(n) {
-    var a = new Array(n);
-    for (var i = 2; i < n; i++) {
-        a[i] = true;
-    }
-    for (var i = 2; i < Math.sqrt(n); i++) {
-        for (var j = i * i; j < n; j += i) {
-            if (a[j]) {
-                a[j] = false;
-            }
-        }
-    }
-    var b = new Array();
-    for (var i = 0; i < n; i++) {
-        if (a[i]) {
-            b.push(i);
-        }
-    }
-    return b;
-}
 function main() {
-    console.log("Hello World");
-    var a = [3217, 851, 7, 7, 498, 41, 6, 8, 1, -951, 5, -651, 8589, 6];
+    console.log("Hello World!");
+    var a = [3217, 187, 7, 17, 17, 196, 8, 9651, 8, 19, -1951, 816, 87, 85, 51, 54, 7, 84, 8, 5, 932, 54];
     console.log(a);
-    heapsort(a);
+    quicksort(a, 0, a.length - 1);
     console.log(a);
-    var b = [321, 7, 18, 161, 7, 198, 46, 81651651, 8, 85, -65165, -65151, 57];
+    var b = [3217, 8, 1, 8, 16, 81651, 8, 181, 98, 498, 417, 1, 75, 9, 5, 4, 8, 1, 936, -65, -265, -651, 65];
     console.log(b);
-    quicksort(b, 0, b.length - 1);
+    heapsort(b);
     console.log(b);
-    var primes = sieve(1589647);
+    var primes = sieve(99285593);
+    primes = shuffle(primes);
+    heapsort(primes);
+    primes = shuffle(primes);
+    quicksort(primes, 0, primes.length - 1);
     console.log(primes[primes.length - 1]);
     console.log(primes);
-    var c = [318, 17, 198, 7, 1, 984, 7, 1, 7, 6, 8, 1, 8, 1, -5651, 8, 87, 7, 4, 9, 11, 984];
-    console.log(c);
-    mergesort(c, c.length);
-    console.log(c);
 }
 main();

@@ -453,6 +453,9 @@ const BusinessStack = createStackNavigator(
   {
     Business: {
       screen: BusinessScreen,
+      navigationOptions: {
+        header: null,
+      }
     },
     Producer: {
       screen: ProducerScreen,
@@ -469,6 +472,7 @@ const BusinessStack = createStackNavigator(
       },
     },  
   },
+  {headerMode: 'screen'}
 )
 
 const TabNavigator = createBottomTabNavigator(
@@ -481,6 +485,9 @@ const TabNavigator = createBottomTabNavigator(
     },
     Handla: {
       screen: BusinessStack,
+    },
+    Test: {
+      screen: BusinessScreen,
     },
   },
 )
