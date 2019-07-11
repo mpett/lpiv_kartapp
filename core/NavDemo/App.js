@@ -364,7 +364,6 @@ class ModalScreen extends React.Component {
 }
 
 class DetailsScreen extends React.Component {
-
   static navigationOptions = ({ navigation, navigationOptions }) => {
     const { params } = navigation.state;
 

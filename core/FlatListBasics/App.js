@@ -25,6 +25,8 @@ import {
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
 
+import { SearchBar, ListItem } from 'react-native-elements';
+
 const rows = [
   {id: 0, text: 'View'},
   {id: 1, text: 'Text'},
@@ -36,6 +38,14 @@ const rows = [
 const extractKey = ({ id }) => id.toString()
 
 export default class App extends Component {
+  state = {
+    search: '',
+  };
+
+  updateSearch = search => {
+    console.log("update search");
+    this.setState({ search });
+  };
 
   renderItem = ({ item }) => {
     return (
@@ -45,14 +55,30 @@ export default class App extends Component {
     )
   }
 
+  renderHeader = () => {
+    const { search } = this.state;
+
+    return (
+      <SearchBar
+        placeholder="Type Here"
+        lightTheme
+        round
+        onChangeText={text => this.updateSearch()}
+        autoCorrect={false}
+        value={this.state}
+      />
+    );
+  };
+
   render() {
     return (
-      <FlatList 
-        style={styles.container}
-        data={rows}
-        renderItem={this.renderItem}
-        keyExtractor={extractKey}
-      />
+        <FlatList 
+            style={styles.container}
+            data={rows}
+            renderItem={this.renderItem}
+            keyExtractor={extractKey}
+            ListHeaderComponent={this.renderHeader}
+        />
     );
   }
 }
