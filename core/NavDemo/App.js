@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
+import { View, Text, Image, StyleSheet, ScrollView, FlatList, ActivityIndicator, Platform } from "react-native";
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import { Button, ListItem, Card, SearchBar } from 'react-native-elements';
@@ -291,6 +291,18 @@ class ProducerScreen extends React.Component {
   }
 }
 
+class TestScreen extends React.Component {
+  render() {
+    return(
+      <View>
+        <Text>
+          Testskärm
+        </Text>
+      </View>
+    );
+  }
+}
+
 class BusinessScreen extends React.Component {
   state = {
     search: '',
@@ -472,6 +484,29 @@ const BusinessStack = createStackNavigator(
   {headerMode: 'screen'}
 )
 
+const TestStack = createStackNavigator(
+  {
+    Test: {
+      screen: TestScreen,
+      navigationOptions: {
+        header: null,
+      }
+    },
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#f4511e',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },  
+  },
+  {headerMode: 'screen'}
+)
+
 const TabNavigator = createBottomTabNavigator(
   {
     Äta: {
@@ -484,7 +519,7 @@ const TabNavigator = createBottomTabNavigator(
       screen: BusinessStack,
     },
     Test: {
-      screen: BusinessScreen,
+      screen: TestStack,
     },
   },
 )
