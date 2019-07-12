@@ -318,6 +318,14 @@ class TestScreen extends React.Component {
       });
   }
 
+  search = text => {
+    console.log(text);
+  };
+
+  clear = () => {
+    this.search.clear();
+  };
+
   render() {
     return(
       <View>
