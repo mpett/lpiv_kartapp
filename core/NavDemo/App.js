@@ -265,9 +265,7 @@ class ProducerScreen extends React.Component {
       },
       headerTintColor: navigationOptions.headerStyle.backgroundColor,
     };
-  };
-
-  
+  };  
 
   render() {
     const { navigation } = this.props;
