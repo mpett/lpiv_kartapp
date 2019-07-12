@@ -292,6 +292,13 @@ class ProducerScreen extends React.Component {
 }
 
 class TestScreen extends React.Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = { isLoading: true, search: '' };
+    this.arrayholder = [];
+  }
+
   render() {
     return(
       <View>
