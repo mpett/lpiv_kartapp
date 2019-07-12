@@ -326,6 +326,18 @@ class TestScreen extends React.Component {
     this.search.clear();
   };
 
+  SearchFilterFunction(text) {
+    const newData = this.arrayholder.filter(function(item) {
+      const itemData = item.title ? item.title.toUpperCase() : ''.toUpperCase();
+      const textData = text.toUpperCase();
+      return itemData.indexOf(textData) > -1;
+    });
+    this.setState({
+      dataSource: newData,
+      search: text,
+    });
+  }
+
   render() {
     return(
       <View>
