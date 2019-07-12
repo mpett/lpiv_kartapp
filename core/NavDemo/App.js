@@ -331,6 +331,8 @@ class TestScreen extends React.Component {
       const itemData = item.title ? item.title.toUpperCase() : ''.toUpperCase();
       const textData = text.toUpperCase();
       return itemData.indexOf(textData) > -1;
+
+
     });
     this.setState({
       dataSource: newData,
@@ -338,12 +340,39 @@ class TestScreen extends React.Component {
     });
   }
 
+  ListViewItemSeparator = () => {
+    return(
+      <View 
+        style = {{
+          height: 0.3,
+          width: '90%',
+          backgroundColor: '#080808',
+        }}
+      />
+    );
+  };
+
   render() {
     return(
       <View>
-        <Text>
-          Testskärm
-        </Text>
+        <SearchBar
+          round
+          searchIcon={{ size: 24 }}
+          onChangeText = {text => this.SearchFilterFunction(text)}
+          onClear={text => this.SearchFilterFunction('')}
+          placeholder="Sök..."
+          value={this.state.search}
+        />
+        <FlatList 
+          data={this.state.dataSource}
+          ItemSeparatorComponent={this.ListViewItemSeparator}
+          renderItem={({ item }) => (
+            <Text style={styles.textStyle}>{item.title}</Text>
+          )}
+          enableEmptySections={true}
+          style={{ marginTop: 10 }}
+          keyExtractor = {(item, index) => index.toString()}
+        />
       </View>
     );
   }
@@ -579,7 +608,16 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     paddingVertical: 16
-  }
+  },
+  viewStyle: {
+    justifyContent: 'center',
+    flex: 1,
+    backgroundColor: 'white',
+    marginTop: Platform.OS == 'ios' ? 30 : 0
+  },
+  textStyle: {
+    padding: 10,
+  },
 });
 
 export default class App extends React.Component {
