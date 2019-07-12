@@ -299,6 +299,25 @@ class TestScreen extends React.Component {
     this.arrayholder = [];
   }
 
+  componentDidMount() {
+    return fetch('https://jsonplaceholder.typicode.com/posts')
+      .then(response => response.json())
+      .then(responseJson => {
+        this.setState(
+          {
+            isLoading: false,
+            dataSource: responseJson,
+          },
+          function() {
+            this.arrayholder = responseJson;
+          }
+        );
+      })
+      .catch(error => {
+        console.error(error);
+      });
+  }
+
   render() {
     return(
       <View>
