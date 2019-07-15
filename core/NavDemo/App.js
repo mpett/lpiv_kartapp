@@ -358,7 +358,15 @@ class TestScreen extends React.Component {
   };
 
   renderItem = ({ item }) => (
-    <ListItem 
+    <ListItem
+      onPress = {() => {
+                  // Navigate to details route with parameter
+                  this.props.navigation.navigate('Producer', {
+                    itemId: 86,
+                    otherParam: item.name,
+                    image: item.logo_url,
+                  });
+                }} 
       title={item.name}
       subtitle={item.type}
       leftAvatar={{ source: { uri: item.logo_url } }}
@@ -577,6 +585,9 @@ const TestStack = createStackNavigator(
       navigationOptions: {
         header: null,
       }
+    },
+    Producer: {
+      screen: ProducerScreen,
     },
   },
   {
