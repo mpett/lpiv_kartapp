@@ -352,6 +352,10 @@ class TestScreen extends React.Component {
     );
   };
 
+  renderItem = ({ item }) => (
+    <Text style={styles.textStyle}> {item.title} </Text>
+  )
+
   render() {
     return(
       <View>
@@ -366,9 +370,7 @@ class TestScreen extends React.Component {
         <FlatList 
           data={this.state.dataSource}
           ItemSeparatorComponent={this.ListViewItemSeparator}
-          renderItem={({ item }) => (
-            <Text style={styles.textStyle}>{item.title}</Text>
-          )}
+          renderItem={this.renderItem}
           enableEmptySections={true}
           style={{ marginTop: 10 }}
           keyExtractor = {(item, index) => index.toString()}

@@ -1,9 +1,11 @@
-function shuffle(a:number[]): number[] {
-    for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
+function shuffle(a:number[]): void {
+    var n:number = a.length;
+    for (let i:number = n - 1; i >= 0; i--) {
+        let j:number = Math.floor(Math.random() * (i+1));
+        let tmp:number = a[i];
+        a[i] = a[j];
+        a[j] = tmp;
     }
-    return a;
 }
 
 function sieve(n:number): number[] {
@@ -34,7 +36,7 @@ function sieve(n:number): number[] {
 
 function heapsort(a:number[]): void {
     var n:number = a.length;
-
+    
     for (let i:number = Math.floor(n/2-1); i >= 0; i--) {
         heapify(a, n, i);
     }
@@ -97,21 +99,22 @@ function partition(a:number[], lo:number, hi:number): number {
 }
 
 function main(): void {
-    console.log("Hello World!");
-    var a:number[] = [3217,187,7,17,17,196,8,9651,8,19,-1951,816,87,85,51,54,7,84,8,5,932,54];
+    console.log("Hello World");
+    var a:number[] = [214,116,588,16,816,8,1,8,1651,8,151,7,-51454,561,6587,1,-51];
     console.log(a);
     quicksort(a, 0, a.length-1);
     console.log(a);
-    var b:number[] = [3217,8,1,8,16,81651,8,181,98,498,417,1,75,9,5,4,8,1,936,-65,-265,-651,65];
+    var b:number[] = [3218,1651,7,1,1651,87,1,651,87,1651,-6516,51651,-651651,5,56161,-651687,1,0,0,0];
     console.log(b);
     heapsort(b);
     console.log(b);
-    var primes:number[] = sieve(99285593);
-    primes = shuffle(primes);
+    var primes:number[] = sieve(22634321);
+    console.log(primes);
+    shuffle(primes);
+    console.log(primes);
+    quicksort(primes, 0, primes.length -1);
+    shuffle(primes);
     heapsort(primes);
-    primes = shuffle(primes);
-    quicksort(primes, 0, primes.length-1);
-    console.log(primes[primes.length-1]);
     console.log(primes);
 }
 
