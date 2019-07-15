@@ -395,50 +395,6 @@ class ProducerListScreen extends React.Component {
   }
 }
 
-class BusinessScreen extends React.Component {
-  state = {
-    search: '',
-  };
-
-  updateSearch = search => {
-    this.setState({ search });
-  };
-
-  render() {
-    const { search } = this.state;
-
-    return(
-      <ScrollView>
-        <View>
-          <SearchBar 
-              placeholder="Sök producent..."
-              onChangeText={this.updateSearch}
-              value={search}
-          />
-          {
-            producer_list.map((l, i) => (
-              <ListItem 
-                onPress = {() => {
-                  // Navigate to details route with parameter
-                  this.props.navigation.navigate('Producer', {
-                    itemId: 86,
-                    otherParam: l.name,
-                    image: l.logo_url,
-                  });
-                }}
-                key={i}
-                leftAvatar={{ source: { uri: l.logo_url } }}
-                title={l.name}
-                subtitle={l.type}
-              />
-            ))
-          }
-        </View>
-      </ScrollView>
-    );
-  }
-}
-
 class ModalScreen extends React.Component {
   render() {
     return(
@@ -550,35 +506,9 @@ const RootStack = createStackNavigator(
   }
 );
 
-const BusinessStack = createStackNavigator(
-  {
-    Business: {
-      screen: BusinessScreen,
-      navigationOptions: {
-        header: null,
-      }
-    },
-    Producer: {
-      screen: ProducerScreen,
-    },
-  },
-  {
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: '#f4511e',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-    },  
-  },
-  {headerMode: 'screen'}
-)
-
 const ProducerStack = createStackNavigator(
   {
-    Test: {
+    ProducerList: {
       screen: ProducerListScreen,
       navigationOptions: {
         header: null,
@@ -611,9 +541,6 @@ const TabNavigator = createBottomTabNavigator(
       screen: MapScreen,
     },
     Handla: {
-      screen: BusinessStack,
-    },
-    Test: {
       screen: ProducerStack,
     },
   },
