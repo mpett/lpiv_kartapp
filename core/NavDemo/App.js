@@ -300,22 +300,27 @@ class TestScreen extends React.Component {
   }
 
   componentDidMount() {
-    return fetch('https://jsonplaceholder.typicode.com/posts')
-      .then(response => response.json())
-      .then(responseJson => {
-        this.setState(
-          {
-            isLoading: false,
-            dataSource: responseJson,
-          },
-          function() {
-            this.arrayholder = responseJson;
-          }
-        );
-      })
-      .catch(error => {
-        console.error(error);
-      });
+    var return_array = fetch('https://jsonplaceholder.typicode.com/posts')
+    .then(response => response.json())
+    .then(responseJson => {
+      console.log(responseJson);
+      this.setState(
+        {
+          isLoading: false,
+          dataSource: producer_list,
+        },
+        function() {
+          this.arrayholder = producer_list;
+        }
+      );
+    })
+    .catch(error => {
+      console.error(error);
+    });
+    
+    console.log(return_array);
+
+    return return_array;
   }
 
   search = text => {
@@ -328,7 +333,7 @@ class TestScreen extends React.Component {
 
   SearchFilterFunction(text) {
     const newData = this.arrayholder.filter(function(item) {
-      const itemData = item.title ? item.title.toUpperCase() : ''.toUpperCase();
+      const itemData = item.name ? item.name.toUpperCase() : ''.toUpperCase();
       const textData = text.toUpperCase();
       return itemData.indexOf(textData) > -1;
 
@@ -354,9 +359,9 @@ class TestScreen extends React.Component {
 
   renderItem = ({ item }) => (
     <ListItem 
-      title={item.title}
-      subtitle={item.body}
-      leftAvatar={{ source: { uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg' } }}
+      title={item.name}
+      subtitle={item.type}
+      leftAvatar={{ source: { uri: item.logo_url } }}
     />
   )
 
