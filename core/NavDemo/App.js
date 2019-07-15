@@ -353,7 +353,11 @@ class TestScreen extends React.Component {
   };
 
   renderItem = ({ item }) => (
-    <Text style={styles.textStyle}> {item.title} </Text>
+    <ListItem 
+      title={item.title}
+      subtitle={item.body}
+      leftAvatar={{ source: { uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg' } }}
+    />
   )
 
   render() {
@@ -369,10 +373,10 @@ class TestScreen extends React.Component {
         />
         <FlatList 
           data={this.state.dataSource}
-          ItemSeparatorComponent={this.ListViewItemSeparator}
+          //ItemSeparatorComponent={this.ListViewItemSeparator}
           renderItem={this.renderItem}
-          enableEmptySections={true}
-          style={{ marginTop: 10 }}
+          enableEmptySections={false}
+          //style={{ marginTop: 10 }}
           keyExtractor = {(item, index) => index.toString()}
         />
       </View>
