@@ -336,8 +336,6 @@ class TestScreen extends React.Component {
       const itemData = item.name ? item.name.toUpperCase() : ''.toUpperCase();
       const textData = text.toUpperCase();
       return itemData.indexOf(textData) > -1;
-
-
     });
     this.setState({
       dataSource: newData,
@@ -578,7 +576,7 @@ const BusinessStack = createStackNavigator(
   {headerMode: 'screen'}
 )
 
-const TestStack = createStackNavigator(
+const ProducerStack = createStackNavigator(
   {
     Test: {
       screen: TestScreen,
@@ -616,7 +614,7 @@ const TabNavigator = createBottomTabNavigator(
       screen: BusinessStack,
     },
     Test: {
-      screen: TestStack,
+      screen: ProducerStack,
     },
   },
 )
