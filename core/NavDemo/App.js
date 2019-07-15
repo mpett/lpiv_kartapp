@@ -291,7 +291,7 @@ class ProducerScreen extends React.Component {
   }
 }
 
-class TestScreen extends React.Component {
+class ProducerListScreen extends React.Component {
   
   constructor(props) {
     super(props);
@@ -579,7 +579,7 @@ const BusinessStack = createStackNavigator(
 const ProducerStack = createStackNavigator(
   {
     Test: {
-      screen: TestScreen,
+      screen: ProducerListScreen,
       navigationOptions: {
         header: null,
       }
