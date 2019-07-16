@@ -1,8 +1,10 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, ScrollView, FlatList, ActivityIndicator, Platform } from "react-native";
+import { View, Text, Image, StyleSheet, ScrollView, FlatList, Platform } from "react-native";
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import { Button, ListItem, Card, SearchBar } from 'react-native-elements';
+import TouchableScale from 'react-native-touchable-scale';
+import LinearGradient from 'react-native-linear-gradient';
 
 import type { Region } from 'react-native-maps';
 
