@@ -142,7 +142,7 @@ const producer_list = [
   {
     name: 'Dalis Gård',
     logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/8i12tkxe5n4feos.jpg',
-    type: 'Fisk och skaldjur'
+    type: 'Fisk och skaldjur',
   },
 ]
 
@@ -532,8 +532,37 @@ const ProducerStack = createStackNavigator(
   {headerMode: 'screen'}
 )
 
+const TestStack = createStackNavigator(
+  {
+    ProducerList: {
+      screen: ProducerListScreen,
+      navigationOptions: {
+        header: null,
+      }
+    },
+    Producer: {
+      screen: ProducerScreen,
+    },
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#f4511e',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },  
+  },
+  {headerMode: 'screen'}
+)
+
 const TabNavigator = createBottomTabNavigator(
   {
+    Test: {
+      screen: TestStack,
+    },
     Äta: {
       screen: RootStack,
     },
