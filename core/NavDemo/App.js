@@ -291,6 +291,110 @@ class ProducerScreen extends React.Component {
   }
 }
 
+class OverviewScreen extends React.Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = { isLoading: true, search: '' };
+    this.arrayholder = [];
+  }
+
+  componentDidMount() {
+    var return_array = fetch('https://jsonplaceholder.typicode.com/posts')
+    .then(response => response.json())
+    .then(responseJson => {
+      console.log(responseJson);
+      this.setState(
+        {
+          isLoading: false,
+          dataSource: producer_list,
+        },
+        function() {
+          this.arrayholder = producer_list;
+        }
+      );
+    })
+    .catch(error => {
+      console.error(error);
+    });
+    
+    console.log(return_array);
+
+    return return_array;
+  }
+
+  search = text => {
+    console.log(text);
+  };
+
+  clear = () => {
+    this.search.clear();
+  };
+
+  SearchFilterFunction(text) {
+    const newData = this.arrayholder.filter(function(item) {
+      const itemData = item.name ? item.name.toUpperCase() : ''.toUpperCase();
+      const textData = text.toUpperCase();
+      return itemData.indexOf(textData) > -1;
+    });
+    this.setState({
+      dataSource: newData,
+      search: text,
+    });
+  }
+
+  ListViewItemSeparator = () => {
+    return(
+      <View 
+        style = {{
+          height: 0.3,
+          width: '90%',
+          backgroundColor: '#080808',
+        }}
+      />
+    );
+  };
+
+  renderItem = ({ item }) => (
+    <ListItem
+      onPress = {() => {
+                  // Navigate to details route with parameter
+                  this.props.navigation.navigate('Producer', {
+                    itemId: 86,
+                    otherParam: item.name,
+                    image: item.logo_url,
+                  });
+                }} 
+      title={item.name}
+      subtitle={item.type}
+      leftAvatar={{ source: { uri: item.logo_url } }}
+    />
+  )
+
+  render() {
+    return(
+      <View>
+        <SearchBar
+          round
+          searchIcon={{ size: 24 }}
+          onChangeText = {text => this.SearchFilterFunction(text)}
+          onClear={text => this.SearchFilterFunction('')}
+          placeholder="Sök..."
+          value={this.state.search}
+        />
+        <FlatList 
+          data={this.state.dataSource}
+          //ItemSeparatorComponent={this.ListViewItemSeparator}
+          renderItem={this.renderItem}
+          enableEmptySections={false}
+          //style={{ marginTop: 10 }}
+          keyExtractor = {(item, index) => index.toString()}
+        />
+      </View>
+    );
+  }
+}
+
 class ProducerListScreen extends React.Component {
   
   constructor(props) {
@@ -535,7 +639,7 @@ const ProducerStack = createStackNavigator(
 const TestStack = createStackNavigator(
   {
     ProducerList: {
-      screen: ProducerListScreen,
+      screen: OverviewScreen,
       navigationOptions: {
         header: null,
       }
