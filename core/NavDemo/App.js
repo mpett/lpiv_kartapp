@@ -359,6 +359,27 @@ class OverviewScreen extends React.Component {
 
   renderItem = ({ item }) => (
     <ListItem
+      Component = {TouchableScale}
+      friction = {90}
+      tension = {100}
+      activeScale = {0.95}
+      linearGradientProps = {{
+        colors: ['#b3b365', '#666632'],
+      }}
+      ViewComponent = {LinearGradient}
+      leftAvatar = {{ rounded: true, source: { uri: item.logo_url } }}
+      title={item.name}
+      titleStyle = {{ color: 'white', fontWeight: 'bold' }}
+      subtitleStyle = {{ color: 'white' }}
+      subtitle={item.type}
+      chevronColor="white"
+      chevron
+      containerStyle = {{ marginLeft: 5,
+        marginRight: 5, 
+        marginTop: 10, 
+        borderRadius: 10, // adds the rounded corners
+        backgroundColor: '#fff' }}
+
       onPress = {() => {
                   // Navigate to details route with parameter
                   this.props.navigation.navigate('Producer', {
@@ -367,23 +388,12 @@ class OverviewScreen extends React.Component {
                     image: item.logo_url,
                   });
                 }} 
-      title={item.name}
-      subtitle={item.type}
-      leftAvatar={{ source: { uri: item.logo_url } }}
     />
   )
 
   render() {
     return(
       <View>
-        <SearchBar
-          round
-          searchIcon={{ size: 24 }}
-          onChangeText = {text => this.SearchFilterFunction(text)}
-          onClear={text => this.SearchFilterFunction('')}
-          placeholder="Sök..."
-          value={this.state.search}
-        />
         <FlatList 
           data={this.state.dataSource}
           //ItemSeparatorComponent={this.ListViewItemSeparator}
