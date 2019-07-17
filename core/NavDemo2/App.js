@@ -676,7 +676,7 @@ const TestStack = createStackNavigator(
 
 const TabNavigator = createBottomTabNavigator(
   {
-    Test: {
+    Hem: {
       screen: TestStack,
     },
     Äta: {
