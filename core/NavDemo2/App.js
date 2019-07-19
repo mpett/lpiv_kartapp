@@ -243,6 +243,7 @@ class MapScreen extends React.Component<Props, State> {
         <MapView
           provider={ PROVIDER_GOOGLE }
           region={ this.state.region }
+          showsUserLocation={true}
           style={ styles.mapViewContainer }>
 
           {
@@ -402,6 +403,137 @@ class OverviewScreen extends React.Component {
           //style={{ marginTop: 10 }}
           keyExtractor = {(item, index) => index.toString()}
         />
+      </View>
+    );
+  }
+}
+
+class OverviewScreen2 extends React.Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = { isLoading: true, search: '' };
+    this.arrayholder = [];
+  }
+
+  componentDidMount() {
+    var return_array = fetch('https://jsonplaceholder.typicode.com/posts')
+    .then(response => response.json())
+    .then(responseJson => {
+      console.log(responseJson);
+      this.setState(
+        {
+          isLoading: false,
+          dataSource: producer_list,
+        },
+        function() {
+          this.arrayholder = producer_list;
+        }
+      );
+    })
+    .catch(error => {
+      console.error(error);
+    });
+    
+    console.log(return_array);
+
+    return return_array;
+  }
+
+  search = text => {
+    console.log(text);
+  };
+
+  clear = () => {
+    this.search.clear();
+  };
+
+  SearchFilterFunction(text) {
+    const newData = this.arrayholder.filter(function(item) {
+      const itemData = item.name ? item.name.toUpperCase() : ''.toUpperCase();
+      const textData = text.toUpperCase();
+      return itemData.indexOf(textData) > -1;
+    });
+    this.setState({
+      dataSource: newData,
+      search: text,
+    });
+  }
+
+  ListViewItemSeparator = () => {
+    return(
+      <View 
+        style = {{
+          height: 0.3,
+          width: '90%',
+          backgroundColor: '#080808',
+        }}
+      />
+    );
+  };
+
+  renderItem = ({ item }) => (
+    <ListItem
+      Component = {TouchableScale}
+      friction = {90}
+      tension = {100}
+      activeScale = {0.95}
+      linearGradientProps = {{
+        colors: ['#4287f5', '#73a3f0'],
+      }}
+      ViewComponent = {LinearGradient}
+      leftAvatar = {{ rounded: true, source: { uri: item.logo_url } }}
+      title={item.name}
+      titleStyle = {{ color: 'white', fontWeight: 'bold' }}
+      subtitleStyle = {{ color: 'white' }}
+      subtitle={item.type}
+      chevronColor="white"
+      chevron
+      containerStyle = {{ marginLeft: 5,
+        marginRight: 5, 
+        marginTop: 10, 
+        borderRadius: 10, // adds the rounded corners
+        backgroundColor: '#fff' }}
+
+      onPress = {() => {
+                  // Navigate to details route with parameter
+                  this.props.navigation.navigate('Producer', {
+                    itemId: 86,
+                    otherParam: item.name,
+                    image: item.logo_url,
+                  });
+                }} 
+    />
+  )
+
+  render() {
+    data1= this.state.dataSource;
+    columnData = data1;
+
+    return(
+      <View style = {style.container}>
+        <View style = {style.column} >
+          <FlatList 
+            data = {columnData}
+            //ItemSeparatorComponent={this.ListViewItemSeparator}
+            renderItem={this.renderItem}
+            enableEmptySections={false}
+            //style={{ marginTop: 10 }}
+            keyExtractor = {(item, index) => index.toString()}
+          />
+        </View>
+
+        <View style = {style.column} >
+          <FlatList 
+            data = {columnData}
+            //ItemSeparatorComponent={this.ListViewItemSeparator}
+            renderItem={this.renderItem}
+            enableEmptySections={false}
+            //style={{ marginTop: 10 }}
+            keyExtractor = {(item, index) => index.toString()}
+          />
+        </View>
+        
       </View>
     );
   }
@@ -674,8 +806,37 @@ const TestStack = createStackNavigator(
   {headerMode: 'screen'}
 )
 
+const TestStack2 = createStackNavigator(
+  {
+    ProducerList: {
+      screen: OverviewScreen2,
+      navigationOptions: {
+        header: null,
+      }
+    },
+    Producer: {
+      screen: ProducerScreen,
+    },
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#f4511e',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },  
+  },
+  {headerMode: 'screen'}
+)
+
 const TabNavigator = createBottomTabNavigator(
   {
+    Test: {
+      screen: TestStack2,
+    },
     Hem: {
       screen: TestStack,
     },
@@ -711,6 +872,24 @@ const styles = StyleSheet.create({
     padding: 10,
   },
 });
+
+const style={
+  container: {
+    flex: 1,
+    flexDirection: 'row',
+    height: 400
+  },
+  column: {
+    flex: 1,
+    flexDirection: 'column'
+  },
+  row: {
+    flexDirection: 'row'
+  },
+  item: {
+    flex: 1
+  }
+}
 
 export default class App extends React.Component {
   render() {
