@@ -80,8 +80,6 @@ class HighScoresScreen extends React.Component {
   }
 }
 
-
-
 const InitialNavigator = createSwitchNavigator({
   Splash: SplashScreen,
   App: WelcomeScreen
@@ -138,7 +136,6 @@ const styles = StyleSheet.create({
 });
 
 const AppContainer = createAppContainer(InitialNavigator);
-
 
 export default class App extends React.Component {
   render() {
