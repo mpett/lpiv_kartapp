@@ -7,6 +7,7 @@
  */
 
 import React, {Fragment} from 'react';
+import SplashScreen from './SplashScreen';
 import {
   SafeAreaView,
   StyleSheet,
@@ -16,77 +17,95 @@ import {
   StatusBar,
 } from 'react-native';
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+import { createAppContainer, createSwitchNavigator, createBottomTabNavigator } from 'react-navigation';
 
-const App = () => {
-  return <HomeScreen />;
-};
-
-class HomeScreen extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { isLoading: true }
-  }
-
-  performTimeConsumingTask = async() => {
-    return new Promise((resolve) => {
-      setTimeout(
-        () => { resolve('result') },
-        2000
-      )
-    });
-  }
-
-  async componentDidMount() {
-    const data = await this.performTimeConsumingTask();
-
-
-    if (data !== null) {
-      this.setState({ isLoading: false });
-    }
-  }
-
+class WelcomeScreen extends React.Component {
   render() {
-    if (this.state.isLoading) {
-      return <SplashScreen />;
-    }
-
     return(
       <View>
-        <Text>Detta är en testskärm</Text>
+        <Text>
+          Welcome Screen!
+        </Text>
       </View>
     );
   }
 }
 
-class SplashScreen extends React.Component {
+class PracticeScreen extends React.Component {
   render() {
-    const viewStyles = [
-      styles.container,
-      { backgroundColor: 'orange' }
-    ];
-
-    const textStyles = {
-      color: 'white',
-      fontSize: 40,
-      fontWeight: 'bold'
-    };
-
     return(
-      <View style={viewStyles}>
-        <Text style={textStyles}>
-          Splash Screen
+      <View>
+        <Text>
+          Practice Screen!
         </Text>
       </View>
-    )
+    );
   }
 }
+
+class ResultsScreen extends React.Component {
+  render() {
+    return(
+      <View>
+        <Text>
+          Results Screen!
+        </Text>
+      </View>
+    );
+  }
+}
+
+class SettingsScreen extends React.Component {
+  render() {
+    return(
+      <View>
+        <Text>
+          Settings Screen!
+        </Text>
+      </View>
+    );
+  }
+}
+
+class HighScoresScreen extends React.Component {
+  render() {
+    console.log("Test");
+    return(
+      <View>
+        <Text>
+          High Scores Screen!
+        </Text>
+      </View>
+    );
+  }
+}
+
+
+
+const InitialNavigator = createSwitchNavigator({
+  Splash: SplashScreen,
+  App: WelcomeScreen
+});
+
+const HomeNavigator = createSwitchNavigator({
+  Welcome: WelcomeScreen,
+  Practice: PracticeScreen,
+  Results: ResultsScreen
+});
+
+const AppNavigator = createBottomTabNavigator(
+  {
+    Home: {
+      screen: HomeNavigator
+    },
+    HighScores: {
+      screen: HighScoresScreen
+    },
+    Settings: {
+      screen: SettingsScreen
+    }
+  }
+);
 
 const styles = StyleSheet.create({
   container: {
@@ -105,7 +124,24 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  viewStyles: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: 'orange'
+  },
+  textStyles: {
+    color: 'white',
+    fontSize: 40,
+    fontWeight: 'bold'
+  }
 });
 
+const AppContainer = createAppContainer(InitialNavigator);
 
-export default App;
+
+export default class App extends React.Component {
+  render() {
+    return <AppContainer />;
+  }
+}

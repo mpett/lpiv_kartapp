@@ -80,22 +80,23 @@ function partition(a, lo, hi) {
     return i + 1;
 }
 function main() {
-    var a = [3218, 1321, 8, 1321, 7, 1, 7161, 8, 321, 8, 1321, 8, -61, -651, 65];
+    console.log("Hello World");
+    var a = [1132, -61, 8, -651651, 71651, 7, 14, 7, 1, 9, 5, 4, 654, 7, 4, 84651, 874, -564, 0, 0, 54, 0, 564];
     console.log(a);
     quicksort(a, 0, a.length - 1);
     console.log(a);
-    console.log("Hello World");
-    var b = [21321, 321, 8, 1, 9, 51, 87, 1651, -445, 54, -654, 6546, 8, 8, 651, 1, 1, 71615, 87];
+    var b = [313, 71, 7161, 716, 8, 2, 8, 1651, 87, 1651, 87, 651, 8, 1, 6551, 9, 151, -651, 81, -1, 51, 0, 0, 84651, 0, 651];
     console.log(b);
     heapsort(b);
     console.log(b);
-    var primes = sieve(348569);
+    var primes = sieve(12385412);
     console.log(primes);
     shuffle(primes);
     console.log(primes);
-    quicksort(primes, 0, primes.length - 1);
-    shuffle(primes);
     heapsort(primes);
+    console.log(primes);
+    shuffle(primes);
+    quicksort(primes, 0, primes.length - 1);
     console.log(primes);
 }
 main();
