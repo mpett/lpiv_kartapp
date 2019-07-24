@@ -468,63 +468,6 @@ class LogoTitle extends React.Component {
   }
 }
 
-class HomeScreen extends React.Component {
-  static navigationOptions =  ({ navigation }) => {
-    const params = navigation.state.params || {};
-
-    return {
-      headerLeft: (
-        <Button
-          onPress={() => navigation.navigate('MyModal')}
-          title="Info"
-          color="green"
-        />
-      ),
-      // headerTitle instead of title
-      headerTitle: <LogoTitle />,
-      headerRight: (
-        <Button  
-          onPress = {
-            navigation.getParam('increaseCount')
-          }
-          title = "Knapp + 1"
-          color = "green"
-        />
-      ),
-    };
-  };
-
-  componentDidMount() {
-    this.props.navigation.setParams({ increaseCount: this._increaseCount });
-  }
-
-  state = {
-    count: 0,
-  };
-
-  _increaseCount = () => {    
-    this.setState({ count: this.state.count + 1 });
-  };
-
-  render() {
-    return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Detta är hemskärmen</Text>
-        <Button 
-          title = "Gå till detaljskärmen"
-          onPress = {() => {
-            // Navigate to details route with parameter
-            this.props.navigation.navigate('Details', {
-              itemId: 86,
-              otherParam: 'En strängparameter.'
-            });
-          }}
-        />
-      </View>
-    );
-  }
-}
-
 class MapScreen extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
@@ -579,6 +522,7 @@ class ProducerScreen extends React.Component {
   render() {
     const { navigation } = this.props;
     const itemId = navigation.getParam('itemId', 'NO-ID');
+    const description = navigation.getParam('desc', 'Ingen beskrivning');
     const otherParam = navigation.getParam('otherParam', 'finns ej');
     const logo_image = navigation.getParam('image', '404');
 
@@ -588,7 +532,7 @@ class ProducerScreen extends React.Component {
           title={JSON.stringify(otherParam)}
           image={{ uri: logo_image }}>
           <Text style={{marginBottom: 10}}>
-            Här bör det stå något om {otherParam}.
+            {description}
           </Text>
           <Button
             backgroundColor='#03A9F4'
@@ -690,6 +634,7 @@ class OverviewScreen extends React.Component {
                   this.props.navigation.navigate('Producer', {
                     itemId: 86,
                     otherParam: item.name,
+                    desc: item.description,
                     image: item.logo_url,
                   });
                 }} 
@@ -912,6 +857,7 @@ class ProducerListScreen extends React.Component {
                   this.props.navigation.navigate('Producer', {
                     itemId: 86,
                     otherParam: item.name,
+                    desc: item.description,
                     image: item.logo_url,
                   });
                 }} 
@@ -938,79 +884,6 @@ class ProducerListScreen extends React.Component {
           enableEmptySections={false}
           //style={{ marginTop: 10 }}
           keyExtractor = {(item, index) => index.toString()}
-        />
-      </View>
-    );
-  }
-}
-
-class ModalScreen extends React.Component {
-  render() {
-    return(
-      <ScrollView>
-        <View>
-          <Card
-            title='HELLO WORLD'
-            image={{ uri: 'https://lokalproducerativast.se/wp-content/uploads/producers/8i12tkxe5n4feos.jpg' }}>
-            <Text style={{marginBottom: 10}}>
-              The idea with React Native Elements is more about component structure than actual design.
-            </Text>
-            <Button
-              backgroundColor='#03A9F4'
-              buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-              title='VIEW NOW' />
-          </Card>
-          <Button 
-            onPress={() => this.props.navigation.goBack()}
-            title="Hej då"
-          />
-        </View>
-      </ScrollView>
-    );
-  }
-}
-
-class DetailsScreen extends React.Component {
-  static navigationOptions = ({ navigation, navigationOptions }) => {
-    const { params } = navigation.state;
-
-    return {
-      title: params ? params.otherParam : 'Detaljskärm med parameter.',
-      // These values are used instead of the shared configuration
-      headerStyle: {
-        backgroundColor: navigationOptions.headerTintColor,
-      },
-      headerTintColor: navigationOptions.headerStyle.backgroundColor,
-    };
-  };
-
-  render() {
-    const { navigation } = this.props;
-    const itemId = navigation.getParam('itemId', 'NO-ID');
-    const otherParam = navigation.getParam('otherParam', 'finns ej');
-
-    return (
-      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-        <Text>Detta är detaljskärmen</Text>
-        <Text>itemId: {JSON.stringify(itemId)}</Text>
-        <Text>otherParam: {JSON.stringify(otherParam)}</Text>
-        <Button 
-          title = "Gå till detaljskärmen igen"
-          onPress = {() => this.props.navigation.push('Details', {
-            itemId: Math.floor(Math.random() * 100),
-          })}
-        />
-        <Button 
-          title = "Gå hem"
-          onPress = {() => this.props.navigation.navigate('Home')}
-        />
-        <Button 
-          title = "Gå tillbaka"
-          onPress = {() => this.props.navigation.goBack()}
-        />
-        <Button 
-          title = "Uppdatera titeln"
-          onPress = {() => this.props.navigation.setParams({ otherParam: 'Uppdaterad!' })}
         />
       </View>
     );
