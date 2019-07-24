@@ -475,11 +475,11 @@ class MapScreen extends React.Component<Props, State> {
   }
 
   renderMarkers() {
-    return locations.map((location, key) => {
+    return producer_list.map((location, key) => {
       return (
         <Marker coordinate = {{
-          latitude: location.latitude,
-          longitude: location.longitude
+          latitude: parseFloat(location.latitude),
+          longitude: parseFloat(location.longitude)
         }} key={key}>
         </Marker>
       );
@@ -747,6 +747,7 @@ class OverviewScreen2 extends React.Component {
                   this.props.navigation.navigate('Producer', {
                     itemId: 86,
                     otherParam: item.name,
+                    desc: item.description,
                     image: item.logo_url,
                   });
                 }} 
