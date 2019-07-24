@@ -16,8 +16,8 @@ export interface LatLng {
 const VÄSTRA_GÖTALAND = {
   latitude: 58.2528,
   longitude: 12.77,
-  latitudeDelta: 2.6,
-  longitudeDelta: 2.6
+  latitudeDelta: 3.2,
+  longitudeDelta: 3.2
 };
 
 const producer_list = [
@@ -975,3 +975,4 @@ export default class App extends React.Component {
     return <AppContainer />;
   }
 }
+
