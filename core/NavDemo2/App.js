@@ -15,9 +15,9 @@ export interface LatLng {
 
 const VÄSTRA_GÖTALAND = {
   latitude: 58.2528,
-  longitude: 13.0596,
-  latitudeDelta: 2.5,
-  longitudeDelta: 2.5
+  longitude: 12.77,
+  latitudeDelta: 2.6,
+  longitudeDelta: 2.6
 };
 
 const producer_list = [
