@@ -13,67 +13,12 @@ export interface LatLng {
   longitude: number
 }
 
-let locations = new Array();
-
-const SKÖVDE = {
-  latitude: 58.3903,
-  longitude: 13.8461,
-  latitudeDelta: 0.02,
-  longitudeDelta: 0.02
-};
-
-const MARIESTAD = {
-  latitude: 58.7101,
-  longitude: 13.8213,
-  latitudeDelta: 0.02,
-  longitudeDelta: 0.02
-};
-
-const TÖREBODA = {
-  latitude: 58.7055,
-  longitude: 14.1261,
-  latitudeDelta: 0.02,
-  longitudeDelta: 0.02
-};
-
-const GÖTEBORG = {
-  latitude: 57.7089,
-  longitude: 11.9746,
-  latitudeDelta: 0.02,
-  longitudeDelta: 0.02
-};
-
-const LIDKÖPING = {
-  latitude: 58.5035,
-  longitude: 13.1571,
-  latitudeDelta: 0.02,
-  longitudeDelta: 0.02
-};
-
-const TROLLHÄTTAN = {
-  latitude: 58.2835,
-  longitude: 12.2858,
-  latitudeDelta: 0.02,
-  longitudeDelta: 0.02
-};
-
-const BORÅS = {
-  latitude: 57.7210,
-  longitude: 12.9398,
-  latitudeDelta: 0.02,
-  longitudeDelta: 0.02
-};
-
 const VÄSTRA_GÖTALAND = {
   latitude: 58.2528,
   longitude: 13.0596,
   latitudeDelta: 2.5,
   longitudeDelta: 2.5
 };
-
-locations.push(SKÖVDE); locations.push(MARIESTAD); locations.push(TÖREBODA); 
-locations.push(GÖTEBORG); locations.push(LIDKÖPING); locations.push(TROLLHÄTTAN); 
-locations.push(BORÅS); 
 
 const producer_list = [
   {
