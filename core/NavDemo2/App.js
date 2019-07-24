@@ -77,75 +77,381 @@ locations.push(BORÅS);
 
 const producer_list = [
   {
-    name: 'Bossgårdens Grönsaker',
-    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/90ygod4pqwuf0b2.jpg',
-    type: 'Frukt och grönt'
+      name: "Alvar och Ivars Surdegsbageri",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/xiolaxkmy0zttk5.jpg",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/t8g4javcrwv7o6m.jpeg",
+      latitude: "57.6939967",
+      longitude: "11.9551836",
+      description: "alvar & ivar surdegsbageri är ett litet kvartersbageri i Linnéstan. Här bakas riktiga surdegsbröd av olika slag och bullar och kakor på ett hantverksmässigt sätt. Tillverkningen är eko-certifierad enligt Eu:s regler. Här finns också stans kanske minsta kaféhörna, där man kan fika eller äta frukost samtidigt som man ser bagarna arbeta. Företaget har också en egen äppelodling med musteri på Tjörn, alvar & ivar på kalvhagen.\n\nÖppettider:\nsöndag -måndag: stängt\ntisdag:   7-14\nons-fre  7-18\nlörd 8-14 \nSemesterstängt veckorna 28 tom 32. \nVälkomna!"
   },
   {
-    name: 'Stjärnegärdet Gourmet',
-    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/8i12tkxe5n4feos.jpg',
-    type: 'Bageri och spannmål'
+      name: "Eriksons Chark",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/w0hjl42q7s7fih9.jpg",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/97zmbj58dycvwqx.jpeg",
+      latitude: "58.18867436274337",
+      longitude: "12.720963611555817",
+      description: "Välkommen till Eriksons Chark!\n\nPå Eriksons Chark köper du delikatesser som arbetats fram under mer än 90 år av 4 generationer. Fler av recepten är äldre än företaget självt. \nAlltihop började med Johan Erikson som 1923 startade Eriksons Chark. \nVarje söndag satte sig Johan på cykeln och åkte gårdarna runt för att se ut de finaste kor, kalvar och grisar. \nEfter att noga ha uppskattat vikt och värde avgjordes affären med ett handslag och en sup. \nPå måndagar var slaktdagen då bönderna kom med sina djur till Eriksons slakteri som låg precis bredvid järnvägen.\nJohan och hans hustru Magda fick sönerna Harry och Ingemar och dottern Inga-Lisa vilka tidigt fick börja hjälpa till. \nHarry smet ibland hem från skolan för att hjälpa till. Harry och Ingemar lärde av sin far och 1948 arrenderade Johan ut charkuteriet på Storgatan till Harry och behöll själv slakteriet. \nNär Johan gick bort 1974 övertog Harry även slakteriet och drev rörelsen vidare tillsammans med sin hustru Kerstin. \nFöretaget moderniserades och utvecklades enligt tidens krav. \nÄven Harry och Kerstins barn Rolf och Eva kom tidigt in i företaget. Rolf lärde sig till charkuterist av sin far och arbetade länge vid hans sida. \nNär Harry hastigt gick bort 1990 tog Rolf och Eva över rörelsen. \nDe fortsatte att satsa framåt och 1995 stod den nu utbyggda fabriken klar och med hjälp av Rolfs fru Lisbeth drevs den fram till 2015, då nästa generationsskifte inträffade.\n\nSen årsskiftet 15\/16 driver nu Rolfs barn Cecilia, Gustav och Linus företaget vidare tillsammans med Eva. \nRolf och Lisbeth finns fortfarande kvar i företaget och här hittar vi fler familjemedlemmar så som Gustavs fru Ann och Evas dotter My. \nSå Eriksons Chark är i sann mening ett äkta familjeföretag med ett 20-tal anställda utöver familjen. \n\nCharktillverkningen sker idag i moderna lokaler på samma plats där det började för nästan ett sekel sedan. \nI butiken sker försäljning av kött- & charkvaror samt ost och andra delikatesser.\nEriksons Chark har fortsatt att ta fram nya recept och varianter på charkvaror men håller fast vid tradition och kvalitet och endast svenska köttråvaror.\n\nDeras varor finns i ett 40-tal butiker runt om i Västra Sverige samt i den egna butiken i Nossebro där du är välkommen att inhandla kött och välja bland alla deras egna delikatesser! \n\nÖppettider i butiken:\nOnsdag 11-18  –  Torsdag 9-18  –  Fredag 9-18\n"
   },
   {
-    name: 'Ehrenhofers Lamm & Vilt',
-    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/d6gq2vao23j7l45.jpg',
-    type: 'Kött och chark'
+      name: "Grimsis AB",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/8gemki6rw3corc5.gif",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/tlr3whqik7ini8e.jpg",
+      latitude: "57.6626788",
+      longitude: "12.554063400000018",
+      description: "Grimsis AB är ett familjeföretag som består av Kristina Andersson och Tryggvi Leifur Óttarsson, numera bosatta i Bollebygd. Tryggvi är islänning och Kristina har bott på Island 1996-2008. Barnen Ida och Linnea Tryggvadóttir är födda på Island och familjen bodde i Ólafsvík på Snæfellsnes, som ligger ca 20 mil nordväst om Reykjavik.  Tryggvi har arbetat som VD för Islands största fiskeauktion, Fiskmarkaður Íslands, i 16 år och har mycket goda kontakter på Island och känner väl till den isländska fiskenäringen.\nGrimsis säljer isländsk, färskfryst fisk av högsta kvalitet,  alltid filéad och fryst på Island. \n\nFörutom fisken erbjuder Grimsis även isländskt lammkött som kommer från Fjallalamb på norra Island. Lammen går fritt ute på de isländska fjällen hela sommaren och äter gräs, frökapslar och vilda kryddor. \n————————————————-\nÖppet torsdagar kl 10 – 18 + sista lördagen \/ månad kl 11 -14.\nI Grimsis butik hittar ni fisk, lammkött och godis från Island. Här finns även goda fiskkryddor och ägg från Sammels Gård i Landvetter,\nHjärtligt välkomna till Grimsis på Rinnavägen 10 i Bollebygd \n"
   },
   {
-    name: 'Qvänum Mat & Malt AB',
-    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/m8f6urjy8hsyfe3.jpg',
-    type: 'Dryck'
+      name: "Gröna gårdar",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/6mvl4w5omdzp7jp.jpg",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/7ntflkr50rzh59w.jpg",
+      latitude: "58.28167559999999",
+      longitude: "11.641583800000035",
+      description: "Gröna gårdar samverkar med ett 40-tal av de bästa uppfödarna runt om i Västsverige, från Halmstad i söder till Karlstad i norr.\n\nGemensamt för alla gårdar är att, utöver KRAV:s regler, även följa Gröna gårdars egna kriterier för uppfödning, varav det främsta är att djuren äter artriktig föda, det vill säga gräs och örter.\nEftersom våra djur växer upp långsamt på naturlig föda hinner köttet utveckla en rik och fyllig smak, samtidigt som det blir välmarmorerat och därför naturligt mört.\n\nVi vårt kött som köttboxar via vår webbshop (gronagardar.se) samt styckvis i ett antal utvalda butiker runtom i Västsverige."
   },
   {
-    name: 'Skeby Gårdar AB',
-    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/e8vpvc8hycb74xc.jpg',
-    type: 'Bageri och spannmål'
+      name: "Gunnagårds Naturprodukter",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/te85ru6yccuui32.png",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/0j5ml8s5ir28x4r.jpg",
+      latitude: "57.58093129999999",
+      longitude: "12.356905299999994",
+      description: "Vi driver sedan 1981 en ekologisk mjölkgård med ca 60 kor samt rekrytering. Vi odlar även potatis och grönsaker ca 1 ha för lokal avsalu\noch i  gårdsbutik under säsong.  I gårdsbutiken finns också vårt eget frysta nötkött och egenproducerad ostkaka m.m. Se hemsidan för öppettider. "
   },
   {
-    name: 'Söråsen',
-    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/fq3y7mhjj4c86j3.jpg',
-    type: 'Fisk och skaldjur'
+      name: "Orust Shellfish AB",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/0e82lhvdc4xtgx2.jpg",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/7buisy961ek7phh.jpg",
+      latitude: "58.1459975",
+      longitude: "11.826731800000061",
+      description: ""
   },
   {
-    name: 'Sommarhagens gårdsmejeri',
-    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/ammj7islftlacgh.jpg',
-    type: 'Mejeri'
+      name: "Qvänum Mat & Malt AB",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/m8f6urjy8hsyfe3.jpg",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/0qi8cc5zat5fp1z.jpg",
+      latitude: "58.2875161",
+      longitude: "13.158550699999978",
+      description: "Qvänum Mat & Malt är bryggeriet och bränneriet som huserar i ladugården på Gategården, mitt på Varaslätten. \nVi både brygger och bränner med maten i fokus! Vår passion för god mat och dryck har följt med oss in i bryggeriet och bränneriet.\nHär tillverkas öl och brännvin på ett hantverksmässigt och hållbart sätt med inriktning på lokala råvaror och största delen är ekologiskt.\n Några tillsatser använder vi inte och vattnet är från vår egen brunn.  All el kommer från sol-, vind- och vattenkraft. Bryggeriet och destilleriet värms upp med biobränsle."
   },
   {
-    name: 'Torggummans ägg',
-    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/lt7044o0kxpyp1m.png',
-    type: 'Ägg'
+      name: "Skeby Energi AB",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/e8vpvc8hycb74xc.jpg",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/r8do3ub5eezsdr3.jpg",
+      latitude: "58.49614080118837",
+      longitude: "13.307811029394543",
+      description: "I mitten av 1970 talet hade Skeby haft några riktiga torrsomrar med dåliga skördar som följd.Man beslöt då gemensamt i bygden att satsa på ett bevattningsföretag som skulle ta vatten ur Vänern för att bevattna sina vallar och spannmålsodlingar. HB Skeby Vatten var fött.Projektet påbörjades 1976 och stod klart till odlingssäsongen 1977. De 17 delägarna hade då satsat 1.600.000 kronor i pumpstation, ledningar och bevattningsmaskiner.\nTack vare den nu säkrade tillgången på vatten började man prova på grönsaks och potatisodling, den lokala livsmedelsindustrin, Dafgårds, behövde bl.a. vitkål till sin tillverkning av kåldolmar. Maskinsamarbeten etablerades allt mer.Djuren försvann på en del håll, men tack vare att de ersattes med grönsaksodlingar, ofta med lagring och leverans över hela året, behölls arbetstillfällen, och gårdarna kom inte att slås ihop i så stor omfattning som på många andra håll.\nI mitten av 1990 talet var pumputrustningen sliten och en större renovering och modernisering genomfördes. Nu var delägarna 14 stycken.\nRunt 2000 började man fundera på vindkraft. Det skulle kännas bra att kunna producera lika mycket energi som man förbrukade i bevattningsföretaget. Skeby Vind AB såg dagens ljus, med 13 aktieägareEfter mycket prutande och en egenhändigt schaktad väg och byggplats restes Skeby 1 i oktober 2002 till en kostnad av 6 miljoner kronor.Det andra verket som stod på plats i juli 2003 kostade också 6 miljoner medan marknadskrafterna såg till att det tredje som var klart 2005 gick på drygt 8 miljoner. Nu producerade man betydligt mer el än vad både bevattningarna och gårdarna förbrukade.\n2005 var energi än mer i ropet och åtta grannar beslöt sig för att pröva lyckan. Bolagets namn blev Skeby Energi AB. Första året blev man Sveriges största hampaodlare för att andra året bli Sveriges minsta, bl. a. för att man kommit in på RME tillverkning. Tanken är att odla och köpa in raps lokalt, pressa ur oljan och processa den till biodiesel för den lokala marknaden.\nRestprodukten rapskaka ersätter importerad soja till bl.a. mjölkkor och grisar eller används i fastbränslepannor. Man är även livsmedelsgodkända och levererar kallpressad rapsolja till främst grossister och större förbrukare. Hittills har ca 5 miljoner kronor investerats.\n\n Alla delägarna är lantbrukare, man föder upp slaktkycklingar, köttdjur, grisar och hästar, grönsaker, spannmål, potatis, kör i skogen, har maskinstationer, sysslar med Farmartjänst m.m. Tack vare satsningen på vattnet för trettio år sedan har bygden utvecklats och möjligheterna som alltid finns har kunnat tas till vara."
   },
   {
-    name: 'ÖstraGärde Gård',
-    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/hfok6bdk49tm2nt.png',
-    type: 'Frukt och grönt'
+      name: "Skenstaboa Gårdsbutik",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/zqqy4gsxrswodu0.png",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/u0ciz6hiq95jjw2.jpg",
+      latitude: "57.69872489999999",
+      longitude: "13.15650340000002",
+      description: "Välkommen till Skenstaboa gårdsbutik i Dalsjöfors. \nHär hittar du bla. närproducerat och mat från andra gårdsbutiker runt om i Sverige. Vi gör presentkorgar och packar 7-häradslådan hos oss. På sommaren har vi självplockning av jordgubbar och vi milar grillkol från egen skog. Vi odlar egna julgranar, både vanliga granar och kungsgranar\n\nÖppet torsdagar kl.14-19 & lördagar kl.10-13, året om! \nExtra-öppet i december och i samband med jordgubbsplockningen! Se www.skenstaboa.se eller facebook för mer info!\n\nVarmt Välkomna! "
   },
   {
-    name: 'Bärby självplock',
-    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/m4nlu6p3nuacu48.png',
-    type: 'Bageri och spannmål'
+      name: "Sommarhagens gårdsmejeri",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/ammj7islftlacgh.jpg",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/owry4saqdjui1hu.jpg",
+      latitude: "57.89203369999999",
+      longitude: "12.159498299999996",
+      description: "Sommarhagens Ost är beläget i de djupa skogarna i Ale, bara 3 mil norr om Göteborg. Här produceras krämiga dessertostar såväl som långlagrade hårdostar. Vi låter enzymer och mikrober utföra sina jobb i deras eget tempo och denna långsamma mognadsprocess ger väl utvecklade smaker utan onödiga tillsatser. Alla ostar av komjölk ystas på KRAV-certifierad mjölk som hämtas direkt vid mjölkningen från en bonde i grannbyn.\nI november 2018 blev vår grönmögelost Kaxige Kal belönad med ett silver i World Cheese Award (ost-vm)."
   },
   {
-    name: 'Kullans Lycka',
-    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/f2sf93ctvmd9mn7.jpg',
-    type: 'Kött och chark'
+      name: "Söråsen",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/fq3y7mhjj4c86j3.jpg",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/dfe4vdimqbz2js4.jpg",
+      latitude: "58.7115648",
+      longitude: "14.080268400000023",
+      description: "Småskalig grönsaksodling i Töreboda med fokus på Chili och Mathantverk.\nVi odlar i möjligaste mån allt till vårat mathantverk dvs många olika sorters chili, men även annat både vanligt och ovanligt.\nExempel på produkter: olika chutneys (2 har tagit silver i mathanverks-SM), torkad och mald chili,  Samba&Lek,  Sriracha (brons i mathantverks-SM 2017), Forest Flames, Tropical Heat, Marmelader (grön tomat marmelad silver mathantverks-SM 2017), Honung, chili-honung och Buffalo Gurka.\nAllt är i liten skala och produktutveckling pågår ständigt.\n"
   },
   {
-    name: 'Honungshuset HB',
-    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/37y4xju5cku7ae8.jpg',
-    type: 'Honung'
+      name: "The Green Bakery AB",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/wbmittb4ip8shcq.jpg",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/yr9wwxh19u2bi5u.jpg",
+      latitude: "57.7784121",
+      longitude: "12.050701900000035",
+      description: "Green Bakery är ett hantverksbageri som är helt inriktat på ekologisk produktion. Vi använder enbart de bästa av råvaror och bakar enligt gamla traditioner.\nVi är certifierade enligt IP Livsmedel samt för KRAV- och EU-Ekologisk produktion.\n\nBröden vi bakar, bakas för hand. På så sätt medverkar vi till att hålla en månghundraårig hantverkstradition vid liv. Vår målsättning är att sälja våra bröd genom samtliga aktörer på livsmedelsmarknaden – samt till distributörer som levererar bröd till kommuner och landsting.\n\nVi vill medverka till att slå hål på myten att ekologiska livsmedel är dyra och har dålig hållbarhet. Det gör vi enklast genom att se till att så många som möjligt kan köpa och äta våra produkter! \n \nVill du köpa riktigt gott bröd och samtidigt bidra till en bättre miljö?\nDå är du välkommen till någon av de butiker där våra produkter finns idag!\nOm du saknar vårt bröd i ”din” livsmedelsbutik, får du påpeka detta för butiken. \n\nVälkomna!"
   },
   {
-    name: 'Claessons Charkuteri',
-    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/g2za84wp4wb3sl4.png',
-    type: 'Kött och chark'
+      name: "ÖstraGärde Gård",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/hfok6bdk49tm2nt.png",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/ud6y329apokfmsz.jpg",
+      latitude: "57.553034",
+      longitude: "12.435497400000031",
+      description: "Champinjoneri i Världsklass!\nPå Östragärde Gård i Sätila odlar vi champinjoner och ett brett sortiment exotisk svamp. Vi har även ett förädlat sortiment som bla består av champinjonsoja, torkade och rökta champinjoner. Vi levererar nyplockad svamp flera dagar i veckan direkt till butiker och restauranger. Vi erbjuder idag allt från den mustiga shiitaken till torkade och rökta champinjoner. Vi är certifierade inom IP Livsmedel och anslutna till KRAV!\nVälkommen till världens bästa Champinjoneri!"
   },
   {
-    name: 'Dalis Gård',
-    logo_url: 'https://lokalproducerativast.se/wp-content/uploads/producers/8i12tkxe5n4feos.jpg',
-    type: 'Fisk och skaldjur',
+      name: "Tavlebord Lanthandel",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/xpm6kc32g11qnxt.jpg",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/df3pa6k16bfrt86.jpg",
+      latitude: "58.14854510000001",
+      longitude: "11.58391729999994",
+      description: "Saluhall och kafé i genuin lanthandelsmiljö i Tegneby mitt på Orust. Saluhallen fungerar som en marknadsplats för lokala producenter av livsmedel och hantverk. Kafét sköts av lokala föreningar, organisationer och skolklasser.\nÖppet: lördagar kl 10-14. För avvikelser och extradagar se www.tavlebord.se eller följ oss på Facebook. Säsongsstängt v. 52 t.o.m. feb."
   },
+  {
+      name: "Dalslandsstruts",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/y6fikqp2m56ku3c.jpeg",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/otv8e3o5b6t8skn.jpeg",
+      latitude: "58.602977744681034",
+      longitude: "11.968037892065468",
+      description: "Glumserud Gård har uppfödning av Struts, Lamm o frigående utegrisar. Vi har lite djur av var sort. På vår gård finns en liten gårdsbutik där vi säljer vårt kött och lite andra produkter. Dalslands Struts är vårt namn för våra strutsar, Dalslamm Dorper för våra får o lamm, av rasen dorper samt korsningar. "
+  },
+  {
+      name: "Adelsåsens Kalkon",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/knz8c6cgmbgpbmf.png",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/8jpydh9dbcub6nn.jpeg",
+      latitude: "58.3294519",
+      longitude: "12.93325619999996",
+      description: "Kalkonspecialisten med koll på hela kedjan. I över 50 år har det funnits kalkoner på Adelsåsen. Tre generationer är nu verksamma i vårt familjeföretag. Med de erfarenheter vi har fått under dessa år producerar vi kalkoner på ett sätt som ger Dig som konsument den allra bästa kvalité. Vi har egna avelsdjur och eget kläckeri, egen uppfödning, eget småskaligt kontrollslakteri, egen vidareförädling och egen gårdsbutik. I sortimentet finns idag ett 40-tal olika kalkonprodukter – skinkor, korvar, färs och grillat, men också färdiga alternativ såsom hamburgare och prisbelönta köttbullar som dessutom är fria från gluten, laktos och ägg. Du hittar oss mellan Lidköping och Vara i Stora Levene. En ort på den vackra, grönskande Varaslätten."
+  },
+  {
+      name: "Kullans Lycka",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/f2sf93ctvmd9mn7.jpg",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/91jnna01kzojz7y.jpg",
+      latitude: "58.4821523",
+      longitude: "12.974978400000055",
+      description: "Det är våra fantastiska får som bildar navet i Kullans Lycka. Lokalt kött, charkuterivaror och fårskinn från djur som är uppväxta på kärlek och omsorg. \nHos oss handlar det om att ta vara på naturens vackra och goda, varje dag."
+  },
+  {
+      name: "Alboga Choklad",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/7nstm6d7yvyl3va.jpg",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/9t2bzay9claikqg.jpg",
+      latitude: "57.97479824061916",
+      longitude: "13.229996146785765",
+      description: "Handgjorda Praliner, Fudge, Kolor, Tårtor och andra bakverk tillverkade av Närproducerade och Kretsloppsorienterade råvaror så långt det går.  Vi använder inga tillsatser, aromer eller färgämnen utan använder oss bara av rena och naturliga smaker och färger. Besök vår natursköna butik i Alboga som vi har tillsammans med Blommor och Jord. Här kan ni strosa runt bland blommorna i växthuset, äta choklad, kolor och glass eller bara njuta av vår vackra miljö. Vi tar även emot beställningar av Tårtor och Smörgåstårtor för alla tillfällen , stort som smått."
+  },
+  {
+      name: "DalsSpira Mejeri AB",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/7efwupzqio42s6z.png",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/az1ypnii3gtvbzr.jpg",
+      latitude: "58.68794447174173",
+      longitude: "11.989155707470672",
+      description: "Dalsspira mejeri erbjuder lokalproducerade komjölksprodukter, från hjärtat av Dalsland, med god smak och unika egenskaper. Med Dalsspiras produkter kan alla konsumenter göra ett val som känns bra i magen. Dalsspira mejeri värnar om djur, människor och landskap.\n\n "
+  },
+  {
+      name: "Honungshuset",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/37y4xju5cku7ae8.jpg",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/0ca8qk3wi0uu8y2.jpg",
+      latitude: "58.55379833228171",
+      longitude: "13.774987127578026",
+      description: "Kristina och Mias biodlingsföretag i Böja. Vi hanterar alla led i processen själva, från kupa till burk.  Våra bigårdar är placerade så att bina har olika nektardrag. Vanligast är nektar från maskros, oljeväxter, vitklöver, hallon, åkerböna och fruktträd vilket ger honung med olika karaktär.  2014 certifierade vi biodlingen enligt Svenskt Sigill, vilket borgar för svenska produkter, producerade med djuromsorg och miljötänk m.m. All hantering av honungen utförs av oss, på ett varsamt sätt för att säkerställa en kvalitetsprodukt. Vi har honung till försäljning under hela året. Nyslungad honung kan du köpa i början av juni till september. Välkomna!"
+  },
+  {
+      name: "Engalycka gård",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/9umum076cozo05r.png",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/qfd12rijckx9r75.jpg",
+      latitude: "57.6256241",
+      longitude: "12.484164400000054",
+      description: "Trevlig rustik och lantlig gårdsbutik med kafé som serverar hembakat och goda smörgåsar. Vi har fina saker till hem och som present. Vi säljer även närproducerat lammkött och ägg i mån av tillgång. Söker du efter fina lammskinn har vi det också, både klippta och oklippta."
+  },
+  {
+      name: "Ahlafors bryggeri",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/akd9eogtm1d9v7h.png",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/3v62dctqxclu3qv.jpg",
+      latitude: "57.92508780000001",
+      longitude: "12.100055099999963",
+      description: "Ahlafors är ett av sveriges äldsta mikrobryggerier, med tillverkning av folköl, starköl och cider i flertalet stilar. Våra drycker säljs i dagligvaruhandeln, på systembolag samt restauranger och krogar i västsverige."
+  },
+  {
+      name: "Dalis gård",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/cbrizo5iy2ebnc7.png",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/bov36hz08rlog0n.jpg",
+      latitude: "57.816667",
+      longitude: "11.833333000000039",
+      description: "Dalis Gård ligger i södra Bohuslän och vi föder upp lamm och tillverkar delikatesser. Lammkött  och korv säljs på hösten och skinn och sydda produkter av lammskinnsäljs hela året. Lammen är uppfödda på vår egen gård. Slakt och styckning sker på Ljungkile gårdsslakteri, där behandlas djuren på ett lugnt och värdigt sätt och köttet hängmöras för att uppnå bästa smaklighet. Möt oss på www.dalis.se, Facebook: Dalis Gård och Instagram: @dalisgard Välkommen!"
+  },
+  {
+      name: "Lantligt Anno 1785",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/xalhgxmxst6rx70.jpg",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/ihcg5feibkrla61.jpg",
+      latitude: "58.63849832855731",
+      longitude: "14.230343824999977",
+      description: "Vid foten av Kroppefjäll hittar ni vårt mysiga Café, med en underbar veranda att sitta på! Vi har flera olika smörgåsar, våfflor och goa kakor allt hembakat! I Gårdsbutiken säljer vi vårat eget ekologiska nötkött både till grillen och goda grytor, och mycket annat gott! Kungarummen i stora huset visas efter överenskommelse.  Öppettider hittar ni på FB under namnet Ekholmen Cafe & Gårdsbutik! Hoppas vi ses!"
+  },
+  {
+      name: "Naturbruket i Änga",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/0jn9ar9yp5aiog5.jpg",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/e75qfjzl9zbnjij.jpg",
+      latitude: "57.8189323",
+      longitude: "13.254940099999999",
+      description: "Jag och min man har ett litet lantbruk i Änga utanför Hökerum i Ulricehamns kommun och odlar Krav-godkända grönsaker med hjälp av småskaliga metoder och nordsvenska hästkrafter.  \nVi strävar efter att tillämpa principen organisk biologisk odling, naturliga och kretsloppsanpassade odlingsmetoder som täckodling, skonsam markbearbetning, samodling och gröngödsling. Med dessa metoder minskas behovet av gödning och vattning, jorden får en naturlig sammansättning som gynnar mikrolivet i jorden, nyttoinsekter och ger ett bra näringsinnehåll i grönsakerna.  \nVi har också Gotlandsfår som betar på våra ängar tillsammans med hästarna för att hålla markerna öppna. \nDen Nordsvenska hästen är en gammal svensk arbetshäst som idag riskerar utrotning då det föds allt för få föl.  Den kulturhistoriskt värdefulla nordsvenska rasen är otroligt mångsidig och värdefull i ett småbruk. Hästen används till mycket på gården, allt från att harva och radhacka bland grönsakerna till att hämta virke i betesmarker och skog. Ibland åker finvagnen fram eller sadeln på för en tur i den vackra omgivningen. \nVi säljer grönsaker och lammkött till restaurang, catering och via REKO-ringar i närheten samt vid förfrågan på gården.\nVi har även entreprenad inom trädgård och grönyteskötsel i samarbete med Farmartjänst Ulricehamn samt utför skogsröjning och vedkörning med Nordsvensk brukshäst. \n\n"
+  },
+  {
+      name: "Aktiebolaget GBG Soda",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/zxq86px9vc2hfxh.jpg",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/8hp8fqr4o1e59p0.jpg",
+      latitude: "57.6516428",
+      longitude: "12.160869899999966",
+      description: "Vi mikrobrygger alkoholfria drycker som inte är söta.  Olika former av soda (Ginger ale, Black Currant, Kombucha Sour, India Pale Soda Mango, Rosemary\/Orange, Raspberry wheat beer mm) samt alkoholfri öl.                          \n\n\n"
+  },
+  {
+      name: "Agnetas Odlingar & Konst",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/6mzp196rpoerz0p.jpg",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/s4sxdx765v9iuhh.jpg",
+      latitude: "58.20195699999999",
+      longitude: "11.73289879999993",
+      description: "En dröm förverkligades när jag för några år sedan bestämde mig för att skapa en fruktträdgård. Målet är att  skapa en ekologisk odling med biologisk mångfald för att gynna insekter och nyttodjur. Därför  bestämde jag mig för att plantera en skyddshäck som bestod av ätbara buskar och träd. Förutom äpple och päron har vi bl.a Saskaton (en blåbärsbuske med söta bär), blåbärstry, havtorn, storfruktig hassel och äkta valnötsträd. \n\nSom utbildad hushållslärare har jag också ett stort intresse av förädling. Frukt, bär, nötter och lite grönsaker (främst syrad gurka ) säljs färska och förädlade till privatpersoner och restauranger i södra Bohuslän. Vi vill öka tillgången på närproducerad  mat och erbjuda livsmedel som är odlad i harmoni med naturen , för bästa smakupplevelse.\n\nNYTT för 2019 är KOMBUCHA med smak av gårdens frukt och bär.\n"
+  },
+  {
+      name: "Krokens lammgård",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/aq3qzv97x4xpu9c.jpg",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/wsucwpeppkiy10e.jpg",
+      latitude: "57.8885399",
+      longitude: "11.721080000000029",
+      description: "Krokens gård ligger ute vid havet i Tjuvkil. Vi  har ca. 30 tackor  som lammar under mars – april.\nUnder sommaren går dom och  betar på våra natursköna  strandängar samtidigt som dom håller dom \nöppna.\nVi säljer lammlådor men de går också att komma  och köpa enstaka bitar. Vi säljer också korv och lammskinn.\nDe går också att köpa via REKOringen i Kungälv. Dit vi åker varan onsdag om de finns beställningar."
+  },
+  {
+      name: "Limmareds Säteri",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/pcmowvwwtv52p0g.png",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/qppnu2vy6noj20w.jpg",
+      latitude: "57.523466",
+      longitude: "13.336632",
+      description: "Hos oss kan man köpa kött från nöt och gris som är uppfödda på gården. Vid säsong kan du även plocka majs och svarta vinbär. \nVi har en butik som är öppen året runt \n\ntorsdagar och fredagar 14-18,lördagar 9-13.\nI butiken kan man förutom att köpa kött handla andra lokalproducerade produkter och islandsfisk. Det finns även kläder m.m. När det är majssäsong har vi utökade öppettider.\n\n\nLimmareds säteri ligger utmed riksväg 27 mellan Borås och Växjö, ca 3,5 mil söder om Borås.\n\nVälkomna!\n "
+  },
+  {
+      name: "Falbygdens osteria AB",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/3kh7kjqbgbw8vv1.png",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/jej1myfvifrjbz6.jpg",
+      latitude: "58.16688489999999",
+      longitude: "13.53422839999996",
+      description: "Ostparadiset i Falköping : Ostbutik , ostlager, restaurang och presentbutik med anor från 1878.  Ostbutiken har fler än 150 sorters ost och troligen Sveriges längsta ostdisk som är på hela 25 meter. Falbygdens Osteria är helt enkelt en ostupplevelse värd en omväg. Är Ni minst 10 personer och är intresserade av en ostupplevelse med ostprovning ring 0515-717231 eller 0515717234 så berättar vi mer. \n "
+  },
+  {
+      name: "Knaltens Ekologiska Grönsaker",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/rdepd6i03w4n366.png",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/r96vvcg9fn33pac.jpg",
+      latitude: "57.87745773849036",
+      longitude: "13.327076212552015",
+      description: "En del drömmer om att flytta till Frankrike, om att bo vid Medelhavet eller skaffa en gård på landet. Vi gjorde tvärt om, vi lämnade alla våra goda ostar och viner för att odla grönsaker på era fina svenska åkrar. \nNi hittar oss å vår gård i Hökerum nära Ulricehamn. I våra 14 tegar odlar vi ett sortiment av ca 40 olika ekologiska grönsaker. Vi gör det mesta av arbetet manuellt. För att underlätta detta arbete använder vi ett magiskt redskap: Bredgrepen. Grönsaksodlingarna är både ekologiska- och KRAV-certifierade (HS Certifiering AB, SE-EKO-04) och omfattar ca en halv hektar mark.\nVi säljer våra grönsaker hemma hos oss på gårdsbutiken varje onsdag kl 16 till 19, för den lokala marknaden i Ulricehamn, reko-ringar i Ulricehamn och Borås, samt några lokal butiker och restauranger. \nUnder säsongen har du möjlighet att njuta av våra nyskördade, näringsrika och mycket smakfulla grönsaker varje vecka.\n\nVårt motto är närodlat, nyskördat och smakrikt!"
+  },
+  {
+      name: "Mariannes biodling",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/uxmao9guiwwif2k.png",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/rd4nteviel5yp9v.jpg",
+      latitude: "58.58817766994984",
+      longitude: "12.385916836523393",
+      description: "Dalsländskt lantbruk som bland annat producerar jättegod ekologisk vitklöverhonung och en mycket fin ekologisk kallpressad rapsolja. Företaget drivs av Marianne Westman med familj.\nBåde biodlingen och växtodlingen är certifierad enligt KRAV.\n\nHonungen domineras ofta av vitklövernektar då vi har egen vitklöverfröodling. Detta ger en ljuvligt välsmakande, mild och len honung. Vi hanterar honungen varsamt och värmer aldrig upp den. Rapsoljan produceras av rapsfrö från vår egen ekologiska odling. Det är en mild kallpressad olja med nötig karaktär och smörig, blommig smak."
+  },
+  {
+      name: "Yxsjöns Humlegård",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/ai2ok6jtwre56o9.jpg",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/oeu2xfvn7tzym2l.jpg",
+      latitude: "57.64218899999999",
+      longitude: "12.171224400000028",
+      description: ""
+  },
+  {
+      name: "Bossgårdens Grönsaker",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/90ygod4pqwuf0b2.jpg",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/j32mpkuf5oszibz.jpg",
+      latitude: "58.1319939",
+      longitude: "13.74156400000004",
+      description: "På Bossgården odlar vi ett 50-tal sorters ekologiska grönsaker för skörd under en lång säsong från april och till efter nyår. Vi odlar småskaligt och med metoder som är varsamma med jorden. Förutom grönsaker har vi också höns, får och stutar. Vi (Jonas och Sanna) jobbar heltid på gården och vi har också hjälp av säsongsanställda. Vi brinner för ekologisk odling och lokal mat producerad med omsorg om människor och miljö."
+  },
+  {
+      name: "Rydins Bigårdar",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/955ox4iaoktk0k8.jpg",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/25l78etq2yf67pu.jpg",
+      latitude: "57.7845638",
+      longitude: "13.428271699999982",
+      description: "Rydins Bigårdar erbjuder honung från Ulricehamnområdet. Vår honung är fri från tillsatser och den är inte uppvärmd.  Vi säljer endast honung från egna bigårdar och märker alla burkar med sigill som berättar från vilket av våra bigårdsområden honungen kommer. Vi vill lyfta fram honungens naturliga variationer vilket är direkt kopplat till växtlighet, årstid och väderförhållanden. Vårt engagemang finns i arbetet tillsammans med bina, i mötet med människor och skapandet av ökad förståelse för de ekosystem vi är del av. "
+  },
+  {
+      name: "Hotell Dahlia",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/xygfg4epzgt0xb2.jpg",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/el42ujf3zz6mdp5.jpg",
+      latitude: "57.70661750000001",
+      longitude: "11.771791099999973",
+      description: "Ett gott samarbete och en slump skapade Dahlia växthotell och mathantverk, eller Hotell Dahlia, som det vanligen kallas.\n\nTatiana, Hotell Dahlias ena delägare, behövde ett ställe att förvara sina dahliaknölar i över vintern. Helena, den andra delägaren, hade just byggt ett orangeri som kunde hålla frostfri temperatur hela året. Ett växthotell såg dagens ljus.\n\nHotell Dahlias marmelad kom till av att Helena, som odlat chili i närmare 30 år, inte visste vad hon skulle göra med all frukt. – Koka marmelad! föreslog en vän. Och så blev det. Chilimarmeladen blev riktigt god och sålde väl. Helena och Tatiana fick blodad tand och har sedan dess gått kurser i mathantverk, smakat, låtit vänner smaka, och hållit utkik efter vad folk vill ha. Marmeladerna säljs i utvalda gårds-, ost- och delikatessbutiker från Uddevalla i norr till Halmstad i söder. \n\nMarmeladerna kokas för hand i verksamhetens restaurangkök i Lerum, av råvaror som i möjligaste mån kommer från närområdet – det vill säga egna trädgårdar, snälla grannar, och andra välvilliga själar.\n"
+  },
+  {
+      name: "Ödsmåls Örtagård",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/7bu2dalqzh8tyg7.png",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/kpx5xirdufpf70b.jpg",
+      latitude: "58.55301339999999",
+      longitude: "11.32304350000004",
+      description: "Här odlar vi bär, örter, vindruvor och grönsaker som sen förädlas till unika produkter.\nMed smak, kvalitet och identitet som man i storproduktion har svårt att ta fram.\nVi avänder även råvaror från privata trädgårdar i närområdet. När vi ”importerar” råvaror,\nanvänder vi ekologiskt odlat så långt som möjligt och ursprungsmärkt.\nGenom vårt småskaliga mathantverk, utvecklar vi både traditionella och lite ovanliga produkter. \nVi komponerar och producerar allt ifrån sylt och marmelader till glöggar och smaksatta oljor.\nAllt tillverkas helt hantverksmässigt och med stor varsamhet."
+  },
+  {
+      name: "Smedseröd Odlaren",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/l1by0fim748palk.zip",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/2tqh6wycbfbsz04.jpg",
+      latitude: "58.3860429",
+      longitude: "11.825968200000034",
+      description: "Smedseröd Odlaren är ett företag strax utanför Uddevalla. Erbjuder kvalitetsprodukter med utsökt smak och kvalite. Ingredienser från finaste råvaror.  Unik närproduktion från ”Småskalig livsmedelsförädlare” med kvalitetsprodukter enligt naturens villkor och egen tillverkning. Ett genuint mathantverk av högsta kvalitet – småskaligt alternativ till traditionellt utbud. Årstidsvis växtdekorationer och odlingar. Trädgårdstjänster.   REKO-RING och LOCAL FOOD NODES ORG. Levererar till restauranger och privatpersoner.  Besök hemsidan: www.smedserododlaren.se eller Instagram: smedserod_odlaren."
+  },
+  {
+      name: "Widén Gården",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/u84qf2ylddcx552.jpg",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/utl9tlw1nluwykp.jpg",
+      latitude: "58.71057519999999",
+      longitude: "11.330993000000035",
+      description: "Vi odlar främst havtorn och aroniabär som vi både säljer som de är, frysta eller som råsaft. Vi säljer även andra produkter i vår lilla gårdsbutik. Välkomna att boka tid. Återförsäljare sökes också för våra produkter av Nordic Crown som vi är grundare till.  "
+  },
+  {
+      name: "Lottas Bak & Form",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/78fmoptql4x0psq.pdf",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/p9d20x12mps60pu.jpg",
+      latitude: "57.94916391569582",
+      longitude: "11.567175613657014",
+      description: "Surdegsbageri och kafé som varit igång sedan 2009. Bakar med enbart kultursorter från små kvarnar. Ekologiska kravmärkta råvaror. Har gårdsförsäljning av lokalt mathantverk och mjölsorter. Surdegsbröd i många varianter och en hel del bakverk. Kafe och lättare lunch. Öppet året runt. Se vår hemsida för öppettider. Bageriet ligger alldeles vid vattnet i Bleket, södra Tjörn. Kafé med både inne och uteservering.\n"
+  },
+  {
+      name: "Hulatorps Champinjoner",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/v1w85601sgire1n.jpg",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/laew9l8fw7a9c4s.jpg",
+      latitude: "57.439651398473714",
+      longitude: "12.545889315344198",
+      description: "Hulatorps Champinioner \n\nAllting började med att Liselott Johnsson för många år sedan fick upp ett stort intresse för svampodling. Ett fritidsintresse som allt eftersom tiden gick började ta upp allt mer tid och slutligen förstod Liselott att det var det här var någonting hon ville ägna mer tid åt. \nI dag tillbringar hon många timmar i svampladan där svampen plockas med omsorg. Minsta lilla fläck och svampstackarn åker i skamhinken. Det krävs därför noggrannhet med hela processen. Allt från vattning, luftfuktighet och att se till att svamparna inte står för tätt, till packning och leverans till butikerna.Men det är just så man kan odla fram de finaste svamparna."
+  },
+  {
+      name: "Östängs Gård",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/byqfdfg54n6yse8.png",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/jg9uile3601qui5.png",
+      latitude: "58.08755861777656",
+      longitude: "12.631058796565412",
+      description: "Vi producerar bra livsmedel för närområdet. Grönsaker som odlas utan konstgödsel eller bekämpningsmedel i fasta bäddar utan grävning. Vi värnar om mikrolivet och jorden och gör allt jobb för hand. Vi producerar också väldigt goda ägg från hönor som bor i husvagn och går i stora hägn under äppelträden. Eftersom de är ute i solen och äter gräs så är äggulorna mörka i färgen. Vi producerar också honung, äpplen och bär. Vår gårdsbutik är öppen varje fredag 15-18 men ägg kan man köpa när som helst i vår självbetjäningsbutik på gårdsplanen. Vi säljer också våra produkter på REKO-ringen i Alingsås samt på Nolbygårds Matmarknad på lördagarna 10-14 från juli till och med oktober. Tillsammans med fem andra gårdar driver vi Alingsås mobila musteri som tar emot äpplen från privatpersoner. "
+  },
+  {
+      name: "Hollanders Glass",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/1lopqntv6guk14a.png",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/v82h68si3krsz8s.jpg",
+      latitude: "57.9222534",
+      longitude: "12.520801300000016",
+      description: "Lokalproducerad glass och gelato med råvaror från regionen. \nMin passion ligger i att ta fram äkta, ibland lite oväntade smaker från lokala råvaror. Jag känner en stolthet över mitt samarbete med lokala bönder, odlare och mathantverkare. Min glass innehåller oftast ekologiska råvaror men har ingen certifiering varför den inte klassas som ekologisk.\n\nGlassen säljs hos några lokala caféer, restauranger och återförsäljare med högt ställda krav.  Dessutom erbjuds dagsfärsk gelato, glass och sorbet på lilla Pop-Up Gelaterian i caféstaden Alingsås. Öppettiderna är begränsade. För aktuella öppettider besök hemsidan.  \n\n\nVälkomna!\nJoachim Hollander,  Glassmakare"
+  },
+  {
+      name: "Bondfrun",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/57jjcypxgmsfvtr.jpeg",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/oyj81aghndnwgnr.jpeg",
+      latitude: "58.24171280195607",
+      longitude: "13.074344507812498",
+      description: ""
+  },
+  {
+      name: "Bagare Brage",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/0w1vm3t1plgnn0z.jpg",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/z0av0u3ekvd8frm.jpg",
+      latitude: "58.63849832855731",
+      longitude: "14.230343824999977",
+      description: "Servering\nI vår konditoriservering kan du avnjuta ett riktigt svenskt fika. En kopp kaffe, våra goda bullar, ett wienerbröd, lite småkakor eller en smaskig bakelse i lugn och ro.\nSitt en stund och jobba, surfa eller läs en bok medans du njuter av det gammaldags konditoriets läckerheter. Om du är lite hungrig kan du beställa någon av våra goda smörgåsar eller en sallad.\nVid fint väder kan du slå dig ned på vår härliga uteservering.\nVälkommen!"
+  },
+  {
+      name: "Gyllene Biet",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/jhpofvt2mwynoml.png",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/vah30s8b9z890k1.jpg",
+      latitude: "57.807613158678144",
+      longitude: "12.441740757306889",
+      description: "Gyllene Biet har sitt hjärta i Hemsjö i de södra delarna av Alingsås kommun. Jag har även bigårdar i Sävedalen och Skepplanda och kan på så vis erbjuda närproducerad honung med smak av flera olika platser.\nVarje bigård slungas för sig och vid flera tillfällen per säsong för att få fram så rena smaker som möjligt. Locksigillen anger vilken plats honungen kommer ifrån. Honungen är hanterad varsamt från bikupa till burk utan någon uppvärmning för att behålla smak och nyttigheter i så stor utsträckning som möjligt.\n\nSmaksatt honung finns med ingefära, eukalyptus, citron, kakao, mintchoklad och apelsinchoklad. Jag smaksätter också honung med propolis som är binas naturliga försvar mot virus och infektioner. \n\nUtöver honung erbjuder Gyllene Biet bivax till hudvårdsprodukter, salvkit, tass-salva,  bivax-folie och föreläsningar om biodling."
+  },
+  {
+      name: "Quna Kombucha",
+      logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/02nxj391lzlrm5c.jpg",
+      cover_image_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/5jb29a5k7opr6wq.jpg",
+      latitude: "57.68859035140304",
+      longitude: "11.926117527111842",
+      description: "Brygger kombucha. \nKombucha är en uråldrig dryck som västvärlden fått upp ögonen för då den är otroligt rik på probiotika, aminosyror och vitaminer - Dessutom SUPERGOD! \nVi strävar efter att bli 100% ekologiska. \nVi är livsmedelcertifierade."
+  }
 ]
 
 type Props = {};
@@ -371,8 +677,6 @@ class OverviewScreen extends React.Component {
       leftAvatar = {{ rounded: true, source: { uri: item.logo_url } }}
       title={item.name}
       titleStyle = {{ color: 'white', fontWeight: 'bold' }}
-      subtitleStyle = {{ color: 'white' }}
-      subtitle={item.type}
       chevronColor="white"
       chevron
       containerStyle = {{ marginLeft: 5,
@@ -485,8 +789,6 @@ class OverviewScreen2 extends React.Component {
       leftAvatar = {{ rounded: true, source: { uri: item.logo_url } }}
       title={item.name}
       titleStyle = {{ color: 'white', fontWeight: 'bold' }}
-      subtitleStyle = {{ color: 'white' }}
-      subtitle={item.type}
       chevronColor="white"
       chevron
       containerStyle = {{ marginLeft: 5,
@@ -614,7 +916,6 @@ class ProducerListScreen extends React.Component {
                   });
                 }} 
       title={item.name}
-      subtitle={item.type}
       leftAvatar={{ source: { uri: item.logo_url } }}
     />
   )
@@ -716,44 +1017,6 @@ class DetailsScreen extends React.Component {
   }
 }
 
-const MainStack = createStackNavigator(
-  {
-    Home: {
-      screen: HomeScreen,
-    },
-    Details: {
-      screen: DetailsScreen,
-    },
-  },
-  {
-    initialRouteName: 'Home',
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: '#f4511e',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-    },
-  }
-);
-
-const RootStack = createStackNavigator(
-  {
-    Main: {
-      screen: MainStack,
-    },
-    MyModal: {
-      screen: ModalScreen,
-    },
-  },
-  {
-    mode: 'modal',
-    headerMode: 'none',
-  }
-);
-
 const ProducerStack = createStackNavigator(
   {
     ProducerList: {
@@ -834,20 +1097,17 @@ const TestStack2 = createStackNavigator(
 
 const TabNavigator = createBottomTabNavigator(
   {
-    Test: {
-      screen: TestStack2,
-    },
-    Hem: {
+    Äta: {
       screen: TestStack,
     },
-    Äta: {
-      screen: RootStack,
-    },
     Fika: {
-      screen: MapScreen,
+      screen: TestStack2,
     },
     Handla: {
       screen: ProducerStack,
+    },
+    Karta: {
+      screen: MapScreen,
     },
   },
 )
