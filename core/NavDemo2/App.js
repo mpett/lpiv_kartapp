@@ -473,17 +473,20 @@ class ProducerScreen extends React.Component {
 
     return(
       <View>
+        <ScrollView>
         <Card
-          title={JSON.stringify(otherParam)}
           image={{ uri: logo_image }}>
-          <Text style={{marginBottom: 10}}>
-            {description}
-          </Text>
+          
+            <Text style={{marginBottom: 10}}>
+              {description}
+            </Text>
+          
           <Button
             backgroundColor='#03A9F4'
             buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
-            title='VIEW NOW' />
+            title='VISA PÅ KARTA' />
         </Card>
+        </ScrollView>
       </View>
     )
   }
