@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, ScrollView, FlatList, Platform } from "react-native";
+import { View, Text, Image, StyleSheet, ScrollView, FlatList, Platform, ImageBackground } from "react-native";
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
 import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
 import { Button, ListItem, Card, SearchBar } from 'react-native-elements';
@@ -470,8 +470,12 @@ class ProducerScreen extends React.Component {
     const description = navigation.getParam('desc', 'Ingen beskrivning');
     const otherParam = navigation.getParam('otherParam', 'finns ej');
     const logo_image = navigation.getParam('image', '404');
+    const background = navigation.getParam('cover', '404');
 
     return(
+      <ImageBackground source={{ uri: background }} style={{width: '100%', height: '100%'}}>
+
+      
       <View>
         <ScrollView>
         <Card image={{ uri: logo_image }} imageProps={{ resizeMode: "contain" }}>
@@ -483,8 +487,10 @@ class ProducerScreen extends React.Component {
             buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
             title='VISA PÅ KARTA' />
         </Card>
+        
         </ScrollView>
       </View>
+      </ImageBackground>
     )
   }
 }
@@ -581,6 +587,7 @@ class OverviewScreen extends React.Component {
                     otherParam: item.name,
                     desc: item.description,
                     image: item.logo_url,
+                    cover: item.cover_image_url,
                   });
                 }} 
     />
@@ -694,6 +701,7 @@ class OverviewScreen2 extends React.Component {
                     otherParam: item.name,
                     desc: item.description,
                     image: item.logo_url,
+                    cover: item.cover_image_url,
                   });
                 }} 
     />
@@ -805,6 +813,7 @@ class ProducerListScreen extends React.Component {
                     otherParam: item.name,
                     desc: item.description,
                     image: item.logo_url,
+                    cover: item.cover_image_url,
                   });
                 }} 
       title={item.name}
