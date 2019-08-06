@@ -474,7 +474,6 @@ class ProducerScreen extends React.Component {
 
     return(
       <ImageBackground source={{ uri: background }} style={{width: '100%', height: '100%'}}>
-
       
       <View>
         <ScrollView>
@@ -566,7 +565,7 @@ class OverviewScreen extends React.Component {
       tension = {100}
       activeScale = {0.95}
       linearGradientProps = {{
-        colors: ['#b3b365', '#666632'],
+        colors: ['#37945a', '#7bb08f'],
       }}
       ViewComponent = {LinearGradient}
       leftAvatar = {{ rounded: true, source: { uri: item.logo_url } }}
@@ -752,7 +751,7 @@ class ProducerListScreen extends React.Component {
     var return_array = fetch('https://jsonplaceholder.typicode.com/posts')
     .then(response => response.json())
     .then(responseJson => {
-      console.log(responseJson);
+      //console.log(responseJson);
       this.setState(
         {
           isLoading: false,
@@ -764,16 +763,16 @@ class ProducerListScreen extends React.Component {
       );
     })
     .catch(error => {
-      console.error(error);
+      //console.error(error);
     });
     
-    console.log(return_array);
+    //console.log(return_array);
 
     return return_array;
   }
 
   search = text => {
-    console.log(text);
+    //console.log(text);
   };
 
   clear = () => {
@@ -937,6 +936,19 @@ const TabNavigator = createBottomTabNavigator(
     Karta: {
       screen: MapScreen,
     },
+        
+  },
+  {
+    tabBarOptions: {
+      activeTintColor: '#453220',
+      inactiveTintColor: '#7d7165',
+      labelStyle: {
+        fontSize: 16,
+      },
+      style: {
+        backgroundColor: '#d1843d',
+      },
+    }
   },
 )
 
