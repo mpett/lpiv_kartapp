@@ -856,9 +856,16 @@ class SplashScreen extends React.Component {
       { backgroundColor: '#d1843d' }
     ];
     const textStyles = {
-      color: 'brown',
+      color: 'white',
       fontSize: 30,
       fontWeight: 'bold'
+    };
+
+    const descriptionStyles = {
+      color: 'white',
+      fontSize: 15,
+      fontWeight: 'bold',
+      padding:10
     };
 
     return (
@@ -866,7 +873,18 @@ class SplashScreen extends React.Component {
         <Text style={textStyles}>
           Lokalproducerat i Väst
         </Text>
+        <Text style={descriptionStyles}>
+          En app med maten i fokus!
+        </Text>
+        
+        <View>
+        <Button
+            backgroundColor='#03A9F4'
+            buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: -50, padding: 10}}
+            title='Knapp' />
+        </View>
       </View>
+      
     );
   }
 }
