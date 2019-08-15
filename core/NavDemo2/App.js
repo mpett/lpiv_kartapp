@@ -844,6 +844,33 @@ class ProducerListScreen extends React.Component {
   }
 }
 
+class SplashScreen extends React.Component {
+  render() {
+    const viewStyles = [
+      {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#F5FCFF',
+      },
+      { backgroundColor: '#d1843d' }
+    ];
+    const textStyles = {
+      color: 'brown',
+      fontSize: 30,
+      fontWeight: 'bold'
+    };
+
+    return (
+      <View style={viewStyles}>
+        <Text style={textStyles}>
+          Lokalproducerat i Väst
+        </Text>
+      </View>
+    );
+  }
+}
+
 const ProducerStack = createStackNavigator(
   {
     ProducerList: {
@@ -924,6 +951,9 @@ const TestStack2 = createStackNavigator(
 
 const TabNavigator = createBottomTabNavigator(
   {
+    LPIV: {
+      screen: SplashScreen,
+    },
     Äta: {
       screen: TestStack,
     },
