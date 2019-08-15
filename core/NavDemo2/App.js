@@ -951,7 +951,7 @@ const TestStack2 = createStackNavigator(
 
 const TabNavigator = createBottomTabNavigator(
   {
-    LPIV: {
+    Start: {
       screen: SplashScreen,
     },
     Äta: {
@@ -972,8 +972,10 @@ const TabNavigator = createBottomTabNavigator(
     tabBarOptions: {
       activeTintColor: '#453220',
       inactiveTintColor: '#7d7165',
+      fontStyle: 'bold',
       labelStyle: {
         fontSize: 16,
+        
       },
       style: {
         backgroundColor: '#d1843d',
