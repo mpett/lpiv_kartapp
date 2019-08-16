@@ -851,9 +851,9 @@ class SplashScreen extends React.Component {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        backgroundColor: '#827c34',
       },
-      { backgroundColor: '#d1843d' }
+      { backgroundColor: '#827c34' }
     ];
     const textStyles = {
       color: 'white',
@@ -863,25 +863,25 @@ class SplashScreen extends React.Component {
 
     const descriptionStyles = {
       color: 'white',
-      fontSize: 15,
+      fontSize: 22,
       fontWeight: 'bold',
       padding:10
     };
 
     return (
       <View style={viewStyles}>
-        <Text style={textStyles}>
-          Lokalproducerat i Väst
-        </Text>
+        <Image
+          source={require('./lpiv.png')}
+          //style={{ width: 30, height: 30 }}
+        />
         <Text style={descriptionStyles}>
           En app med maten i fokus!
         </Text>
         
         <View>
         <Button
-            backgroundColor='#03A9F4'
-            buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: -50, padding: 10}}
-            title='Knapp' />
+            buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: -50, padding: 10, backgroundColor: '#a49c41',}}
+            title='Knappen!' />
         </View>
       </View>
       
@@ -996,7 +996,7 @@ const TabNavigator = createBottomTabNavigator(
         
       },
       style: {
-        backgroundColor: '#d1843d',
+        backgroundColor: '#d6d4ae',
       },
     }
   },
