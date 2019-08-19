@@ -863,27 +863,32 @@ class SplashScreen extends React.Component {
 
     const descriptionStyles = {
       color: 'white',
-      fontSize: 22,
+      fontSize: 18,
       fontWeight: 'bold',
       padding:10
     };
 
     return (
-      <View style={viewStyles}>
-        <Image
-          source={require('./lpiv.png')}
-          //style={{ width: 30, height: 30 }}
-        />
-        <Text style={descriptionStyles}>
-          En app med maten i fokus!
-        </Text>
+      
+        <ImageBackground source={require('./field.jpg')} style={{width: '100%', height: '100%'}} style={viewStyles}>
+          
+            <Image
+              source={require('./lpiv.png')}
+              style={{ width: 300, height: 50 }}
+            />
+            <Text style={descriptionStyles}>
+              En app med maten i fokus!
+            </Text>
+            
+            <View>
+            <Button
+                buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: -50, padding: 10, backgroundColor: '#a49c41',}}
+                title='Knappen!' />
+            </View>
+
+          
+        </ImageBackground>
         
-        <View>
-        <Button
-            buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: -50, padding: 10, backgroundColor: '#a49c41',}}
-            title='Knappen!' />
-        </View>
-      </View>
       
     );
   }
