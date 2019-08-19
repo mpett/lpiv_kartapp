@@ -506,7 +506,7 @@ class OverviewScreen extends React.Component {
     var return_array = fetch('https://jsonplaceholder.typicode.com/posts')
     .then(response => response.json())
     .then(responseJson => {
-      console.log(responseJson);
+      //console.log(responseJson);
       this.setState(
         {
           isLoading: false,
@@ -518,16 +518,24 @@ class OverviewScreen extends React.Component {
       );
     })
     .catch(error => {
-      console.error(error);
+      this.setState(
+        {
+          isLoading: false,
+          dataSource: producer_list,
+        },
+        function() {
+          this.arrayholder = producer_list;
+        }
+      );
     });
     
-    console.log(return_array);
+    //console.log(return_array);
 
     return return_array;
   }
 
   search = text => {
-    console.log(text);
+    //console.log(text);
   };
 
   clear = () => {
@@ -620,7 +628,7 @@ class OverviewScreen2 extends React.Component {
     var return_array = fetch('https://jsonplaceholder.typicode.com/posts')
     .then(response => response.json())
     .then(responseJson => {
-      console.log(responseJson);
+      //console.log(responseJson);
       this.setState(
         {
           isLoading: false,
@@ -632,16 +640,24 @@ class OverviewScreen2 extends React.Component {
       );
     })
     .catch(error => {
-      console.error(error);
+      this.setState(
+        {
+          isLoading: false,
+          dataSource: producer_list,
+        },
+        function() {
+          this.arrayholder = producer_list;
+        }
+      );
     });
     
-    console.log(return_array);
+    //console.log(return_array);
 
     return return_array;
   }
 
   search = text => {
-    console.log(text);
+    //console.log(text);
   };
 
   clear = () => {
@@ -763,7 +779,15 @@ class ProducerListScreen extends React.Component {
       );
     })
     .catch(error => {
-      //console.error(error);
+      this.setState(
+        {
+          isLoading: false,
+          dataSource: producer_list,
+        },
+        function() {
+          this.arrayholder = producer_list;
+        }
+      );
     });
     
     //console.log(return_array);
@@ -869,27 +893,20 @@ class SplashScreen extends React.Component {
     };
 
     return (
-      
-        <ImageBackground source={require('./field.jpg')} style={{width: '100%', height: '100%'}} style={viewStyles}>
-          
-            <Image
-              source={require('./lpiv.png')}
-              style={{ width: 300, height: 50 }}
-            />
-            <Text style={descriptionStyles}>
-              En app med maten i fokus!
-            </Text>
-            
-            <View>
-            <Button
-                buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: -50, padding: 10, backgroundColor: '#a49c41',}}
-                title='Knappen!' />
-            </View>
-
-          
-        </ImageBackground>
-        
-      
+      <ImageBackground source={require('./field.jpg')} style={{width: '100%', height: '100%'}} style={viewStyles}>
+        <Image
+          source={require('./lpiv.png')}
+          style={{ width: 300, height: 50 }}
+        />
+        <Text style={descriptionStyles}>
+          En app med maten i fokus!
+        </Text>
+        <View>
+        <Button
+            buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: -50, padding: 10, backgroundColor: '#a49c41',}}
+            title='Knappen!' />
+        </View>        
+      </ImageBackground>
     );
   }
 }
