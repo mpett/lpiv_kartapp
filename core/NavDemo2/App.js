@@ -420,13 +420,14 @@ class MapScreen extends React.Component<Props, State> {
   }
 
   renderMarkers() {
+    const marker_image = require('./lpiv_pin_40_61.png');
     return producer_list.map((location, key) => {
       return (
-        <Marker coordinate = {{
+        <MapView.Marker coordinate = {{
           latitude: parseFloat(location.latitude),
           longitude: parseFloat(location.longitude)
-        }} key={key}>
-        </Marker>
+        }} key={key} image={marker_image}>
+        </MapView.Marker>
       );
     })
   }
