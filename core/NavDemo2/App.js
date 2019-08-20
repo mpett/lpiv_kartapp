@@ -474,12 +474,12 @@ class ProducerScreen extends React.Component {
 
     return(
       <ImageBackground source={{ uri: background }} style={{width: '100%', height: '100%'}}>
-        <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, margin: 20, borderRadius: 10 }}>
+        <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, margin: 20, borderRadius: 10, marginTop: 200 }}>
           <ScrollView>
-            <View style={{ justifyContent: 'center', alignItems: 'center' }}>
+            <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
               <Image
                 source={ { uri: logo_image }}
-                style={{ width: 300, height: 100, flex: 1 }}
+                style={{ width: 300, height: 100, flex: 1, resizeMode: 'contain' }}
               />
             </View>
             <Text style={{marginBottom: 20, marginTop: 20}}>
