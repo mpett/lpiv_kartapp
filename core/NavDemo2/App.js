@@ -479,7 +479,6 @@ class ProducerScreen extends React.Component {
             <View style={{ justifyContent: 'center', alignItems: 'center' }}>
               <Image
                 source={ { uri: logo_image }}
-                
                 style={{ width: 300, height: 100, flex: 1 }}
               />
             </View>
@@ -489,7 +488,11 @@ class ProducerScreen extends React.Component {
             <Button
               backgroundColor='#03A9F4'
               buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20}}
-              title='VISA PÅ KARTA' />
+              title='VISA PÅ KARTA'
+              onPress = {() => {
+                // Navigate to details route with parameter
+                this.props.navigation.navigate('Map') }}
+              />
           </ScrollView>
         </View>
       </ImageBackground>
@@ -925,6 +928,9 @@ const ProducerStack = createStackNavigator(
     Producer: {
       screen: ProducerScreen,
     },
+    Map: {
+      screen: MapScreen,
+    },
   },
   {
     defaultNavigationOptions: {
@@ -951,6 +957,9 @@ const TestStack = createStackNavigator(
     Producer: {
       screen: ProducerScreen,
     },
+    Map: {
+      screen: MapScreen,
+    },
   },
   {
     defaultNavigationOptions: {
@@ -976,6 +985,9 @@ const TestStack2 = createStackNavigator(
     },
     Producer: {
       screen: ProducerScreen,
+    },
+    Map: {
+      screen: MapScreen,
     },
   },
   {
@@ -1071,5 +1083,3 @@ export default class App extends React.Component {
     return <AppContainer />;
   }
 }
-
-
