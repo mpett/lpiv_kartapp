@@ -475,17 +475,16 @@ class ProducerScreen extends React.Component {
     return(
       <ImageBackground source={{ uri: background }} style={{width: '100%', height: '100%'}}>
       
-      <View>
+      <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, margin: 20, borderRadius: 10 }}>
         <ScrollView>
-        <Card image={{ uri: logo_image }} imageProps={{ resizeMode: "contain" }}>
-          <Text style={{marginBottom: 10}}>
+          <Image source={{ uri: logo_image }}  />
+          <Text style={{marginBottom: 20, marginTop: 20}}>
             {description}
           </Text>
           <Button
             backgroundColor='#03A9F4'
-            buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: 0}}
+            buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20}}
             title='VISA PÅ KARTA' />
-        </Card>
         
         </ScrollView>
       </View>
