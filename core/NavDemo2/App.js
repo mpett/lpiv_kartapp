@@ -1,10 +1,11 @@
 import React from "react";
 import { View, Text, Image, StyleSheet, ScrollView, FlatList, Platform, ImageBackground } from "react-native";
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
-import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps';
+import MapView, { PROVIDER_GOOGLE, Marker, navigator } from 'react-native-maps';
 import { Button, ListItem, Card, SearchBar } from 'react-native-elements';
 import TouchableScale from 'react-native-touchable-scale';
 import LinearGradient from 'react-native-linear-gradient';
+import Geolocation from '@react-native-community/geolocation';
 
 import type { Region } from 'react-native-maps';
 
@@ -416,11 +417,13 @@ class LogoTitle extends React.Component {
 class MapScreen extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
+
     this.state = { region: VÄSTRA_GÖTALAND };
   }
 
   renderMarkers() {
-    const marker_image = require('./lpiv_pin_40_61.png');
+    const marker_image = require('./lpiv_pin_60_91.png');
+    
     return producer_list.map((location, key) => {
       return (
         <MapView.Marker coordinate = {{
@@ -433,6 +436,15 @@ class MapScreen extends React.Component<Props, State> {
   }
 
   render() {
+    function success(p) {
+      position = p;
+    }
+
+    function error(msg) {
+      message = msg;
+    }
+
+    Geolocation.getCurrentPosition(success, error);
     return (
       <View style={ styles.container }>
         <MapView
@@ -443,7 +455,10 @@ class MapScreen extends React.Component<Props, State> {
 
           {
             this.renderMarkers()
+            
           }
+
+          
           
         </MapView>
       </View>
