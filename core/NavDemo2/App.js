@@ -414,6 +414,39 @@ class LogoTitle extends React.Component {
   }
 }
 
+class SingleMapScreen extends React.Component<Porps, State> {
+  constructor(props: Props) {
+    super(props);
+
+    this.state = { region: {
+        latitude: 58.2528,
+        longitude: 12.77,
+        latitudeDelta: 0.2,
+        longitudeDelta: 0.2
+      }
+    }
+  }
+
+  render() {
+    const marker_image = require('./lpiv_pin_60_91.png');
+    return (
+      <View style={ styles.container }>
+        <MapView
+          provider = { PROVIDER_GOOGLE }
+          region = { this.state.region }
+          style = { styles.mapViewContainer }
+          >
+          <MapView.Marker coordinate = {{
+            latitude: 58.2528,
+            longitude: 12.77
+          }} image={marker_image}>
+          </MapView.Marker>
+        </MapView>
+      </View>
+    );
+  }
+}
+
 class MapScreen extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
@@ -457,8 +490,6 @@ class MapScreen extends React.Component<Props, State> {
             this.renderMarkers()
             
           }
-
-          
           
         </MapView>
       </View>
@@ -945,7 +976,7 @@ const ProducerStack = createStackNavigator(
       screen: ProducerScreen,
     },
     Map: {
-      screen: MapScreen,
+      screen: SingleMapScreen,
     },
   },
   {
@@ -974,7 +1005,7 @@ const TestStack = createStackNavigator(
       screen: ProducerScreen,
     },
     Map: {
-      screen: MapScreen,
+      screen: SingleMapScreen,
     },
   },
   {
@@ -1003,7 +1034,7 @@ const TestStack2 = createStackNavigator(
       screen: ProducerScreen,
     },
     Map: {
-      screen: MapScreen,
+      screen: SingleMapScreen,
     },
   },
   {
