@@ -418,9 +418,15 @@ class SingleMapScreen extends React.Component<Porps, State> {
   constructor(props: Props) {
     super(props);
 
+    const { navigation } = this.props;
+    const lat_param = navigation.getParam('lat', '0.0');
+    const long_param = navigation.getParam('long', '0.0');
+    const latitude_parameter = parseFloat(lat_param);
+    const longitude_parameter = parseFloat(long_param);
+
     this.state = { region: {
-        latitude: 58.2528,
-        longitude: 12.77,
+        latitude: latitude_parameter,
+        longitude: longitude_parameter,
         latitudeDelta: 0.2,
         longitudeDelta: 0.2
       }
@@ -429,6 +435,7 @@ class SingleMapScreen extends React.Component<Porps, State> {
 
   render() {
     const marker_image = require('./lpiv_pin_60_91.png');
+
     return (
       <View style={ styles.container }>
         <MapView
@@ -437,8 +444,8 @@ class SingleMapScreen extends React.Component<Porps, State> {
           style = { styles.mapViewContainer }
           >
           <MapView.Marker coordinate = {{
-            latitude: 58.2528,
-            longitude: 12.77
+            latitude: this.state.region.latitude,
+            longitude: this.state.region.longitude
           }} image={marker_image}>
           </MapView.Marker>
         </MapView>
@@ -478,6 +485,9 @@ class MapScreen extends React.Component<Props, State> {
     }
 
     Geolocation.getCurrentPosition(success, error);
+
+    
+
     return (
       <View style={ styles.container }>
         <MapView
@@ -518,6 +528,8 @@ class ProducerScreen extends React.Component {
     const otherParam = navigation.getParam('otherParam', 'finns ej');
     const logo_image = navigation.getParam('image', '404');
     const background = navigation.getParam('cover', '404');
+    const latitude = navigation.getParam('lat', '58.2528');
+    const longitude = navigation.getParam('long', '12.77');
 
     return(
       <ImageBackground source={{ uri: background }} style={{width: '100%', height: '100%'}}>
@@ -538,7 +550,10 @@ class ProducerScreen extends React.Component {
               title='VISA PÅ KARTA'
               onPress = {() => {
                 // Navigate to details route with parameter
-                this.props.navigation.navigate('Map') }}
+                this.props.navigation.navigate('Map', {
+                  lat: latitude,
+                  long: longitude
+                })}}
               />
           </ScrollView>
         </View>
@@ -648,6 +663,8 @@ class OverviewScreen extends React.Component {
                     desc: item.description,
                     image: item.logo_url,
                     cover: item.cover_image_url,
+                    lat: item.latitude,
+                    long: item.longitude
                   });
                 }} 
     />
@@ -770,6 +787,8 @@ class OverviewScreen2 extends React.Component {
                     desc: item.description,
                     image: item.logo_url,
                     cover: item.cover_image_url,
+                    lat: item.latitude,
+                    long: item.longitude
                   });
                 }} 
     />
@@ -890,6 +909,8 @@ class ProducerListScreen extends React.Component {
                     desc: item.description,
                     image: item.logo_url,
                     cover: item.cover_image_url,
+                    lat: item.latitude,
+                    long: item.longitude
                   });
                 }} 
       title={item.name}
