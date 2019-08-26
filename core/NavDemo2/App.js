@@ -546,13 +546,21 @@ class ProducerScreen extends React.Component {
             <Button
               backgroundColor='#03A9F4'
               buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20}}
-              title='HITTA OSS'
+              title='Hitta oss'
               onPress = {() => {
                 // Navigate to details route with parameter
                 this.props.navigation.navigate('Map', {
                   lat: latitude,
                   long: longitude
                 })}}
+              />
+              <Button
+              backgroundColor='#03A9F4'
+              buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20}}
+              title='Visa vägbeskrivning (öppnas i webbläsaren)'
+              onPress = {() => {
+                // Navigate to details route with parameter
+                }}
               />
           </ScrollView>
         </View>
