@@ -2,10 +2,12 @@ import React from "react";
 import { View, Text, Image, StyleSheet, ScrollView, FlatList, Platform, ImageBackground, Linking } from "react-native";
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
 import MapView, { PROVIDER_GOOGLE, Marker, navigator } from 'react-native-maps';
-import { Button, ListItem, Card, SearchBar } from 'react-native-elements';
+import { Button, ListItem, Card, SearchBar, Headers } from 'react-native-elements';
 import TouchableScale from 'react-native-touchable-scale';
 import LinearGradient from 'react-native-linear-gradient';
 import Geolocation from '@react-native-community/geolocation';
+
+import { Buffer } from 'buffer'
 
 import type { Region } from 'react-native-maps';
 
@@ -529,6 +531,7 @@ class ProducerScreen extends React.Component {
     const background = navigation.getParam('cover', '404');
     const latitude = navigation.getParam('lat', '58.2528');
     const longitude = navigation.getParam('long', '12.77');
+    const direction_link = navigation.getParam('direction', 'https://www.google.com');
 
     return(
       <ImageBackground source={{ uri: background }} style={{width: '100%', height: '100%'}}>
@@ -559,7 +562,7 @@ class ProducerScreen extends React.Component {
               buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20}}
               title='Vägbeskrivning (webbläsare)'
               onPress = {() => {
-                Linking.openURL('https://www.google.com')
+                Linking.openURL(direction_link)
               }}
               >
             </Button>
@@ -579,30 +582,28 @@ class OverviewScreen extends React.Component {
   }
 
   componentDidMount() {
-    var return_array = fetch('https://lokalproducerativast.se/wp-json/tivala/v1/producerlist')
+    var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v1/producerlist', {
+      method: 'get',
+      headers: new global.Headers({
+        'Authorization': 'Basic ' + Buffer.from('api_2jWTR5iTIHOOxdIVqV2HFLPDJ0aQOMydlSGNbdoneEXGcI39JNC9R2W:uf6He48ci0H92Y7E5T6dmKAGuOiGE0PGwBlp51drqFHYehQP9HKBftu').toString('base64'),
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }),
+      body: undefined
+    })
     .then(response => response.json())
     .then(responseJson => {
       //console.log(responseJson);
       this.setState(
         {
           isLoading: false,
-          dataSource: producer_list,
+          dataSource: responseJson,
         },
         function() {
-          this.arrayholder = producer_list;
+          this.arrayholder = responseJson;
         }
       );
     })
     .catch(error => {
-      this.setState(
-        {
-          isLoading: false,
-          dataSource: producer_list,
-        },
-        function() {
-          this.arrayholder = producer_list;
-        }
-      );
     });
     
     //console.log(return_array);
@@ -672,7 +673,8 @@ class OverviewScreen extends React.Component {
                     image: item.logo_url,
                     cover: item.cover_image_url,
                     lat: item.latitude,
-                    long: item.longitude
+                    long: item.longitude,
+                    direction: item.map_direction_link
                   });
                 }} 
     />
@@ -703,17 +705,24 @@ class OverviewScreen2 extends React.Component {
   }
 
   componentDidMount() {
-    var return_array = fetch('https://jsonplaceholder.typicode.com/posts')
+    var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v1/producerlist', {
+      method: 'get',
+      headers: new global.Headers({
+        'Authorization': 'Basic ' + Buffer.from('api_2jWTR5iTIHOOxdIVqV2HFLPDJ0aQOMydlSGNbdoneEXGcI39JNC9R2W:uf6He48ci0H92Y7E5T6dmKAGuOiGE0PGwBlp51drqFHYehQP9HKBftu').toString('base64'),
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }),
+      body: undefined
+    })
     .then(response => response.json())
     .then(responseJson => {
       //console.log(responseJson);
       this.setState(
         {
           isLoading: false,
-          dataSource: producer_list,
+          dataSource: responseJson,
         },
         function() {
-          this.arrayholder = producer_list;
+          this.arrayholder = responseJson;
         }
       );
     })
@@ -830,17 +839,24 @@ class ProducerListScreen extends React.Component {
   }
 
   componentDidMount() {
-    var return_array = fetch('https://jsonplaceholder.typicode.com/posts')
+    var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v1/producerlist', {
+      method: 'get',
+      headers: new global.Headers({
+        'Authorization': 'Basic ' + Buffer.from('api_2jWTR5iTIHOOxdIVqV2HFLPDJ0aQOMydlSGNbdoneEXGcI39JNC9R2W:uf6He48ci0H92Y7E5T6dmKAGuOiGE0PGwBlp51drqFHYehQP9HKBftu').toString('base64'),
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }),
+      body: undefined
+    })
     .then(response => response.json())
     .then(responseJson => {
       //console.log(responseJson);
       this.setState(
         {
           isLoading: false,
-          dataSource: producer_list,
+          dataSource: responseJson,
         },
         function() {
-          this.arrayholder = producer_list;
+          this.arrayholder = responseJson;
         }
       );
     })
