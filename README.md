@@ -14,7 +14,7 @@ Models are defined using: http://www.jsond.org/
 
 ```
 {
-  "name": 'Dalis Gård',
+  "business_name": 'Dalis Gård',
   "logo_url": 'https://lokalproducerativast.se/wp-content/uploads/producers/8i12tkxe5n4feos.jpg',
   "cover_image_url: '',
   "category": 'Fisk och skaldjur',
