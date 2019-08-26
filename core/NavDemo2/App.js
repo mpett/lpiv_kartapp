@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, ScrollView, FlatList, Platform, ImageBackground } from "react-native";
+import { View, Text, Image, StyleSheet, ScrollView, FlatList, Platform, ImageBackground, Linking } from "react-native";
 import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
 import MapView, { PROVIDER_GOOGLE, Marker, navigator } from 'react-native-maps';
 import { Button, ListItem, Card, SearchBar } from 'react-native-elements';
@@ -559,8 +559,8 @@ class ProducerScreen extends React.Component {
               buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20}}
               title='Vägbeskrivning (webbläsare)'
               onPress = {() => {
-                // Navigate to details route with parameter
-                }}
+                Linking.openURL('https://www.google.com')
+              }}
               >
             </Button>
           </ScrollView>
@@ -1095,7 +1095,7 @@ const TabNavigator = createBottomTabNavigator(
         
       },
       style: {
-        backgroundColor: 'white',
+        backgroundColor: '#e1ebf2',
       },
     }
   },
