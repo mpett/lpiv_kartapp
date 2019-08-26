@@ -8,7 +8,7 @@ Models are defined using: http://www.jsond.org/
 
 ### Get Producers
 
-- `GET /producerlist -> #profile`
+- `GET /producerlist -> #producerlist`
 
 **profile.jsond**
 
