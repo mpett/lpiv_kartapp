@@ -808,28 +808,14 @@ class OverviewScreen2 extends React.Component {
 
     return(
       <View style = {style.container}>
-        <View style = {style.column} >
-          <FlatList 
-            data = {columnData}
-            //ItemSeparatorComponent={this.ListViewItemSeparator}
-            renderItem={this.renderItem}
-            enableEmptySections={false}
-            //style={{ marginTop: 10 }}
-            keyExtractor = {(item, index) => index.toString()}
-          />
-        </View>
-
-        <View style = {style.column} >
-          <FlatList 
-            data = {columnData}
-            //ItemSeparatorComponent={this.ListViewItemSeparator}
-            renderItem={this.renderItem}
-            enableEmptySections={false}
-            //style={{ marginTop: 10 }}
-            keyExtractor = {(item, index) => index.toString()}
-          />
-        </View>
-        
+        <FlatList 
+          data = {columnData}
+          //ItemSeparatorComponent={this.ListViewItemSeparator}
+          renderItem={this.renderItem}
+          enableEmptySections={false}
+          //style={{ marginTop: 10 }}
+          keyExtractor = {(item, index) => index.toString()}
+        />
       </View>
     );
   }
