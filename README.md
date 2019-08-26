@@ -1,4 +1,4 @@
-# iGively
+# Lokalproducerat i Väst AB
 
 ## API
 
