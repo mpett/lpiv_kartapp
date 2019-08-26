@@ -10,7 +10,7 @@ Models are defined using: http://www.jsond.org/
 
 - `GET /producerlist -> #producerlist`
 
-**profile.jsond**
+**producerlist.jsond**
 
 ```
 {
