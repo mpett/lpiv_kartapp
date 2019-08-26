@@ -465,6 +465,7 @@ class MapScreen extends React.Component<Props, State> {
     const marker_image = require('./lpiv_pin_60_91.png');
     
     return producer_list.map((location, key) => {
+
       return (
         <MapView.Marker coordinate = {{
           latitude: parseFloat(location.latitude),
@@ -485,8 +486,6 @@ class MapScreen extends React.Component<Props, State> {
     }
 
     Geolocation.getCurrentPosition(success, error);
-
-    
 
     return (
       <View style={ styles.container }>
@@ -547,7 +546,7 @@ class ProducerScreen extends React.Component {
             <Button
               backgroundColor='#03A9F4'
               buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20}}
-              title='VISA PÅ KARTA'
+              title='HITTA OSS'
               onPress = {() => {
                 // Navigate to details route with parameter
                 this.props.navigation.navigate('Map', {
@@ -571,7 +570,7 @@ class OverviewScreen extends React.Component {
   }
 
   componentDidMount() {
-    var return_array = fetch('https://jsonplaceholder.typicode.com/posts')
+    var return_array = fetch('https://lokalproducerativast.se/wp-json/tivala/v1/producerlist')
     .then(response => response.json())
     .then(responseJson => {
       //console.log(responseJson);
@@ -1101,7 +1100,7 @@ const TabNavigator = createBottomTabNavigator(
         
       },
       style: {
-        backgroundColor: '#d6d4ae',
+        backgroundColor: 'white',
       },
     }
   },
