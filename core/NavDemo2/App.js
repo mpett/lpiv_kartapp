@@ -563,15 +563,6 @@ class ProducerScreen extends React.Component {
                   long: longitude
                 })}}
               />
-            <Button
-              backgroundColor='#03A9F4'
-              buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20}}
-              title='Vägbeskrivning (webbläsare)'
-              onPress = {() => {
-                Linking.openURL(direction_link)
-              }}
-              >
-            </Button>
           </ScrollView>
         </View>
         </ScrollView>
