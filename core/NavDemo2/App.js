@@ -691,45 +691,57 @@ class OverviewScreen extends React.Component {
   }
 
   render() {
+    const viewStyles = [
+      {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#827c34'
+      },
+      { backgroundColor: '#827c34' }
+    ];
+
     return(
-      <View style={{marginBottom: 30}}>
-        <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15}}>
-        <Button
-              color='#37945a'
-              buttonStyle={{borderRadius: 5, width: 120, marginRight: 15, backgroundColor: "#37945a"}}
-              title='Alla'
-              onPress = {() => {
-                // Navigate to details route with parameter
-                this.SearchFilterFunction("")}}
-              />
+      <ImageBackground source={require('./field.jpg')} style={{width: '100%', height: '100%'}} style={viewStyles}>
+        <View style={{marginTop: 30}}>
+          <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15}}>
           <Button
-              backgroundColor='#37945a'
-              buttonStyle={{borderRadius: 5, width: 120, backgroundColor: "#37945a"}}
-              title='Matfest'
-              onPress = {() => {
-                // Navigate to details route with parameter
-                this.SearchFilterFunction("gr")}}
-              />
-          <Button
-          backgroundColor='#37945a'
-          buttonStyle={{borderRadius: 5, width: 120, marginLeft: 15, backgroundColor: "#37945a"}}
-          title='LPIV'
-          onPress = {() => {
-            // Navigate to details route with parameter
-            this.SearchFilterFunction("al")}}
-          />
+                color='#37945a'
+                buttonStyle={{borderRadius: 5, width: 120, marginRight: 15, marginLeft:15, backgroundColor: "#37945a"}}
+                title='Alla'
+                onPress = {() => {
+                  // Navigate to details route with parameter
+                  this.SearchFilterFunction("")}}
+                />
+            <Button
+                backgroundColor='#37945a'
+                buttonStyle={{borderRadius: 5, width: 120, backgroundColor: "#37945a"}}
+                title='Matfest'
+                onPress = {() => {
+                  // Navigate to details route with parameter
+                  this.SearchFilterFunction("gr")}}
+                />
+            <Button
+            backgroundColor='#37945a'
+            buttonStyle={{borderRadius: 5, width: 120, marginLeft: 15, marginRight: 15, backgroundColor: "#37945a"}}
+            title='LPIV'
+            onPress = {() => {
+              // Navigate to details route with parameter
+              this.SearchFilterFunction("al")}}
+            />
+          </View>
+          <View style={{marginTop:5}}>
+            <FlatList 
+              data={this.state.dataSource}
+              //ItemSeparatorComponent={this.ListViewItemSeparator}
+              renderItem={this.renderItem}
+              enableEmptySections={false}
+              style={{ marginLeft: 30, marginRight: 30 }}
+              keyExtractor = {(item, index) => index.toString()}
+            />
+          </View>
         </View>
-        <View style={{marginTop:5}}>
-          <FlatList 
-            data={this.state.dataSource}
-            //ItemSeparatorComponent={this.ListViewItemSeparator}
-            renderItem={this.renderItem}
-            enableEmptySections={false}
-            //style={{ marginTop: 10 }}
-            keyExtractor = {(item, index) => index.toString()}
-          />
-        </View>
-      </View>
+      </ImageBackground>
     );
   }
 }
@@ -820,7 +832,7 @@ class OverviewScreen2 extends React.Component {
       tension = {100}
       activeScale = {0.95}
       linearGradientProps = {{
-        colors: ['#4287f5', '#73a3f0'],
+        colors: ['#558a87', '#436e6b'],
       }}
       ViewComponent = {LinearGradient}
       leftAvatar = {{ rounded: true, source: { uri: item.logo_url } }}
@@ -853,17 +865,30 @@ class OverviewScreen2 extends React.Component {
     data1= this.state.dataSource;
     columnData = data1;
 
+    const viewStyles = [
+      {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#827c34'
+      },
+      { backgroundColor: '#827c34' }
+    ];
+
     return(
-      <View style = {style.container}>
-        <FlatList 
-          data = {columnData}
-          //ItemSeparatorComponent={this.ListViewItemSeparator}
-          renderItem={this.renderItem}
-          enableEmptySections={false}
-          //style={{ marginTop: 10 }}
-          keyExtractor = {(item, index) => index.toString()}
-        />
-      </View>
+      <ImageBackground source={require('./field.jpg')} style={{width: '100%', height: '100%'}} style={viewStyles}>
+        <View style = {style.container}>
+          <FlatList 
+            data = {columnData}
+            //ItemSeparatorComponent={this.ListViewItemSeparator}
+            renderItem={this.renderItem}
+            enableEmptySections={false}
+            style={{ marginLeft: 20, marginRight: 20, marginTop: 5, marginBottom: 5 }}
+            keyExtractor = {(item, index) => index.toString()}
+          />
+        </View>
+      </ImageBackground>
+      
     );
   }
 }
@@ -970,21 +995,21 @@ class ProducerListScreen extends React.Component {
     return(
       <View>
         <SearchBar
-          round
-          searchIcon={{ size: 24 }}
-          onChangeText = {text => this.SearchFilterFunction(text)}
-          onClear={text => this.SearchFilterFunction('')}
-          placeholder="Sök..."
-          value={this.state.search}
-        />
-        <FlatList 
-          data={this.state.dataSource}
-          //ItemSeparatorComponent={this.ListViewItemSeparator}
-          renderItem={this.renderItem}
-          enableEmptySections={false}
-          //style={{ marginTop: 10 }}
-          keyExtractor = {(item, index) => index.toString()}
-        />
+            round
+            searchIcon={{ size: 24 }}
+            onChangeText = {text => this.SearchFilterFunction(text)}
+            onClear={text => this.SearchFilterFunction('')}
+            placeholder="Sök..."
+            value={this.state.search}
+          />
+          <FlatList 
+            data={this.state.dataSource}
+            //ItemSeparatorComponent={this.ListViewItemSeparator}
+            renderItem={this.renderItem}
+            enableEmptySections={false}
+            //style={{ marginTop: 10 }}
+            keyExtractor = {(item, index) => index.toString()}
+          />
       </View>
     );
   }
@@ -1137,7 +1162,7 @@ const TabNavigator = createBottomTabNavigator(
   },
   {
     tabBarOptions: {
-      activeTintColor: '#453220',
+      activeTintColor: '#d3edad',
       inactiveTintColor: '#7d7165',
       fontStyle: 'bold',
       labelStyle: {
@@ -1145,7 +1170,7 @@ const TabNavigator = createBottomTabNavigator(
         
       },
       style: {
-        backgroundColor: '#e1ebf2',
+        backgroundColor: '#9cb874',
       },
     }
   },
