@@ -416,7 +416,7 @@ class LogoTitle extends React.Component {
   }
 }
 
-class SingleMapScreen extends React.Component<Porps, State> {
+class SingleMapScreen extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
 
@@ -473,6 +473,11 @@ class MapScreen extends React.Component<Props, State> {
           latitude: parseFloat(location.latitude),
           longitude: parseFloat(location.longitude)
         }} key={key} image={marker_image}>
+          <MapView.Callout>
+                <View>
+                  <Text>{location.business_name}</Text>
+                </View>
+            </MapView.Callout>
         </MapView.Marker>
       );
     })
@@ -535,7 +540,8 @@ class ProducerScreen extends React.Component {
 
     return(
       <ImageBackground source={{ uri: background }} style={{width: '100%', height: '100%'}}>
-        <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, margin: 20, borderRadius: 10, marginTop: 200 }}>
+        <ScrollView>
+        <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 200 }}>
           <ScrollView>
             <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
               <Image
@@ -568,6 +574,7 @@ class ProducerScreen extends React.Component {
             </Button>
           </ScrollView>
         </View>
+        </ScrollView>
       </ImageBackground>
     )
   }
@@ -680,17 +687,57 @@ class OverviewScreen extends React.Component {
     />
   )
 
+  SearchFilterFunction(text) {
+    const newData = this.arrayholder.filter(function(item) {
+      const itemData = item.business_name ? item.business_name.toUpperCase() : ''.toUpperCase();
+      const textData = text.toUpperCase();
+      return itemData.indexOf(textData) > -1;
+    });
+    this.setState({
+      dataSource: newData,
+      search: text,
+    });
+  }
+
   render() {
     return(
-      <View>
-        <FlatList 
-          data={this.state.dataSource}
-          //ItemSeparatorComponent={this.ListViewItemSeparator}
-          renderItem={this.renderItem}
-          enableEmptySections={false}
-          //style={{ marginTop: 10 }}
-          keyExtractor = {(item, index) => index.toString()}
-        />
+      <View style={{marginBottom: 30}}>
+        <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15}}>
+        <Button
+              color='#37945a'
+              buttonStyle={{borderRadius: 5, width: 120, marginRight: 15, backgroundColor: "#37945a"}}
+              title='Alla'
+              onPress = {() => {
+                // Navigate to details route with parameter
+                this.SearchFilterFunction("")}}
+              />
+          <Button
+              backgroundColor='#37945a'
+              buttonStyle={{borderRadius: 5, width: 120, backgroundColor: "#37945a"}}
+              title='Matfest'
+              onPress = {() => {
+                // Navigate to details route with parameter
+                this.SearchFilterFunction("gr")}}
+              />
+          <Button
+          backgroundColor='#37945a'
+          buttonStyle={{borderRadius: 5, width: 120, marginLeft: 15, backgroundColor: "#37945a"}}
+          title='LPIV'
+          onPress = {() => {
+            // Navigate to details route with parameter
+            this.SearchFilterFunction("al")}}
+          />
+        </View>
+        <View style={{marginTop:5}}>
+          <FlatList 
+            data={this.state.dataSource}
+            //ItemSeparatorComponent={this.ListViewItemSeparator}
+            renderItem={this.renderItem}
+            enableEmptySections={false}
+            //style={{ marginTop: 10 }}
+            keyExtractor = {(item, index) => index.toString()}
+          />
+        </View>
       </View>
     );
   }
@@ -986,9 +1033,6 @@ class SplashScreen extends React.Component {
           En app med maten i fokus!
         </Text>
         <View>
-        <Button
-            buttonStyle={{borderRadius: 0, marginLeft: 0, marginRight: 0, marginBottom: -50, padding: 10, backgroundColor: '#a49c41',}}
-            title='Knappen!' />
         </View>        
       </ImageBackground>
     );
@@ -1099,7 +1143,6 @@ const TabNavigator = createBottomTabNavigator(
     Karta: {
       screen: MapScreen,
     },
-        
   },
   {
     tabBarOptions: {
