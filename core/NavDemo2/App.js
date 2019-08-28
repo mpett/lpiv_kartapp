@@ -648,7 +648,7 @@ class OverviewScreen extends React.Component {
       tension = {100}
       activeScale = {0.95}
       linearGradientProps = {{
-        colors: ['#37945a', '#7bb08f'],
+        colors: ['#43704e', '#548b62'],
       }}
       ViewComponent = {LinearGradient}
       leftAvatar = {{ rounded: true, source: { uri: item.logo_url } }}
@@ -707,7 +707,7 @@ class OverviewScreen extends React.Component {
           <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15}}>
           <Button
                 color='#37945a'
-                buttonStyle={{borderRadius: 5, width: 120, marginRight: 15, marginLeft:15, backgroundColor: "#37945a"}}
+                buttonStyle={{borderRadius: 5, width: 120, marginRight: 15, marginLeft:15, backgroundColor: "#43704e"}}
                 title='Alla'
                 onPress = {() => {
                   // Navigate to details route with parameter
@@ -715,7 +715,7 @@ class OverviewScreen extends React.Component {
                 />
             <Button
                 backgroundColor='#37945a'
-                buttonStyle={{borderRadius: 5, width: 120, backgroundColor: "#37945a"}}
+                buttonStyle={{borderRadius: 5, width: 120, backgroundColor: "#43704e"}}
                 title='Matfest'
                 onPress = {() => {
                   // Navigate to details route with parameter
@@ -723,7 +723,7 @@ class OverviewScreen extends React.Component {
                 />
             <Button
             backgroundColor='#37945a'
-            buttonStyle={{borderRadius: 5, width: 120, marginLeft: 15, marginRight: 15, backgroundColor: "#37945a"}}
+            buttonStyle={{borderRadius: 5, width: 120, marginLeft: 15, marginRight: 15, backgroundColor: "#43704e"}}
             title='LPIV'
             onPress = {() => {
               // Navigate to details route with parameter
@@ -838,6 +838,8 @@ class OverviewScreen2 extends React.Component {
       leftAvatar = {{ rounded: true, source: { uri: item.logo_url } }}
       title={item.business_name}
       titleStyle = {{ color: 'white', fontWeight: 'bold' }}
+      subtitle = {"LPIV, Matfest"}
+      subtitleStyle = {{ color: 'white' }}
       chevronColor="white"
       chevron
       containerStyle = {{ marginLeft: 5,
@@ -988,12 +990,13 @@ class ProducerListScreen extends React.Component {
                 }} 
       title={item.business_name}
       leftAvatar={{ source: { uri: item.logo_url } }}
+      backgroundColor="#F7F7DA"
     />
   )
 
   render() {
     return(
-      <View>
+      <View style = {{backgroundColor:"#F7F7DA"}}>
         <SearchBar
             round
             searchIcon={{ size: 24 }}
@@ -1001,9 +1004,11 @@ class ProducerListScreen extends React.Component {
             onClear={text => this.SearchFilterFunction('')}
             placeholder="Sök..."
             value={this.state.search}
+            
           />
           <FlatList 
             data={this.state.dataSource}
+            backgroundColor="#F7F7DA"
             //ItemSeparatorComponent={this.ListViewItemSeparator}
             renderItem={this.renderItem}
             enableEmptySections={false}
@@ -1033,7 +1038,7 @@ class SplashScreen extends React.Component {
     };
 
     const descriptionStyles = {
-      color: 'white',
+      color: '#273f3e',
       fontSize: 18,
       fontWeight: 'bold',
       padding:10
@@ -1163,14 +1168,21 @@ const TabNavigator = createBottomTabNavigator(
   {
     tabBarOptions: {
       activeTintColor: '#d3edad',
-      inactiveTintColor: '#7d7165',
+      inactiveTintColor: '#373416',
       fontStyle: 'bold',
+      height: 10,
+      swipeEnabled: true,
+      animationEnabled: true,
+      lazy: true,
       labelStyle: {
-        fontSize: 16,
+        fontSize: 12,
+        
         
       },
       style: {
-        backgroundColor: '#9cb874',
+        backgroundColor: '#928b3a',
+        height: 30,
+        fontStyle: 'bold'
       },
     }
   },
