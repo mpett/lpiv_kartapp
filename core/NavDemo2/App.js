@@ -721,7 +721,7 @@ class OverviewScreen extends React.Component {
     ];
 
     return(
-      <ImageBackground source={require('./field.jpg')} style={{width: '100%', height: '100%'}} style={viewStyles}>
+      <ImageBackground source={require('./field2.jpg')} style={{width: '100%', height: '100%'}} style={viewStyles}>
         <View style={{marginTop: 30}}>
           <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15}}>
           <Button
@@ -897,7 +897,7 @@ class OverviewScreen2 extends React.Component {
     ];
 
     return(
-      <ImageBackground source={require('./field.jpg')} style={{width: '100%', height: '100%'}} style={viewStyles}>
+      <ImageBackground source={require('./field2.jpg')} style={{width: '100%', height: '100%'}} style={viewStyles}>
         <View style = {style.container}>
           <FlatList 
             data = {columnData}
@@ -1051,20 +1051,23 @@ class SplashScreen extends React.Component {
       { backgroundColor: '#827c34' }
     ];
     const textStyles = {
-      color: 'white',
+      color: '#cccccc',
       fontSize: 30,
       fontWeight: 'bold'
     };
 
     const descriptionStyles = {
-      color: '#273f3e',
+      color: 'white',
       fontSize: 18,
       fontWeight: 'bold',
-      padding:10
+      padding:10,
+      textShadowColor: 'rgba(0, 0, 0, 0.75)',
+      textShadowOffset: {width: -1, height: 1},
+      textShadowRadius: 10
     };
 
     return (
-      <ImageBackground source={require('./field.jpg')} style={{width: '100%', height: '100%'}} style={viewStyles}>
+      <ImageBackground source={require('./field2.jpg')} style={{width: '100%', height: '100%'}} style={viewStyles}>
         <Image
           source={require('./lpiv.png')}
           style={{ width: 300, height: 50 }}
