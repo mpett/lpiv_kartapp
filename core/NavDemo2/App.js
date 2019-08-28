@@ -473,7 +473,19 @@ class MapScreen extends React.Component<Props, State> {
           latitude: parseFloat(location.latitude),
           longitude: parseFloat(location.longitude)
         }} key={key} image={marker_image}>
-          <MapView.Callout>
+          <MapView.Callout onPress = {() => {
+                  // Navigate to details route with parameter
+                  this.props.navigation.navigate('Producer', {
+                    itemId: 86,
+                    otherParam: location.business_name,
+                    desc: location.description,
+                    image: location.logo_url,
+                    cover: location.cover_image_url,
+                    lat: location.latitude,
+                    long: location.longitude,
+                    direction: location.map_direction_link
+                  });
+                }} >
                 <View>
                   <Text>{location.business_name}</Text>
                 </View>
@@ -1147,6 +1159,32 @@ const TestStack2 = createStackNavigator(
   {headerMode: 'screen'}
 )
 
+const MapStack = createStackNavigator(
+  {
+    Map: {
+      screen: MapScreen,
+      navigationOptions: {
+        header: null,
+      }
+    },
+    Producer: {
+      screen: ProducerScreen,
+    },
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#f4511e',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },  
+  },
+  {headerMode: 'screen'}
+)
+
 const TabNavigator = createBottomTabNavigator(
   {
     Start: {
@@ -1162,7 +1200,7 @@ const TabNavigator = createBottomTabNavigator(
       screen: ProducerStack,
     },
     Karta: {
-      screen: MapScreen,
+      screen: MapStack,
     },
   },
   {
@@ -1170,7 +1208,7 @@ const TabNavigator = createBottomTabNavigator(
       activeTintColor: '#d3edad',
       inactiveTintColor: '#373416',
       fontStyle: 'bold',
-      height: 10,
+      height: 8,
       swipeEnabled: true,
       animationEnabled: true,
       lazy: true,
@@ -1181,7 +1219,7 @@ const TabNavigator = createBottomTabNavigator(
       },
       style: {
         backgroundColor: '#928b3a',
-        height: 30,
+        height: 27,
         fontStyle: 'bold'
       },
     }
