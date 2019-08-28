@@ -1082,9 +1082,15 @@ const ProducerStack = createStackNavigator(
     },
     Producer: {
       screen: ProducerScreen,
+      navigationOptions: {
+        header: null,
+      }
     },
     Map: {
       screen: SingleMapScreen,
+      navigationOptions: {
+        header: null,
+      }
     },
   },
   {
@@ -1111,9 +1117,15 @@ const TestStack = createStackNavigator(
     },
     Producer: {
       screen: ProducerScreen,
+      navigationOptions: {
+        header: null,
+      }
     },
     Map: {
       screen: SingleMapScreen,
+      navigationOptions: {
+        header: null,
+      }
     },
   },
   {
@@ -1140,9 +1152,15 @@ const TestStack2 = createStackNavigator(
     },
     Producer: {
       screen: ProducerScreen,
+      navigationOptions: {
+        header: null,
+      }
     },
     Map: {
       screen: SingleMapScreen,
+      navigationOptions: {
+        header: null,
+      }
     },
   },
   {
@@ -1169,6 +1187,9 @@ const MapStack = createStackNavigator(
     },
     Producer: {
       screen: ProducerScreen,
+      navigationOptions: {
+        header: null,
+      }
     },
   },
   {
