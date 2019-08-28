@@ -423,12 +423,14 @@ class SingleMapScreen extends React.Component<Props, State> {
     const { navigation } = this.props;
     const lat_param = navigation.getParam('lat', '0.0');
     const long_param = navigation.getParam('long', '0.0');
+    const adress_parameter = navigation.getParam('adress', "Grusvägen 8 14242 Timmersdala")
     const latitude_parameter = parseFloat(lat_param);
     const longitude_parameter = parseFloat(long_param);
 
     this.state = { region: {
         latitude: latitude_parameter,
         longitude: longitude_parameter,
+        visiting_adress: adress_parameter,
         latitudeDelta: 0.2,
         longitudeDelta: 0.2
       }
@@ -449,6 +451,11 @@ class SingleMapScreen extends React.Component<Props, State> {
             latitude: this.state.region.latitude,
             longitude: this.state.region.longitude
           }} image={marker_image}>
+            <MapView.Callout>
+              <View>
+                <Text>{this.state.region.visiting_adress}</Text>
+              </View>
+            </MapView.Callout>
           </MapView.Marker>
         </MapView>
       </View>
