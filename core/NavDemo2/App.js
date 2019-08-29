@@ -490,7 +490,8 @@ class MapScreen extends React.Component<Props, State> {
                     cover: location.cover_image_url,
                     lat: location.latitude,
                     long: location.longitude,
-                    direction: location.map_direction_link
+                    direction: location.map_direction_link,
+                    adress: item.visiting_adress
                   });
                 }} >
                 <View>
@@ -553,6 +554,7 @@ class ProducerScreen extends React.Component {
     const background = navigation.getParam('cover', '404');
     const latitude = navigation.getParam('lat', '58.2528');
     const longitude = navigation.getParam('long', '12.77');
+    const producer_adress = navigation.getParam('adress', 'Kogatan 12 Timmersdala 15623');
 
     return(
       <ImageBackground source={{ uri: background }} style={{width: '100%', height: '100%'}}>
@@ -575,7 +577,8 @@ class ProducerScreen extends React.Component {
                 // Navigate to details route with parameter
                 this.props.navigation.navigate('Map', {
                   lat: latitude,
-                  long: longitude
+                  long: longitude,
+                  adress: producer_adress
                 })}}
               />
           </ScrollView>
@@ -693,7 +696,8 @@ class OverviewScreen extends React.Component {
                     cover: item.cover_image_url,
                     lat: item.latitude,
                     long: item.longitude,
-                    direction: item.map_direction_link
+                    direction: item.map_direction_link,
+                    adress: item.visiting_adress
                   });
                 }} 
     />
@@ -893,7 +897,8 @@ class OverviewScreen2 extends React.Component {
                     image: item.logo_url,
                     cover: item.cover_image_url,
                     lat: item.latitude,
-                    long: item.longitude
+                    long: item.longitude,
+                    adress: item.visiting_adress
                   });
                 }} 
     />
