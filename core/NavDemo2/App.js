@@ -548,14 +548,11 @@ class ProducerScreen extends React.Component {
 
   render() {
     const { navigation } = this.props;
-    const itemId = navigation.getParam('itemId', 'NO-ID');
     const description = navigation.getParam('desc', 'Ingen beskrivning');
-    const otherParam = navigation.getParam('otherParam', 'finns ej');
     const logo_image = navigation.getParam('image', '404');
     const background = navigation.getParam('cover', '404');
     const latitude = navigation.getParam('lat', '58.2528');
     const longitude = navigation.getParam('long', '12.77');
-    const direction_link = navigation.getParam('direction', 'https://www.google.com');
 
     return(
       <ImageBackground source={{ uri: background }} style={{width: '100%', height: '100%'}}>
@@ -568,9 +565,8 @@ class ProducerScreen extends React.Component {
                 style={{ width: 300, height: 100, flex: 1, resizeMode: 'contain' }}
               />
             </View>
-            <Text style={{marginBottom: 20, marginTop: 20}}>
-              {description}
-            </Text>
+            <Text style={{marginBottom: 20, marginTop: 5}}>{description}</Text>
+
             <Button
               backgroundColor='#03A9F4'
               buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20}}
@@ -667,19 +663,25 @@ class OverviewScreen extends React.Component {
       tension = {100}
       activeScale = {0.95}
       linearGradientProps = {{
-        colors: ['#43704e', '#548b62'],
+        colors: ['#cccccc', 'white'],
       }}
       ViewComponent = {LinearGradient}
       leftAvatar = {{ rounded: true, source: { uri: item.logo_url } }}
       title={item.business_name}
-      titleStyle = {{ color: 'white', fontWeight: 'bold' }}
+      titleStyle = {{ color: '#404040', fontWeight: 'bold' }}
+      subtitle="LPIV, Matfest"
       chevronColor="white"
       chevron
       containerStyle = {{ marginLeft: 5,
         marginRight: 5, 
         marginTop: 10, 
         borderRadius: 10, // adds the rounded corners
-        backgroundColor: '#fff' }}
+        backgroundColor: '#fff',
+        height: 75,
+        
+        borderWidth: 1,
+        borderColor: "#d9d9d9"
+         }}
 
       onPress = {() => {
                   // Navigate to details route with parameter
@@ -720,42 +722,57 @@ class OverviewScreen extends React.Component {
       { backgroundColor: '#827c34' }
     ];
 
+    const descriptionStyles = {
+      color: 'white',
+      fontSize: 25,
+      fontWeight: 'bold',
+      padding:10,
+      textShadowColor: 'rgba(0, 0, 0, 0.75)',
+      textShadowOffset: {width: -1, height: 1},
+      textShadowRadius: 10
+    };
+
     return(
-      <ImageBackground source={require('./field2.jpg')} style={{width: '100%', height: '100%'}} style={viewStyles}>
+      <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
+        
         <View style={{marginTop: 30}}>
-          <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15}}>
-          <Button
-                color='#37945a'
-                buttonStyle={{borderRadius: 5, width: 120, marginRight: 15, marginLeft:15, backgroundColor: "#43704e"}}
-                title='Alla'
+          <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 65}}><Text style={descriptionStyles}>Producenter</Text></View>
+          <View>
+            <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15}}>
+              <Button
+                    color='#827C34'
+                    buttonStyle={{borderRadius: 5, width: 120, marginRight: 15, marginLeft:25, backgroundColor: "#6e6c23"}}
+                    title='Alla'
+                    onPress = {() => {
+                      // Navigate to details route with parameter
+                      this.SearchFilterFunction("")}}
+                    />
+                <Button
+                    backgroundColor='white'
+                    buttonStyle={{borderRadius: 5, width: 120, backgroundColor: "#6e6c23"}}
+                    title='Matfest'
+                    onPress = {() => {
+                      // Navigate to details route with parameter
+                      this.SearchFilterFunction("gr")}}
+                    />
+                <Button
+                backgroundColor='white'
+                buttonStyle={{borderRadius: 5, width: 120, marginLeft: 15, marginRight: 25, backgroundColor: "#6e6c23"}}
+                title='LPIV'
                 onPress = {() => {
                   // Navigate to details route with parameter
-                  this.SearchFilterFunction("")}}
+                  this.SearchFilterFunction("al")}}
                 />
-            <Button
-                backgroundColor='#37945a'
-                buttonStyle={{borderRadius: 5, width: 120, backgroundColor: "#43704e"}}
-                title='Matfest'
-                onPress = {() => {
-                  // Navigate to details route with parameter
-                  this.SearchFilterFunction("gr")}}
-                />
-            <Button
-            backgroundColor='#37945a'
-            buttonStyle={{borderRadius: 5, width: 120, marginLeft: 15, marginRight: 15, backgroundColor: "#43704e"}}
-            title='LPIV'
-            onPress = {() => {
-              // Navigate to details route with parameter
-              this.SearchFilterFunction("al")}}
-            />
+            </View>
           </View>
+          
           <View style={{marginTop:5}}>
             <FlatList 
               data={this.state.dataSource}
               //ItemSeparatorComponent={this.ListViewItemSeparator}
               renderItem={this.renderItem}
               enableEmptySections={false}
-              style={{ marginLeft: 30, marginRight: 30 }}
+              style={{ marginLeft: 30, marginRight: 30, marginBottom: 260 }}
               keyExtractor = {(item, index) => index.toString()}
             />
           </View>
@@ -897,7 +914,7 @@ class OverviewScreen2 extends React.Component {
     ];
 
     return(
-      <ImageBackground source={require('./field2.jpg')} style={{width: '100%', height: '100%'}} style={viewStyles}>
+      <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
         <View style = {style.container}>
           <FlatList 
             data = {columnData}
@@ -1067,7 +1084,7 @@ class SplashScreen extends React.Component {
     };
 
     return (
-      <ImageBackground source={require('./field2.jpg')} style={{width: '100%', height: '100%'}} style={viewStyles}>
+      <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
         <Image
           source={require('./lpiv.png')}
           style={{ width: 300, height: 50 }}
