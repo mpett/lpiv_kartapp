@@ -663,13 +663,14 @@ class OverviewScreen extends React.Component {
       tension = {100}
       activeScale = {0.95}
       linearGradientProps = {{
-        colors: ['#cccccc', 'white'],
+        colors: ['#bbbb77', '#77773c'],
       }}
       ViewComponent = {LinearGradient}
       leftAvatar = {{ rounded: true, source: { uri: item.logo_url } }}
       title={item.business_name}
-      titleStyle = {{ color: '#404040', fontWeight: 'bold' }}
-      subtitle="LPIV, Matfest"
+      titleStyle = {{ color: 'white', fontWeight: 'bold' }}
+      //subtitle="LPIV, Matfest"
+      //subtitleStyle = {{ color: 'white' }}
       chevronColor="white"
       chevron
       containerStyle = {{ marginLeft: 5,
@@ -677,11 +678,10 @@ class OverviewScreen extends React.Component {
         marginTop: 10, 
         borderRadius: 10, // adds the rounded corners
         backgroundColor: '#fff',
-        height: 75,
-        
+        height: 65,
         borderWidth: 1,
-        borderColor: "#d9d9d9"
-         }}
+        borderColor: '#99994d'
+      }}
 
       onPress = {() => {
                   // Navigate to details route with parameter
@@ -723,7 +723,7 @@ class OverviewScreen extends React.Component {
     ];
 
     const descriptionStyles = {
-      color: 'white',
+      color: '#f2f2f2',
       fontSize: 25,
       fontWeight: 'bold',
       padding:10,
@@ -741,7 +741,7 @@ class OverviewScreen extends React.Component {
             <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15}}>
               <Button
                     color='#827C34'
-                    buttonStyle={{borderRadius: 5, width: 120, marginRight: 15, marginLeft:25, backgroundColor: "#6e6c23"}}
+                    buttonStyle={{borderRadius: 5, width: 120, marginRight: 15, marginLeft:25, backgroundColor: "#99994d"}}
                     title='Alla'
                     onPress = {() => {
                       // Navigate to details route with parameter
@@ -749,7 +749,7 @@ class OverviewScreen extends React.Component {
                     />
                 <Button
                     backgroundColor='white'
-                    buttonStyle={{borderRadius: 5, width: 120, backgroundColor: "#6e6c23"}}
+                    buttonStyle={{borderRadius: 5, width: 120, backgroundColor: "#99994d"}}
                     title='Matfest'
                     onPress = {() => {
                       // Navigate to details route with parameter
@@ -757,7 +757,7 @@ class OverviewScreen extends React.Component {
                     />
                 <Button
                 backgroundColor='white'
-                buttonStyle={{borderRadius: 5, width: 120, marginLeft: 15, marginRight: 25, backgroundColor: "#6e6c23"}}
+                buttonStyle={{borderRadius: 5, width: 120, marginLeft: 15, marginRight: 25, backgroundColor: "#99994d"}}
                 title='LPIV'
                 onPress = {() => {
                   // Navigate to details route with parameter
@@ -921,7 +921,7 @@ class OverviewScreen2 extends React.Component {
             //ItemSeparatorComponent={this.ListViewItemSeparator}
             renderItem={this.renderItem}
             enableEmptySections={false}
-            style={{ marginLeft: 20, marginRight: 20, marginTop: 5, marginBottom: 5 }}
+            style={{ marginLeft: 20, marginRight: 20}}
             keyExtractor = {(item, index) => index.toString()}
           />
         </View>
@@ -1074,7 +1074,7 @@ class SplashScreen extends React.Component {
     };
 
     const descriptionStyles = {
-      color: 'white',
+      color: '#d9d9d9',
       fontSize: 18,
       fontWeight: 'bold',
       padding:10,
@@ -1086,13 +1086,15 @@ class SplashScreen extends React.Component {
     return (
       <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
         <Image
-          source={require('./lpiv.png')}
-          style={{ width: 300, height: 50 }}
+          source={require('./lpiv3.png')}
+          style={{ width: 300, height: 50, marginBottom: 0, 
+            borderColor: '#99994d' }}
         />
-        <Text style={descriptionStyles}>
-          En app med maten i fokus!
-        </Text>
-        <View>
+        
+        <View style={{marginBottom:222}}>
+          <Text style={descriptionStyles}>
+            En app med maten i fokus!
+          </Text>
         </View>        
       </ImageBackground>
     );
