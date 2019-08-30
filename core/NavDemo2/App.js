@@ -669,7 +669,7 @@ class OverviewScreen extends React.Component {
       tension = {100}
       activeScale = {0.95}
       linearGradientProps = {{
-        colors: ['#bbbb77', '#77773c'],
+        colors: ['#77773c', '#bbbb77'],
       }}
       ViewComponent = {LinearGradient}
       leftAvatar = {{ rounded: true, source: { uri: item.logo_url } }}
@@ -766,7 +766,7 @@ class OverviewScreen extends React.Component {
                 <Button
                 backgroundColor='white'
                 buttonStyle={{borderRadius: 5, width: 120, marginLeft: 15, marginRight: 25, backgroundColor: "#99994d"}}
-                title='LPIV'
+                title='Medlem'
                 onPress = {() => {
                   // Navigate to details route with parameter
                   this.SearchFilterFunction("al")}}
