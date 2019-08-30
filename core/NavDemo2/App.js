@@ -423,14 +423,14 @@ class SingleMapScreen extends React.Component<Props, State> {
     const { navigation } = this.props;
     const lat_param = navigation.getParam('lat', '0.0');
     const long_param = navigation.getParam('long', '0.0');
-    const adress_parameter = navigation.getParam('adress', "Grusvägen 8 14242 Timmersdala")
+    const name_parameter = navigation.getParam('name', "Producent AB")
     const latitude_parameter = parseFloat(lat_param);
     const longitude_parameter = parseFloat(long_param);
 
     this.state = { region: {
         latitude: latitude_parameter,
         longitude: longitude_parameter,
-        visiting_adress: adress_parameter,
+        name: name_parameter,
         latitudeDelta: 0.2,
         longitudeDelta: 0.2
       }
@@ -453,7 +453,7 @@ class SingleMapScreen extends React.Component<Props, State> {
           }} image={marker_image}>
             <MapView.Callout>
               <View>
-                <Text>{this.state.region.visiting_adress}</Text>
+                <Text>{this.state.region.name}</Text>
               </View>
             </MapView.Callout>
           </MapView.Marker>
@@ -491,7 +491,8 @@ class MapScreen extends React.Component<Props, State> {
                     lat: location.latitude,
                     long: location.longitude,
                     direction: location.map_direction_link,
-                    adress: item.visiting_adress
+                    adress: location.visiting_adress,
+                    name: location.business_name
                   });
                 }} >
                 <View>
@@ -555,34 +556,36 @@ class ProducerScreen extends React.Component {
     const latitude = navigation.getParam('lat', '58.2528');
     const longitude = navigation.getParam('long', '12.77');
     const producer_adress = navigation.getParam('adress', 'Kogatan 12 Timmersdala 15623');
+    const producer_name = navigation.getParam("name", "Producent AB");
 
     return(
       <ImageBackground source={{ uri: background }} style={{width: '100%', height: '100%'}}>
         <ScrollView>
-        <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 200 }}>
-          <ScrollView>
-            <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
-              <Image
-                source={ { uri: logo_image }}
-                style={{ width: 300, height: 100, flex: 1, resizeMode: 'contain' }}
-              />
-            </View>
-            <Text style={{marginBottom: 20, marginTop: 5}}>{description}</Text>
+          <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 200 }}>
+            <ScrollView>
+              <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
+                <Image
+                  source={ { uri: logo_image }}
+                  style={{ width: 300, height: 100, flex: 1, resizeMode: 'contain' }}
+                />
+              </View>
+              <Text style={{marginBottom: 20, marginTop: 5}}>{description}</Text>
 
-            <Button
-              backgroundColor='#03A9F4'
-              buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20}}
-              title='Hitta oss på kartan'
-              onPress = {() => {
-                // Navigate to details route with parameter
-                this.props.navigation.navigate('Map', {
-                  lat: latitude,
-                  long: longitude,
-                  adress: producer_adress
-                })}}
-              />
-          </ScrollView>
-        </View>
+              <Button
+                backgroundColor='#03A9F4'
+                buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "#99994d"}}
+                title='Hitta oss på kartan'
+                onPress = {() => {
+                  // Navigate to details route with parameter
+                  this.props.navigation.navigate('Map', {
+                    lat: latitude,
+                    long: longitude,
+                    adress: producer_adress,
+                    name: producer_name
+                  })}}
+                />
+            </ScrollView>
+          </View>
         </ScrollView>
       </ImageBackground>
     )
@@ -697,7 +700,8 @@ class OverviewScreen extends React.Component {
                     lat: item.latitude,
                     long: item.longitude,
                     direction: item.map_direction_link,
-                    adress: item.visiting_adress
+                    adress: item.visiting_adress,
+                    name: item.business_name
                   });
                 }} 
     />
@@ -898,7 +902,8 @@ class OverviewScreen2 extends React.Component {
                     cover: item.cover_image_url,
                     lat: item.latitude,
                     long: item.longitude,
-                    adress: item.visiting_adress
+                    adress: item.visiting_adress,
+                    name: item.business_name
                   });
                 }} 
     />
@@ -1026,7 +1031,9 @@ class ProducerListScreen extends React.Component {
                     image: item.logo_url,
                     cover: item.cover_image_url,
                     lat: item.latitude,
-                    long: item.longitude
+                    long: item.longitude,
+                    adress: item.visiting_adress,
+                    name: item.business_name
                   });
                 }} 
       title={item.business_name}
