@@ -579,21 +579,20 @@ class ProducerScreen extends React.Component {
               <View style={{
                 borderBottomColor: 'black',
                 borderBottomWidth: 1,
-                marginBottom: 15
+                marginBottom: 15,
               }}>
-                <Text style={{fontWeight: 'bold'}}>Öppettider</Text>
-                <Text style={{marginBottom: 20, marginTop: 5}}>00:00 - 23:00 torsdag - lördag</Text>
-              </View>
-              <View>
                 <Text style={{fontWeight: 'bold'}}>Kontaktuppfgifter</Text>
                 <Text style={{marginBottom: 2, marginTop: 2}}>Besöksadress: {producer_adress}</Text>
                 <Text style={{marginBottom: 2, marginTop: 2}}>Kontaktpersson: Anders Svensson</Text>
                 <Text style={{marginBottom: 2, marginTop: 2}}>Besöksort: Tidaholm</Text>
                 <Text style={{marginBottom: 2, marginTop: 2}}>E-post: anders@gmail.com</Text>
                 <Text style={{marginBottom: 2, marginTop: 2}}>Telefon: 0705727004</Text>
-                <Text style={{marginBottom: 2, marginTop: 2}}>Webbsida: https://www.example.com</Text>
+                <Text style={{marginBottom: 17, marginTop: 2}}>Webbsida: https://www.example.com</Text>
               </View>
-
+              <View>
+                <Text style={{fontWeight: 'bold'}}>Öppettider</Text>
+                <Text style={{marginBottom: 20, marginTop: 5}}>00:00 - 23:00 torsdag - lördag</Text>
+              </View>
               <Button
                 backgroundColor='#03A9F4'
                 buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "#99994d"}}
