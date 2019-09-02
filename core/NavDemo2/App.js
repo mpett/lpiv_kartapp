@@ -525,7 +525,6 @@ class MapScreen extends React.Component<Props, State> {
 
           {
             this.renderMarkers()
-            
           }
           
         </MapView>
@@ -569,7 +568,31 @@ class ProducerScreen extends React.Component {
                   style={{ width: 300, height: 100, flex: 1, resizeMode: 'contain' }}
                 />
               </View>
-              <Text style={{marginBottom: 20, marginTop: 5}}>{description}</Text>
+              <View style={{
+                borderBottomColor: 'black',
+                borderBottomWidth: 1,
+                marginBottom: 15
+              }}>
+                <Text style={{fontWeight: 'bold'}}>Om oss</Text>
+                <Text style={{marginBottom: 20, marginTop: 5}}>{description}</Text>
+              </View>
+              <View style={{
+                borderBottomColor: 'black',
+                borderBottomWidth: 1,
+                marginBottom: 15
+              }}>
+                <Text style={{fontWeight: 'bold'}}>Öppettider</Text>
+                <Text style={{marginBottom: 20, marginTop: 5}}>00:00 - 23:00 torsdag - lördag</Text>
+              </View>
+              <View>
+                <Text style={{fontWeight: 'bold'}}>Kontaktuppfgifter</Text>
+                <Text style={{marginBottom: 2, marginTop: 2}}>Besöksadress: {producer_adress}</Text>
+                <Text style={{marginBottom: 2, marginTop: 2}}>Kontaktpersson: Anders Svensson</Text>
+                <Text style={{marginBottom: 2, marginTop: 2}}>Besöksort: Tidaholm</Text>
+                <Text style={{marginBottom: 2, marginTop: 2}}>E-post: anders@gmail.com</Text>
+                <Text style={{marginBottom: 2, marginTop: 2}}>Telefon: 0705727004</Text>
+                <Text style={{marginBottom: 2, marginTop: 2}}>Webbsida: https://www.example.com</Text>
+              </View>
 
               <Button
                 backgroundColor='#03A9F4'
@@ -669,7 +692,7 @@ class OverviewScreen extends React.Component {
       tension = {100}
       activeScale = {0.95}
       linearGradientProps = {{
-        colors: ['#77773c', '#bbbb77'],
+        colors: ['#bbbb77', '#77773c'],
       }}
       ViewComponent = {LinearGradient}
       leftAvatar = {{ rounded: true, source: { uri: item.logo_url } }}
