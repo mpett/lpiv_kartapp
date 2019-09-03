@@ -1,6 +1,6 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, ScrollView, FlatList, Platform, ImageBackground, Linking } from "react-native";
-import { createStackNavigator, createAppContainer, createBottomTabNavigator } from "react-navigation";
+import { View, Text, Image, StyleSheet, ScrollView, FlatList, Platform, ImageBackground, TouchableOpacity } from "react-native";
+import { createStackNavigator, createAppContainer, createBottomTabNavigator} from "react-navigation";
 import MapView, { PROVIDER_GOOGLE, Marker, navigator } from 'react-native-maps';
 import { Button, ListItem, Card, SearchBar, Headers } from 'react-native-elements';
 import TouchableScale from 'react-native-touchable-scale';
@@ -465,30 +465,30 @@ class MapScreen extends React.Component<Props, State> {
     return producer_list.map((location, key) => {
 
       return (
-        <MapView.Marker coordinate = {{
-          latitude: parseFloat(location.latitude),
-          longitude: parseFloat(location.longitude)
-        }} key={key} image={marker_image}>
-          <MapView.Callout onPress = {() => {
-                // Navigate to details route with parameter
-                this.props.navigation.navigate('Producer', {
-                  itemId: 86,
-                  otherParam: location.business_name,
-                  desc: location.description,
-                  image: location.logo_url,
-                  cover: location.cover_image_url,
-                  lat: location.latitude,
-                  long: location.longitude,
-                  direction: location.map_direction_link,
-                  adress: location.visiting_adress,
-                  name: location.business_name
-                });
-              }} >
-            <View>
-              <Text>{location.business_name}</Text>
-            </View>
-          </MapView.Callout>
-        </MapView.Marker>
+          <MapView.Marker coordinate = {{
+            latitude: parseFloat(location.latitude),
+            longitude: parseFloat(location.longitude)
+          }} key={key} image={marker_image}>
+            <MapView.Callout onPress = {() => {
+                  // Navigate to details route with parameter
+                  this.props.navigation.navigate('Producer', {
+                    itemId: 86,
+                    otherParam: location.business_name,
+                    desc: location.description,
+                    image: location.logo_url,
+                    cover: location.cover_image_url,
+                    lat: location.latitude,
+                    long: location.longitude,
+                    direction: location.map_direction_link,
+                    adress: location.visiting_adress,
+                    name: location.business_name
+                  });
+                }} >
+              <View>
+                <Text>{location.business_name}</Text>
+              </View>
+            </MapView.Callout>
+          </MapView.Marker>
       );
     })
   }
@@ -517,6 +517,7 @@ class MapScreen extends React.Component<Props, State> {
           }
           
         </MapView>
+        <MenuScreen navigation={this.props.navigation} />
       </View>
     );
   }
@@ -553,58 +554,60 @@ class ProducerScreen extends React.Component {
     const opening_hours = navigation.getParam("opening_hours", "00:00 - 23:00 torsdag - lördag")
 
     return(
-      <ImageBackground source={{ uri: background }} style={{width: '100%', height: '100%'}}>
-        <ScrollView>
-          <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 200 }}>
-            <ScrollView>
-              <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
-                <Image
-                  source={ { uri: logo_image }}
-                  style={{ width: 300, height: 100, flex: 1, resizeMode: 'contain' }}
-                />
-              </View>
-              <View style={{
-                borderBottomColor: 'black',
-                borderBottomWidth: 1,
-                marginBottom: 15
-              }}>
-                <Text style={{fontWeight: 'bold'}}>Om oss</Text>
-                <Text style={{marginBottom: 20, marginTop: 5}}>{description}</Text>
-              </View>
-              <View style={{
-                borderBottomColor: 'black',
-                borderBottomWidth: 1,
-                marginBottom: 15,
-              }}>
-                <Text style={{fontWeight: 'bold'}}>Kontaktuppfgifter</Text>
-                <Text style={{marginBottom: 2, marginTop: 2}}>Besöksadress: {producer_adress}</Text>
-                <Text style={{marginBottom: 2, marginTop: 2}}>Kontaktpersson: {contact_person}</Text>
-                <Text style={{marginBottom: 2, marginTop: 2}}>Besöksort: {producer_city}</Text>
-                <Text style={{marginBottom: 2, marginTop: 2}}>E-post: {producer_email}</Text>
-                <Text style={{marginBottom: 2, marginTop: 2}}>Telefon: {producer_phone}</Text>
-                <Text style={{marginBottom: 17, marginTop: 2}}>Webbsida: {producer_website}</Text>
-              </View>
-              <View>
-                <Text style={{fontWeight: 'bold'}}>Öppettider</Text>
-                <Text style={{marginBottom: 20, marginTop: 5}}>{opening_hours}</Text>
-              </View>
-              <Button
-                backgroundColor='#03A9F4'
-                buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "#99994d"}}
-                title='Hitta oss på kartan'
-                onPress = {() => {
-                  // Navigate to details route with parameter
-                  this.props.navigation.navigate('Map', {
-                    lat: latitude,
-                    long: longitude,
-                    adress: producer_adress,
-                    name: producer_name
-                  })}}
-                />
-            </ScrollView>
-          </View>
-        </ScrollView>
-      </ImageBackground>
+      <View>
+        <ImageBackground source={{ uri: background }} style={{width: '100%', height: '100%'}}>
+          <ScrollView>
+            <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 200 }}>
+              <ScrollView>
+                <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
+                  <Image
+                    source={ { uri: logo_image }}
+                    style={{ width: 300, height: 100, flex: 1, resizeMode: 'contain' }}
+                  />
+                </View>
+                <View style={{
+                  borderBottomColor: 'black',
+                  borderBottomWidth: 1,
+                  marginBottom: 15
+                }}>
+                  <Text style={{fontWeight: 'bold'}}>Om oss</Text>
+                  <Text style={{marginBottom: 20, marginTop: 5}}>{description}</Text>
+                </View>
+                <View style={{
+                  borderBottomColor: 'black',
+                  borderBottomWidth: 1,
+                  marginBottom: 15,
+                }}>
+                  <Text style={{fontWeight: 'bold'}}>Kontaktuppfgifter</Text>
+                  <Text style={{marginBottom: 2, marginTop: 2}}>Besöksadress: {producer_adress}</Text>
+                  <Text style={{marginBottom: 2, marginTop: 2}}>Kontaktperson: {contact_person}</Text>
+                  <Text style={{marginBottom: 2, marginTop: 2}}>Besöksort: {producer_city}</Text>
+                  <Text style={{marginBottom: 2, marginTop: 2}}>E-post: {producer_email}</Text>
+                  <Text style={{marginBottom: 2, marginTop: 2}}>Telefon: {producer_phone}</Text>
+                  <Text style={{marginBottom: 17, marginTop: 2}}>Webbsida: {producer_website}</Text>
+                </View>
+                <View>
+                  <Text style={{fontWeight: 'bold'}}>Öppettider</Text>
+                  <Text style={{marginBottom: 20, marginTop: 5}}>{opening_hours}</Text>
+                </View>
+                <Button
+                  backgroundColor='#03A9F4'
+                  buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "#99994d"}}
+                  title='Hitta oss på kartan'
+                  onPress = {() => {
+                    // Navigate to details route with parameter
+                    this.props.navigation.navigate('Map', {
+                      lat: latitude,
+                      long: longitude,
+                      adress: producer_adress,
+                      name: producer_name
+                    })}}
+                  />
+              </ScrollView>
+            </View>
+          </ScrollView>
+        </ImageBackground>
+      </View> 
     )
   }
 }
@@ -686,7 +689,7 @@ class OverviewScreen extends React.Component {
       tension = {100}
       activeScale = {0.95}
       linearGradientProps = {{
-        colors: ['#bbbb77', '#77773c'],
+        colors: ['#37503c', '#2b4330'],
       }}
       ViewComponent = {LinearGradient}
       leftAvatar = {{ rounded: true, source: { uri: item.logo_url } }}
@@ -747,7 +750,7 @@ class OverviewScreen extends React.Component {
     ];
 
     const descriptionStyles = {
-      color: '#f2f2f2',
+      color: '#282828',
       fontSize: 25,
       fontWeight: 'bold',
       padding:10,
@@ -794,11 +797,12 @@ class OverviewScreen extends React.Component {
               //ItemSeparatorComponent={this.ListViewItemSeparator}
               renderItem={this.renderItem}
               enableEmptySections={false}
-              style={{ marginLeft: 30, marginRight: 30, marginBottom: 260 }}
+              style={{ marginLeft: 30, marginRight: 30, marginBottom: 347 }}
               keyExtractor = {(item, index) => index.toString()}
             />
           </View>
         </View>
+        <MenuScreen navigation={this.props.navigation} />
       </ImageBackground>
     );
   }
@@ -945,12 +949,12 @@ class OverviewScreen2 extends React.Component {
             //ItemSeparatorComponent={this.ListViewItemSeparator}
             renderItem={this.renderItem}
             enableEmptySections={false}
-            style={{ marginLeft: 20, marginRight: 20}}
+            style={{ marginLeft: 20, marginRight: 20, marginBottom: 67}}
             keyExtractor = {(item, index) => index.toString()}
           />
         </View>
+        <MenuScreen navigation={this.props.navigation} />
       </ImageBackground>
-      
     );
   }
 }
@@ -1058,24 +1062,26 @@ class ProducerListScreen extends React.Component {
 
   render() {
     return(
-      <View style = {{backgroundColor:"#F7F7DA"}}>
-        <SearchBar
-            round
-            searchIcon={{ size: 24 }}
-            onChangeText = {text => this.SearchFilterFunction(text)}
-            onClear={text => this.SearchFilterFunction('')}
-            placeholder="Sök..."
-            value={this.state.search}
-          />
-          <FlatList 
-            data={this.state.dataSource}
-            backgroundColor="#F7F7DA"
-            //ItemSeparatorComponent={this.ListViewItemSeparator}
-            renderItem={this.renderItem}
-            enableEmptySections={false}
-            //style={{ marginTop: 10 }}
-            keyExtractor = {(item, index) => index.toString()}
-          />
+      <View>
+        <View style = {{backgroundColor:"#F7F7DA"}}>
+          <SearchBar
+              round
+              searchIcon={{ size: 24 }}
+              onChangeText = {text => this.SearchFilterFunction(text)}
+              onClear={text => this.SearchFilterFunction('')}
+              placeholder="Sök..."
+              value={this.state.search}
+            />
+            <FlatList 
+              data={this.state.dataSource}
+              backgroundColor="#F7F7DA"
+              //ItemSeparatorComponent={this.ListViewItemSeparator}
+              renderItem={this.renderItem}
+              enableEmptySections={false}
+              //style={{ marginTop: 10 }}
+              keyExtractor = {(item, index) => index.toString()}
+            ></FlatList>
+        </View>
       </View>
     );
   }
@@ -1115,7 +1121,60 @@ class SplashScreen extends React.Component {
             En app med maten i fokus!
           </Text>
         </View>        
+        <MenuScreen navigation={this.props.navigation} />
       </ImageBackground>
+    );
+  }
+}
+
+class MenuScreen extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const bottomViewStyles = {
+      width: "100%",
+      height: 50,
+      backgroundColor: "#282828",
+      justifyContent: "center",
+      alignItems: "center",
+      position: "absolute",
+      bottom: 0,
+      flexDirection: 'row', flexWrap: 'wrap',
+      marginTop: 5
+    }
+  
+    const iconStyles = {
+      flexDirection: 'row', 
+      flexWrap: 'wrap', 
+      height: 30, 
+      width: 30, 
+      marginRight: 30,
+      marginTop: 10
+    }
+
+    return (
+      <View style = {bottomViewStyles}>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate("Start")}>
+          <Image source={require('./menu_icons/start.png')} style={ iconStyles } />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate("Äta")}>
+          <Image source={require('./menu_icons/äta.png')} style={ iconStyles } />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate("Fika")}>
+          <Image source={require('./menu_icons/producent.png')} style={ iconStyles } />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate("Handla")}>
+          <Image source={require('./menu_icons/gårdsbutik.png')} style={ iconStyles } />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate("Karta")}>
+          <Image source={require('./menu_icons/karta.png')} style={ iconStyles } />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate("Handla")}>
+          <Image source={require('./menu_icons/sök.png')} style={{ flexDirection: 'row', flexWrap: 'wrap', height: 30, width: 30, marginTop: 10 }} />
+        </TouchableOpacity>
+      </View>
     );
   }
 }
@@ -1139,7 +1198,7 @@ const ProducerStack = createStackNavigator(
       navigationOptions: {
         header: null,
       }
-    },
+    }
   },
   {
     defaultNavigationOptions: {
@@ -1174,7 +1233,7 @@ const TestStack = createStackNavigator(
       navigationOptions: {
         header: null,
       }
-    },
+    }
   },
   {
     defaultNavigationOptions: {
@@ -1209,7 +1268,48 @@ const TestStack2 = createStackNavigator(
       navigationOptions: {
         header: null,
       }
+    }
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#f4511e',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },  
+  },
+  {headerMode: 'screen'}
+)
+
+const MenuStack = createStackNavigator(
+  {
+    Menu: {
+      screen: MenuScreen,
+      navigationOptions: {
+        header: null,
+      }
     },
+    ProducerList: {
+      screen: OverviewScreen2,
+      navigationOptions: {
+        header: null,
+      }
+    },
+    Producer: {
+      screen: ProducerScreen,
+      navigationOptions: {
+        header: null,
+      }
+    },
+    Map: {
+      screen: SingleMapScreen,
+      navigationOptions: {
+        header: null,
+      }
+    }
   },
   {
     defaultNavigationOptions: {
@@ -1238,8 +1338,9 @@ const MapStack = createStackNavigator(
       navigationOptions: {
         header: null,
       }
-    },
+    }
   },
+  
   {
     defaultNavigationOptions: {
       headerStyle: {
@@ -1270,7 +1371,8 @@ const TabNavigator = createBottomTabNavigator(
     },
     Karta: {
       screen: MapStack,
-    },
+    }
+
   },
   {
     tabBarOptions: {
@@ -1282,13 +1384,13 @@ const TabNavigator = createBottomTabNavigator(
       animationEnabled: true,
       lazy: true,
       labelStyle: {
-        fontSize: 12,
+        fontSize: 0,
         
         
       },
       style: {
         backgroundColor: '#928b3a',
-        height: 27,
+        height: 0,
         fontStyle: 'bold'
       },
     }
