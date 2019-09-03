@@ -550,6 +550,7 @@ class ProducerScreen extends React.Component {
     const producer_phone = navigation.getParam('producer_phone', '0705727004');
     const producer_website = navigation.getParam('producer_website', 'https://www.example.com');
     const producer_name = navigation.getParam("name", "Producent AB");
+    const opening_hours = navigation.getParam("opening_hours", "00:00 - 23:00 torsdag - lördag")
 
     return(
       <ImageBackground source={{ uri: background }} style={{width: '100%', height: '100%'}}>
@@ -585,7 +586,7 @@ class ProducerScreen extends React.Component {
               </View>
               <View>
                 <Text style={{fontWeight: 'bold'}}>Öppettider</Text>
-                <Text style={{marginBottom: 20, marginTop: 5}}>00:00 - 23:00 torsdag - lördag</Text>
+                <Text style={{marginBottom: 20, marginTop: 5}}>{opening_hours}</Text>
               </View>
               <Button
                 backgroundColor='#03A9F4'
