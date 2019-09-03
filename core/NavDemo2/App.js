@@ -544,6 +544,11 @@ class ProducerScreen extends React.Component {
     const latitude = navigation.getParam('lat', '58.2528');
     const longitude = navigation.getParam('long', '12.77');
     const producer_adress = navigation.getParam('adress', 'Kogatan 12 Timmersdala 15623');
+    const contact_person = navigation.getParam('contact_person', 'Anders Svensson');
+    const producer_city = navigation.getParam('producer_city', 'Tidaholm');
+    const producer_email = navigation.getParam('producer_email', 'anders@gmail.com');
+    const producer_phone = navigation.getParam('producer_phone', '0705727004');
+    const producer_website = navigation.getParam('producer_website', 'https://www.example.com');
     const producer_name = navigation.getParam("name", "Producent AB");
 
     return(
@@ -572,11 +577,11 @@ class ProducerScreen extends React.Component {
               }}>
                 <Text style={{fontWeight: 'bold'}}>Kontaktuppfgifter</Text>
                 <Text style={{marginBottom: 2, marginTop: 2}}>Besöksadress: {producer_adress}</Text>
-                <Text style={{marginBottom: 2, marginTop: 2}}>Kontaktpersson: Anders Svensson</Text>
-                <Text style={{marginBottom: 2, marginTop: 2}}>Besöksort: Tidaholm</Text>
-                <Text style={{marginBottom: 2, marginTop: 2}}>E-post: anders@gmail.com</Text>
-                <Text style={{marginBottom: 2, marginTop: 2}}>Telefon: 0705727004</Text>
-                <Text style={{marginBottom: 17, marginTop: 2}}>Webbsida: https://www.example.com</Text>
+                <Text style={{marginBottom: 2, marginTop: 2}}>Kontaktpersson: {contact_person}</Text>
+                <Text style={{marginBottom: 2, marginTop: 2}}>Besöksort: {producer_city}</Text>
+                <Text style={{marginBottom: 2, marginTop: 2}}>E-post: {producer_email}</Text>
+                <Text style={{marginBottom: 2, marginTop: 2}}>Telefon: {producer_phone}</Text>
+                <Text style={{marginBottom: 17, marginTop: 2}}>Webbsida: {producer_website}</Text>
               </View>
               <View>
                 <Text style={{fontWeight: 'bold'}}>Öppettider</Text>
@@ -757,29 +762,29 @@ class OverviewScreen extends React.Component {
           <View>
             <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15}}>
               <Button
-                    color='#827C34'
-                    buttonStyle={{borderRadius: 5, width: 120, marginRight: 15, marginLeft:25, backgroundColor: "#99994d"}}
-                    title='Alla'
-                    onPress = {() => {
-                      // Navigate to details route with parameter
-                      this.SearchFilterFunction("")}}
-                    />
-                <Button
-                    backgroundColor='white'
-                    buttonStyle={{borderRadius: 5, width: 120, backgroundColor: "#99994d"}}
-                    title='Matfest'
-                    onPress = {() => {
-                      // Navigate to details route with parameter
-                      this.SearchFilterFunction("gr")}}
-                    />
-                <Button
-                  backgroundColor='white'
-                  buttonStyle={{borderRadius: 5, width: 120, marginLeft: 15, marginRight: 25, backgroundColor: "#99994d"}}
-                  title='Medlem'
-                  onPress = {() => {
-                    // Navigate to details route with parameter
-                    this.SearchFilterFunction("al")}}
-                />
+                color='#827C34'
+                buttonStyle={{borderRadius: 5, width: 120, marginRight: 15, marginLeft:25, backgroundColor: "#99994d"}}
+                title='Alla'
+                onPress = {() => {
+                  // Navigate to details route with parameter
+                this.SearchFilterFunction("")}}
+              />
+              <Button
+                backgroundColor='white'
+                buttonStyle={{borderRadius: 5, width: 120, backgroundColor: "#99994d"}}
+                title='Matfest'
+                onPress = {() => {
+                // Navigate to details route with parameter
+                this.SearchFilterFunction("gr")}}
+              />
+              <Button
+                backgroundColor='white'
+                buttonStyle={{borderRadius: 5, width: 120, marginLeft: 15, marginRight: 25, backgroundColor: "#99994d"}}
+                title='Medlem'
+                onPress = {() => {
+                  // Navigate to details route with parameter
+                  this.SearchFilterFunction("al")}}
+              />
             </View>
           </View>
           <View style={{marginTop:5}}>
@@ -901,19 +906,19 @@ class OverviewScreen2 extends React.Component {
         backgroundColor: '#fff' }}
 
       onPress = {() => {
-                  // Navigate to details route with parameter
-                  this.props.navigation.navigate('Producer', {
-                    itemId: 86,
-                    otherParam: item.business_name,
-                    desc: item.description,
-                    image: item.logo_url,
-                    cover: item.cover_image_url,
-                    lat: item.latitude,
-                    long: item.longitude,
-                    adress: item.visiting_adress,
-                    name: item.business_name
-                  });
-                }} 
+        // Navigate to details route with parameter
+        this.props.navigation.navigate('Producer', {
+          itemId: 86,
+          otherParam: item.business_name,
+          desc: item.description,
+          image: item.logo_url,
+          cover: item.cover_image_url,
+          lat: item.latitude,
+          long: item.longitude,
+          adress: item.visiting_adress,
+          name: item.business_name
+        });
+      }} 
     />
   )
 
@@ -1031,19 +1036,19 @@ class ProducerListScreen extends React.Component {
   renderItem = ({ item }) => (
     <ListItem
       onPress = {() => {
-                  // Navigate to details route with parameter
-                  this.props.navigation.navigate('Producer', {
-                    itemId: 86,
-                    otherParam: item.business_name,
-                    desc: item.description,
-                    image: item.logo_url,
-                    cover: item.cover_image_url,
-                    lat: item.latitude,
-                    long: item.longitude,
-                    adress: item.visiting_adress,
-                    name: item.business_name
-                  });
-                }} 
+        // Navigate to details route with parameter
+        this.props.navigation.navigate('Producer', {
+          itemId: 86,
+          otherParam: item.business_name,
+          desc: item.description,
+          image: item.logo_url,
+          cover: item.cover_image_url,
+          lat: item.latitude,
+          long: item.longitude,
+          adress: item.visiting_adress,
+          name: item.business_name
+        });
+      }} 
       title={item.business_name}
       leftAvatar={{ source: { uri: item.logo_url } }}
       backgroundColor="#F7F7DA"
@@ -1060,7 +1065,6 @@ class ProducerListScreen extends React.Component {
             onClear={text => this.SearchFilterFunction('')}
             placeholder="Sök..."
             value={this.state.search}
-            
           />
           <FlatList 
             data={this.state.dataSource}
@@ -1087,12 +1091,7 @@ class SplashScreen extends React.Component {
       },
       { backgroundColor: '#827c34' }
     ];
-    const textStyles = {
-      color: '#cccccc',
-      fontSize: 30,
-      fontWeight: 'bold'
-    };
-
+    
     const descriptionStyles = {
       color: '#d9d9d9',
       fontSize: 18,
@@ -1110,7 +1109,6 @@ class SplashScreen extends React.Component {
           style={{ width: 300, height: 50, marginBottom: 0, 
             borderColor: '#99994d' }}
         />
-        
         <View style={{marginBottom:222}}>
           <Text style={descriptionStyles}>
             En app med maten i fokus!
