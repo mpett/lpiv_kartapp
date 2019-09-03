@@ -405,17 +405,6 @@ const producer_list = [
 type Props = {};
 type State = { region: ?Region, }
 
-class LogoTitle extends React.Component {
-  render() {
-    return (
-      <Image
-        source={require('./tivala.png')}
-        style={{ width: 30, height: 30 }}
-      />
-    );
-  }
-}
-
 class SingleMapScreen extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
@@ -481,24 +470,24 @@ class MapScreen extends React.Component<Props, State> {
           longitude: parseFloat(location.longitude)
         }} key={key} image={marker_image}>
           <MapView.Callout onPress = {() => {
-                  // Navigate to details route with parameter
-                  this.props.navigation.navigate('Producer', {
-                    itemId: 86,
-                    otherParam: location.business_name,
-                    desc: location.description,
-                    image: location.logo_url,
-                    cover: location.cover_image_url,
-                    lat: location.latitude,
-                    long: location.longitude,
-                    direction: location.map_direction_link,
-                    adress: location.visiting_adress,
-                    name: location.business_name
-                  });
-                }} >
-                <View>
-                  <Text>{location.business_name}</Text>
-                </View>
-            </MapView.Callout>
+                // Navigate to details route with parameter
+                this.props.navigation.navigate('Producer', {
+                  itemId: 86,
+                  otherParam: location.business_name,
+                  desc: location.description,
+                  image: location.logo_url,
+                  cover: location.cover_image_url,
+                  lat: location.latitude,
+                  long: location.longitude,
+                  direction: location.map_direction_link,
+                  adress: location.visiting_adress,
+                  name: location.business_name
+                });
+              }} >
+            <View>
+              <Text>{location.business_name}</Text>
+            </View>
+          </MapView.Callout>
         </MapView.Marker>
       );
     })
@@ -712,20 +701,19 @@ class OverviewScreen extends React.Component {
       }}
 
       onPress = {() => {
-                  // Navigate to details route with parameter
-                  this.props.navigation.navigate('Producer', {
-                    itemId: 86,
-                    otherParam: item.business_name,
-                    desc: item.description,
-                    image: item.logo_url,
-                    cover: item.cover_image_url,
-                    lat: item.latitude,
-                    long: item.longitude,
-                    direction: item.map_direction_link,
-                    adress: item.visiting_adress,
-                    name: item.business_name
-                  });
-                }} 
+        this.props.navigation.navigate('Producer', {
+          itemId: 86,
+          otherParam: item.business_name,
+          desc: item.description,
+          image: item.logo_url,
+          cover: item.cover_image_url,
+          lat: item.latitude,
+          long: item.longitude,
+          direction: item.map_direction_link,
+          adress: item.visiting_adress,
+          name: item.business_name
+        });
+      }} 
     />
   )
 
@@ -764,7 +752,6 @@ class OverviewScreen extends React.Component {
 
     return(
       <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
-        
         <View style={{marginTop: 30}}>
           <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 65}}><Text style={descriptionStyles}>Producenter</Text></View>
           <View>
@@ -786,16 +773,15 @@ class OverviewScreen extends React.Component {
                       this.SearchFilterFunction("gr")}}
                     />
                 <Button
-                backgroundColor='white'
-                buttonStyle={{borderRadius: 5, width: 120, marginLeft: 15, marginRight: 25, backgroundColor: "#99994d"}}
-                title='Medlem'
-                onPress = {() => {
-                  // Navigate to details route with parameter
-                  this.SearchFilterFunction("al")}}
+                  backgroundColor='white'
+                  buttonStyle={{borderRadius: 5, width: 120, marginLeft: 15, marginRight: 25, backgroundColor: "#99994d"}}
+                  title='Medlem'
+                  onPress = {() => {
+                    // Navigate to details route with parameter
+                    this.SearchFilterFunction("al")}}
                 />
             </View>
           </View>
-          
           <View style={{marginTop:5}}>
             <FlatList 
               data={this.state.dataSource}
