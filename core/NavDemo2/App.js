@@ -689,7 +689,7 @@ class OverviewScreen extends React.Component {
       tension = {100}
       activeScale = {0.95}
       linearGradientProps = {{
-        colors: ['#37503c', '#2b4330'],
+        colors: ['#37503c', '#2b4330']
       }}
       ViewComponent = {LinearGradient}
       leftAvatar = {{ rounded: true, source: { uri: item.logo_url } }}
@@ -702,11 +702,11 @@ class OverviewScreen extends React.Component {
       containerStyle = {{ marginLeft: 5,
         marginRight: 5, 
         marginTop: 10, 
-        borderRadius: 10, // adds the rounded corners
+        borderRadius: 4, // adds the rounded corners
         backgroundColor: '#fff',
         height: 65,
         borderWidth: 1,
-        borderColor: '#99994d'
+        borderColor: '#37503c'
       }}
 
       onPress = {() => {
@@ -753,10 +753,7 @@ class OverviewScreen extends React.Component {
       color: '#282828',
       fontSize: 25,
       fontWeight: 'bold',
-      padding:10,
-      textShadowColor: 'rgba(0, 0, 0, 0.75)',
-      textShadowOffset: {width: -1, height: 1},
-      textShadowRadius: 10
+      padding:10
     };
 
     return(
@@ -767,7 +764,7 @@ class OverviewScreen extends React.Component {
             <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15}}>
               <Button
                 color='#827C34'
-                buttonStyle={{borderRadius: 5, width: 120, marginRight: 15, marginLeft:25, backgroundColor: "#99994d"}}
+                buttonStyle={{borderRadius: 5, width: 120, marginRight: 15, marginLeft:25, backgroundColor: "#37503c"}}
                 title='Alla'
                 onPress = {() => {
                   // Navigate to details route with parameter
@@ -775,7 +772,7 @@ class OverviewScreen extends React.Component {
               />
               <Button
                 backgroundColor='white'
-                buttonStyle={{borderRadius: 5, width: 120, backgroundColor: "#99994d"}}
+                buttonStyle={{borderRadius: 5, width: 120, backgroundColor: "#37503c"}}
                 title='Matfest'
                 onPress = {() => {
                 // Navigate to details route with parameter
@@ -783,7 +780,7 @@ class OverviewScreen extends React.Component {
               />
               <Button
                 backgroundColor='white'
-                buttonStyle={{borderRadius: 5, width: 120, marginLeft: 15, marginRight: 25, backgroundColor: "#99994d"}}
+                buttonStyle={{borderRadius: 5, width: 120, marginLeft: 15, marginRight: 25, backgroundColor: "#37503c"}}
                 title='Medlem'
                 onPress = {() => {
                   // Navigate to details route with parameter
