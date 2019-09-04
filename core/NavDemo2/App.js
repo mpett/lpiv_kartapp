@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, ScrollView, FlatList, Platform, ImageBackground, TouchableOpacity } from "react-native";
+import { View, Text, Image, StyleSheet, ScrollView, FlatList, Platform, ImageBackground, TouchableOpacity, AppRegistry, StatusBar } from "react-native";
 import { createStackNavigator, createAppContainer, createBottomTabNavigator} from "react-navigation";
 import MapView, { PROVIDER_GOOGLE, Marker, navigator } from 'react-native-maps';
 import { Button, ListItem, Card, SearchBar, Headers } from 'react-native-elements';
@@ -431,6 +431,7 @@ class SingleMapScreen extends React.Component<Props, State> {
 
     return (
       <View style={ styles.container }>
+        <HideStatusBar />
         <MapView
           provider = { PROVIDER_GOOGLE }
           region = { this.state.region }
@@ -506,6 +507,7 @@ class MapScreen extends React.Component<Props, State> {
 
     return (
       <View style={ styles.container }>
+        <HideStatusBar />
         <MapView
           provider={ PROVIDER_GOOGLE }
           region={ this.state.region }
@@ -556,6 +558,7 @@ class ProducerScreen extends React.Component {
     return(
       <View>
         <ImageBackground source={{ uri: background }} style={{width: '100%', height: '100%'}}>
+          <HideStatusBar />
           <ScrollView>
             <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 200 }}>
               <ScrollView>
@@ -704,7 +707,7 @@ class OverviewScreen extends React.Component {
         marginTop: 10, 
         borderRadius: 4, // adds the rounded corners
         backgroundColor: '#fff',
-        height: 65,
+        height: 60,
         borderWidth: 1,
         borderColor: '#37503c'
       }}
@@ -758,8 +761,12 @@ class OverviewScreen extends React.Component {
 
     return(
       <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
+        <HideStatusBar />
         <View style={{marginTop: 30}}>
-          <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 65}}><Text style={descriptionStyles}>Producenter</Text></View>
+          <View style = {{justifyContent: 'center', alignItems: 'center', marginTop: 65}}>
+            <Text style={descriptionStyles}>Producenter</Text>
+            <Text style={{ color: "#282828", fontSize: 10, fontStyle: "italic" }}>Sortera efter kategori...</Text>
+          </View>
           <View>
             <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15}}>
               <Button
@@ -940,6 +947,7 @@ class OverviewScreen2 extends React.Component {
 
     return(
       <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
+        <HideStatusBar />
         <View style = {style.container}>
           <FlatList 
             data = {columnData}
@@ -1060,6 +1068,7 @@ class ProducerListScreen extends React.Component {
   render() {
     return(
       <View>
+        <HideStatusBar />
         <View style = {{backgroundColor:"#F7F7DA"}}>
           <SearchBar
               round
@@ -1108,6 +1117,7 @@ class SplashScreen extends React.Component {
 
     return (
       <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
+        <HideStatusBar />
         <Image
           source={require('./lpiv3.png')}
           style={{ width: 300, height: 50, marginBottom: 0, 
@@ -1121,6 +1131,19 @@ class SplashScreen extends React.Component {
         <MenuScreen navigation={this.props.navigation} />
       </ImageBackground>
     );
+  }
+}
+
+class HideStatusBar extends React.Component {
+  render() {
+    return (
+      <View>
+        <StatusBar backgroundColor="#b3e6ff" barStyle="light-content" />  
+        <View>  
+          <StatusBar hidden={true} />  
+        </View>  
+      </View>
+    )
   }
 }
 
@@ -1386,7 +1409,7 @@ const TabNavigator = createBottomTabNavigator(
         
       },
       style: {
-        backgroundColor: '#928b3a',
+        backgroundColor: '#282828',
         height: 0,
         fontStyle: 'bold'
       },
