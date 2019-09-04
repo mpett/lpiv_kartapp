@@ -771,7 +771,7 @@ class OverviewScreen extends React.Component {
             <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15}}>
               <Button
                 color='#827C34'
-                buttonStyle={{borderRadius: 5, width: 120, marginRight: 15, marginLeft:25, backgroundColor: "#37503c"}}
+                buttonStyle={{borderRadius: 5, width: 90, marginRight: 15, marginLeft:25, backgroundColor: "#37503c"}}
                 title='Alla'
                 onPress = {() => {
                   // Navigate to details route with parameter
@@ -779,7 +779,7 @@ class OverviewScreen extends React.Component {
               />
               <Button
                 backgroundColor='white'
-                buttonStyle={{borderRadius: 5, width: 120, backgroundColor: "#37503c"}}
+                buttonStyle={{borderRadius: 5, width: 90, backgroundColor: "#37503c"}}
                 title='Matfest'
                 onPress = {() => {
                 // Navigate to details route with parameter
@@ -787,7 +787,7 @@ class OverviewScreen extends React.Component {
               />
               <Button
                 backgroundColor='white'
-                buttonStyle={{borderRadius: 5, width: 120, marginLeft: 15, marginRight: 25, backgroundColor: "#37503c"}}
+                buttonStyle={{borderRadius: 5, width: 90, marginLeft: 15, marginRight: 25, backgroundColor: "#37503c"}}
                 title='Medlem'
                 onPress = {() => {
                   // Navigate to details route with parameter
@@ -801,7 +801,7 @@ class OverviewScreen extends React.Component {
               //ItemSeparatorComponent={this.ListViewItemSeparator}
               renderItem={this.renderItem}
               enableEmptySections={false}
-              style={{ marginLeft: 30, marginRight: 30, marginBottom: 347 }}
+              style={{ marginLeft: 0, marginRight: 0, marginBottom: 347 }}
               keyExtractor = {(item, index) => index.toString()}
             />
           </View>
