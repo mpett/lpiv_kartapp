@@ -695,11 +695,11 @@ class OverviewScreen extends React.Component {
         colors: ['#37503c', '#2b4330']
       }}
       ViewComponent = {LinearGradient}
-      leftAvatar = {{ rounded: true, source: { uri: item.logo_url } }}
+      leftAvatar = {{ rounded: true, source: { uri: item.logo_url }, justifyContent: 'center' }}
       title={item.business_name}
       titleStyle = {{ color: 'white', fontWeight: 'bold' }}
-      //subtitle="LPIV, Matfest"
-      //subtitleStyle = {{ color: 'white' }}
+      subtitle="LPIV, Matfest"
+      subtitleStyle = {{ color: 'white' }}
       chevronColor="white"
       chevron
       containerStyle = {{ marginLeft: 5,
