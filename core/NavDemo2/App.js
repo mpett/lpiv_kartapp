@@ -594,8 +594,8 @@ class ProducerScreen extends React.Component {
                   <Text style={{marginBottom: 20, marginTop: 5}}>{opening_hours}</Text>
                 </View>
                 <Button
-                  backgroundColor='#03A9F4'
-                  buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "#99994d"}}
+                  backgroundColor='#37503c'
+                  buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "#37503c"}}
                   title='Hitta oss på kartan'
                   onPress = {() => {
                     // Navigate to details route with parameter
