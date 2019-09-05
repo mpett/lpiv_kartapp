@@ -759,12 +759,15 @@ class OverviewScreen extends React.Component {
       padding:10
     };
 
+    const store_type = this.props.navigation.dangerouslyGetParent().getParam("store_type");
+
     return(
+      
       <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
         <HideStatusBar />
         <View style={{marginTop: 30}}>
           <View style = {{justifyContent: 'center', alignItems: 'center', marginTop: 65}}>
-            <Text style={descriptionStyles}>Producenter</Text>
+            <Text style={descriptionStyles}>{store_type}</Text>
             <Text style={{ color: "#282828", fontSize: 10, fontStyle: "italic" }}>Sortera efter kategori...</Text>
           </View>
           <View>
@@ -1179,19 +1182,19 @@ class MenuScreen extends React.Component {
         <TouchableOpacity onPress={() => this.props.navigation.navigate("Start")}>
           <Image source={require('./menu_icons/start.png')} style={ iconStyles } />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate("Äta")}>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate("Äta", {store_type:"Äta"})}>
           <Image source={require('./menu_icons/äta.png')} style={ iconStyles } />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate("Fika")}>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate("Fika", {store_type:"Producent"})}>
           <Image source={require('./menu_icons/producent.png')} style={ iconStyles } />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate("Handla")}>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate("Handla", {store_type:"Gårdsbutik"})}>
           <Image source={require('./menu_icons/gårdsbutik.png')} style={ iconStyles } />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => this.props.navigation.navigate("Karta")}>
           <Image source={require('./menu_icons/karta.png')} style={ iconStyles } />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate("Handla")}>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate("Sök")}>
           <Image source={require('./menu_icons/sök.png')} style={{ flexDirection: 'row', flexWrap: 'wrap', height: 30, width: 30, marginTop: 10 }} />
         </TouchableOpacity>
       </View>
@@ -1234,7 +1237,7 @@ const ProducerStack = createStackNavigator(
   {headerMode: 'screen'}
 )
 
-const TestStack = createStackNavigator(
+const ListStack = createStackNavigator(
   {
     ProducerList: {
       screen: OverviewScreen,
@@ -1381,16 +1384,19 @@ const TabNavigator = createBottomTabNavigator(
       screen: SplashScreen,
     },
     Äta: {
-      screen: TestStack,
+      screen: ListStack,
     },
     Fika: {
-      screen: TestStack2,
+      screen: ListStack,
     },
     Handla: {
-      screen: ProducerStack,
+      screen: ListStack,
     },
     Karta: {
       screen: MapStack,
+    },
+    Sök: {
+      screen: ProducerStack
     }
 
   },
