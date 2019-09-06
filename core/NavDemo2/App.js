@@ -774,7 +774,6 @@ class OverviewScreen extends React.Component {
     const store_type = this.props.navigation.dangerouslyGetParent().getParam("store_type");
 
     return(
-      
       <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
         <HideStatusBar />
         <View style={{marginTop: 30}}>
