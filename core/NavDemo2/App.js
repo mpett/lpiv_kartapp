@@ -23,7 +23,7 @@ const VÄSTRA_GÖTALAND = {
   longitudeDelta: 3.2
 };
 
-const producer_list = [
+producer_list = [
   {
       business_name: "Alvar och Ivars Surdegsbageri",
       logo_url: "https:\/\/lokalproducerativast.se\/wp-content\/uploads\/producers\/xiolaxkmy0zttk5.jpg",
@@ -479,7 +479,14 @@ class MapScreen extends React.Component {
                     long: location.longitude,
                     direction: location.map_direction_link,
                     adress: location.visiting_adress,
-                    name: location.business_name
+                    name: location.business_name,
+                    adress: location.visiting_adress,
+                    contact_person: location.contact_person,
+                    producer_city: location.city,
+                    producer_email: location.email,
+                    producer_phone: location.phone,
+                    producer_website: location.website,
+                    opening_hours: location.opening_hours
                   });
                 }} >
               <View>
@@ -639,6 +646,7 @@ class OverviewScreen extends React.Component {
         },
         function() {
           this.arrayholder = responseJson;
+          producer_list = responseJson;
         }
       );
     })
@@ -720,7 +728,14 @@ class OverviewScreen extends React.Component {
           long: item.longitude,
           direction: item.map_direction_link,
           adress: item.visiting_adress,
-          name: item.business_name
+          name: item.business_name,
+          adress: item.visiting_adress,
+          contact_person: item.contact_person,
+          producer_city: item.city,
+          producer_email: item.email,
+          producer_phone: item.phone,
+          producer_website: item.website,
+          opening_hours: item.opening_hours
         });
       }} 
     />
@@ -839,6 +854,7 @@ class ProducerListScreen extends React.Component {
         },
         function() {
           this.arrayholder = responseJson;
+          producer_list = responseJson;
         }
       );
     })
@@ -904,7 +920,14 @@ class ProducerListScreen extends React.Component {
           lat: item.latitude,
           long: item.longitude,
           adress: item.visiting_adress,
-          name: item.business_name
+          name: item.business_name,
+          adress: item.visiting_adress,
+          contact_person: item.contact_person,
+          producer_city: item.city,
+          producer_email: item.email,
+          producer_phone: item.phone,
+          producer_website: item.website,
+          opening_hours: item.opening_hours
         });
       }} 
       title={item.business_name}
