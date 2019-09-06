@@ -1,8 +1,8 @@
 import React from "react";
-import { View, Text, Image, StyleSheet, ScrollView, FlatList, Platform, ImageBackground, TouchableOpacity, AppRegistry, StatusBar } from "react-native";
+import { View, Text, Image, StyleSheet, ScrollView, FlatList, Platform, ImageBackground, TouchableOpacity, StatusBar } from "react-native";
 import { createStackNavigator, createAppContainer, createBottomTabNavigator} from "react-navigation";
-import MapView, { PROVIDER_GOOGLE, Marker, navigator } from 'react-native-maps';
-import { Button, ListItem, Card, SearchBar, Headers } from 'react-native-elements';
+import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
+import { Button, ListItem, SearchBar } from 'react-native-elements';
 import TouchableScale from 'react-native-touchable-scale';
 import LinearGradient from 'react-native-linear-gradient';
 import Geolocation from '@react-native-community/geolocation';
@@ -402,11 +402,8 @@ const producer_list = [
   }
 ]
 
-type Props = {};
-type State = { region: ?Region, }
-
-class SingleMapScreen extends React.Component<Props, State> {
-  constructor(props: Props) {
+class SingleMapScreen extends React.Component {
+  constructor(props) {
     super(props);
 
     const { navigation } = this.props;
@@ -453,8 +450,8 @@ class SingleMapScreen extends React.Component<Props, State> {
   }
 }
 
-class MapScreen extends React.Component<Props, State> {
-  constructor(props: Props) {
+class MapScreen extends React.Component {
+  constructor(props) {
     super(props);
 
     this.state = { region: VÄSTRA_GÖTALAND };
@@ -1215,24 +1212,6 @@ const styles = StyleSheet.create({
     padding: 10,
   },
 });
-
-const style={
-  container: {
-    flex: 1,
-    flexDirection: 'row',
-    height: 400
-  },
-  column: {
-    flex: 1,
-    flexDirection: 'column'
-  },
-  row: {
-    flexDirection: 'row'
-  },
-  item: {
-    flex: 1
-  }
-}
 
 export default class App extends React.Component {
   render() {
