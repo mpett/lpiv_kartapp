@@ -988,9 +988,9 @@ class SplashScreen extends React.Component {
       fontSize: 27,
       fontWeight: 'bold',
       padding:10,
-      textShadowColor: 'rgba(0, 0, 0, 0.75)',
-      textShadowOffset: {width: -1, height: 1},
-      textShadowRadius: 10
+      textShadowColor: 'rgba(255, 255, 255, 0.85)',
+      textShadowOffset: {width: -2, height: 2},
+      textShadowRadius: 15
     };
 
     return (
