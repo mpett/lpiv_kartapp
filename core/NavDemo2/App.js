@@ -599,7 +599,7 @@ class ProducerScreen extends React.Component {
                 </View>
                 <Button
                   backgroundColor='#37503c'
-                  buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "#37503c"}}
+                  buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "#446f6d"}}
                   title='Hitta oss på kartan'
                   onPress = {() => {
                     // Navigate to details route with parameter
@@ -697,14 +697,14 @@ class OverviewScreen extends React.Component {
       tension = {100}
       activeScale = {0.95}
       linearGradientProps = {{
-        colors: ['#37503c', '#2b4330']
+        colors: ['#3a5f5d', '#446f6d']
       }}
       ViewComponent = {LinearGradient}
       leftAvatar = {{ rounded: true, source: { uri: item.logo_url }, justifyContent: 'center' }}
       title={item.business_name}
       titleStyle = {{ color: 'white', fontWeight: 'bold' }}
-      subtitle="LPIV, Matfest"
-      subtitleStyle = {{ color: 'white' }}
+      //subtitle="LPIV, Matfest"
+      //subtitleStyle = {{ color: 'white' }}
       chevronColor="white"
       chevron
       containerStyle = {{ marginLeft: 5,
@@ -714,7 +714,7 @@ class OverviewScreen extends React.Component {
         backgroundColor: '#fff',
         height: 60,
         borderWidth: 1,
-        borderColor: '#37503c'
+        borderColor: '#558a87'
       }}
 
       onPress = {() => {
@@ -785,7 +785,7 @@ class OverviewScreen extends React.Component {
             <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15}}>
               <Button
                 color='#827C34'
-                buttonStyle={{borderRadius: 5, width: 90, marginRight: 15, marginLeft:25, backgroundColor: "#37503c"}}
+                buttonStyle={{borderRadius: 5, width: 90, marginRight: 15, marginLeft:25, backgroundColor: "#446f6d"}}
                 title='Alla'
                 onPress = {() => {
                   // Navigate to details route with parameter
@@ -793,7 +793,7 @@ class OverviewScreen extends React.Component {
               />
               <Button
                 backgroundColor='white'
-                buttonStyle={{borderRadius: 5, width: 90, backgroundColor: "#37503c"}}
+                buttonStyle={{borderRadius: 5, width: 90, backgroundColor: "#446f6d"}}
                 title='Matfest'
                 onPress = {() => {
                 // Navigate to details route with parameter
@@ -801,7 +801,7 @@ class OverviewScreen extends React.Component {
               />
               <Button
                 backgroundColor='white'
-                buttonStyle={{borderRadius: 5, width: 90, marginLeft: 15, marginRight: 25, backgroundColor: "#37503c"}}
+                buttonStyle={{borderRadius: 5, width: 90, marginLeft: 15, marginRight: 25, backgroundColor: "#446f6d"}}
                 title='Medlem'
                 onPress = {() => {
                   // Navigate to details route with parameter
@@ -815,7 +815,7 @@ class OverviewScreen extends React.Component {
               //ItemSeparatorComponent={this.ListViewItemSeparator}
               renderItem={this.renderItem}
               enableEmptySections={false}
-              style={{ marginLeft: 0, marginRight: 0, marginBottom: 347 }}
+              style={{ marginBottom: 347 }}
               keyExtractor = {(item, index) => index.toString()}
             />
           </View>
