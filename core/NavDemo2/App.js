@@ -628,34 +628,15 @@ class OverviewScreen extends React.Component {
   }
 
   componentDidMount() {
-    var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v1/producerlist', {
-      method: 'get',
-      headers: new global.Headers({
-        'Authorization': 'Basic ' + Buffer.from('api_2jWTR5iTIHOOxdIVqV2HFLPDJ0aQOMydlSGNbdoneEXGcI39JNC9R2W:uf6He48ci0H92Y7E5T6dmKAGuOiGE0PGwBlp51drqFHYehQP9HKBftu').toString('base64'),
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }),
-      body: undefined
-    })
-    .then(response => response.json())
-    .then(responseJson => {
-      //console.log(responseJson);
-      this.setState(
-        {
-          isLoading: false,
-          dataSource: responseJson,
-        },
-        function() {
-          this.arrayholder = responseJson;
-          producer_list = responseJson;
-        }
-      );
-    })
-    .catch(error => {
-    });
-    
-    //console.log(return_array);
-
-    return return_array;
+    this.setState(
+      {
+        isLoading: false,
+        dataSource: producer_list,
+      },
+      function() {
+        this.arrayholder = producer_list;
+      }
+    );
   }
 
   search = text => {
@@ -964,6 +945,52 @@ class ProducerListScreen extends React.Component {
 }
 
 class SplashScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { isLoading: true, search: '' };
+    this.arrayholder = [];
+  }
+
+  componentDidMount() {
+    var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v1/producerlist', {
+      method: 'get',
+      headers: new global.Headers({
+        'Authorization': 'Basic ' + Buffer.from('api_2jWTR5iTIHOOxdIVqV2HFLPDJ0aQOMydlSGNbdoneEXGcI39JNC9R2W:uf6He48ci0H92Y7E5T6dmKAGuOiGE0PGwBlp51drqFHYehQP9HKBftu').toString('base64'),
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }),
+      body: undefined
+    })
+    .then(response => response.json())
+    .then(responseJson => {
+      //console.log(responseJson);
+      this.setState(
+        {
+          isLoading: false,
+          dataSource: responseJson,
+        },
+        function() {
+          this.arrayholder = responseJson;
+          producer_list = responseJson;
+        }
+      );
+    })
+    .catch(error => {
+      this.setState(
+        {
+          isLoading: false,
+          dataSource: producer_list,
+        },
+        function() {
+          this.arrayholder = producer_list;
+        }
+      );
+    });
+    
+    //console.log(return_array);
+
+    return return_array;
+  }
+
   render() {
     const viewStyles = [
       {
