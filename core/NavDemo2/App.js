@@ -985,7 +985,7 @@ class SplashScreen extends React.Component {
     
     const descriptionStyles = {
       color: 'white',
-      fontSize: 18,
+      fontSize: 25,
       fontWeight: 'bold',
       padding:10,
       textShadowColor: 'rgba(0, 0, 0, 0.75)',
