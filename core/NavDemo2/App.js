@@ -984,8 +984,8 @@ class SplashScreen extends React.Component {
     ];
     
     const descriptionStyles = {
-      color: 'white',
-      fontSize: 25,
+      color: '#282828',
+      fontSize: 27,
       fontWeight: 'bold',
       padding:10,
       textShadowColor: 'rgba(0, 0, 0, 0.75)',
@@ -1003,7 +1003,7 @@ class SplashScreen extends React.Component {
         />
         <View style={{marginBottom:222}}>
           <Text style={descriptionStyles}>
-            Västsvenska Matappen
+            Västsvenska{"\n"}Matappen
           </Text>
         </View>        
         <MenuScreen navigation={this.props.navigation} />
