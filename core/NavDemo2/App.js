@@ -610,6 +610,14 @@ class ProducerScreen extends React.Component {
                       name: producer_name
                     })}}
                   />
+                  <Button
+                    backgroundColor='#37503c'
+                    buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "#446f6d"}}
+                    title='Gå tillbaka'
+                    onPress = {() => {
+                      // Navigate to details route with parameter
+                      this.props.navigation.goBack() }}
+                  />
               </ScrollView>
             </View>
           </ScrollView>
