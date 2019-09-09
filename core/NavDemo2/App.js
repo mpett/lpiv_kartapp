@@ -445,6 +445,7 @@ class SingleMapScreen extends React.Component {
             </MapView.Callout>
           </MapView.Marker>
         </MapView>
+        
       </View>
     );
   }
@@ -824,43 +825,15 @@ class ProducerListScreen extends React.Component {
   }
 
   componentDidMount() {
-    var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v1/producerlist', {
-      method: 'get',
-      headers: new global.Headers({
-        'Authorization': 'Basic ' + Buffer.from('api_2jWTR5iTIHOOxdIVqV2HFLPDJ0aQOMydlSGNbdoneEXGcI39JNC9R2W:uf6He48ci0H92Y7E5T6dmKAGuOiGE0PGwBlp51drqFHYehQP9HKBftu').toString('base64'),
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }),
-      body: undefined
-    })
-    .then(response => response.json())
-    .then(responseJson => {
-      //console.log(responseJson);
-      this.setState(
-        {
-          isLoading: false,
-          dataSource: responseJson,
-        },
-        function() {
-          this.arrayholder = responseJson;
-          producer_list = responseJson;
-        }
-      );
-    })
-    .catch(error => {
-      this.setState(
-        {
-          isLoading: false,
-          dataSource: producer_list,
-        },
-        function() {
-          this.arrayholder = producer_list;
-        }
-      );
-    });
-    
-    //console.log(return_array);
-
-    return return_array;
+    this.setState(
+      {
+        isLoading: false,
+        dataSource: producer_list,
+      },
+      function() {
+        this.arrayholder = producer_list;
+      }
+    );
   }
 
   search = text => {
@@ -1011,7 +984,7 @@ class SplashScreen extends React.Component {
     ];
     
     const descriptionStyles = {
-      color: '#d9d9d9',
+      color: 'white',
       fontSize: 18,
       fontWeight: 'bold',
       padding:10,
@@ -1024,13 +997,13 @@ class SplashScreen extends React.Component {
       <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
         <HideStatusBar />
         <Image
-          source={require('./lpiv3.png')}
-          style={{ width: 300, height: 50, marginBottom: 0, 
+          source={require('./logo-transparent.png')}
+          style={{ width: 150, height: 150, marginBottom: 0, 
             borderColor: '#99994d' }}
         />
         <View style={{marginBottom:222}}>
           <Text style={descriptionStyles}>
-            En app med maten i fokus!
+            Västsvenska Matappen
           </Text>
         </View>        
         <MenuScreen navigation={this.props.navigation} />
