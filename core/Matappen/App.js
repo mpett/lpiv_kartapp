@@ -34,6 +34,8 @@ const VÄSTRA_GÖTALAND = {
   longitudeDelta: 3.2
 };
 
+console.disableYellowBox = true;
+
 producer_list = [
   {
       business_name: "Alvar och Ivars Surdegsbageri",
@@ -1192,42 +1194,53 @@ const TabNavigator = createBottomTabNavigator(
   {
     Start: {
       screen: SplashScreen,
+      navigationOptions: {
+        tabBarVisible: false
+      }
     },
     Äta: {
       screen: ListStack,
+      navigationOptions: {
+        tabBarVisible: false
+      }
     },
     Fika: {
       screen: ListStack,
+      navigationOptions: {
+        tabBarVisible: false
+      }
     },
     Handla: {
       screen: ListStack,
+      navigationOptions: {
+        tabBarVisible: false
+      }
     },
     Karta: {
       screen: MapStack,
+      navigationOptions: {
+        tabBarVisible: false
+      }
     },
     Sök: {
-      screen: ProducerStack
+      screen: ProducerStack,
+      navigationOptions: {
+        tabBarVisible: false
+      }
     }
 
   },
   {
     tabBarOptions: {
-      activeTintColor: '#d3edad',
-      inactiveTintColor: '#373416',
-      fontStyle: 'bold',
-      height: 8,
-      swipeEnabled: true,
-      animationEnabled: true,
-      lazy: true,
+      backgroundColor: 'black',
+      height: -5,
       labelStyle: {
         fontSize: 0,
-        
-        
       },
       style: {
-        backgroundColor: '#282828',
-        height: 0,
-        fontStyle: 'bold'
+        backgroundColor: 'black',
+        height: -5,
+        tabBarVisible: false
       },
     }
   },
