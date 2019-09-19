@@ -922,28 +922,6 @@ class OverviewScreen extends React.Component {
     });
   }
 
-  TypeFilterFunction(store_type) {
-    if (store_type === "Äta") {
-      const newData = this.arrayholder.filter(
-        e => e.producer_store_category_1 === true);
-      this.setState({
-        dataSource: newData
-      });
-    } else if (store_type === "Producent") {
-      const newData = this.arrayholder.filter(
-        e => e.producer_store_category_2 === true);
-      this.setState({
-        dataSource: newData
-      });
-    } else if (store_type === "Gårdsbutik") {
-      const newData = this.arrayholder.filter(
-        e => e.producer_store_category_3 === true);
-      this.setState({
-        dataSource: newData
-      });
-    }
-  }
-
   CategoryFilterFunction(category_type) {
     if (category_type === "matfest") {
       const newData = this.arrayholder.filter(
