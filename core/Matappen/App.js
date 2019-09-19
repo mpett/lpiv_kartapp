@@ -944,6 +944,24 @@ class OverviewScreen extends React.Component {
     }
   }
 
+  CategoryFilterFunction(category_type) {
+    if (category_type === "matfest") {
+      const newData = this.arrayholder.filter(
+        e => e.producer_category_1 === true
+      );
+      this.setState({
+        dataSource: newData
+      });
+    } else if (category_type === "medlem") {
+      const newData = this.arrayholder.filter(
+        e => e.producer_category_2 === true
+      );
+      this.setState({
+        dataSource: newData
+      });
+    }
+  }
+
   render() {
     const viewStyles = [
       {
@@ -988,7 +1006,7 @@ class OverviewScreen extends React.Component {
                 title='Matfest'
                 onPress = {() => {
                 // Navigate to details route with parameter
-                this.SearchFilterFunction("gr")}}
+                this.CategoryFilterFunction("matfest")}}
               />
               <Button
                 backgroundColor='white'
@@ -996,7 +1014,7 @@ class OverviewScreen extends React.Component {
                 title='Medlem'
                 onPress = {() => {
                   // Navigate to details route with parameter
-                  this.SearchFilterFunction("al")}}
+                  this.CategoryFilterFunction("medlem")}}
               />
             </View>
           </View>
