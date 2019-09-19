@@ -1,26 +1,19 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, {Component} from 'react';
-
-import { View, Text, Image, StyleSheet, ScrollView, FlatList, Platform, ImageBackground, TouchableOpacity, StatusBar } from "react-native";
-import { createAppContainer } from "react-navigation";
+import {View, Text, Image, StyleSheet, ScrollView, FlatList, Platform, ImageBackground, TouchableOpacity, StatusBar, Dimensions} from 'react-native';
+import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import { Button, ListItem, SearchBar } from 'react-native-elements';
 import TouchableScale from 'react-native-touchable-scale';
-import LinearGradient from 'react-native-linear-gradient'
+import LinearGradient from 'react-native-linear-gradient';
 import Geolocation from '@react-native-community/geolocation';
 
 import { Buffer } from 'buffer';
 
 import type { Region } from 'react-native-maps';
+
+const screenWidth = Math.round(Dimensions.get('window').width);
 
 export interface LatLng {
   latitude: number;
@@ -451,14 +444,15 @@ class SingleMapScreen extends React.Component {
             latitude: this.state.region.latitude,
             longitude: this.state.region.longitude
           }} image={marker_image}>
-            <MapView.Callout>
+            <MapView.Callout onPress = {() => {
+              // Navigate to details route with parameter
+              this.props.navigation.goBack() }} >
               <View>
                 <Text>{this.state.region.name}</Text>
               </View>
             </MapView.Callout>
           </MapView.Marker>
         </MapView>
-        
       </View>
     );
   }
@@ -472,7 +466,7 @@ class MapScreen extends React.Component {
   }
 
   renderMarkers() {
-    const marker_image = require('./lpiv_pin_60_91.png');
+    const marker_image = require('./lpiv_pin_29_44.png');
     
     return producer_list.map((location, key) => {
 
@@ -575,69 +569,241 @@ class ProducerScreen extends React.Component {
 
     return(
       <View>
-        <ImageBackground source={{ uri: background }} style={{width: '100%', height: '100%'}}>
-          <HideStatusBar />
-          <ScrollView>
-            <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 200 }}>
-              <ScrollView>
-                <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
-                  <Image
-                    source={ { uri: logo_image }}
-                    style={{ width: 300, height: 100, flex: 1, resizeMode: 'contain' }}
-                  />
-                </View>
-                <View style={{
-                  borderBottomColor: 'black',
-                  borderBottomWidth: 1,
-                  marginBottom: 15
-                }}>
-                  <Text style={{fontWeight: 'bold'}}>Om oss</Text>
-                  <Text style={{marginBottom: 20, marginTop: 5}}>{description}</Text>
-                </View>
-                <View style={{
-                  borderBottomColor: 'black',
-                  borderBottomWidth: 1,
-                  marginBottom: 15,
-                }}>
-                  <Text style={{fontWeight: 'bold'}}>Kontaktuppfgifter</Text>
-                  <Text style={{marginBottom: 2, marginTop: 2}}>Besöksadress: {producer_adress}</Text>
-                  <Text style={{marginBottom: 2, marginTop: 2}}>Kontaktperson: {contact_person}</Text>
-                  <Text style={{marginBottom: 2, marginTop: 2}}>Besöksort: {producer_city}</Text>
-                  <Text style={{marginBottom: 2, marginTop: 2}}>E-post: {producer_email}</Text>
-                  <Text style={{marginBottom: 2, marginTop: 2}}>Telefon: {producer_phone}</Text>
-                  <Text style={{marginBottom: 17, marginTop: 2}}>Webbsida: {producer_website}</Text>
-                </View>
-                <View>
-                  <Text style={{fontWeight: 'bold'}}>Öppettider</Text>
-                  <Text style={{marginBottom: 20, marginTop: 5}}>{opening_hours}</Text>
-                </View>
-                <Button
-                  backgroundColor='#37503c'
-                  buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "#446f6d"}}
-                  title='Hitta oss på kartan'
-                  onPress = {() => {
-                    // Navigate to details route with parameter
-                    this.props.navigation.navigate('Map', {
-                      lat: latitude,
-                      long: longitude,
-                      adress: producer_adress,
-                      name: producer_name
-                    })}}
-                  />
+        <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}}>
+          <ImageBackground source={{ uri: background }} style={{width: '100%', height: '100%'}}>
+            <HideStatusBar />
+            <ScrollView>
+              <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 200 }}>
+                <ScrollView>
+                  <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
+                    <Image
+                      source={ { uri: logo_image }}
+                      style={{ width: 300, height: 100, flex: 1, resizeMode: 'contain' }}
+                    />
+                  </View>
+                  <View style={{
+                    borderBottomColor: 'black',
+                    borderBottomWidth: 1,
+                    marginBottom: 15
+                  }}>
+                    <Text style={{fontWeight: 'bold'}}>Om oss</Text>
+                    <Text style={{marginBottom: 20, marginTop: 5}}>{description}</Text>
+                  </View>
+                  <View style={{
+                    borderBottomColor: 'black',
+                    borderBottomWidth: 1,
+                    marginBottom: 15,
+                  }}>
+                    <Text style={{fontWeight: 'bold'}}>Kontaktuppgifter</Text>
+                    <Text style={{marginBottom: 2, marginTop: 2}}>Besöksadress: {producer_adress}</Text>
+                    <Text style={{marginBottom: 2, marginTop: 2}}>Kontaktperson: {contact_person}</Text>
+                    <Text style={{marginBottom: 2, marginTop: 2}}>Besöksort: {producer_city}</Text>
+                    <Text style={{marginBottom: 2, marginTop: 2}}>E-post: {producer_email}</Text>
+                    <Text style={{marginBottom: 2, marginTop: 2}}>Telefon: {producer_phone}</Text>
+                    <Text style={{marginBottom: 17, marginTop: 2}}>Webbsida: {producer_website}</Text>
+                  </View>
+                  <View>
+                    <Text style={{fontWeight: 'bold'}}>Öppettider</Text>
+                    <Text style={{marginBottom: 20, marginTop: 5}}>{opening_hours}</Text>
+                  </View>
                   <Button
                     backgroundColor='#37503c'
                     buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "#446f6d"}}
-                    title='Gå tillbaka'
+                    title='Hitta oss på kartan'
                     onPress = {() => {
                       // Navigate to details route with parameter
-                      this.props.navigation.goBack() }}
-                  />
-              </ScrollView>
-            </View>
-          </ScrollView>
+                      this.props.navigation.navigate('Map', {
+                        lat: latitude,
+                        long: longitude,
+                        adress: producer_adress,
+                        name: producer_name
+                      })}}
+                    />
+                    <Button
+                      backgroundColor='#37503c'
+                      buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "#446f6d"}}
+                      title='Gå tillbaka'
+                      onPress = {() => {
+                        // Navigate to details route with parameter
+                        this.props.navigation.goBack() }}
+                    />
+                </ScrollView>
+              </View>
+            </ScrollView>
+          </ImageBackground>
         </ImageBackground>
       </View> 
     )
+  }
+}
+
+class SearchScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { isLoading: true, search: '' };
+    this.arrayholder = [];
+  }
+
+  componentDidMount() {
+    this.setState(
+      {
+        isLoading: false,
+        dataSource: producer_list,
+      },
+      function() {
+        this.arrayholder = producer_list;
+      }
+    );
+  }
+
+  search = text => {
+    //console.log(text);
+  };
+
+  clear = () => {
+    this.search.clear();
+  };
+
+  SearchFilterFunction(text) {
+    const newData = this.arrayholder.filter(function(item) {
+      const itemData = item.business_name ? item.business_name.toUpperCase() : ''.toUpperCase();
+      const textData = text.toUpperCase();
+      return itemData.indexOf(textData) > -1;
+    });
+    this.setState({
+      dataSource: newData,
+      search: text,
+    });
+  }
+
+  ListViewItemSeparator = () => {
+    return(
+      <View 
+        style = {{
+          height: 0.3,
+          width: '90%',
+          backgroundColor: '#080808',
+        }}
+      />
+    );
+  };
+
+  renderItem = ({ item }) => (
+    <ListItem
+      Component = {TouchableScale}
+      friction = {90}
+      tension = {100}
+      activeScale = {0.95}
+      linearGradientProps = {{
+        colors: ['#3a5f5d', '#446f6d']
+      }}
+      ViewComponent = {LinearGradient}
+      leftAvatar = {{ rounded: true, source: { uri: item.logo_url }, justifyContent: 'center' }}
+      title={item.business_name}
+      titleStyle = {{ color: 'white', fontWeight: 'bold' }}
+      //subtitle="LPIV, Matfest"
+      //subtitleStyle = {{ color: 'white' }}
+      chevronColor="white"
+      chevron
+      containerStyle = {{ marginLeft: 0,
+        marginRight: 0, 
+        marginTop: 10, 
+        borderRadius: 4, // adds the rounded corners
+        backgroundColor: '#fff',
+        height: 60,
+        borderWidth: 1,
+        borderColor: '#558a87'
+      }}
+
+      onPress = {() => {
+        this.props.navigation.navigate('Producer', {
+          itemId: 86,
+          otherParam: item.business_name,
+          desc: item.description,
+          image: item.logo_url,
+          cover: item.cover_image_url,
+          lat: item.latitude,
+          long: item.longitude,
+          direction: item.map_direction_link,
+          adress: item.visiting_adress,
+          name: item.business_name,
+          adress: item.visiting_adress,
+          contact_person: item.contact_person,
+          producer_city: item.city,
+          producer_email: item.email,
+          producer_phone: item.phone,
+          producer_website: item.website,
+          opening_hours: item.opening_hours
+        });
+      }} 
+    />
+  )
+
+  SearchFilterFunction(text) {
+    const newData = this.arrayholder.filter(function(item) {
+      const itemData = item.business_name ? item.business_name.toUpperCase() : ''.toUpperCase();
+      const textData = text.toUpperCase();
+      return itemData.indexOf(textData) > -1;
+    });
+    this.setState({
+      dataSource: newData,
+      search: text,
+    });
+  }
+
+  render() {
+    const viewStyles = [
+      {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#827c34'
+      },
+      { backgroundColor: '#827c34' }
+    ];
+
+    const descriptionStyles = {
+      color: '#282828',
+      fontSize: 25,
+      fontWeight: 'bold',
+      padding:10
+    };
+
+    return(
+      <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
+        <View style={{marginTop: 105}}>
+            <View style = {{justifyContent: 'center', alignItems: 'center', marginTop: 45, marginBottom: 20}}>
+              <Text style={descriptionStyles}>Sök</Text>
+              <Text style={{ color: "#282828", fontSize: 10, fontStyle: "italic" }}>Sök bland alla producenter...</Text>
+            </View>
+          <View>
+              <SearchBar
+                round
+                searchIcon={{ size: 24 }}
+                onChangeText = {text => this.SearchFilterFunction(text)}
+                onClear={text => this.SearchFilterFunction('')}
+                placeholder="Sök..."
+                value={this.state.search}
+                width="100%"
+                lightTheme = {true}
+              />
+            <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
+            </View>
+          </View>
+          <View style={{marginTop:5}}>
+            <FlatList 
+              data={this.state.dataSource}
+              //ItemSeparatorComponent={this.ListViewItemSeparator}
+              renderItem={this.renderItem}
+              enableEmptySections={false}
+              style={{ marginBottom: 355 }}
+              keyExtractor = {(item, index) => index.toString()}
+            />
+          </View>
+        </View>
+        <MenuScreen navigation={this.props.navigation} />
+      </ImageBackground>
+    );
   }
 }
 
@@ -710,8 +876,8 @@ class OverviewScreen extends React.Component {
       //subtitleStyle = {{ color: 'white' }}
       chevronColor="white"
       chevron
-      containerStyle = {{ marginLeft: 5,
-        marginRight: 5, 
+      containerStyle = {{ marginLeft: 0,
+        marginRight: 0, 
         marginTop: 10, 
         borderRadius: 4, // adds the rounded corners
         backgroundColor: '#fff',
@@ -756,6 +922,28 @@ class OverviewScreen extends React.Component {
     });
   }
 
+  TypeFilterFunction(store_type) {
+    if (store_type === "Äta") {
+      const newData = this.arrayholder.filter(
+        e => e.producer_store_category_1 === true);
+      this.setState({
+        dataSource: newData
+      });
+    } else if (store_type === "Producent") {
+      const newData = this.arrayholder.filter(
+        e => e.producer_store_category_2 === true);
+      this.setState({
+        dataSource: newData
+      });
+    } else if (store_type === "Gårdsbutik") {
+      const newData = this.arrayholder.filter(
+        e => e.producer_store_category_3 === true);
+      this.setState({
+        dataSource: newData
+      });
+    }
+  }
+
   render() {
     const viewStyles = [
       {
@@ -779,13 +967,13 @@ class OverviewScreen extends React.Component {
     return(
       <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
         <HideStatusBar />
-        <View style={{marginTop: 30}}>
+        <View style={{marginTop: 80}}>
           <View style = {{justifyContent: 'center', alignItems: 'center', marginTop: 65}}>
             <Text style={descriptionStyles}>{store_type}</Text>
             <Text style={{ color: "#282828", fontSize: 10, fontStyle: "italic" }}>Sortera efter kategori...</Text>
           </View>
           <View>
-            <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15}}>
+            <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
               <Button
                 color='#827C34'
                 buttonStyle={{borderRadius: 5, width: 90, marginRight: 15, marginLeft:25, backgroundColor: "#446f6d"}}
@@ -818,122 +1006,13 @@ class OverviewScreen extends React.Component {
               //ItemSeparatorComponent={this.ListViewItemSeparator}
               renderItem={this.renderItem}
               enableEmptySections={false}
-              style={{ marginBottom: 347 }}
+              style={{ marginBottom: 327 }}
               keyExtractor = {(item, index) => index.toString()}
             />
           </View>
         </View>
         <MenuScreen navigation={this.props.navigation} />
       </ImageBackground>
-    );
-  }
-}
-
-class ProducerListScreen extends React.Component {
-  
-  constructor(props) {
-    super(props);
-    this.state = { isLoading: true, search: '' };
-    this.arrayholder = [];
-  }
-
-  componentDidMount() {
-    this.setState(
-      {
-        isLoading: false,
-        dataSource: producer_list,
-      },
-      function() {
-        this.arrayholder = producer_list;
-      }
-    );
-  }
-
-  search = text => {
-    //console.log(text);
-  };
-
-  clear = () => {
-    this.search.clear();
-  };
-
-  SearchFilterFunction(text) {
-    const newData = this.arrayholder.filter(function(item) {
-      const itemData = item.business_name ? item.business_name.toUpperCase() : ''.toUpperCase();
-      const textData = text.toUpperCase();
-      return itemData.indexOf(textData) > -1;
-    });
-    this.setState({
-      dataSource: newData,
-      search: text,
-    });
-  }
-
-  ListViewItemSeparator = () => {
-    return(
-      <View 
-        style = {{
-          height: 0.3,
-          width: '90%',
-          backgroundColor: '#080808',
-        }}
-      />
-    );
-  };
-
-  renderItem = ({ item }) => (
-    <ListItem
-      onPress = {() => {
-        // Navigate to details route with parameter
-        this.props.navigation.navigate('Producer', {
-          itemId: 86,
-          otherParam: item.business_name,
-          desc: item.description,
-          image: item.logo_url,
-          cover: item.cover_image_url,
-          lat: item.latitude,
-          long: item.longitude,
-          adress: item.visiting_adress,
-          name: item.business_name,
-          adress: item.visiting_adress,
-          contact_person: item.contact_person,
-          producer_city: item.city,
-          producer_email: item.email,
-          producer_phone: item.phone,
-          producer_website: item.website,
-          opening_hours: item.opening_hours
-        });
-      }} 
-      title={item.business_name}
-      leftAvatar={{ source: { uri: item.logo_url } }}
-      backgroundColor="#F7F7DA"
-    />
-  )
-
-  render() {
-    return(
-      <View>
-        <HideStatusBar />
-        <View style = {{backgroundColor:"#F7F7DA"}}>
-          <SearchBar
-              round
-              searchIcon={{ size: 24 }}
-              onChangeText = {text => this.SearchFilterFunction(text)}
-              onClear={text => this.SearchFilterFunction('')}
-              placeholder="Sök..."
-              value={this.state.search}
-            />
-            <FlatList 
-              data={this.state.dataSource}
-              backgroundColor="#F7F7DA"
-              //ItemSeparatorComponent={this.ListViewItemSeparator}
-              renderItem={this.renderItem}
-              enableEmptySections={false}
-              //style={{ marginTop: 10 }}
-              keyExtractor = {(item, index) => index.toString()}
-            ></FlatList>
-        </View>
-      </View>
     );
   }
 }
@@ -969,15 +1048,8 @@ class SplashScreen extends React.Component {
       );
     })
     .catch(error => {
-      this.setState(
-        {
-          isLoading: false,
-          dataSource: producer_list,
-        },
-        function() {
-          this.arrayholder = producer_list;
-        }
-      );
+      console.log(error);
+      alert(error);
     });
     
     //console.log(return_array);
@@ -1046,7 +1118,7 @@ class MenuScreen extends React.Component {
   render() {
     const bottomViewStyles = {
       width: "100%",
-      height: 50,
+      height: 60,
       backgroundColor: "#282828",
       justifyContent: "center",
       alignItems: "center",
@@ -1061,7 +1133,7 @@ class MenuScreen extends React.Component {
       flexWrap: 'wrap', 
       height: 30, 
       width: 30, 
-      marginRight: 30,
+      marginRight: 25,
       marginTop: 10
     }
 
@@ -1083,17 +1155,17 @@ class MenuScreen extends React.Component {
           <Image source={require('./menu_icons/karta.png')} style={ iconStyles } />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => this.props.navigation.navigate("Sök")}>
-          <Image source={require('./menu_icons/sök.png')} style={{ flexDirection: 'row', flexWrap: 'wrap', height: 30, width: 30, marginTop: 10 }} />
+          <Image source={require('./menu_icons/sök.png')} style={{ flexDirection: 'row', flexWrap: 'wrap', height: 30, width: 30, marginTop: 10, marginRight: 0 }} />
         </TouchableOpacity>
       </View>
     );
   }
 }
 
-const ProducerStack = createStackNavigator(
+const SearchStack = createStackNavigator(
   {
     ProducerList: {
-      screen: ProducerListScreen,
+      screen: SearchScreen,
       navigationOptions: {
         header: null,
       }
@@ -1223,7 +1295,7 @@ const TabNavigator = createBottomTabNavigator(
       }
     },
     Sök: {
-      screen: ProducerStack,
+      screen: SearchStack,
       navigationOptions: {
         tabBarVisible: false
       }
