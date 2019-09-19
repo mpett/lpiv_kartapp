@@ -408,6 +408,8 @@ producer_list = [
   }
 ]
 
+full_producer_list = producer_list;
+
 class SingleMapScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -1040,6 +1042,7 @@ class SplashScreen extends React.Component {
         function() {
           this.arrayholder = responseJson;
           producer_list = responseJson;
+          full_producer_list = producer_list;
         }
       );
     })
@@ -1049,6 +1052,8 @@ class SplashScreen extends React.Component {
     });
     
     //console.log(return_array);
+
+    //full_producer_list = producer_list;
 
     return return_array;
   }
@@ -1111,6 +1116,29 @@ class MenuScreen extends React.Component {
     super(props);
   }
 
+  StoreCategoryFilterFunction(store_type) {
+    tmp_producer_list = full_producer_list;
+
+    if (store_type === "Äta") {
+      const newData = tmp_producer_list.filter(
+        e => e.producer_store_category_1 === true
+      );
+      tmp_producer_list = newData;
+    } else if (store_type === "Producent") {
+      const newData = tmp_producer_list.filter(
+        e => e.producer_store_category_2 === true
+      );
+      tmp_producer_list = newData;
+    } else if (store_type === "Gårdsbutik") {
+      const newData = tmp_producer_list.filter(
+        e => e.producer_store_category_3 === true
+      );
+      tmp_producer_list = newData;
+    }
+
+    producer_list = tmp_producer_list
+  }
+
   render() {
     const bottomViewStyles = {
       width: "100%",
@@ -1135,22 +1163,22 @@ class MenuScreen extends React.Component {
 
     return (
       <View style = {bottomViewStyles}>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate("Start")}>
+        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Start"), this.props.navigation.navigate("Start")}}>
           <Image source={require('./menu_icons/start.png')} style={ iconStyles } />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate("Äta", {store_type:"Äta"})}>
+        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Äta"), this.props.navigation.navigate("Äta", {store_type:"Äta"})}} >
           <Image source={require('./menu_icons/äta.png')} style={ iconStyles } />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate("Fika", {store_type:"Producent"})}>
+        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Producent"), this.props.navigation.navigate("Fika", {store_type:"Producent"})}}>
           <Image source={require('./menu_icons/producent.png')} style={ iconStyles } />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate("Handla", {store_type:"Gårdsbutik"})}>
+        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Gårdsbutik"), this.props.navigation.navigate("Handla", {store_type:"Gårdsbutik"})}}>
           <Image source={require('./menu_icons/gårdsbutik.png')} style={ iconStyles } />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate("Karta")}>
+        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Karta"), this.props.navigation.navigate("Karta")}}>
           <Image source={require('./menu_icons/karta.png')} style={ iconStyles } />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate("Sök")}>
+        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Sök"), this.props.navigation.navigate("Sök")}}>
           <Image source={require('./menu_icons/sök.png')} style={{ flexDirection: 'row', flexWrap: 'wrap', height: 30, width: 30, marginTop: 10, marginRight: 0 }} />
         </TouchableOpacity>
       </View>
