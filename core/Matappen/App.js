@@ -432,7 +432,7 @@ class SingleMapScreen extends React.Component {
   }
 
   render() {
-    const marker_image = require('./lpiv_pin_60_91.png');
+    const marker_image = require('./lpiv_pin_29_44.png');
 
     return (
       <View style={ styles.container }>
@@ -468,7 +468,7 @@ class MapScreen extends React.Component {
   }
 
   renderMarkers() {
-    const marker_image = require('./lpiv_pin_29_44.png');
+    const marker_image = require('./lpiv_pin_40_61.png');
     
     return producer_list.map((location, key) => {
 
@@ -798,7 +798,7 @@ class SearchScreen extends React.Component {
               //ItemSeparatorComponent={this.ListViewItemSeparator}
               renderItem={this.renderItem}
               enableEmptySections={false}
-              style={{ marginBottom: 355 }}
+              style={{ marginBottom: 375 }}
               keyExtractor = {(item, index) => index.toString()}
             />
           </View>
@@ -1004,7 +1004,7 @@ class OverviewScreen extends React.Component {
               //ItemSeparatorComponent={this.ListViewItemSeparator}
               renderItem={this.renderItem}
               enableEmptySections={false}
-              style={{ marginBottom: 327 }}
+              style={{ marginBottom: 357 }}
               keyExtractor = {(item, index) => index.toString()}
             />
           </View>

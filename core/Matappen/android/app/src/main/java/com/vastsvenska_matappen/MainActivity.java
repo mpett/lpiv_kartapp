@@ -1,4 +1,4 @@
-package com.matappen;
+package com.vastsvenska_matappen;
 
 import com.facebook.react.ReactActivity;
 

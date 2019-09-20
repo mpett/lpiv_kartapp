@@ -1,4 +1,4 @@
-package com.matappen;
+package com.vastsvenska_matappen;
 
 import android.app.Application;
 import android.util.Log;
