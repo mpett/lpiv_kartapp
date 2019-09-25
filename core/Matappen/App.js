@@ -29,6 +29,8 @@ const VÄSTRA_GÖTALAND = {
 
 console.disableYellowBox = true;
 
+start_list = [];
+
 producer_list = [
   {
       business_name: "Alvar och Ivars Surdegsbageri",
@@ -993,8 +995,8 @@ class OverviewScreen extends React.Component {
                 buttonStyle={{borderRadius: 5, width: 90, marginLeft: 15, marginRight: 25, backgroundColor: "#446f6d"}}
                 title='Medlem'
                 onPress = {() => {
-                  // Navigate to details route with parameter
-                  this.CategoryFilterFunction("medlem")}}
+                // Navigate to details route with parameter
+                this.CategoryFilterFunction("medlem")}}
               />
             </View>
           </View>
@@ -1018,7 +1020,7 @@ class OverviewScreen extends React.Component {
 class SplashScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isLoading: true, search: '' };
+    this.state = { isLoading: true, search: '', descColor: '#282828', descShadow: 'rgba(255, 255, 255, 0.85)', descTitle: 'Västsvenska\nMatappen', dField: require('./field2.png'), dLogo: require('./logo-transparent.png'), dFontSize: 27 };
     this.arrayholder = [];
   }
 
@@ -1050,13 +1052,9 @@ class SplashScreen extends React.Component {
       console.log(error);
       alert(error);
     });
-    
-    //console.log(return_array);
-
-    //full_producer_list = producer_list;
 
     return return_array;
-  }
+  }  
 
   render() {
     const viewStyles = [
@@ -1070,26 +1068,31 @@ class SplashScreen extends React.Component {
     ];
     
     const descriptionStyles = {
-      color: '#282828',
-      fontSize: 27,
+      color: this.state.descColor,
+      fontSize: this.state.dFontSize,
       fontWeight: 'bold',
-      padding:10,
-      textShadowColor: 'rgba(255, 255, 255, 0.85)',
+      padding:5,
+      textShadowColor: this.state.descShadow,
       textShadowOffset: {width: -2, height: 2},
       textShadowRadius: 15
     };
 
+    var field = this.state.dField;
+    var logo = this.state.dLogo;
     return (
-      <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
+      
+      <ImageBackground source={field} style={{width: '100%', height: '100%'}} style={viewStyles}>
         <HideStatusBar />
-        <Image
-          source={require('./logo-transparent.png')}
-          style={{ width: 150, height: 150, marginBottom: 0, 
-            borderColor: '#99994d' }}
-        />
+        <TouchableOpacity onPress = { () => {} }>
+          <Image
+            source={logo}
+            style={{ width: 150, height: 150, marginBottom: 0, 
+              borderColor: '#99994d' }}
+          />
+        </TouchableOpacity>
         <View style={{marginBottom:222}}>
           <Text style={descriptionStyles}>
-            Västsvenska{"\n"}Matappen
+            {this.state.descTitle}
           </Text>
         </View>        
         <MenuScreen navigation={this.props.navigation} />
@@ -1114,10 +1117,12 @@ class HideStatusBar extends React.Component {
 class MenuScreen extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { isLoading: true, search: '' };
+    this.arrayholder = [];
   }
 
   StoreCategoryFilterFunction(store_type) {
-    tmp_producer_list = full_producer_list;
+    tmp_producer_list = full_producer_list;    
 
     if (store_type === "Äta") {
       const newData = tmp_producer_list.filter(
