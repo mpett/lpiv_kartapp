@@ -470,7 +470,7 @@ class MapScreen extends React.Component {
   }
 
   renderMarkers() {
-    const marker_image = require('./lpiv_pin_40_61.png');
+    const marker_image = require('./lpiv_pin_16_24.png');
     
     return producer_list.map((location, key) => {
 
@@ -703,7 +703,7 @@ class SearchScreen extends React.Component {
       }}
       ViewComponent = {LinearGradient}
       leftAvatar = {{ rounded: true, source: { uri: item.logo_url }, justifyContent: 'center' }}
-      title={item.business_name}
+      title={item.business_name.slice(0, 40)}
       titleStyle = {{ color: 'white', fontWeight: 'bold' }}
       //subtitle="LPIV, Matfest"
       //subtitleStyle = {{ color: 'white' }}
@@ -874,7 +874,7 @@ class OverviewScreen extends React.Component {
       }}
       ViewComponent = {LinearGradient}
       leftAvatar = {{ rounded: true, source: { uri: item.logo_url }, justifyContent: 'center' }}
-      title={item.business_name}
+      title={item.business_name.slice(0, 40)}
       titleStyle = {{ color: 'white', fontWeight: 'bold' }}
       //subtitle="LPIV, Matfest"
       //subtitleStyle = {{ color: 'white' }}
@@ -1006,7 +1006,7 @@ class OverviewScreen extends React.Component {
               //ItemSeparatorComponent={this.ListViewItemSeparator}
               renderItem={this.renderItem}
               enableEmptySections={false}
-              style={{ marginBottom: 357 }}
+              style={{ marginBottom: 342 }}
               keyExtractor = {(item, index) => index.toString()}
             />
           </View>
@@ -1050,7 +1050,7 @@ class SplashScreen extends React.Component {
     })
     .catch(error => {
       console.log(error);
-      alert(error);
+      alert("Matappen kräver anslutning till internet för att kunna visa innehåll. Vänligen anslut dig och starta om appen.");
     });
 
     return return_array;
