@@ -524,17 +524,17 @@ class MapScreen extends React.Component {
     return (
       <View style={ styles.container }>
         <HideStatusBar />
-        <MapView
-          provider={ PROVIDER_GOOGLE }
-          region={ this.state.region }
-          showsUserLocation={true}
-          style={ styles.mapViewContainer }>
+          <MapView
+            provider={ PROVIDER_GOOGLE }
+            region={ this.state.region }
+            showsUserLocation={true}
+            style={ styles.mapViewContainer }>
 
-          {
-            this.renderMarkers()
-          }
-          
-        </MapView>
+            {
+              this.renderMarkers()
+            }
+            
+          </MapView>
         <MenuScreen navigation={this.props.navigation} />
       </View>
     );
@@ -797,7 +797,6 @@ class SearchScreen extends React.Component {
           <View style={{marginTop:5}}>
             <FlatList 
               data={this.state.dataSource}
-              //ItemSeparatorComponent={this.ListViewItemSeparator}
               renderItem={this.renderItem}
               enableEmptySections={false}
               style={{ marginBottom: 375 }}
@@ -876,8 +875,6 @@ class OverviewScreen extends React.Component {
       leftAvatar = {{ rounded: true, source: { uri: item.logo_url }, justifyContent: 'center' }}
       title={item.business_name.slice(0, 40)}
       titleStyle = {{ color: 'white', fontWeight: 'bold' }}
-      //subtitle="LPIV, Matfest"
-      //subtitleStyle = {{ color: 'white' }}
       chevronColor="white"
       chevron
       containerStyle = {{ marginLeft: 0,
@@ -972,45 +969,45 @@ class OverviewScreen extends React.Component {
             <Text style={descriptionStyles}>{store_type}</Text>
             <Text style={{ color: "#282828", fontSize: 10, fontStyle: "italic" }}>Sortera efter kategori...</Text>
           </View>
-          <View>
-            <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
-              <Button
-                color='#827C34'
-                buttonStyle={{borderRadius: 5, width: 90, marginRight: 15, marginLeft:25, backgroundColor: "#446f6d"}}
-                title='Alla'
-                onPress = {() => {
+            <View>
+              <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
+                <Button
+                  color='#827C34'
+                  buttonStyle={{borderRadius: 5, width: 90, marginRight: 15, marginLeft:25, backgroundColor: "#446f6d"}}
+                  title='Alla'
+                  onPress = {() => {
+                    // Navigate to details route with parameter
+                  this.SearchFilterFunction("")}}
+                />
+                <Button
+                  backgroundColor='white'
+                  buttonStyle={{borderRadius: 5, width: 90, backgroundColor: "#446f6d"}}
+                  title='Matfest'
+                  onPress = {() => {
                   // Navigate to details route with parameter
-                this.SearchFilterFunction("")}}
-              />
-              <Button
-                backgroundColor='white'
-                buttonStyle={{borderRadius: 5, width: 90, backgroundColor: "#446f6d"}}
-                title='Matfest'
-                onPress = {() => {
-                // Navigate to details route with parameter
-                this.CategoryFilterFunction("matfest")}}
-              />
-              <Button
-                backgroundColor='white'
-                buttonStyle={{borderRadius: 5, width: 90, marginLeft: 15, marginRight: 25, backgroundColor: "#446f6d"}}
-                title='Medlem'
-                onPress = {() => {
-                // Navigate to details route with parameter
-                this.CategoryFilterFunction("medlem")}}
+                  this.CategoryFilterFunction("matfest")}}
+                />
+                <Button
+                  backgroundColor='white'
+                  buttonStyle={{borderRadius: 5, width: 90, marginLeft: 15, marginRight: 25, backgroundColor: "#446f6d"}}
+                  title='Medlem'
+                  onPress = {() => {
+                  // Navigate to details route with parameter
+                  this.CategoryFilterFunction("medlem")}}
+                />
+              </View>
+            </View>
+            <View style={{marginTop:5}}>
+              <FlatList 
+                data={this.state.dataSource}
+                //ItemSeparatorComponent={this.ListViewItemSeparator}
+                renderItem={this.renderItem}
+                enableEmptySections={false}
+                style={{ marginBottom: 342 }}
+                keyExtractor = {(item, index) => index.toString()}
               />
             </View>
           </View>
-          <View style={{marginTop:5}}>
-            <FlatList 
-              data={this.state.dataSource}
-              //ItemSeparatorComponent={this.ListViewItemSeparator}
-              renderItem={this.renderItem}
-              enableEmptySections={false}
-              style={{ marginBottom: 342 }}
-              keyExtractor = {(item, index) => index.toString()}
-            />
-          </View>
-        </View>
         <MenuScreen navigation={this.props.navigation} />
       </ImageBackground>
     );
@@ -1080,7 +1077,6 @@ class SplashScreen extends React.Component {
     var field = this.state.dField;
     var logo = this.state.dLogo;
     return (
-      
       <ImageBackground source={field} style={{width: '100%', height: '100%'}} style={viewStyles}>
         <HideStatusBar />
         <TouchableOpacity onPress = { () => {} }>
@@ -1090,11 +1086,11 @@ class SplashScreen extends React.Component {
               borderColor: '#99994d' }}
           />
         </TouchableOpacity>
-        <View style={{marginBottom:222}}>
-          <Text style={descriptionStyles}>
-            {this.state.descTitle}
-          </Text>
-        </View>        
+          <View style={{marginBottom:222}}>
+            <Text style={descriptionStyles}>
+              {this.state.descTitle}
+            </Text>
+          </View>        
         <MenuScreen navigation={this.props.navigation} />
       </ImageBackground>
     );
