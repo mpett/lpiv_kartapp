@@ -8,8 +8,10 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@mapbox/polyline": "^1.1.0",
     "@react-native-community/geolocation": "^2.0.2",
     "buffer": "^5.4.2",
+    "native-base": "^2.13.8",
     "react": "16.8.6",
     "react-native": "0.60.5",
     "react-native-elements": "^1.2.0",

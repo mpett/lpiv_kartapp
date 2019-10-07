@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Text, Image, StyleSheet, ScrollView, FlatList, Platform, ImageBackground, TouchableOpacity, StatusBar, Dimensions} from 'react-native';
+import {View, Image, StyleSheet, ScrollView, FlatList, Platform, ImageBackground, TouchableOpacity, StatusBar, Dimensions, AppRegistry} from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
@@ -8,6 +8,9 @@ import { Button, ListItem, SearchBar } from 'react-native-elements';
 import TouchableScale from 'react-native-touchable-scale';
 import LinearGradient from 'react-native-linear-gradient';
 import Geolocation from '@react-native-community/geolocation';
+
+import { Container, Text } from "native-base";
+import Polyline from "@mapbox/polyline";
 
 import { Buffer } from 'buffer';
 
@@ -412,55 +415,124 @@ producer_list = [
 
 full_producer_list = producer_list;
 
-class SingleMapScreen extends React.Component {
+class SingleMapScreen extends Component {
+
+  //latitude: "57.439651398473714",
+  //longitude: "12.545889315344198",
+
   constructor(props) {
     super(props);
 
-    const { navigation } = this.props;
-    const lat_param = navigation.getParam('lat', '0.0');
-    const long_param = navigation.getParam('long', '0.0');
-    const name_parameter = navigation.getParam('name', "Producent AB")
-    const latitude_parameter = parseFloat(lat_param);
-    const longitude_parameter = parseFloat(long_param);
+    this.state = {
+      latitude: null,
+      longitude: null,
+      error: null,
+      concat: null,
+      coords:[],
+      x: 'false',
+      cordLatitude:57.439651398473714,
+      cordLongitude:12.545889315344198,
+    };
 
-    this.state = { region: {
-        latitude: latitude_parameter,
-        longitude: longitude_parameter,
-        name: name_parameter,
-        latitudeDelta: 0.2,
-        longitudeDelta: 0.2
+    this.mergeLot = this.mergeLot.bind(this);
+
+  }
+
+  componentDidMount() {
+    Geolocation.getCurrentPosition(
+       (position) => {
+         this.setState({
+           latitude: position.coords.latitude,
+           longitude: position.coords.longitude,
+           error: null,
+         });
+         this.mergeLot();
+       },
+       (error) => this.setState({ error: error.message }),
+       { enableHighAccuracy: false, timeout: 200000, maximumAge: 1000 },
+     );
+
+   }
+
+  mergeLot(){
+    if (this.state.latitude != null && this.state.longitude!=null)
+     {
+       let concatLot = this.state.latitude +","+this.state.longitude
+       this.setState({
+         concat: concatLot
+       }, () => {
+         this.getDirections(concatLot, "57.439651398473714,12.545889315344198");
+       });
+     }
+
+   }
+
+   async getDirections(startLoc, destinationLoc) {
+      try {
+          let resp = await fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=${ startLoc }&destination=${ destinationLoc }&key=${ "AIzaSyD2cIn-tfHJAbvHdUYAazW_-lEbt4SIZjM" }`)
+          let respJson = await resp.json();
+          console.error(respJson);
+          let points = Polyline.decode(respJson.routes[0].overview_polyline.points);
+          let coords = points.map((point, index) => {
+              return  {
+                  latitude : point[0],
+                  longitude : point[1]
+              }
+          })
+          this.setState({coords: coords})
+          this.setState({x: "true"})
+          return coords
+      } catch(error) {
+          this.setState({x: "error"})
+          //console.error(error);
+          return error
       }
-    }
   }
 
   render() {
-    const marker_image = require('./lpiv_pin_29_44.png');
+    const marker_image = require('./lpiv_pin_60_91.png');
 
     return (
-      <View style={ styles.container }>
-        <HideStatusBar />
-        <MapView
-          provider = { PROVIDER_GOOGLE }
-          region = { this.state.region }
-          style = { styles.mapViewContainer }
-          >
-          <MapView.Marker coordinate = {{
-            latitude: this.state.region.latitude,
-            longitude: this.state.region.longitude
-          }} image={marker_image}>
-            <MapView.Callout onPress = {() => {
-              // Navigate to details route with parameter
-              this.props.navigation.goBack() }} >
-              <View>
-                <Text>{this.state.region.name}</Text>
-              </View>
-            </MapView.Callout>
-          </MapView.Marker>
-        </MapView>
-      </View>
+      <MapView provider={PROVIDER_GOOGLE} style={single_styles.map} initialRegion={VÄSTRA_GÖTALAND} >
+
+      {!!this.state.latitude && !!this.state.longitude && <MapView.Marker
+         coordinate={{"latitude":this.state.latitude,"longitude":this.state.longitude}}
+         title={"Your Location"}
+       />}
+
+       {!!this.state.cordLatitude && !!this.state.cordLongitude && <MapView.Marker
+          coordinate={{"latitude":this.state.cordLatitude,"longitude":this.state.cordLongitude}}
+          title={"Your Destination"} image={marker_image}
+        />}
+
+       {!!this.state.latitude && !!this.state.longitude && this.state.x == 'true' && <MapView.Polyline
+            coordinates={this.state.coords}
+            strokeWidth={2}
+            strokeColor="red"/>
+        }
+
+        {!!this.state.latitude && !!this.state.longitude && this.state.x == 'error' && <MapView.Polyline
+          coordinates={[
+              {latitude: this.state.latitude, longitude: this.state.longitude},
+              {latitude: this.state.cordLatitude, longitude: this.state.cordLongitude},
+          ]}
+          strokeWidth={2}
+          strokeColor="red"/>
+         }
+      </MapView>
     );
   }
 }
+
+const single_styles = StyleSheet.create({
+  map: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+  },
+});
 
 class MapScreen extends React.Component {
   constructor(props) {
