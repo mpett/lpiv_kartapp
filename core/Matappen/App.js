@@ -464,10 +464,16 @@ class SingleMapScreen extends Component {
 
    async getDirections(startLoc, destinationLoc) {
       try {
-          let resp = await fetch(`https://maps.googleapis.com/maps/api/directions/json?origin=${ startLoc }&destination=${ destinationLoc }&key=${ "AIzaSyD2cIn-tfHJAbvHdUYAazW_-lEbt4SIZjM" }`)
+          let resp = await fetch(
+              `https://maps.googleapis.com/maps/api/directions/json?origin=
+            ${ startLoc }&destination=${ destinationLoc }
+            &key=${ "AIzaSyAQTzaFD-IjWN1V9RkHVwx---QVX4e8F8A" }`
+          )
           let respJson = await resp.json();
-          console.error(respJson);
-          let points = Polyline.decode(respJson.routes[0].overview_polyline.points);
+          //console.error(respJson);
+          let points = Polyline.decode(
+            respJson.routes[0]
+            .overview_polyline.points);
           let coords = points.map((point, index) => {
               return  {
                   latitude : point[0],
@@ -488,31 +494,37 @@ class SingleMapScreen extends Component {
     const marker_image = require('./lpiv_pin_60_91.png');
 
     return (
-      <MapView provider={PROVIDER_GOOGLE} style={single_styles.map} initialRegion={VÄSTRA_GÖTALAND} >
+      <MapView 
+        provider={PROVIDER_GOOGLE} style={single_styles.map} 
+        initialRegion={VÄSTRA_GÖTALAND} >
 
-      {!!this.state.latitude && !!this.state.longitude && <MapView.Marker
-         coordinate={{"latitude":this.state.latitude,"longitude":this.state.longitude}}
-         title={"Your Location"}
-       />}
+      {!!this.state.latitude && !!this.state.longitude && 
+        <MapView.Marker
+          coordinate={{"latitude":this.state.latitude,"longitude":this.state.longitude}}
+          title={"Your Location"}
+        />}
 
-       {!!this.state.cordLatitude && !!this.state.cordLongitude && <MapView.Marker
+       {!!this.state.cordLatitude && !!this.state.cordLongitude && 
+        <MapView.Marker
           coordinate={{"latitude":this.state.cordLatitude,"longitude":this.state.cordLongitude}}
           title={"Your Destination"} image={marker_image}
         />}
 
-       {!!this.state.latitude && !!this.state.longitude && this.state.x == 'true' && <MapView.Polyline
+       {!!this.state.latitude && !!this.state.longitude && this.state.x == 'true' && 
+          <MapView.Polyline
             coordinates={this.state.coords}
             strokeWidth={2}
             strokeColor="red"/>
         }
 
-        {!!this.state.latitude && !!this.state.longitude && this.state.x == 'error' && <MapView.Polyline
-          coordinates={[
-              {latitude: this.state.latitude, longitude: this.state.longitude},
-              {latitude: this.state.cordLatitude, longitude: this.state.cordLongitude},
-          ]}
-          strokeWidth={2}
-          strokeColor="red"/>
+        {!!this.state.latitude && !!this.state.longitude && this.state.x == 'error' && 
+          <MapView.Polyline
+            coordinates={[
+                {latitude: this.state.latitude, longitude: this.state.longitude},
+                {latitude: this.state.cordLatitude, longitude: this.state.cordLongitude},
+            ]}
+            strokeWidth={2}
+            strokeColor="red"/>
          }
       </MapView>
     );
@@ -1094,35 +1106,37 @@ class SplashScreen extends React.Component {
   }
 
   componentDidMount() {
-    var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v1/producerlist', {
-      method: 'get',
-      headers: new global.Headers({
-        'Authorization': 'Basic ' + Buffer.from('api_2jWTR5iTIHOOxdIVqV2HFLPDJ0aQOMydlSGNbdoneEXGcI39JNC9R2W:uf6He48ci0H92Y7E5T6dmKAGuOiGE0PGwBlp51drqFHYehQP9HKBftu').toString('base64'),
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }),
-      body: undefined
-    })
-    .then(response => response.json())
-    .then(responseJson => {
-      //console.log(responseJson);
-      this.setState(
-        {
-          isLoading: false,
-          dataSource: responseJson,
-        },
-        function() {
-          this.arrayholder = responseJson;
-          producer_list = responseJson;
-          full_producer_list = producer_list;
-        }
-      );
-    })
-    .catch(error => {
-      console.log(error);
-      alert("Matappen kräver anslutning till internet för att kunna visa innehåll. Vänligen anslut dig och starta om appen.");
-    });
+    if (full_producer_list === undefined || full_producer_list == 0) {
+      var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v1/producerlist', {
+        method: 'get',
+        headers: new global.Headers({
+          'Authorization': 'Basic ' + Buffer.from('api_2jWTR5iTIHOOxdIVqV2HFLPDJ0aQOMydlSGNbdoneEXGcI39JNC9R2W:uf6He48ci0H92Y7E5T6dmKAGuOiGE0PGwBlp51drqFHYehQP9HKBftu').toString('base64'),
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }),
+        body: undefined
+      })
+      .then(response => response.json())
+      .then(responseJson => {
+        //console.log(responseJson);
+        this.setState(
+          {
+            isLoading: false,
+            dataSource: responseJson,
+          },
+          function() {
+            this.arrayholder = responseJson;
+            producer_list = responseJson;
+            full_producer_list = producer_list;
+          }
+        );
+      })
+      .catch(error => {
+        console.log(error);
+        alert("Matappen kräver anslutning till internet för att kunna visa innehåll. Vänligen anslut dig och starta om appen.");
+      });
 
-    return return_array;
+      return return_array;
+    }
   }  
 
   render() {
@@ -1188,6 +1202,38 @@ class MenuScreen extends React.Component {
     super(props);
     this.state = { isLoading: true, search: '' };
     this.arrayholder = [];
+  }
+
+  componentDidMount() {
+    var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v1/producerlist', {
+      method: 'get',
+      headers: new global.Headers({
+        'Authorization': 'Basic ' + Buffer.from('api_2jWTR5iTIHOOxdIVqV2HFLPDJ0aQOMydlSGNbdoneEXGcI39JNC9R2W:uf6He48ci0H92Y7E5T6dmKAGuOiGE0PGwBlp51drqFHYehQP9HKBftu').toString('base64'),
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }),
+      body: undefined
+    })
+    .then(response => response.json())
+    .then(responseJson => {
+      //console.log(responseJson);
+      this.setState(
+        {
+          isLoading: false,
+          dataSource: responseJson,
+        },
+        function() {
+          this.arrayholder = responseJson;
+          producer_list = responseJson;
+          full_producer_list = producer_list;
+        }
+      );
+    })
+    .catch(error => {
+      console.log(error);
+      alert("Matappen kräver anslutning till internet för att kunna visa innehåll. Vänligen anslut dig och starta om appen.");
+    });
+
+    return return_array;
   }
 
   StoreCategoryFilterFunction(store_type) {
