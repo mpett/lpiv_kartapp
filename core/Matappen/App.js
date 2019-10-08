@@ -417,9 +417,6 @@ full_producer_list = producer_list;
 
 class SingleMapScreen extends Component {
 
-  //latitude: "57.439651398473714",
-  //longitude: "12.545889315344198",
-
   constructor(props) {
     super(props);
 
@@ -451,7 +448,6 @@ class SingleMapScreen extends Component {
        (error) => this.setState({ error: error.message }),
        { enableHighAccuracy: false, timeout: 200000, maximumAge: 1000 },
      );
-
    }
 
   mergeLot(){
@@ -464,7 +460,6 @@ class SingleMapScreen extends Component {
          this.getDirections(concatLot, "57.439651398473714,12.545889315344198");
        });
      }
-
    }
 
    async getDirections(startLoc, destinationLoc) {
@@ -989,6 +984,7 @@ class OverviewScreen extends React.Component {
       const textData = text.toUpperCase();
       return itemData.indexOf(textData) > -1;
     });
+
     this.setState({
       dataSource: newData,
       search: text,
@@ -1037,10 +1033,12 @@ class OverviewScreen extends React.Component {
       <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
         <HideStatusBar />
         <View style={{marginTop: 80}}>
+
           <View style = {{justifyContent: 'center', alignItems: 'center', marginTop: 65}}>
             <Text style={descriptionStyles}>{store_type}</Text>
             <Text style={{ color: "#282828", fontSize: 10, fontStyle: "italic" }}>Sortera efter kategori...</Text>
           </View>
+
             <View>
               <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
                 <Button
@@ -1069,6 +1067,7 @@ class OverviewScreen extends React.Component {
                 />
               </View>
             </View>
+
             <View style={{marginTop:5}}>
               <FlatList 
                 data={this.state.dataSource}
@@ -1079,6 +1078,7 @@ class OverviewScreen extends React.Component {
                 keyExtractor = {(item, index) => index.toString()}
               />
             </View>
+            
           </View>
         <MenuScreen navigation={this.props.navigation} />
       </ImageBackground>
@@ -1148,6 +1148,7 @@ class SplashScreen extends React.Component {
 
     var field = this.state.dField;
     var logo = this.state.dLogo;
+    
     return (
       <ImageBackground source={field} style={{width: '100%', height: '100%'}} style={viewStyles}>
         <HideStatusBar />
@@ -1252,7 +1253,7 @@ class MenuScreen extends React.Component {
           <Image source={require('./menu_icons/karta.png')} style={ iconStyles } />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Sök"), this.props.navigation.navigate("Sök")}}>
-          <Image source={require('./menu_icons/sök.png')} style={{ flexDirection: 'row', flexWrap: 'wrap', height: 30, width: 30, marginTop: 10, marginRight: 0 }} />
+          <Image source={require('./menu_icons/sök.png')} style={{ flexDirection: 'row', flexWrap: 'wrap', height: 30,        width: 30, marginTop: 10, marginRight: 0 }} />
         </TouchableOpacity>
       </View>
     );
