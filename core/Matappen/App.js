@@ -420,6 +420,15 @@ class SingleMapScreen extends Component {
   constructor(props) {
     super(props);
 
+    const { navigation } = this.props;
+    const lat_param = navigation.getParam('lat', '0.0');
+    const long_param = navigation.getParam('long', '0.0');
+    const name_parameter = navigation.getParam('name', "Producent AB")
+    const latitude_parameter = parseFloat(lat_param);
+    const longitude_parameter = parseFloat(long_param);
+    const cord_params = latitude_parameter + "," + longitude_parameter;
+
+
     this.state = {
       latitude: null,
       longitude: null,
@@ -427,8 +436,10 @@ class SingleMapScreen extends Component {
       concat: null,
       coords:[],
       x: 'false',
-      cordLatitude:57.439651398473714,
-      cordLongitude:12.545889315344198,
+      cordLatitude:latitude_parameter,
+      cordLongitude:longitude_parameter,
+      cordString: cord_params,
+      name: name_parameter
     };
 
     this.mergeLot = this.mergeLot.bind(this);
@@ -457,7 +468,7 @@ class SingleMapScreen extends Component {
        this.setState({
          concat: concatLot
        }, () => {
-         this.getDirections(concatLot, "57.439651398473714,12.545889315344198");
+         this.getDirections(concatLot, this.state.cordString);
        });
      }
    }
@@ -501,13 +512,13 @@ class SingleMapScreen extends Component {
       {!!this.state.latitude && !!this.state.longitude && 
         <MapView.Marker
           coordinate={{"latitude":this.state.latitude,"longitude":this.state.longitude}}
-          title={"Your Location"}
+          title={"Du är här"}
         />}
 
        {!!this.state.cordLatitude && !!this.state.cordLongitude && 
         <MapView.Marker
           coordinate={{"latitude":this.state.cordLatitude,"longitude":this.state.cordLongitude}}
-          title={"Your Destination"} image={marker_image}
+          title={this.state.name} image={marker_image}
         />}
 
        {!!this.state.latitude && !!this.state.longitude && this.state.x == 'true' && 
@@ -1391,7 +1402,6 @@ const MapStack = createStackNavigator(
       }
     }
   },
-  
   {
     defaultNavigationOptions: {
       headerStyle: {
@@ -1444,7 +1454,6 @@ const TabNavigator = createBottomTabNavigator(
         tabBarVisible: false
       }
     }
-
   },
   {
     tabBarOptions: {
