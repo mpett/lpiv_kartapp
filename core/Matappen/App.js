@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Image, StyleSheet, ScrollView, FlatList, Platform, ImageBackground, TouchableOpacity, StatusBar, Dimensions, AppRegistry} from 'react-native';
+import {View, Image, StyleSheet, ScrollView, FlatList, Platform, ImageBackground, TouchableOpacity, StatusBar, Dimensions, SafeAreaView} from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
@@ -504,45 +504,71 @@ class SingleMapScreen extends Component {
   render() {
     const marker_image = require('./lpiv_pin_60_91.png');
 
+    const bottomViewStyles = {
+      width: "100%",
+      height: 60,
+      backgroundColor: "rgba(255, 255, 255, 0)",
+      justifyContent: "center",
+      alignItems: "center",
+      position: "absolute",
+      bottom: 0,
+      flexDirection: 'row', flexWrap: 'wrap',
+      marginTop: 5
+    }
+
     return (
-      <MapView 
-        provider={PROVIDER_GOOGLE} style={single_styles.map} 
-        initialRegion={VÄSTRA_GÖTALAND} >
+      <View style = { single_styles.container }>
+          <MapView 
+          provider={PROVIDER_GOOGLE} style={single_styles.map} 
+          initialRegion={VÄSTRA_GÖTALAND} >
 
-      {!!this.state.latitude && !!this.state.longitude && 
-        <MapView.Marker
-          coordinate={{"latitude":this.state.latitude,"longitude":this.state.longitude}}
-          title={"Du är här"}
-        />}
+        {!!this.state.latitude && !!this.state.longitude && 
+          <MapView.Marker
+            coordinate={{"latitude":this.state.latitude,"longitude":this.state.longitude}}
+            title={"Du är här"}
+          />}
 
-       {!!this.state.cordLatitude && !!this.state.cordLongitude && 
-        <MapView.Marker
-          coordinate={{"latitude":this.state.cordLatitude,"longitude":this.state.cordLongitude}}
-          title={this.state.name} image={marker_image}
-        />}
+        {!!this.state.cordLatitude && !!this.state.cordLongitude && 
+          <MapView.Marker
+            coordinate={{"latitude":this.state.cordLatitude,"longitude":this.state.cordLongitude}}
+            title={this.state.name} image={marker_image}
+          />}
 
-       {!!this.state.latitude && !!this.state.longitude && this.state.x == 'true' && 
-          <MapView.Polyline
-            coordinates={this.state.coords}
-            strokeWidth={2}
-            strokeColor="red"/>
-        }
+        {!!this.state.latitude && !!this.state.longitude && this.state.x == 'true' && 
+            <MapView.Polyline
+              coordinates={this.state.coords}
+              strokeWidth={2}
+              strokeColor="red"/>
+          }
 
-        {!!this.state.latitude && !!this.state.longitude && this.state.x == 'error' && 
-          <MapView.Polyline
-            coordinates={[
-                {latitude: this.state.latitude, longitude: this.state.longitude},
-                {latitude: this.state.cordLatitude, longitude: this.state.cordLongitude},
-            ]}
-            strokeWidth={2}
-            strokeColor="red"/>
-         }
-      </MapView>
+          {!!this.state.latitude && !!this.state.longitude && this.state.x == 'error' && 
+            <MapView.Polyline
+              coordinates={[
+                  {latitude: this.state.latitude, longitude: this.state.longitude},
+                  {latitude: this.state.cordLatitude, longitude: this.state.cordLongitude},
+              ]}
+              strokeWidth={2}
+              strokeColor="red"/>
+          }
+        </MapView>
+        <View style = {bottomViewStyles}>
+          <View style = {{ marginRight: 15 }}>
+            <Button title="Gå tillbaka" style = {{backgroundColor: "green"}}
+              onPress = { () => { this.props.navigation.goBack() } }
+            ></Button>
+          </View>
+          
+          <Button title="Utförlig vägbeskrivning" style = {{ backgroundColor: "green" }}></Button>
+          <SafeAreaView />
+        </View>
+      </View>
+      
     );
   }
 }
 
 const single_styles = StyleSheet.create({
+  container: { flex: 1, backgroundColor: 'white' },
   map: {
     position: 'absolute',
     top: 0,
