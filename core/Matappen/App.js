@@ -525,6 +525,7 @@ class SingleMapScreen extends Component {
         {!!this.state.latitude && !!this.state.longitude && 
           <MapView.Marker
             coordinate={{"latitude":this.state.latitude,"longitude":this.state.longitude}}
+            color= "#446f6d"
             title={"Du är här"}
           />}
 
@@ -538,7 +539,7 @@ class SingleMapScreen extends Component {
             <MapView.Polyline
               coordinates={this.state.coords}
               strokeWidth={2}
-              strokeColor="red"/>
+              strokeColor="#446f6d"/>
           }
 
           {!!this.state.latitude && !!this.state.longitude && this.state.x == 'error' && 
@@ -548,17 +549,17 @@ class SingleMapScreen extends Component {
                   {latitude: this.state.cordLatitude, longitude: this.state.cordLongitude},
               ]}
               strokeWidth={2}
-              strokeColor="red"/>
+              strokeColor="#446f6d"/>
           }
         </MapView>
         <View style = {bottomViewStyles}>
           <View style = {{ marginRight: 15 }}>
-            <Button title="Gå tillbaka" style = {{backgroundColor: "green"}}
+            <Button title="Gå tillbaka" buttonStyle = {{backgroundColor: "#446f6d"}}
               onPress = { () => { this.props.navigation.goBack() } }
             ></Button>
           </View>
           
-          <Button title="Utförlig vägbeskrivning" style = {{ backgroundColor: "green" }}></Button>
+          <Button title="Utförlig vägbeskrivning" buttonStyle = {{backgroundColor: "#446f6d"}}></Button>
           <SafeAreaView />
         </View>
       </View>
