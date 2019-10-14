@@ -1102,7 +1102,7 @@ class OverviewScreen extends React.Component {
                 <Button
                   backgroundColor='white'
                   buttonStyle={{borderRadius: 5, width: 90, backgroundColor: "#446f6d"}}
-                  title='Matfest'
+                  title='Nära mig'
                   onPress = {() => {
                   // Navigate to details route with parameter
                   this.CategoryFilterFunction("matfest")}}
@@ -1144,37 +1144,35 @@ class SplashScreen extends React.Component {
   }
 
   componentDidMount() {
-    if (full_producer_list === undefined || full_producer_list == 0) {
-      var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v1/producerlist', {
-        method: 'get',
-        headers: new global.Headers({
-          'Authorization': 'Basic ' + Buffer.from('api_2jWTR5iTIHOOxdIVqV2HFLPDJ0aQOMydlSGNbdoneEXGcI39JNC9R2W:uf6He48ci0H92Y7E5T6dmKAGuOiGE0PGwBlp51drqFHYehQP9HKBftu').toString('base64'),
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }),
-        body: undefined
-      })
-      .then(response => response.json())
-      .then(responseJson => {
-        //console.log(responseJson);
-        this.setState(
-          {
-            isLoading: false,
-            dataSource: responseJson,
-          },
-          function() {
-            this.arrayholder = responseJson;
-            producer_list = responseJson;
-            full_producer_list = producer_list;
-          }
-        );
-      })
-      .catch(error => {
-        console.log(error);
-        alert("Matappen kräver anslutning till internet för att kunna visa innehåll. Vänligen anslut dig och starta om appen.");
-      });
+    var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v1/producerlist', {
+      method: 'get',
+      headers: new global.Headers({
+        'Authorization': 'Basic ' + Buffer.from('api_2jWTR5iTIHOOxdIVqV2HFLPDJ0aQOMydlSGNbdoneEXGcI39JNC9R2W:uf6He48ci0H92Y7E5T6dmKAGuOiGE0PGwBlp51drqFHYehQP9HKBftu').toString('base64'),
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }),
+      body: undefined
+    })
+    .then(response => response.json())
+    .then(responseJson => {
+      //console.log(responseJson);
+      this.setState(
+        {
+          isLoading: false,
+          dataSource: responseJson,
+        },
+        function() {
+          this.arrayholder = responseJson;
+          producer_list = responseJson;
+          full_producer_list = producer_list;
+        }
+      );
+    })
+    .catch(error => {
+      console.log(error);
+      alert("Matappen kräver anslutning till internet för att kunna visa innehåll. Vänligen anslut dig och starta om appen.");
+    });
 
-      return return_array;
-    }
+    return return_array;
   }  
 
   render() {
@@ -1242,7 +1240,7 @@ class MenuScreen extends React.Component {
     this.arrayholder = [];
   }
 
-  componentDidMount() {
+  downloadList() {
     var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v1/producerlist', {
       method: 'get',
       headers: new global.Headers({
@@ -1275,6 +1273,11 @@ class MenuScreen extends React.Component {
   }
 
   StoreCategoryFilterFunction(store_type) {
+    if (full_producer_list.length == 0) {
+      console.error("hej");
+      this.downloadList();
+    }
+    
     tmp_producer_list = full_producer_list;    
 
     if (store_type === "Äta") {
