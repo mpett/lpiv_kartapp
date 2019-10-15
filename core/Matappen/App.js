@@ -536,21 +536,22 @@ class SingleMapScreen extends Component {
           />}
 
         {!!this.state.latitude && !!this.state.longitude && this.state.x == 'true' && 
-            <MapView.Polyline
-              coordinates={this.state.coords}
-              strokeWidth={2}
-              strokeColor="#446f6d"/>
-          }
+          <MapView.Polyline
+            coordinates={this.state.coords}
+            strokeWidth={2}
+            strokeColor="#446f6d"/>
+        }
 
-          {!!this.state.latitude && !!this.state.longitude && this.state.x == 'error' && 
-            <MapView.Polyline
-              coordinates={[
-                  {latitude: this.state.latitude, longitude: this.state.longitude},
-                  {latitude: this.state.cordLatitude, longitude: this.state.cordLongitude},
-              ]}
-              strokeWidth={2}
-              strokeColor="#446f6d"/>
-          }
+        {!!this.state.latitude && !!this.state.longitude && this.state.x == 'error' && 
+          <MapView.Polyline
+            coordinates={[
+                {latitude: this.state.latitude, longitude: this.state.longitude},
+                {latitude: this.state.cordLatitude, longitude: this.state.cordLongitude},
+            ]}
+            strokeWidth={2}
+            strokeColor="#446f6d"/>
+        }
+        
         </MapView>
         <View style = {bottomViewStyles}>
           <View style = {{ marginRight: 15 }}>
