@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {View, Image, StyleSheet, ScrollView, FlatList, Platform, ImageBackground, TouchableOpacity, StatusBar, Dimensions, SafeAreaView} from 'react-native';
+import {View, Image, StyleSheet, ScrollView, FlatList, Platform, ImageBackground, TouchableOpacity, StatusBar, Dimensions, SafeAreaView, Linking} from 'react-native';
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
@@ -560,7 +560,21 @@ class SingleMapScreen extends Component {
             ></Button>
           </View>
           
-          <Button title="Utförlig vägbeskrivning" buttonStyle = {{backgroundColor: "#446f6d"}}></Button>
+          <Button title="Utförlig vägbeskrivning" buttonStyle = {{backgroundColor: "#446f6d"}} 
+            onPress = { () => {
+              const scheme = Platform.select({ ios: 'maps:0,0?q=', android: 'geo:0,0?q=' });
+              const latLng = `${this.state.cordLatitude},${this.state.cordLongitude}`;
+              const label = 'Custom Label';
+              const url = Platform.select({
+                ios: `${scheme}${label}@${latLng}`,
+                android: `${scheme}${latLng}(${label})`
+              });
+
+
+              Linking.openURL(url); 
+
+            } }
+          > </Button>
           <SafeAreaView />
         </View>
       </View>
@@ -743,7 +757,6 @@ class ProducerScreen extends React.Component {
                     marginBottom: 15,
                   }}>
                     <Text style={{fontWeight: 'bold'}}>Kategorier</Text>
-
                     <Text style={{marginBottom: 17, marginTop: 2}}>{category_string}</Text>
                   </View>
                   
@@ -1120,25 +1133,9 @@ class OverviewScreen extends React.Component {
             <View>
               <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
                 <Button
-                  color='#827C34'
-                  buttonStyle={{borderRadius: 5, width: 90, marginRight: 15, marginLeft:25, backgroundColor: "#446f6d"}}
-                  title='Alla'
-                  onPress = {() => {
-                    // Navigate to details route with parameter
-                  this.SearchFilterFunction("")}}
-                />
-                <Button
                   backgroundColor='white'
-                  buttonStyle={{borderRadius: 5, width: 90, backgroundColor: "#446f6d"}}
-                  title='Nära mig'
-                  onPress = {() => {
-                  // Navigate to details route with parameter
-                  this.CategoryFilterFunction("matfest")}}
-                />
-                <Button
-                  backgroundColor='white'
-                  buttonStyle={{borderRadius: 5, width: 90, marginLeft: 15, marginRight: 25, backgroundColor: "#446f6d"}}
-                  title='Medlem'
+                  buttonStyle={{borderRadius: 5, width: 270, backgroundColor: "#446f6d"}}
+                  title='Producenter nära mig'
                   onPress = {() => {
                   // Navigate to details route with parameter
                   this.CategoryFilterFunction("medlem")}}
