@@ -689,6 +689,18 @@ class ProducerScreen extends React.Component {
     const producer_name = navigation.getParam("name", "Producent AB");
     const opening_hours = navigation.getParam("opening_hours", "00:00 - 23:00 torsdag - lördag")
 
+    const matfest = navigation.getParam("matfest", false);
+    const lpiv = navigation.getParam("lpiv", false);
+    var category_string = "";
+
+    if (matfest) {
+      category_string += "Matfest ";
+    }
+
+    if (lpiv) {
+      category_string += "LPIV ";
+    }
+
     return(
       <View>
         <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}}>
@@ -708,7 +720,7 @@ class ProducerScreen extends React.Component {
                     borderBottomWidth: 1,
                     marginBottom: 15
                   }}>
-                    <Text style={{fontWeight: 'bold'}}>Om oss</Text>
+                    <Text style={{fontWeight: 'bold'}}>{producer_name}</Text>
                     <Text style={{marginBottom: 20, marginTop: 5}}>{description}</Text>
                   </View>
                   <View style={{
@@ -724,6 +736,17 @@ class ProducerScreen extends React.Component {
                     <Text style={{marginBottom: 2, marginTop: 2}}>Telefon: {producer_phone}</Text>
                     <Text style={{marginBottom: 17, marginTop: 2}}>Webbsida: {producer_website}</Text>
                   </View>
+
+                  <View style={{
+                    borderBottomColor: 'black',
+                    borderBottomWidth: 1,
+                    marginBottom: 15,
+                  }}>
+                    <Text style={{fontWeight: 'bold'}}>Kategorier</Text>
+
+                    <Text style={{marginBottom: 17, marginTop: 2}}>{category_string}</Text>
+                  </View>
+                  
                   <View>
                     <Text style={{fontWeight: 'bold'}}>Öppettider</Text>
                     <Text style={{marginBottom: 20, marginTop: 5}}>{opening_hours}</Text>
@@ -855,7 +878,9 @@ class SearchScreen extends React.Component {
           producer_email: item.email,
           producer_phone: item.phone,
           producer_website: item.website,
-          opening_hours: item.opening_hours
+          opening_hours: item.opening_hours,
+          matfest: item.producer_category_1,
+          lpiv: item.producer_category_2
         });
       }} 
     />
@@ -939,7 +964,7 @@ class OverviewScreen extends React.Component {
   componentDidMount() {
     this.setState(
       {
-        isLoading: false,
+        isLoading: true,
         dataSource: producer_list,
       },
       function() {
@@ -1023,7 +1048,9 @@ class OverviewScreen extends React.Component {
           producer_email: item.email,
           producer_phone: item.phone,
           producer_website: item.website,
-          opening_hours: item.opening_hours
+          opening_hours: item.opening_hours,
+          matfest: item.producer_category_1,
+          lpiv: item.producer_category_2
         });
       }} 
     />
