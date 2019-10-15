@@ -569,16 +569,12 @@ class SingleMapScreen extends Component {
                 ios: `${scheme}${label}@${latLng}`,
                 android: `${scheme}${latLng}(${label})`
               });
-
-
               Linking.openURL(url); 
-
             } }
           > </Button>
           <SafeAreaView />
         </View>
       </View>
-      
     );
   }
 }
