@@ -570,8 +570,8 @@ class SingleMapScreen extends Component {
                 android: `${scheme}${latLng}(${label})`
               });
               Linking.openURL(url); 
-            } }
-          > </Button>
+            }} > 
+          </Button>
           <SafeAreaView />
         </View>
       </View>
@@ -698,9 +698,9 @@ class ProducerScreen extends React.Component {
     const producer_website = navigation.getParam('producer_website', 'https://www.example.com');
     const producer_name = navigation.getParam("name", "Producent AB");
     const opening_hours = navigation.getParam("opening_hours", "00:00 - 23:00 torsdag - lördag")
-
     const matfest = navigation.getParam("matfest", false);
     const lpiv = navigation.getParam("lpiv", false);
+    
     var category_string = "";
 
     if (matfest) {
@@ -855,8 +855,6 @@ class SearchScreen extends React.Component {
       leftAvatar = {{ rounded: true, source: { uri: item.logo_url }, justifyContent: 'center' }}
       title={item.business_name.slice(0, 40)}
       titleStyle = {{ color: 'white', fontWeight: 'bold' }}
-      //subtitle="LPIV, Matfest"
-      //subtitleStyle = {{ color: 'white' }}
       chevronColor="white"
       chevron
       containerStyle = {{ marginLeft: 0,
@@ -928,24 +926,24 @@ class SearchScreen extends React.Component {
     return(
       <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
         <View style={{marginTop: 105}}>
-            <View style = {{justifyContent: 'center', alignItems: 'center', marginTop: 45, marginBottom: 20}}>
-              <Text style={descriptionStyles}>Sök</Text>
-              <Text style={{ color: "#282828", fontSize: 10, fontStyle: "italic" }}>Sök bland alla producenter...</Text>
-            </View>
-          <View>
-              <SearchBar
-                round
-                searchIcon={{ size: 24 }}
-                onChangeText = {text => this.SearchFilterFunction(text)}
-                onClear={text => this.SearchFilterFunction('')}
-                placeholder="Sök..."
-                value={this.state.search}
-                width="100%"
-                lightTheme = {true}
-              />
-            <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
-            </View>
+          <View style = {{justifyContent: 'center', alignItems: 'center', marginTop: 45, marginBottom: 20}}>
+            <Text style={descriptionStyles}>Sök</Text>
+            <Text style={{ color: "#282828", fontSize: 10, fontStyle: "italic" }}>Sök bland alla producenter...</Text>
           </View>
+        <View>
+          <SearchBar
+            round
+            searchIcon={{ size: 24 }}
+            onChangeText = {text => this.SearchFilterFunction(text)}
+            onClear={text => this.SearchFilterFunction('')}
+            placeholder="Sök..."
+            value={this.state.search}
+            width="100%"
+            lightTheme = {true}
+          />
+          <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
+          </View>
+        </View>
           <View style={{marginTop:5}}>
             <FlatList 
               data={this.state.dataSource}
