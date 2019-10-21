@@ -880,11 +880,6 @@ class MenuScreen extends React.Component {
   }
 
   StoreCategoryFilterFunction(store_type) {
-    if (full_producer_list.length == 0) {
-      console.error("hej");
-      this.downloadList();
-    }
-    
     tmp_producer_list = full_producer_list;    
 
     if (store_type === "Äta") {

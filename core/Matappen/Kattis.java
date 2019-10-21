@@ -1,12 +1,51 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Collections;
 
 public class Kattis {
     private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
     public static void main(String[] args) throws IOException {
-        apaxiaans();
+        buildingBoundaries();
+    }
+
+    private static void janitorTroubles() throws IOException {
+        String input = reader.readLine();
+        String[] split = input.split(" ");
+        double a = Double.parseDouble(split[0]);
+        double b = Double.parseDouble(split[1]);
+        double c = Double.parseDouble(split[2]);
+        double d = Double.parseDouble(split[3]);
+        double s = (a + b + c + d) / 2.0;
+        double k = Math.sqrt((s-a) * (s-b) * (s-c) * (s-d));
+        System.out.println(k);
+    }
+
+    private static void heartRate() throws IOException {
+        int n = Integer.parseInt(reader.readLine());
+
+        for (int i = 0; i < n; i++) {
+            String input = reader.readLine();
+            String[] split = input.split(" ");
+            double b = Double.parseDouble(split[0]);
+            double p = Double.parseDouble(split[1]);
+            double bpm = (60.0 * b) / p;
+            double t = p / b;
+            double abpm = 60.0 / t;
+            System.out.println(bpm + " " + abpm);
+        }
+    }
+
+    private static void takeTwoStones() throws IOException {
+        int i = Integer.parseInt(reader.readLine());
+
+        if (i % 2 == 0) {
+            System.out.println("Bob");
+        } else {
+            System.out.println("Alice");
+        }
     }
 
     private static void apaxiaans() throws IOException {
