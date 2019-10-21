@@ -714,6 +714,32 @@ class OverviewScreen extends React.Component {
     }
   }
 
+  Distance(lat1, long1, lat2, long2) {
+    var d = Math.sqrt(Math.pow(lat2 - lat1, 2) + Math.pow(long2 - long1, 2));
+    return d;
+  }
+
+  NearbyProducers() {
+    const geo_lat = 58.3903;
+    const geo_long = 13.8461;
+    const newData = this.arrayholder.sort((a, b) => {
+      const latA = a.latitude;
+      const longA = a.longitude;
+      const latB = b.latitude;
+      const longB = b.longitude;
+      const distanceA = this.Distance(geo_lat, geo_long, latA, longA);
+      const distanceB = this.Distance(geo_lat, geo_long, latB, longB);
+      if (distanceA > distanceB) {
+        return 1;
+      } else {
+        return -1;
+      }
+    });
+    this.setState({
+      dataSource: newData
+    });
+  }
+
   render() {
     const viewStyles = [
       {
@@ -752,7 +778,7 @@ class OverviewScreen extends React.Component {
                   title='Producenter nära mig'
                   onPress = {() => {
                   // Navigate to details route with parameter
-                  this.CategoryFilterFunction("medlem")}}
+                  this.NearbyProducers()}}
                 />
               </View>
             </View>
