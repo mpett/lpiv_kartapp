@@ -715,25 +715,34 @@ class OverviewScreen extends React.Component {
   }
 
   Distance(lat1, long1, lat2, long2) {
-    var d = Math.sqrt(Math.pow(lat2 - lat1, 2) + Math.pow(long2 - long1, 2));
+    var d = Math.sqrt(Math.pow(lat2 - lat1, 2) 
+                  + Math.pow(long2 - long1, 2));
     return d;
   }
 
   NearbyProducers() {
     const geo_lat = 58.3903;
     const geo_long = 13.8461;
+    
     const newData = this.arrayholder.sort((a, b) => {
       const latA = a.latitude;
       const longA = a.longitude;
       const latB = b.latitude;
       const longB = b.longitude;
-      const distanceA = this.Distance(geo_lat, geo_long, latA, longA);
-      const distanceB = this.Distance(geo_lat, geo_long, latB, longB);
+    
+      const distanceA = 
+        this.Distance(geo_lat, geo_long, 
+                              latA, longA);
+      const distanceB = 
+        this.Distance(geo_lat, geo_long, 
+                              latB, longB);
+    
       if (distanceA > distanceB) {
         return 1;
       } else {
         return -1;
       }
+
     });
     this.setState({
       dataSource: newData
@@ -901,7 +910,7 @@ class HideStatusBar extends React.Component {
 class MenuScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isLoading: true, search: '' };
+    this.state = { isLoading: true, search: '', dStart: require('./menu_icons/start.png'), dAta: require('./menu_icons/äta.png'), dProducent: require('./menu_icons/producent.png'), dGardsbutik: require('./menu_icons/gårdsbutik.png'), dKarta: require('./menu_icons/karta.png'), dSok: require('./menu_icons/sök.png') };
     this.arrayholder = [];
   }
 
@@ -953,22 +962,22 @@ class MenuScreen extends React.Component {
     return (
       <View style = {bottomViewStyles}>
         <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Start"), this.props.navigation.navigate("Start")}}>
-          <Image source={require('./menu_icons/start.png')} style={ iconStyles } />
+          <Image source={this.state.dStart} style={ iconStyles } />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Äta"), this.props.navigation.navigate("Äta", {store_type:"Äta"})}} >
-          <Image source={require('./menu_icons/äta.png')} style={ iconStyles } />
+        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Äta"), this.props.navigation.navigate("Äta", {store_type:"Äta"}), this.setState({state:this.state})}} >
+          <Image source={this.state.dAta} style={ iconStyles } />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Producent"), this.props.navigation.navigate("Fika", {store_type:"Producent"})}}>
-          <Image source={require('./menu_icons/producent.png')} style={ iconStyles } />
+          <Image source={this.state.dProducent} style={ iconStyles } />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Gårdsbutik"), this.props.navigation.navigate("Handla", {store_type:"Gårdsbutik"})}}>
-          <Image source={require('./menu_icons/gårdsbutik.png')} style={ iconStyles } />
+          <Image source={this.state.dGardsbutik} style={ iconStyles } />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Karta"), this.props.navigation.navigate("Karta")}}>
-          <Image source={require('./menu_icons/karta.png')} style={ iconStyles } />
+          <Image source={this.state.dKarta} style={ iconStyles } />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Sök"), this.props.navigation.navigate("Sök")}}>
-          <Image source={require('./menu_icons/sök.png')} style={{ flexDirection: 'row', flexWrap: 'wrap', height: 30,        width: 30, marginTop: 10, marginRight: 0 }} />
+          <Image source={this.state.dSok} style={{ flexDirection: 'row', flexWrap: 'wrap', height: 30,        width: 30, marginTop: 10, marginRight: 0 }} />
         </TouchableOpacity>
       </View>
     );

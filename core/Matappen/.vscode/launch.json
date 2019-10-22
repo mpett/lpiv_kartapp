@@ -1,0 +1,10 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - RayTracer",
+            "request": "launch",
+            "mainClass": "RayTracer"
+        }
+    ]
+}

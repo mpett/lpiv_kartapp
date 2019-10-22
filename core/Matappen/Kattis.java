@@ -8,7 +8,16 @@ public class Kattis {
     private static BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
     public static void main(String[] args) throws IOException {
-        buildingBoundaries();
+        getR2();
+    }
+
+    private static void getR2() throws IOException {
+        String input = reader.readLine();
+        String[] split = input.split(" ");
+        int r1 = Integer.parseInt(split[0]);
+        int s = Integer.parseInt(split[1]);
+        int r2 = 2*s - r1;
+        System.out.println(r2);
     }
 
     private static void janitorTroubles() throws IOException {
