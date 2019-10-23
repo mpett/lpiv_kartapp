@@ -468,13 +468,9 @@ class SearchScreen extends React.Component {
       friction = {90}
       tension = {100}
       activeScale = {0.95}
-      linearGradientProps = {{
-        colors: ['#3a5f5d', '#446f6d']
-      }}
-      ViewComponent = {LinearGradient}
       leftAvatar = {{ rounded: true, source: { uri: item.logo_url }, justifyContent: 'center' }}
       title={item.business_name.slice(0, 40)}
-      titleStyle = {{ color: 'white', fontWeight: 'bold' }}
+      titleStyle = {{ color: 'black', fontWeight: 'bold' }}
       chevronColor="white"
       chevron
       containerStyle = {{ marginLeft: 0,
@@ -484,7 +480,7 @@ class SearchScreen extends React.Component {
         backgroundColor: '#fff',
         height: 60,
         borderWidth: 1,
-        borderColor: '#558a87'
+        borderColor: '#f2f2f2'
       }}
 
       onPress = {() => {
@@ -651,7 +647,7 @@ class OverviewScreen extends React.Component {
         marginRight: 0, 
         marginTop: 10, 
         borderRadius: 4, // adds the rounded corners
-        backgroundColor: '#fff',
+        backgroundColor: 'rgba(255,255,255,0.0)',
         height: 60,
         borderWidth: 1,
         borderColor: '#558a87'
@@ -776,7 +772,7 @@ class OverviewScreen extends React.Component {
 
           <View style = {{justifyContent: 'center', alignItems: 'center', marginTop: 65}}>
             <Text style={descriptionStyles}>{store_type}</Text>
-            <Text style={{ color: "#282828", fontSize: 10, fontStyle: "italic" }}>Sortera efter kategori...</Text>
+            <Text style={{ color: "#282828", fontSize: 10, fontStyle: "italic" }}>Sortera efter avstånd...</Text>
           </View>
 
             <View>
