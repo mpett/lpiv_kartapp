@@ -477,7 +477,7 @@ class SearchScreen extends React.Component {
         marginRight: 0, 
         marginTop: 10, 
         borderRadius: 4, // adds the rounded corners
-        backgroundColor: '#fff',
+        backgroundColor: 'rgba(255,255,255,0.8)',
         height: 60,
         borderWidth: 1,
         borderColor: '#f2f2f2'
@@ -634,23 +634,17 @@ class OverviewScreen extends React.Component {
       friction = {90}
       tension = {100}
       activeScale = {0.95}
-      linearGradientProps = {{
-        colors: ['#3a5f5d', '#446f6d']
-      }}
-      ViewComponent = {LinearGradient}
       leftAvatar = {{ rounded: true, source: { uri: item.logo_url }, justifyContent: 'center' }}
       title={item.business_name.slice(0, 40)}
-      titleStyle = {{ color: 'white', fontWeight: 'bold' }}
+      titleStyle = {{ color: 'black', fontWeight: 'bold' }}
       chevronColor="white"
       chevron
       containerStyle = {{ marginLeft: 0,
         marginRight: 0, 
         marginTop: 10, 
         borderRadius: 4, // adds the rounded corners
-        backgroundColor: 'rgba(255,255,255,0.0)',
+        backgroundColor: 'rgba(255,255,255,0.75)',
         height: 60,
-        borderWidth: 1,
-        borderColor: '#558a87'
       }}
 
       onPress = {() => {
@@ -778,8 +772,8 @@ class OverviewScreen extends React.Component {
             <View>
               <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
                 <Button
-                  backgroundColor='white'
-                  buttonStyle={{borderRadius: 5, width: 270, backgroundColor: "#446f6d"}}
+                  backgroundColor='black'
+                  buttonStyle={{borderRadius: 5, width: 270, backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}}
                   title='Producenter nära mig'
                   onPress = {() => {
                   // Navigate to details route with parameter
