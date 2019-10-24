@@ -565,7 +565,7 @@ class SearchScreen extends React.Component {
               data={this.state.dataSource}
               renderItem={this.renderItem}
               enableEmptySections={false}
-              style={{ marginBottom: 375 }}
+              style={{ marginBottom: 380 }}
               keyExtractor = {(item, index) => index.toString()}
             />
           </View>
@@ -866,7 +866,7 @@ class SplashScreen extends React.Component {
     return (
       <ImageBackground source={field} style={{width: '100%', height: '100%'}} style={viewStyles}>
         <HideStatusBar />
-        <TouchableOpacity onPress = { () => {} }>
+        <TouchableOpacity onPress = { () => {alert("Detta är en textruta!")} }>
           <Image
             source={logo}
             style={{ width: 150, height: 150, marginBottom: 0, 
@@ -931,13 +931,21 @@ class MenuScreen extends React.Component {
     const bottomViewStyles = {
       width: "100%",
       height: 60,
-      backgroundColor: "#282828",
+      backgroundColor: "rgba(40,40,40, 1.0)",
       justifyContent: "center",
       alignItems: "center",
       position: "absolute",
       bottom: 0,
       flexDirection: 'row', flexWrap: 'wrap',
       marginTop: 5
+    }
+
+    const tbar= {
+      width: 375,
+      height: 100,
+      borderBottomWidth: 5,
+      borderColor: 'black',
+      backgroundColor: 'red'
     }
   
     const iconStyles = {
@@ -950,26 +958,26 @@ class MenuScreen extends React.Component {
     }
 
     return (
-      <View style = {bottomViewStyles}>
-        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Start"), this.props.navigation.navigate("Start")}}>
-          <Image source={this.state.dStart} style={ iconStyles } />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Äta"), this.props.navigation.navigate("Äta", {store_type:"Äta"}), this.setState({state:this.state})}} >
-          <Image source={this.state.dAta} style={ iconStyles } />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Producent"), this.props.navigation.navigate("Fika", {store_type:"Producent"})}}>
-          <Image source={this.state.dProducent} style={ iconStyles } />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Gårdsbutik"), this.props.navigation.navigate("Handla", {store_type:"Gårdsbutik"})}}>
-          <Image source={this.state.dGardsbutik} style={ iconStyles } />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Karta"), this.props.navigation.navigate("Karta")}}>
-          <Image source={this.state.dKarta} style={ iconStyles } />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Sök"), this.props.navigation.navigate("Sök")}}>
-          <Image source={this.state.dSok} style={{ flexDirection: 'row', flexWrap: 'wrap', height: 30,        width: 30, marginTop: 10, marginRight: 0 }} />
-        </TouchableOpacity>
-      </View>
+        <View style = {bottomViewStyles}>
+          <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Start"), this.props.navigation.navigate("Start")}}>
+            <Image source={this.state.dStart} style={ iconStyles } />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Äta"), this.props.navigation.navigate("Äta", {store_type:"Äta"}), this.setState({state:this.state})}} >
+            <Image source={this.state.dAta} style={ iconStyles } />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Producent"), this.props.navigation.navigate("Fika", {store_type:"Producent"})}}>
+            <Image source={this.state.dProducent} style={ iconStyles } />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Gårdsbutik"), this.props.navigation.navigate("Handla", {store_type:"Gårdsbutik"})}}>
+            <Image source={this.state.dGardsbutik} style={ iconStyles } />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Karta"), this.props.navigation.navigate("Karta")}}>
+            <Image source={this.state.dKarta} style={ iconStyles } />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Sök"), this.props.navigation.navigate("Sök")}}>
+            <Image source={this.state.dSok} style={{ flexDirection: 'row', flexWrap: 'wrap', height: 30,        width: 30, marginTop: 10, marginRight: 0 }} />
+          </TouchableOpacity>
+        </View>
     );
   }
 }
