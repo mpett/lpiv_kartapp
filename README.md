@@ -123,7 +123,7 @@ Base URL: `https://lokalproducerativast.se/wp-json/tivala/v2`
 }
 ```
 
-### Get Events
+### Get Events V2
 
 - `GET /eventlist -> #eventlist`
 
