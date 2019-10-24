@@ -69,7 +69,7 @@ Base URL: `https://lokalproducerativast.se/wp-json/tivala/v2`
 
 ### Get Producers V2 (Producent)
 
-- `GET /producerlist/1 -> #producerlist`
+- `GET /producerlist/2 -> #producerlist`
 
 **producerlist/2.jsond**
 
