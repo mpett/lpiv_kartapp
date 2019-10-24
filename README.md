@@ -36,7 +36,7 @@ Models are defined using: http://www.jsond.org/
 }
 ```
 
-## API
+## API V2
 
 Base URL: `https://lokalproducerativast.se/wp-json/tivala/v2`
 
