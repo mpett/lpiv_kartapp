@@ -4,7 +4,7 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
-import { Button, ListItem, SearchBar } from 'react-native-elements';
+import { Button, ListItem, SearchBar, Header } from 'react-native-elements';
 import TouchableScale from 'react-native-touchable-scale';
 import LinearGradient from 'react-native-linear-gradient';
 import Geolocation from '@react-native-community/geolocation';
@@ -762,6 +762,7 @@ class OverviewScreen extends React.Component {
     return(
       <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
         <HideStatusBar />
+        
         <View style={{marginTop: 80}}>
 
           <View style = {{justifyContent: 'center', alignItems: 'center', marginTop: 65}}>
@@ -864,23 +865,59 @@ class SplashScreen extends React.Component {
     var logo = this.state.dLogo;
     
     return (
-      <ImageBackground source={field} style={{width: '100%', height: '100%'}} style={viewStyles}>
+      <View style={styles.container}>
         <HideStatusBar />
-        <TouchableOpacity onPress = { () => {alert("Detta är en textruta!")} }>
-          <Image
-            source={logo}
-            style={{ width: 150, height: 150, marginBottom: 0, 
-              borderColor: '#99994d' }}
-          />
-        </TouchableOpacity>
-          <View style={{marginBottom:222}}>
-            <Text style={descriptionStyles}>
-              {this.state.descTitle}
-            </Text>
-          </View>        
+          <RenderHeader />
+
+        <ImageBackground source={field} style={{width: '100%', height: '100%'}} style={viewStyles}>
+          <TouchableOpacity onPress={() => {this.props.navigation.navigate("Äta", {store_type:"Äta"})}}>
+            <Image
+              source={logo}
+              style={{ width: 150, height: 150, marginBottom: 20, marginTop: 0,
+                borderColor: '#99994d' }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => {this.props.navigation.navigate("Fika", {store_type:"Producent"})}}>
+            <Image
+              source={logo}
+              style={{ width: 150, height: 150, marginBottom: 20, 
+                borderColor: '#99994d' }}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => {this.props.navigation.navigate("Handla", {store_type:"Gårdsbutik"})}}>
+            <Image
+              source={logo}
+              style={{ width: 150, height: 150, marginBottom: 100, 
+                borderColor: '#99994d' }}
+            />
+          </TouchableOpacity>
         <MenuScreen navigation={this.props.navigation} />
       </ImageBackground>
+     
+        
+
+      </View>
+  
     );
+  }
+}
+
+class RenderHeader extends React.Component {
+  render() {
+    return (
+      <Header
+          placement="left"
+          centerComponent={{ text: 'Västsvenska Matappen', style: { color: '#fff', fontSize: 20 } }}
+          rightComponent={{ icon: 'search', color: '#fff' }}
+          statusBarProps={{ barStyle: 'light-content' }}
+          containerStyle={{
+            backgroundColor: 'rgba(40, 40, 40, 1.0)',
+            justifyContent: 'space-around',
+            marginTop: -25,
+            height: 75
+          }}
+        />
+    )
   }
 }
 
@@ -962,7 +999,7 @@ class MenuScreen extends React.Component {
           <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Start"), this.props.navigation.navigate("Start")}}>
             <Image source={this.state.dStart} style={ iconStyles } />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Äta"), this.props.navigation.navigate("Äta", {store_type:"Äta"}), this.setState({state:this.state})}} >
+          <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Äta"), this.props.navigation.navigate("Äta", {store_type:"Äta"})}} >
             <Image source={this.state.dAta} style={ iconStyles } />
           </TouchableOpacity>
           <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Producent"), this.props.navigation.navigate("Fika", {store_type:"Producent"})}}>
