@@ -48,7 +48,6 @@ class SingleMapScreen extends Component {
     const longitude_parameter = parseFloat(long_param);
     const cord_params = latitude_parameter + "," + longitude_parameter;
 
-
     this.state = {
       latitude: null,
       longitude: null,
@@ -63,7 +62,6 @@ class SingleMapScreen extends Component {
     };
 
     this.mergeLot = this.mergeLot.bind(this);
-
   }
 
   componentDidMount() {
@@ -867,37 +865,32 @@ class SplashScreen extends React.Component {
     return (
       <View style={styles.container}>
         <HideStatusBar />
-          <RenderHeader />
-
-        <ImageBackground source={field} style={{width: '100%', height: '100%'}} style={viewStyles}>
-          <TouchableOpacity onPress={() => {this.props.navigation.navigate("Äta", {store_type:"Äta"})}}>
-            <Image
-              source={logo}
-              style={{ width: 150, height: 150, marginBottom: 20, marginTop: 0,
-                borderColor: '#99994d' }}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => {this.props.navigation.navigate("Fika", {store_type:"Producent"})}}>
-            <Image
-              source={logo}
-              style={{ width: 150, height: 150, marginBottom: 20, 
-                borderColor: '#99994d' }}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => {this.props.navigation.navigate("Handla", {store_type:"Gårdsbutik"})}}>
-            <Image
-              source={logo}
-              style={{ width: 150, height: 150, marginBottom: 100, 
-                borderColor: '#99994d' }}
-            />
-          </TouchableOpacity>
-        <MenuScreen navigation={this.props.navigation} />
-      </ImageBackground>
-     
-        
-
+        <RenderHeader />
+          <ImageBackground source={field} style={{width: '100%', height: '100%'}} style={viewStyles}>
+            <TouchableOpacity onPress={() => {this.props.navigation.navigate("Äta", {store_type:"Äta"})}}>
+              <Image
+                source={logo}
+                style={{ width: 150, height: 150, marginBottom: 20, marginTop: 0,
+                  borderColor: '#99994d' }}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => {this.props.navigation.navigate("Fika", {store_type:"Producent"})}}>
+              <Image
+                source={logo}
+                style={{ width: 150, height: 150, marginBottom: 20, 
+                  borderColor: '#99994d' }}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => {this.props.navigation.navigate("Handla", {store_type:"Gårdsbutik"})}}>
+              <Image
+                source={logo}
+                style={{ width: 150, height: 150, marginBottom: 100, 
+                  borderColor: '#99994d' }}
+              />
+            </TouchableOpacity>
+          <MenuScreen navigation={this.props.navigation} />
+        </ImageBackground>
       </View>
-  
     );
   }
 }
