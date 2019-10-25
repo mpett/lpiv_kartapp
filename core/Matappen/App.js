@@ -6,7 +6,6 @@ import { createBottomTabNavigator } from 'react-navigation-tabs';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import { Button, ListItem, SearchBar, Header } from 'react-native-elements';
 import TouchableScale from 'react-native-touchable-scale';
-import LinearGradient from 'react-native-linear-gradient';
 import Geolocation from '@react-native-community/geolocation';
 
 import { Container, Text } from "native-base";
