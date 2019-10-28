@@ -767,8 +767,8 @@ class OverviewScreen extends React.Component {
             <Text style={{ color: "#282828", fontSize: 10, fontStyle: "italic" }}>Sortera efter avstånd...</Text>
           </View>
 
-            <View>
-              <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
+          <View>
+            <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
                 <Button
                   backgroundColor='black'
                   buttonStyle={{borderRadius: 5, width: 270, backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}}
@@ -777,21 +777,21 @@ class OverviewScreen extends React.Component {
                   // Navigate to details route with parameter
                   this.NearbyProducers()}}
                 />
-              </View>
             </View>
-
-            <View style={{marginTop:5}}>
-              <FlatList 
-                data={this.state.dataSource}
-                //ItemSeparatorComponent={this.ListViewItemSeparator}
-                renderItem={this.renderItem}
-                enableEmptySections={false}
-                style={{ marginBottom: 342 }}
-                keyExtractor = {(item, index) => index.toString()}
-              />
-            </View>
-            
           </View>
+
+          <View style={{marginTop:5}}>
+            <FlatList 
+              data={this.state.dataSource}
+              //ItemSeparatorComponent={this.ListViewItemSeparator}
+              renderItem={this.renderItem}
+              enableEmptySections={false}
+              style={{ marginBottom: 342 }}
+              keyExtractor = {(item, index) => index.toString()}
+            />
+          </View>
+            
+        </View>
         <MenuScreen navigation={this.props.navigation} />
       </ImageBackground>
     );
@@ -907,8 +907,9 @@ class RenderHeader extends React.Component {
             justifyContent: 'space-around',
             marginTop: -25,
             height: 75
-          }}
-        />
+          }
+        }
+      />
     )
   }
 }
@@ -987,26 +988,26 @@ class MenuScreen extends React.Component {
     }
 
     return (
-        <View style = {bottomViewStyles}>
-          <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Start"), this.props.navigation.navigate("Start")}}>
-            <Image source={this.state.dStart} style={ iconStyles } />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Äta"), this.props.navigation.navigate("Äta", {store_type:"Äta"})}} >
-            <Image source={this.state.dAta} style={ iconStyles } />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Producent"), this.props.navigation.navigate("Fika", {store_type:"Producent"})}}>
-            <Image source={this.state.dProducent} style={ iconStyles } />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Gårdsbutik"), this.props.navigation.navigate("Handla", {store_type:"Gårdsbutik"})}}>
-            <Image source={this.state.dGardsbutik} style={ iconStyles } />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Karta"), this.props.navigation.navigate("Karta")}}>
-            <Image source={this.state.dKarta} style={ iconStyles } />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Sök"), this.props.navigation.navigate("Sök")}}>
-            <Image source={this.state.dSok} style={{ flexDirection: 'row', flexWrap: 'wrap', height: 30,        width: 30, marginTop: 10, marginRight: 0 }} />
-          </TouchableOpacity>
-        </View>
+      <View style = {bottomViewStyles}>
+        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Start"), this.props.navigation.navigate("Start")}}>
+          <Image source={this.state.dStart} style={ iconStyles } />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Äta"), this.props.navigation.navigate("Äta", {store_type:"Äta"})}} >
+          <Image source={this.state.dAta} style={ iconStyles } />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Producent"), this.props.navigation.navigate("Fika", {store_type:"Producent"})}}>
+          <Image source={this.state.dProducent} style={ iconStyles } />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Gårdsbutik"), this.props.navigation.navigate("Handla", {store_type:"Gårdsbutik"})}}>
+          <Image source={this.state.dGardsbutik} style={ iconStyles } />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Karta"), this.props.navigation.navigate("Karta")}}>
+          <Image source={this.state.dKarta} style={ iconStyles } />
+        </TouchableOpacity>
+        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Sök"), this.props.navigation.navigate("Sök")}}>
+          <Image source={this.state.dSok} style={{ flexDirection: 'row', flexWrap: 'wrap', height: 30,        width: 30, marginTop: 10, marginRight: 0 }} />
+        </TouchableOpacity>
+      </View>
     );
   }
 }
