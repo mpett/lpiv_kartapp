@@ -408,6 +408,171 @@ class ProducerScreen extends React.Component {
   }
 }
 
+class EventScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { isLoading: true, search: '' };
+    this.arrayholder = [];
+  }
+
+  componentDidMount() {
+    this.setState(
+      {
+        isLoading: false,
+        dataSource: producer_list,
+      },
+      function() {
+        this.arrayholder = producer_list;
+      }
+    );
+  }
+
+  search = text => {
+    //console.log(text);
+  };
+
+  clear = () => {
+    this.search.clear();
+  };
+
+  SearchFilterFunction(text) {
+    const newData = this.arrayholder.filter(function(item) {
+      const itemData = item.business_name ? item.business_name.toUpperCase() : ''.toUpperCase();
+      const textData = text.toUpperCase();
+      return itemData.indexOf(textData) > -1;
+    });
+    this.setState({
+      dataSource: newData,
+      search: text,
+    });
+  }
+
+  ListViewItemSeparator = () => {
+    return(
+      <View 
+        style = {{
+          height: 0.3,
+          width: '90%',
+          backgroundColor: '#080808',
+        }}
+      />
+    );
+  };
+
+  renderItem = ({ item }) => (
+    <ListItem
+      Component = {TouchableScale}
+      friction = {90}
+      tension = {100}
+      activeScale = {0.95}
+      leftAvatar = {{ rounded: true, source: { uri: item.logo_url }, justifyContent: 'center' }}
+      title={item.business_name.slice(0, 40)}
+      titleStyle = {{ color: 'black', fontWeight: 'bold' }}
+      chevronColor="white"
+      chevron
+      containerStyle = {{ marginLeft: 0,
+        marginRight: 0, 
+        marginTop: 10, 
+        borderRadius: 4, // adds the rounded corners
+        backgroundColor: 'rgba(255,255,255,0.8)',
+        height: 60,
+        borderWidth: 1,
+        borderColor: '#f2f2f2'
+      }}
+
+      onPress = {() => {
+        this.props.navigation.navigate('Producer', {
+          itemId: 86,
+          otherParam: item.business_name,
+          desc: item.description,
+          image: item.logo_url,
+          cover: item.cover_image_url,
+          lat: item.latitude,
+          long: item.longitude,
+          direction: item.map_direction_link,
+          adress: item.visiting_adress,
+          name: item.business_name,
+          adress: item.visiting_adress,
+          contact_person: item.contact_person,
+          producer_city: item.city,
+          producer_email: item.email,
+          producer_phone: item.phone,
+          producer_website: item.website,
+          opening_hours: item.opening_hours,
+          matfest: item.producer_category_1,
+          lpiv: item.producer_category_2
+        });
+      }} 
+    />
+  )
+
+  SearchFilterFunction(text) {
+    const newData = this.arrayholder.filter(function(item) {
+      const itemData = item.business_name ? item.business_name.toUpperCase() : ''.toUpperCase();
+      const textData = text.toUpperCase();
+      return itemData.indexOf(textData) > -1;
+    });
+    this.setState({
+      dataSource: newData,
+      search: text,
+    });
+  }
+
+  render() {
+    const viewStyles = [
+      {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#827c34'
+      },
+      { backgroundColor: '#827c34' }
+    ];
+
+    const descriptionStyles = {
+      color: '#282828',
+      fontSize: 25,
+      fontWeight: 'bold',
+      padding:10
+    };
+
+    return(
+      <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
+        <View style={{marginTop: 105}}>
+          <View style = {{justifyContent: 'center', alignItems: 'center', marginTop: 45, marginBottom: 20}}>
+            <Text style={descriptionStyles}>Event</Text>
+            <Text style={{ color: "#282828", fontSize: 10, fontStyle: "italic" }}>Sök bland alla producenter...</Text>
+          </View>
+        <View>
+          <SearchBar
+            round
+            searchIcon={{ size: 24 }}
+            onChangeText = {text => this.SearchFilterFunction(text)}
+            onClear={text => this.SearchFilterFunction('')}
+            placeholder="Sök..."
+            value={this.state.search}
+            width="100%"
+            lightTheme = {true}
+          />
+          <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
+          </View>
+        </View>
+          <View style={{marginTop:5}}>
+            <FlatList 
+              data={this.state.dataSource}
+              renderItem={this.renderItem}
+              enableEmptySections={false}
+              style={{ marginBottom: 380 }}
+              keyExtractor = {(item, index) => index.toString()}
+            />
+          </View>
+        </View>
+        <MenuScreen navigation={this.props.navigation} />
+      </ImageBackground>
+    );
+  }
+}
+
 class SearchScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -866,19 +1031,27 @@ class SplashScreen extends React.Component {
         <HideStatusBar />
         <RenderHeader />
           <ImageBackground source={field} style={{width: '100%', height: '100%'}} style={viewStyles}>
-          <HideStatusBar />
-          <TouchableOpacity onPress = { () => {} }>
-            <Image
-              source={logo}
-              style={{ width: 150, height: 150, marginBottom: 0, 
-                borderColor: '#99994d' }}
-            />
-          </TouchableOpacity>
-            <View style={{marginBottom:222}}>
-              <Text style={descriptionStyles}>
-                {this.state.descTitle}
-              </Text>
-            </View>        
+            <TouchableOpacity onPress={() => {this.props.navigation.navigate("Äta", {store_type:"Äta"})}}>
+              <Image
+                source={logo}
+                style={{ width: 150, height: 150, marginBottom: 20, marginTop: 0,
+                  borderColor: '#99994d' }}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => {this.props.navigation.navigate("Fika", {store_type:"Producent"})}}>
+              <Image
+                source={logo}
+                style={{ width: 150, height: 150, marginBottom: 20, 
+                  borderColor: '#99994d' }}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => {this.props.navigation.navigate("Handla", {store_type:"Gårdsbutik"})}}>
+              <Image
+                source={logo}
+                style={{ width: 150, height: 150, marginBottom: 100, 
+                  borderColor: '#99994d' }}
+              />
+            </TouchableOpacity>
           <MenuScreen navigation={this.props.navigation} />
         </ImageBackground>
       </View>
@@ -922,7 +1095,7 @@ class HideStatusBar extends React.Component {
 class MenuScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isLoading: true, search: '', dStart: require('./menu_icons/start.png'), dAta: require('./menu_icons/äta.png'), dProducent: require('./menu_icons/producent.png'), dGardsbutik: require('./menu_icons/gårdsbutik.png'), dKarta: require('./menu_icons/karta.png'), dSok: require('./menu_icons/sök.png') };
+    this.state = { isLoading: true, search: '', dStart: require('./menu_icons/start.png'), dAta: require('./menu_icons/äta.png'), dProducent: require('./menu_icons/producent.png'), dGardsbutik: require('./menu_icons2/Hem.png'), dKarta: require('./menu_icons2/Karta.png'), dSok: require('./menu_icons2/Event.png') };
     this.arrayholder = [];
   }
 
@@ -982,22 +1155,13 @@ class MenuScreen extends React.Component {
     return (
       <View style = {bottomViewStyles}>
         <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Start"), this.props.navigation.navigate("Start")}}>
-          <Image source={this.state.dStart} style={ iconStyles } />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Äta"), this.props.navigation.navigate("Äta", {store_type:"Äta"})}} >
-          <Image source={this.state.dAta} style={ iconStyles } />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Producent"), this.props.navigation.navigate("Fika", {store_type:"Producent"})}}>
-          <Image source={this.state.dProducent} style={ iconStyles } />
-        </TouchableOpacity>
-        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Gårdsbutik"), this.props.navigation.navigate("Handla", {store_type:"Gårdsbutik"})}}>
           <Image source={this.state.dGardsbutik} style={ iconStyles } />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Karta"), this.props.navigation.navigate("Karta")}}>
-          <Image source={this.state.dKarta} style={ iconStyles } />
+        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Sök"), this.props.navigation.navigate("Event")}}>
+          <Image source={this.state.dSok} style={ iconStyles } />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Sök"), this.props.navigation.navigate("Sök")}}>
-          <Image source={this.state.dSok} style={{ flexDirection: 'row', flexWrap: 'wrap', height: 30,        width: 30, marginTop: 10, marginRight: 0 }} />
+        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Karta"), this.props.navigation.navigate("Karta")}}>
+          <Image source={this.state.dKarta} style={{ flexDirection: 'row', flexWrap: 'wrap', height: 30,        width: 30, marginTop: 10, marginRight: 0 }} />
         </TouchableOpacity>
       </View>
     );
@@ -1008,6 +1172,41 @@ const SearchStack = createStackNavigator(
   {
     ProducerList: {
       screen: SearchScreen,
+      navigationOptions: {
+        header: null,
+      }
+    },
+    Producer: {
+      screen: ProducerScreen,
+      navigationOptions: {
+        header: null,
+      }
+    },
+    Map: {
+      screen: SingleMapScreen,
+      navigationOptions: {
+        header: null,
+      }
+    }
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#f4511e',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },  
+  },
+  {headerMode: 'screen'}
+)
+
+const EventStack = createStackNavigator(
+  {
+    ProducerList: {
+      screen: EventScreen,
       navigationOptions: {
         header: null,
       }
@@ -1137,6 +1336,12 @@ const TabNavigator = createBottomTabNavigator(
     },
     Sök: {
       screen: SearchStack,
+      navigationOptions: {
+        tabBarVisible: false
+      }
+    },
+    Event: {
+      screen: EventStack,
       navigationOptions: {
         tabBarVisible: false
       }
