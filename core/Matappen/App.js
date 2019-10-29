@@ -866,27 +866,19 @@ class SplashScreen extends React.Component {
         <HideStatusBar />
         <RenderHeader />
           <ImageBackground source={field} style={{width: '100%', height: '100%'}} style={viewStyles}>
-            <TouchableOpacity onPress={() => {this.props.navigation.navigate("Äta", {store_type:"Äta"})}}>
-              <Image
-                source={logo}
-                style={{ width: 150, height: 150, marginBottom: 20, marginTop: 0,
-                  borderColor: '#99994d' }}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => {this.props.navigation.navigate("Fika", {store_type:"Producent"})}}>
-              <Image
-                source={logo}
-                style={{ width: 150, height: 150, marginBottom: 20, 
-                  borderColor: '#99994d' }}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => {this.props.navigation.navigate("Handla", {store_type:"Gårdsbutik"})}}>
-              <Image
-                source={logo}
-                style={{ width: 150, height: 150, marginBottom: 100, 
-                  borderColor: '#99994d' }}
-              />
-            </TouchableOpacity>
+          <HideStatusBar />
+          <TouchableOpacity onPress = { () => {} }>
+            <Image
+              source={logo}
+              style={{ width: 150, height: 150, marginBottom: 0, 
+                borderColor: '#99994d' }}
+            />
+          </TouchableOpacity>
+            <View style={{marginBottom:222}}>
+              <Text style={descriptionStyles}>
+                {this.state.descTitle}
+              </Text>
+            </View>        
           <MenuScreen navigation={this.props.navigation} />
         </ImageBackground>
       </View>
