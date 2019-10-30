@@ -113,7 +113,6 @@ class SingleMapScreen extends Component {
           return coords
       } catch(error) {
           this.setState({x: "error"})
-          //console.error(error);
           return error
       }
   }
@@ -135,7 +134,7 @@ class SingleMapScreen extends Component {
 
     return (
       <View style = { single_styles.container }>
-          <MapView 
+        <MapView 
           provider={PROVIDER_GOOGLE} style={single_styles.map} 
           initialRegion={VÄSTRA_GÖTALAND} >
 
@@ -168,8 +167,8 @@ class SingleMapScreen extends Component {
             strokeWidth={2}
             strokeColor="#446f6d"/>
         }
-        
         </MapView>
+
         <View style = {bottomViewStyles}>
           <View style = {{ marginRight: 15 }}>
             <Button title="Gå tillbaka" buttonStyle = {{backgroundColor: "#446f6d"}}
@@ -189,6 +188,7 @@ class SingleMapScreen extends Component {
               Linking.openURL(url); 
             }} > 
           </Button>
+
           <SafeAreaView />
         </View>
       </View>
@@ -445,9 +445,7 @@ class EventScreen extends React.Component {
     return return_array;
   }
 
-  search = text => {
-    //console.log(text);
-  };
+  search = text => {};
 
   clear = () => {
     this.search.clear();
@@ -601,9 +599,7 @@ class SearchScreen extends React.Component {
     );
   }
 
-  search = text => {
-    //console.log(text);
-  };
+  search = text => {};
 
   clear = () => {
     this.search.clear();
@@ -767,9 +763,7 @@ class OverviewScreen extends React.Component {
     );
   }
 
-  search = text => {
-    //console.log(text);
-  };
+  search = text => {};
 
   clear = () => {
     this.search.clear();
