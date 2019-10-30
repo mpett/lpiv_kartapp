@@ -556,8 +556,10 @@ class EventScreen extends React.Component {
     };
 
     return(
-      <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
+      <ImageBackground source={require('./field2.png')} style={viewStyles}>
+        
         <View style={{marginTop: 105}}>
+        
           <View style = {{justifyContent: 'center', alignItems: 'center', marginTop: 45, marginBottom: 20}}>
             <Text style={descriptionStyles}>Event</Text>
             <Text style={{ color: "#282828", fontSize: 10, fontStyle: "italic" }}>Sök bland alla producenter...</Text>
