@@ -416,15 +416,33 @@ class EventScreen extends React.Component {
   }
 
   componentDidMount() {
-    this.setState(
-      {
-        isLoading: false,
-        dataSource: producer_list,
-      },
-      function() {
-        this.arrayholder = producer_list;
-      }
-    );
+    var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v2/eventlist', {
+      method: 'get',
+      headers: new global.Headers({
+        'Authorization': 'Basic ' + Buffer.from('api_2jWTR5iTIHOOxdIVqV2HFLPDJ0aQOMydlSGNbdoneEXGcI39JNC9R2W:uf6He48ci0H92Y7E5T6dmKAGuOiGE0PGwBlp51drqFHYehQP9HKBftu').toString('base64'),
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }),
+      body: undefined
+    })
+    .then(response => response.json())
+    .then(responseJson => {
+      //console.log(responseJson);
+      this.setState(
+        {
+          isLoading: false,
+          dataSource: responseJson,
+        },
+        function() {
+          this.arrayholder = responseJson;
+        }
+      );
+    })
+    .catch(error => {
+      console.log(error);
+      alert("Matappen kräver anslutning till internet för att kunna visa innehåll. Vänligen anslut dig och starta om appen.");
+    });
+
+    return return_array;
   }
 
   search = text => {
@@ -465,9 +483,10 @@ class EventScreen extends React.Component {
       friction = {90}
       tension = {100}
       activeScale = {0.95}
-      leftAvatar = {{ rounded: true, source: { uri: item.logo_url }, justifyContent: 'center' }}
-      title={item.business_name.slice(0, 40)}
+      leftAvatar = {{ rounded: true, source: { uri: item.logo_image_url }, justifyContent: 'center' }}
+      title={item.event_name.slice(0, 40)}
       titleStyle = {{ color: 'black', fontWeight: 'bold' }}
+      subtitle={item.event_sub_title}
       chevronColor="white"
       chevron
       containerStyle = {{ marginLeft: 0,
@@ -544,16 +563,6 @@ class EventScreen extends React.Component {
             <Text style={{ color: "#282828", fontSize: 10, fontStyle: "italic" }}>Sök bland alla producenter...</Text>
           </View>
         <View>
-          <SearchBar
-            round
-            searchIcon={{ size: 24 }}
-            onChangeText = {text => this.SearchFilterFunction(text)}
-            onClear={text => this.SearchFilterFunction('')}
-            placeholder="Sök..."
-            value={this.state.search}
-            width="100%"
-            lightTheme = {true}
-          />
           <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
           </View>
         </View>
