@@ -557,9 +557,7 @@ class EventScreen extends React.Component {
 
     return(
       <ImageBackground source={require('./field2.png')} style={viewStyles}>
-        
         <View style={{marginTop: 105}}>
-        
           <View style = {{justifyContent: 'center', alignItems: 'center', marginTop: 45, marginBottom: 20}}>
             <Text style={descriptionStyles}>Event</Text>
             <Text style={{ color: "#282828", fontSize: 10, fontStyle: "italic" }}>Sök bland alla producenter...</Text>
@@ -935,14 +933,11 @@ class OverviewScreen extends React.Component {
     return(
       <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
         <HideStatusBar />
-        
         <View style={{marginTop: 80}}>
-
           <View style = {{justifyContent: 'center', alignItems: 'center', marginTop: 65}}>
             <Text style={descriptionStyles}>{store_type}</Text>
             <Text style={{ color: "#282828", fontSize: 10, fontStyle: "italic" }}>Sortera efter avstånd...</Text>
           </View>
-
           <View>
             <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
                 <Button
@@ -955,7 +950,6 @@ class OverviewScreen extends React.Component {
                 />
             </View>
           </View>
-
           <View style={{marginTop:5}}>
             <FlatList 
               data={this.state.dataSource}
@@ -966,7 +960,6 @@ class OverviewScreen extends React.Component {
               keyExtractor = {(item, index) => index.toString()}
             />
           </View>
-            
         </View>
         <MenuScreen navigation={this.props.navigation} />
       </ImageBackground>
