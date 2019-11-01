@@ -286,6 +286,43 @@ class MapScreen extends React.Component {
   }
 }
 
+class ConnectedProducers extends React.Component {
+  render() {
+    return(
+      <ImageBackground source = {require('./field2.png')} style={{width: '100%', height: '100%'}}>
+        <ScrollView>
+          <View>
+              <ListItem
+                Component = {TouchableScale}
+                friction = {90}
+                tension = {100}
+                activeScale = {0.95}
+                title={"test"}
+                titleStyle = {{ color: 'black', fontWeight: 'bold' }}
+                chevronColor="white"
+                chevron
+                containerStyle = {{ marginLeft: 0,
+                  marginRight: 0, 
+                  marginTop: 10, 
+                  borderRadius: 4, // adds the rounded corners
+                  backgroundColor: 'rgba(255,255,255,0.8)',
+                  height: 60,
+                  borderWidth: 1,
+                  borderColor: '#f2f2f2'
+                }}
+
+                onPress = {() => {
+                  this.props.navigation.navigate('Event', {
+                  });
+                }} 
+              />
+          </View>
+        </ScrollView>
+      </ImageBackground>
+    )
+  }
+}
+
 class ProducerScreen extends React.Component {
   static navigationOptions = ({ navigation, navigationOptions }) => {
     const { params } = navigation.state;
@@ -505,7 +542,7 @@ class EventScreen extends React.Component {
                     title='Anslutna producenter'
                     onPress = {() => {
                       // Navigate to details route with parameter
-                      this.props.navigation.navigate('Map', {
+                      this.props.navigation.navigate('Connected', {
                         lat: latitude,
                         long: longitude,
                         adress: producer_adress,
@@ -1341,6 +1378,12 @@ const EventStack = createStackNavigator(
       screen: SingleMapScreen,
       navigationOptions: {
         header: null,
+      }
+    },
+    Connected: {
+      screen: ConnectedProducers,
+      navigationOptions: {
+        header:null
       }
     }
   },
