@@ -140,3 +140,31 @@ Base URL: `https://lokalproducerativast.se/wp-json/tivala/v2`
   "connected_producers": ["producer"],
 }
 ```
+
+### Get Global list V2
+
+- `GET /globallist -> #globallist`
+
+**globallist.jsond**
+
+```
+{
+  "business_name": 'Dalis Gård',
+  "logo_url": 'https://lokalproducerativast.se/wp-content/uploads/producers/8i12tkxe5n4feos.jpg',
+  "cover_image_url: '',
+  "latitude": 58.7055,
+  "longitude": 14.1261,
+  "Description": "A bunch of text",
+  "producer_category_1": true, // Matfest,
+  "producer_category_2": false, // Lokalproducerat i Väst,
+  "producer_category_3": false, // Smaka på Västsverige,
+  "producer_category_4": false, // Lokal Meny,
+  "Contact_person": "Anders Svensson",
+  "Visiting_adress": "Kogatan 12",
+  "City": "Tidaholm",
+  "email": "anders@provider.com",
+  "Phone": "0731234567",
+  "Website": "http://www.example.com",
+  "search_tags": "searchtag1 searchtag2 searchtag3"
+}
+```
