@@ -293,18 +293,6 @@ class ConnectedProducers extends React.Component {
     this.arrayholder = [];
   }
 
-  componentDidMount() {
-    this.setState(
-      {
-        isLoading: false,
-        dataSource: producer_list,
-      },
-      function() {
-        this.arrayholder = producer_list;
-      }
-    );
-  }
-
   search = text => {};
 
   clear = () => {
@@ -382,6 +370,14 @@ class ConnectedProducers extends React.Component {
     />
   )
 
+  componentDidMount() {
+    const { navigation } = this.props;
+
+    const connected_producer_list = navigation.getParam("connected_producer_list", []);
+
+    this.SetList(connected_producer_list);
+  }
+
   SearchFilterFunction(text) {
     const newData = this.arrayholder.filter(function(item) {
       const itemData = item.business_name ? item.business_name.toUpperCase() : ''.toUpperCase();
@@ -392,6 +388,18 @@ class ConnectedProducers extends React.Component {
       dataSource: newData,
       search: text,
     });
+  }
+
+  SetList(list) {
+    this.setState(
+      {
+        isLoading: false,
+        dataSource: list,
+      },
+      function() {
+        this.arrayholder = list;
+      }
+    );
   }
 
   render() {
@@ -411,6 +419,8 @@ class ConnectedProducers extends React.Component {
       fontWeight: 'bold',
       padding:10
     };
+
+    
 
     return(
       <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
@@ -592,6 +602,8 @@ class EventScreen extends React.Component {
     const opening_hours = navigation.getParam("opening_hours", "00:00 - 23:00 torsdag - lördag")
     const matfest = navigation.getParam("matfest", false);
     const lpiv = navigation.getParam("lpiv", false);
+
+    const connected_producer_list = navigation.getParam("connected_producers", []);
     
     var category_string = "";
 
@@ -662,7 +674,8 @@ class EventScreen extends React.Component {
                         lat: latitude,
                         long: longitude,
                         adress: producer_adress,
-                        name: producer_name
+                        name: producer_name,
+                        connected_producer_list: connected_producer_list
                       })}}
                     />
                     <Button
@@ -792,7 +805,8 @@ class EventListScreen extends React.Component {
           producer_website: item.website,
           opening_hours: item.opening_hours,
           matfest: item.producer_category_1,
-          lpiv: item.producer_category_2
+          lpiv: item.producer_category_2,
+          connected_producers: item.connected_producers
         });
       }} 
     />
@@ -1434,7 +1448,7 @@ class MenuScreen extends React.Component {
           <Image source={this.state.dSok} style={ iconStyles } />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Karta"), this.props.navigation.navigate("Karta")}}>
-          <Image source={this.state.dKarta} style={{ flexDirection: 'row', flexWrap: 'wrap', height: 30,        width: 30, marginTop: 10, marginRight: 0 }} />
+          <Image source={this.state.dKarta} style={{ flexDirection: 'row', flexWrap: 'wrap', height: 30, width: 30, marginTop: 10, marginRight: 0 }} />
         </TouchableOpacity>
       </View>
     );
