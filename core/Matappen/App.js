@@ -374,6 +374,7 @@ class ConnectedProducers extends React.Component {
     const { navigation } = this.props;
 
     const connected_producer_list = navigation.getParam("connected_producer_list", []);
+    //console.error(connected_producer_list);
 
     this.SetList(connected_producer_list);
   }
@@ -419,8 +420,6 @@ class ConnectedProducers extends React.Component {
       fontWeight: 'bold',
       padding:10
     };
-
-    
 
     return(
       <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
@@ -1420,14 +1419,6 @@ class MenuScreen extends React.Component {
       bottom: 0,
       flexDirection: 'row', flexWrap: 'wrap',
       marginTop: 5
-    }
-
-    const tbar= {
-      width: 375,
-      height: 100,
-      borderBottomWidth: 5,
-      borderColor: 'black',
-      backgroundColor: 'red'
     }
   
     const iconStyles = {
