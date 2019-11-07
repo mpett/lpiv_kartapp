@@ -4,7 +4,7 @@ import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
-import { Button, ListItem, SearchBar, Header } from 'react-native-elements';
+import { Button, ListItem, SearchBar, Header, Avatar } from 'react-native-elements';
 import TouchableScale from 'react-native-touchable-scale';
 import Geolocation from '@react-native-community/geolocation';
 
@@ -1315,7 +1315,7 @@ class SplashScreen extends React.Component {
     return (
       <View style={styles.container}>
         <HideStatusBar />
-        <RenderHeader />
+        <RenderHeader navigation={this.props.navigation} />
           <ImageBackground source={field} style={{width: '100%', height: '100%'}} style={viewStyles}>
             <TouchableOpacity onPress={() => {this.props.navigation.navigate("Äta", {store_type:"Äta"})}}>
               <Image
@@ -1346,12 +1346,21 @@ class SplashScreen extends React.Component {
 }
 
 class RenderHeader extends React.Component {
+  constructor(props) {
+    super(props);
+  }
   render() {
     return (
       <Header
           placement="left"
           centerComponent={{ text: 'Västsvenska Matappen', style: { color: '#fff', fontSize: 20 } }}
-          rightComponent={{ icon: 'search', color: '#fff' }}
+          rightComponent={<Avatar
+            small
+            rounded
+            source={{uri: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg"}}
+            onPress={() => {this.props.navigation.navigate("Sök")}}
+            activeOpacity={0.7}
+        />}
           statusBarProps={{ barStyle: 'light-content' }}
           containerStyle={{
             backgroundColor: 'rgba(40, 40, 40, 1.0)',
