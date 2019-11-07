@@ -374,7 +374,6 @@ class ConnectedProducers extends React.Component {
     const { navigation } = this.props;
 
     const connected_producer_list = navigation.getParam("connected_producer_list", []);
-    //console.error(connected_producer_list);
 
     this.SetList(connected_producer_list);
   }
@@ -544,7 +543,6 @@ class ProducerScreen extends React.Component {
                     buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "#446f6d"}}
                     title='Hitta oss på kartan'
                     onPress = {() => {
-                      // Navigate to details route with parameter
                       this.props.navigation.navigate('Map', {
                         lat: latitude,
                         long: longitude,
@@ -557,7 +555,6 @@ class ProducerScreen extends React.Component {
                       buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "#446f6d"}}
                       title='Gå tillbaka'
                       onPress = {() => {
-                        // Navigate to details route with parameter
                         this.props.navigation.goBack() }}
                     />
                 </ScrollView>
