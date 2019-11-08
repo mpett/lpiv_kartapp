@@ -1350,13 +1350,19 @@ class RenderHeader extends React.Component {
     return (
       <Header
           placement="left"
+          leftComponent={<Avatar
+            small
+            rounded
+            source={require("./logo-transparent.png")}
+            activeOpacity={1.0}
+        />}
           centerComponent={{ text: 'Västsvenska Matappen', style: { color: '#fff', fontSize: 20 } }}
           rightComponent={<Avatar
             small
             rounded
-            source={{uri: "https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg"}}
+            source={require("./menu_icons/sök.png")}
             onPress={() => {this.props.navigation.navigate("Sök")}}
-            activeOpacity={0.7}
+            activeOpacity={1.0}
         />}
           statusBarProps={{ barStyle: 'light-content' }}
           containerStyle={{
