@@ -1447,7 +1447,7 @@ class MenuScreen extends React.Component {
         <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Start"), this.props.navigation.navigate("Start")}}>
           <Image source={this.state.dGardsbutik} style={ iconStyles } />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Sök"), this.props.navigation.navigate("Event")}}>
+        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Sök"), this.props.navigation.navigate("EventHome")}}>
           <Image source={this.state.dSok} style={ iconStyles } />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Karta"), this.props.navigation.navigate("Karta")}}>
@@ -1525,6 +1525,8 @@ const EventStack = createStackNavigator(
         header: null,
       }
     },
+    
+        
   },
   {
     defaultNavigationOptions: {
@@ -1535,6 +1537,7 @@ const EventStack = createStackNavigator(
       headerTitleStyle: {
         fontWeight: 'bold',
       },
+      initialRouteName: 'Event'
     },  
   },
   {headerMode: 'screen'}
@@ -1644,6 +1647,12 @@ const TabNavigator = createBottomTabNavigator(
     },
     Event: {
       screen: EventStack,
+      navigationOptions: {
+        tabBarVisible: false
+      }
+    },
+    EventHome: {
+      screen: EventListScreen,
       navigationOptions: {
         tabBarVisible: false
       }
