@@ -1249,7 +1249,7 @@ class OverviewScreen extends React.Component {
 class SplashScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isLoading: true, search: '', descColor: '#282828', descShadow: 'rgba(255, 255, 255, 0.85)', descTitle: 'Västsvenska\nMatappen', dField: require('./field2.png'), dLogo: require('./logo-transparent.png'), dFontSize: 27 };
+    this.state = { isLoading: true, search: '', descColor: '#282828', descShadow: 'rgba(255, 255, 255, 0.85)', descTitle: 'Västsvenska\nMatappen', dField: require('./field2.png'), dLogo: require('./menu_icons3/1t.png'), dFontSize: 27 };
     this.arrayholder = [];
   }
 
@@ -1295,16 +1295,6 @@ class SplashScreen extends React.Component {
       },
       { backgroundColor: '#827c34' }
     ];
-    
-    const descriptionStyles = {
-      color: this.state.descColor,
-      fontSize: this.state.dFontSize,
-      fontWeight: 'bold',
-      padding:5,
-      textShadowColor: this.state.descShadow,
-      textShadowOffset: {width: -2, height: 2},
-      textShadowRadius: 15
-    };
 
     var field = this.state.dField;
     var logo = this.state.dLogo;
@@ -1316,22 +1306,22 @@ class SplashScreen extends React.Component {
           <ImageBackground source={field} style={{width: '100%', height: '100%'}} style={viewStyles}>
             <TouchableOpacity onPress={() => {this.props.navigation.navigate("Äta", {store_type:"Äta"})}}>
               <Image
-                source={logo}
-                style={{ width: 150, height: 150, marginBottom: 20, marginTop: 0,
-                  borderColor: '#99994d' }}
-              />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => {this.props.navigation.navigate("Fika", {store_type:"Producent"})}}>
-              <Image
-                source={logo}
-                style={{ width: 150, height: 150, marginBottom: 20, 
+                source={require('./menu_icons3/3t.png')}
+                style={{ marginBottom: 50, marginTop: 0, width: 326, height: 129,
                   borderColor: '#99994d' }}
               />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => {this.props.navigation.navigate("Handla", {store_type:"Gårdsbutik"})}}>
               <Image
-                source={logo}
-                style={{ width: 150, height: 150, marginBottom: 100, 
+                source={require('./menu_icons3/1t.png')}
+                style={{ width: 326, height: 129, marginBottom: 50, 
+                  borderColor: '#99994d' }}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => {this.props.navigation.navigate("Fika", {store_type:"Producent"})}}>
+              <Image
+                source={require('./menu_icons3/2t.png')}
+                style={{ width: 326, height: 129, marginBottom: 100, 
                   borderColor: '#99994d' }}
               />
             </TouchableOpacity>
@@ -1360,13 +1350,13 @@ class RenderHeader extends React.Component {
           rightComponent={<Avatar
             small
             rounded
-            source={require("./menu_icons/sök.png")}
+            source={require("./search.png")}
             onPress={() => {this.props.navigation.navigate("Sök")}}
             activeOpacity={1.0}
         />}
           statusBarProps={{ barStyle: 'light-content' }}
           containerStyle={{
-            backgroundColor: 'rgba(40, 40, 40, 1.0)',
+            backgroundColor: '#282828',
             justifyContent: 'space-around',
             marginTop: -25,
             height: 75
