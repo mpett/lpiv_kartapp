@@ -8,7 +8,7 @@ import { Button, ListItem, SearchBar, Header, Avatar } from 'react-native-elemen
 import TouchableScale from 'react-native-touchable-scale';
 import Geolocation from '@react-native-community/geolocation';
 
-import { Container, Text } from "native-base";
+import { Text } from "native-base";
 import Polyline from "@mapbox/polyline";
 
 import { Buffer } from 'buffer';
@@ -1313,14 +1313,14 @@ class SplashScreen extends React.Component {
             </TouchableOpacity>
             <TouchableOpacity onPress={() => {this.props.navigation.navigate("Handla", {store_type:"Gårdsbutik"})}}>
               <Image
-                source={require('./menu_icons3/1t.png')}
+                source={require('./menu_icons3/4t.png')}
                 style={{ width: 326, height: 129, marginBottom: 50, 
                   borderColor: '#99994d' }}
               />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => {this.props.navigation.navigate("Fika", {store_type:"Producent"})}}>
               <Image
-                source={require('./menu_icons3/2t.png')}
+                source={require('./menu_icons3/1t.png')}
                 style={{ width: 326, height: 129, marginBottom: 100, 
                   borderColor: '#99994d' }}
               />
