@@ -1306,22 +1306,22 @@ class SplashScreen extends React.Component {
           <ImageBackground source={field} style={{width: '100%', height: '100%'}} style={viewStyles}>
             <TouchableOpacity onPress={() => {this.props.navigation.navigate("Äta", {store_type:"Äta"})}}>
               <Image
-                source={require('./menu_icons3/3t.png')}
-                style={{ marginBottom: 50, marginTop: 0, width: 326, height: 129,
+                source={require('./menu_icons4/äta.png')}
+                style={{ marginBottom: 50, marginTop: 0, width: 314, height: 114,
                   borderColor: '#99994d' }}
               />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => {this.props.navigation.navigate("Handla", {store_type:"Gårdsbutik"})}}>
               <Image
-                source={require('./menu_icons3/4t.png')}
-                style={{ width: 326, height: 129, marginBottom: 50, 
+                source={require('./menu_icons4/handla.png')}
+                style={{ width: 314, height: 114, marginBottom: 50, 
                   borderColor: '#99994d' }}
               />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => {this.props.navigation.navigate("Fika", {store_type:"Producent"})}}>
               <Image
-                source={require('./menu_icons3/1t.png')}
-                style={{ width: 326, height: 129, marginBottom: 100, 
+                source={require('./menu_icons4/hitta.png')}
+                style={{ width: 314, height: 114, marginBottom: 100, 
                   borderColor: '#99994d' }}
               />
             </TouchableOpacity>
