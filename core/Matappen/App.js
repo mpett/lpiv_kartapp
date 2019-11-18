@@ -496,7 +496,7 @@ class ProducerScreen extends React.Component {
           <ImageBackground source={{ uri: background }} style={{width: '100%', height: '100%'}}>
             <HideStatusBar />
             <ScrollView>
-              <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 200 }}>
+              <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 100, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 200 }}>
                 <ScrollView>
                   <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
                     <Image
@@ -551,18 +551,12 @@ class ProducerScreen extends React.Component {
                         name: producer_name
                       })}}
                     />
-                    <Button
-                      backgroundColor='#37503c'
-                      buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "#446f6d"}}
-                      title='Gå tillbaka'
-                      onPress = {() => {
-                        this.props.navigation.goBack() }}
-                    />
                 </ScrollView>
               </View>
             </ScrollView>
           </ImageBackground>
         </ImageBackground>
+        <MenuScreen navigation={this.props.navigation} />
       </View> 
     )
   }
@@ -618,7 +612,7 @@ class EventScreen extends React.Component {
           <ImageBackground source={{ uri: background }} style={{width: '100%', height: '100%'}}>
             <HideStatusBar />
             <ScrollView>
-              <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 200 }}>
+              <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 100, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 200 }}>
                 <ScrollView>
                   <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
                     <Image
@@ -675,19 +669,12 @@ class EventScreen extends React.Component {
                         connected_producer_list: connected_producer_list
                       })}}
                     />
-                    <Button
-                      backgroundColor='#37503c'
-                      buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "#446f6d"}}
-                      title='Gå tillbaka'
-                      onPress = {() => {
-                        // Navigate to details route with parameter
-                        this.props.navigation.goBack() }}
-                    />
                 </ScrollView>
               </View>
             </ScrollView>
           </ImageBackground>
         </ImageBackground>
+        <MenuScreen navigation={this.props.navigation} />
       </View> 
     )
   }
