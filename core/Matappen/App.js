@@ -1029,7 +1029,7 @@ class SearchScreen extends React.Component {
   }
 }
 
-class OverviewScreen extends React.Component {
+class FoodListScreen extends React.Component {
   
   constructor(props) {
     super(props);
@@ -1038,16 +1038,506 @@ class OverviewScreen extends React.Component {
   }
 
   componentDidMount() {
-    this.setState(
-      {
-        isLoading: true,
-        dataSource: producer_list,
-      },
-      function() {
-        this.arrayholder = producer_list;
+    var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v2/producerlist/1', {
+      method: 'get',
+      headers: new global.Headers({
+        'Authorization': 'Basic ' + Buffer.from('api_2jWTR5iTIHOOxdIVqV2HFLPDJ0aQOMydlSGNbdoneEXGcI39JNC9R2W:uf6He48ci0H92Y7E5T6dmKAGuOiGE0PGwBlp51drqFHYehQP9HKBftu').toString('base64'),
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }),
+      body: undefined
+    })
+    .then(response => response.json())
+    .then(responseJson => {
+      //console.log(responseJson);
+      this.setState(
+        {
+          isLoading: false,
+          dataSource: responseJson,
+        },
+        function() {
+          this.arrayholder = responseJson;
+        }
+      );
+    })
+    .catch(error => {
+      console.log(error);
+      alert("Matappen kräver anslutning till internet för att kunna visa innehåll. Vänligen anslut dig och starta om appen.");
+    });
+
+    return return_array;
+  }  
+
+  search = text => {};
+
+  clear = () => {
+    this.search.clear();
+  };
+
+  SearchFilterFunction(text) {
+    const newData = this.arrayholder.filter(function(item) {
+      const itemData = item.business_name ? item.business_name.toUpperCase() : ''.toUpperCase();
+      const textData = text.toUpperCase();
+      return itemData.indexOf(textData) > -1;
+    });
+    this.setState({
+      dataSource: newData,
+      search: text,
+    });
+  }
+
+  ListViewItemSeparator = () => {
+    return(
+      <View 
+        style = {{
+          height: 0.3,
+          width: '90%',
+          backgroundColor: '#080808',
+        }}
+      />
+    );
+  };
+
+  renderItem = ({ item }) => (
+    <ListItem
+      Component = {TouchableScale}
+      friction = {90}
+      tension = {100}
+      activeScale = {0.95}
+      leftAvatar = {{ rounded: true, source: { uri: item.logo_url }, justifyContent: 'center' }}
+      title={item.business_name.slice(0, 40)}
+      titleStyle = {{ color: 'black', fontWeight: 'bold' }}
+      chevronColor="white"
+      chevron
+      containerStyle = {{ marginLeft: 0,
+        marginRight: 0, 
+        marginTop: 10, 
+        borderRadius: 4, // adds the rounded corners
+        backgroundColor: 'rgba(255,255,255,0.75)',
+        height: 60,
+      }}
+
+      onPress = {() => {
+        this.props.navigation.navigate('Producer', {
+          itemId: 86,
+          otherParam: item.business_name,
+          desc: item.description,
+          image: item.logo_url,
+          cover: item.cover_image_url,
+          lat: item.latitude,
+          long: item.longitude,
+          direction: item.map_direction_link,
+          adress: item.visiting_adress,
+          name: item.business_name,
+          adress: item.visiting_adress,
+          contact_person: item.contact_person,
+          producer_city: item.city,
+          producer_email: item.email,
+          producer_phone: item.phone,
+          producer_website: item.website,
+          opening_hours: item.opening_hours,
+          matfest: item.producer_category_1,
+          lpiv: item.producer_category_2
+        });
+      }} 
+    />
+  )
+
+  SearchFilterFunction(text) {
+    const newData = this.arrayholder.filter(function(item) {
+      const itemData = item.business_name ? item.business_name.toUpperCase() : ''.toUpperCase();
+      const textData = text.toUpperCase();
+      return itemData.indexOf(textData) > -1;
+    });
+
+    this.setState({
+      dataSource: newData,
+      search: text,
+    });
+  }
+
+  CategoryFilterFunction(category_type) {
+    if (category_type === "matfest") {
+      const newData = this.arrayholder.filter(
+        e => e.producer_category_1 === true
+      );
+      this.setState({
+        dataSource: newData
+      });
+    } else if (category_type === "medlem") {
+      const newData = this.arrayholder.filter(
+        e => e.producer_category_2 === true
+      );
+      this.setState({
+        dataSource: newData
+      });
+    }
+  }
+
+  Distance(lat1, long1, lat2, long2) {
+    var d = Math.sqrt(Math.pow(lat2 - lat1, 2) 
+                  + Math.pow(long2 - long1, 2));
+    return d;
+  }
+
+  NearbyProducers() {
+    const geo_lat = 58.3903;
+    const geo_long = 13.8461;
+    
+    const newData = this.arrayholder.sort((a, b) => {
+      const latA = a.latitude;
+      const longA = a.longitude;
+      const latB = b.latitude;
+      const longB = b.longitude;
+    
+      const distanceA = 
+        this.Distance(geo_lat, geo_long, 
+                              latA, longA);
+      const distanceB = 
+        this.Distance(geo_lat, geo_long, 
+                              latB, longB);
+    
+      if (distanceA > distanceB) {
+        return 1;
+      } else {
+        return -1;
       }
+
+    });
+    this.setState({
+      dataSource: newData
+    });
+  }
+
+  render() {
+    const viewStyles = [
+      {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#827c34'
+      },
+      { backgroundColor: '#827c34' }
+    ];
+
+    const descriptionStyles = {
+      color: '#282828',
+      fontSize: 25,
+      fontWeight: 'bold',
+      padding:10
+    };
+
+    //const store_type = this.props.navigation.dangerouslyGetParent().getParam("store_type");
+
+    return(
+      <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
+        <HideStatusBar />
+        <View style={{marginTop: 80}}>
+          <View style = {{justifyContent: 'center', alignItems: 'center', marginTop: 65}}>
+            <Text style={descriptionStyles}>{"Äta2"}</Text>
+            <Text style={{ color: "#282828", fontSize: 10, fontStyle: "italic" }}>Sortera efter avstånd...</Text>
+          </View>
+          <View>
+            <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
+                <Button
+                  backgroundColor='black'
+                  buttonStyle={{borderRadius: 5, width: 270, backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}}
+                  title='Producenter nära mig'
+                  onPress = {() => {
+                  // Navigate to details route with parameter
+                  this.NearbyProducers()}}
+                />
+            </View>
+          </View>
+          <View style={{marginTop:5}}>
+            <FlatList 
+              data={this.state.dataSource}
+              //ItemSeparatorComponent={this.ListViewItemSeparator}
+              renderItem={this.renderItem}
+              enableEmptySections={false}
+              style={{ marginBottom: screenHeight * 0.1 }}
+              keyExtractor = {(item, index) => index.toString()}
+            />
+          </View>
+        </View>
+        <MenuScreen navigation={this.props.navigation} />
+      </ImageBackground>
     );
   }
+}
+
+class StoreListScreen extends React.Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = { isLoading: true, search: '' };
+    this.arrayholder = [];
+  }
+
+  componentDidMount() {
+    var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v2/producerlist/3', {
+      method: 'get',
+      headers: new global.Headers({
+        'Authorization': 'Basic ' + Buffer.from('api_2jWTR5iTIHOOxdIVqV2HFLPDJ0aQOMydlSGNbdoneEXGcI39JNC9R2W:uf6He48ci0H92Y7E5T6dmKAGuOiGE0PGwBlp51drqFHYehQP9HKBftu').toString('base64'),
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }),
+      body: undefined
+    })
+    .then(response => response.json())
+    .then(responseJson => {
+      //console.log(responseJson);
+      this.setState(
+        {
+          isLoading: false,
+          dataSource: responseJson,
+        },
+        function() {
+          this.arrayholder = responseJson;
+        }
+      );
+    })
+    .catch(error => {
+      console.log(error);
+      alert("Matappen kräver anslutning till internet för att kunna visa innehåll. Vänligen anslut dig och starta om appen.");
+    });
+
+    return return_array;
+  }  
+
+  search = text => {};
+
+  clear = () => {
+    this.search.clear();
+  };
+
+  SearchFilterFunction(text) {
+    const newData = this.arrayholder.filter(function(item) {
+      const itemData = item.business_name ? item.business_name.toUpperCase() : ''.toUpperCase();
+      const textData = text.toUpperCase();
+      return itemData.indexOf(textData) > -1;
+    });
+    this.setState({
+      dataSource: newData,
+      search: text,
+    });
+  }
+
+  ListViewItemSeparator = () => {
+    return(
+      <View 
+        style = {{
+          height: 0.3,
+          width: '90%',
+          backgroundColor: '#080808',
+        }}
+      />
+    );
+  };
+
+  renderItem = ({ item }) => (
+    <ListItem
+      Component = {TouchableScale}
+      friction = {90}
+      tension = {100}
+      activeScale = {0.95}
+      leftAvatar = {{ rounded: true, source: { uri: item.logo_url }, justifyContent: 'center' }}
+      title={item.business_name.slice(0, 40)}
+      titleStyle = {{ color: 'black', fontWeight: 'bold' }}
+      chevronColor="white"
+      chevron
+      containerStyle = {{ marginLeft: 0,
+        marginRight: 0, 
+        marginTop: 10, 
+        borderRadius: 4, // adds the rounded corners
+        backgroundColor: 'rgba(255,255,255,0.75)',
+        height: 60,
+      }}
+
+      onPress = {() => {
+        this.props.navigation.navigate('Producer', {
+          itemId: 86,
+          otherParam: item.business_name,
+          desc: item.description,
+          image: item.logo_url,
+          cover: item.cover_image_url,
+          lat: item.latitude,
+          long: item.longitude,
+          direction: item.map_direction_link,
+          adress: item.visiting_adress,
+          name: item.business_name,
+          adress: item.visiting_adress,
+          contact_person: item.contact_person,
+          producer_city: item.city,
+          producer_email: item.email,
+          producer_phone: item.phone,
+          producer_website: item.website,
+          opening_hours: item.opening_hours,
+          matfest: item.producer_category_1,
+          lpiv: item.producer_category_2
+        });
+      }} 
+    />
+  )
+
+  SearchFilterFunction(text) {
+    const newData = this.arrayholder.filter(function(item) {
+      const itemData = item.business_name ? item.business_name.toUpperCase() : ''.toUpperCase();
+      const textData = text.toUpperCase();
+      return itemData.indexOf(textData) > -1;
+    });
+
+    this.setState({
+      dataSource: newData,
+      search: text,
+    });
+  }
+
+  CategoryFilterFunction(category_type) {
+    if (category_type === "matfest") {
+      const newData = this.arrayholder.filter(
+        e => e.producer_category_1 === true
+      );
+      this.setState({
+        dataSource: newData
+      });
+    } else if (category_type === "medlem") {
+      const newData = this.arrayholder.filter(
+        e => e.producer_category_2 === true
+      );
+      this.setState({
+        dataSource: newData
+      });
+    }
+  }
+
+  Distance(lat1, long1, lat2, long2) {
+    var d = Math.sqrt(Math.pow(lat2 - lat1, 2) 
+                  + Math.pow(long2 - long1, 2));
+    return d;
+  }
+
+  NearbyProducers() {
+    const geo_lat = 58.3903;
+    const geo_long = 13.8461;
+    
+    const newData = this.arrayholder.sort((a, b) => {
+      const latA = a.latitude;
+      const longA = a.longitude;
+      const latB = b.latitude;
+      const longB = b.longitude;
+    
+      const distanceA = 
+        this.Distance(geo_lat, geo_long, 
+                              latA, longA);
+      const distanceB = 
+        this.Distance(geo_lat, geo_long, 
+                              latB, longB);
+    
+      if (distanceA > distanceB) {
+        return 1;
+      } else {
+        return -1;
+      }
+
+    });
+    this.setState({
+      dataSource: newData
+    });
+  }
+
+  render() {
+    const viewStyles = [
+      {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#827c34'
+      },
+      { backgroundColor: '#827c34' }
+    ];
+
+    const descriptionStyles = {
+      color: '#282828',
+      fontSize: 25,
+      fontWeight: 'bold',
+      padding:10
+    };
+
+    //const store_type = this.props.navigation.dangerouslyGetParent().getParam("store_type");
+
+    return(
+      <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
+        <HideStatusBar />
+        <View style={{marginTop: 80}}>
+          <View style = {{justifyContent: 'center', alignItems: 'center', marginTop: 65}}>
+            <Text style={descriptionStyles}>{"Gårdsbutik2"}</Text>
+            <Text style={{ color: "#282828", fontSize: 10, fontStyle: "italic" }}>Sortera efter avstånd...</Text>
+          </View>
+          <View>
+            <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
+                <Button
+                  backgroundColor='black'
+                  buttonStyle={{borderRadius: 5, width: 270, backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}}
+                  title='Producenter nära mig'
+                  onPress = {() => {
+                  // Navigate to details route with parameter
+                  this.NearbyProducers()}}
+                />
+            </View>
+          </View>
+          <View style={{marginTop:5}}>
+            <FlatList 
+              data={this.state.dataSource}
+              //ItemSeparatorComponent={this.ListViewItemSeparator}
+              renderItem={this.renderItem}
+              enableEmptySections={false}
+              style={{ marginBottom: screenHeight * 0.1 }}
+              keyExtractor = {(item, index) => index.toString()}
+            />
+          </View>
+        </View>
+        <MenuScreen navigation={this.props.navigation} />
+      </ImageBackground>
+    );
+  }
+}
+
+class ProducerListScreen extends React.Component {
+  
+  constructor(props) {
+    super(props);
+    this.state = { isLoading: true, search: '' };
+    this.arrayholder = [];
+  }
+
+  componentDidMount() {
+    var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v2/producerlist/2', {
+      method: 'get',
+      headers: new global.Headers({
+        'Authorization': 'Basic ' + Buffer.from('api_2jWTR5iTIHOOxdIVqV2HFLPDJ0aQOMydlSGNbdoneEXGcI39JNC9R2W:uf6He48ci0H92Y7E5T6dmKAGuOiGE0PGwBlp51drqFHYehQP9HKBftu').toString('base64'),
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }),
+      body: undefined
+    })
+    .then(response => response.json())
+    .then(responseJson => {
+      //console.log(responseJson);
+      this.setState(
+        {
+          isLoading: false,
+          dataSource: responseJson,
+        },
+        function() {
+          this.arrayholder = responseJson;
+        }
+      );
+    })
+    .catch(error => {
+      console.log(error);
+      alert("Matappen kräver anslutning till internet för att kunna visa innehåll. Vänligen anslut dig och starta om appen.");
+    });
+
+    return return_array;
+  }  
 
   search = text => {};
 
@@ -1215,7 +1705,7 @@ class OverviewScreen extends React.Component {
         <HideStatusBar />
         <View style={{marginTop: 80}}>
           <View style = {{justifyContent: 'center', alignItems: 'center', marginTop: 65}}>
-            <Text style={descriptionStyles}>{store_type}</Text>
+            <Text style={descriptionStyles}>{"Producent2"}</Text>
             <Text style={{ color: "#282828", fontSize: 10, fontStyle: "italic" }}>Sortera efter avstånd...</Text>
           </View>
           <View>
@@ -1534,10 +2024,80 @@ const EventStack = createStackNavigator(
   {headerMode: 'screen'}
 )
 
-const ListStack = createStackNavigator(
+const FoodStack = createStackNavigator(
+  {
+    FoodList: {
+      screen: FoodListScreen,
+      navigationOptions: {
+        header: null,
+      }
+    },
+    Producer: {
+      screen: ProducerScreen,
+      navigationOptions: {
+        header: null,
+      }
+    },
+    Map: {
+      screen: SingleMapScreen,
+      navigationOptions: {
+        header: null,
+      }
+    }
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#f4511e',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },  
+  },
+  {headerMode: 'screen'}
+)
+
+const StoreStack = createStackNavigator(
+  {
+    StoreList: {
+      screen: StoreListScreen,
+      navigationOptions: {
+        header: null,
+      }
+    },
+    Producer: {
+      screen: ProducerScreen,
+      navigationOptions: {
+        header: null,
+      }
+    },
+    Map: {
+      screen: SingleMapScreen,
+      navigationOptions: {
+        header: null,
+      }
+    }
+  },
+  {
+    defaultNavigationOptions: {
+      headerStyle: {
+        backgroundColor: '#f4511e',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
+    },  
+  },
+  {headerMode: 'screen'}
+)
+
+const ProducerStack = createStackNavigator(
   {
     ProducerList: {
-      screen: OverviewScreen,
+      screen: ProducerListScreen,
       navigationOptions: {
         header: null,
       }
@@ -1607,19 +2167,19 @@ const TabNavigator = createBottomTabNavigator(
       }
     },
     Äta: {
-      screen: ListStack,
+      screen: FoodStack,
       navigationOptions: {
         tabBarVisible: false
       }
     },
     Fika: {
-      screen: ListStack,
+      screen: ProducerStack,
       navigationOptions: {
         tabBarVisible: false
       }
     },
     Handla: {
-      screen: ListStack,
+      screen: StoreStack,
       navigationOptions: {
         tabBarVisible: false
       }
