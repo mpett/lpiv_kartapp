@@ -874,16 +874,34 @@ class SearchScreen extends React.Component {
   }
 
   componentDidMount() {
-    this.setState(
-      {
-        isLoading: false,
-        dataSource: producer_list,
-      },
-      function() {
-        this.arrayholder = producer_list;
-      }
-    );
-  }
+    var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v2/globallist', {
+      method: 'get',
+      headers: new global.Headers({
+        'Authorization': 'Basic ' + Buffer.from('api_2jWTR5iTIHOOxdIVqV2HFLPDJ0aQOMydlSGNbdoneEXGcI39JNC9R2W:uf6He48ci0H92Y7E5T6dmKAGuOiGE0PGwBlp51drqFHYehQP9HKBftu').toString('base64'),
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }),
+      body: undefined
+    })
+    .then(response => response.json())
+    .then(responseJson => {
+      //console.log(responseJson);
+      this.setState(
+        {
+          isLoading: false,
+          dataSource: responseJson,
+        },
+        function() {
+          this.arrayholder = responseJson;
+        }
+      );
+    })
+    .catch(error => {
+      console.log(error);
+      alert("Matappen kräver anslutning till internet för att kunna visa innehåll. Vänligen anslut dig och starta om appen.");
+    });
+
+    return return_array;
+  }  
 
   search = text => {};
 
