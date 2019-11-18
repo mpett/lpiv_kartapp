@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {View, Image, StyleSheet, ScrollView, FlatList, Platform, ImageBackground, TouchableOpacity, StatusBar, Dimensions, SafeAreaView, Linking} from 'react-native';
-import { createAppContainer } from 'react-navigation';
+import { createAppContainer, NavigationActions, StackActions, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 import { createBottomTabNavigator } from 'react-navigation-tabs';
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
@@ -1896,6 +1896,9 @@ class MenuScreen extends React.Component {
     this.arrayholder = [];
   }
 
+  ResetStack() {
+  }
+
   StoreCategoryFilterFunction(store_type) {
     tmp_producer_list = full_producer_list;    
 
@@ -1946,7 +1949,7 @@ class MenuScreen extends React.Component {
         <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Start"), this.props.navigation.navigate("Start")}}>
           <Image source={this.state.dGardsbutik} style={ iconStyles } />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Sök"), this.props.navigation.navigate("Event")}}>
+        <TouchableOpacity onPress={() => {this.ResetStack(), this.props.navigation.navigate("EventScreen")}}>
           <Image source={this.state.dSok} style={ iconStyles } />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Karta"), this.props.navigation.navigate("Karta")}}>
@@ -1992,6 +1995,55 @@ const SearchStack = createStackNavigator(
   {headerMode: 'screen'}
 )
 
+const EventSwitch = createSwitchNavigator({
+  ProducerList: {
+    screen: EventListScreen,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  Event: {
+    screen: EventScreen,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  Map: {
+    screen: SingleMapScreen,
+    navigationOptions: {
+      header: null,
+    }
+  },
+  Connected: {
+    screen: ConnectedProducers,
+    navigationOptions: {
+      header:null
+    }
+  },
+  Producer: {
+    screen: ProducerScreen,
+    navigationOptions: {
+      header: null,
+    }
+  },
+},
+
+{
+  defaultNavigationOptions: {
+    headerStyle: {
+      backgroundColor: '#f4511e',
+    },
+    headerTintColor: '#fff',
+    headerTitleStyle: {
+      fontWeight: 'bold',
+    },
+    initialRouteName: 'ProducerList'
+  },  
+},
+{headerMode: 'screen'}
+
+);
+
 const EventStack = createStackNavigator(
   {
     ProducerList: {
@@ -2036,7 +2088,7 @@ const EventStack = createStackNavigator(
       headerTitleStyle: {
         fontWeight: 'bold',
       },
-      initialRouteName: 'Event'
+      initialRouteName: 'ProducerList'
     },  
   },
   {headerMode: 'screen'}
@@ -2214,18 +2266,19 @@ const TabNavigator = createBottomTabNavigator(
         tabBarVisible: false
       }
     },
-    Event: {
-      screen: EventStack,
+    EventS: {
+      screen: EventSwitch,
       navigationOptions: {
         tabBarVisible: false
       }
     },
-    EventHome: {
+    EventScreen: {
       screen: EventListScreen,
       navigationOptions: {
         tabBarVisible: false
       }
-    }
+    },
+
   },
   {
     tabBarOptions: {
