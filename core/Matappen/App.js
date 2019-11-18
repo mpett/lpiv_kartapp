@@ -16,6 +16,7 @@ import { Buffer } from 'buffer';
 import type { Region } from 'react-native-maps';
 
 const screenWidth = Math.round(Dimensions.get('window').width);
+const screenHeight = Math.round(Dimensions.get('window').height);
 
 export interface LatLng {
   latitude: number;
@@ -436,7 +437,7 @@ class ConnectedProducers extends React.Component {
               data={this.state.dataSource}
               renderItem={this.renderItem}
               enableEmptySections={false}
-              style={{ marginBottom: 380 }}
+              style={{ marginBottom: screenHeight * 0.1 }}
               keyExtractor = {(item, index) => index.toString()}
             />
           </View>
@@ -1437,7 +1438,7 @@ class MenuScreen extends React.Component {
         <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Start"), this.props.navigation.navigate("Start")}}>
           <Image source={this.state.dGardsbutik} style={ iconStyles } />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Sök"), this.props.navigation.navigate("EventHome")}}>
+        <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Sök"), this.props.navigation.navigate("Event")}}>
           <Image source={this.state.dSok} style={ iconStyles } />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Karta"), this.props.navigation.navigate("Karta")}}>
