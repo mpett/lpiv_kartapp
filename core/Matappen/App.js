@@ -35,6 +35,164 @@ console.disableYellowBox = true;
 start_list = []; producer_list = [];
 full_producer_list = producer_list;
 
+class EventSingleMapScreen extends Component {
+
+  constructor(props) {
+    super(props);
+
+    const { navigation } = this.props;
+    const lat_param = navigation.getParam('lat', '0.0');
+    const long_param = navigation.getParam('long', '0.0');
+    const name_parameter = navigation.getParam('name', "Producent AB")
+    const latitude_parameter = parseFloat(lat_param);
+    const longitude_parameter = parseFloat(long_param);
+    const cord_params = latitude_parameter + "," + longitude_parameter;
+
+    this.state = {
+      latitude: null,
+      longitude: null,
+      error: null,
+      concat: null,
+      coords:[],
+      x: 'false',
+      cordLatitude:latitude_parameter,
+      cordLongitude:longitude_parameter,
+      cordString: cord_params,
+      name: name_parameter
+    };
+
+    this.mergeLot = this.mergeLot.bind(this);
+  }
+
+  componentDidMount() {
+    Geolocation.getCurrentPosition(
+       (position) => {
+         this.setState({
+           latitude: position.coords.latitude,
+           longitude: position.coords.longitude,
+           error: null,
+         });
+         this.mergeLot();
+       },
+       (error) => this.setState({ error: error.message }),
+       { enableHighAccuracy: false, timeout: 200, maximumAge: 1000 },
+     );
+   }
+
+  mergeLot() {
+    if (this.state.latitude != null && this.state.longitude!=null)
+     {
+       let concatLot = this.state.latitude +","+this.state.longitude
+       this.setState({
+         concat: concatLot
+       }, () => {
+         this.getDirections(concatLot, this.state.cordString);
+       });
+     }
+   }
+
+   async getDirections(startLoc, destinationLoc) {
+      try {
+          let resp = await fetch(
+              `https://maps.googleapis.com/maps/api/directions/json?origin=
+            ${ startLoc }&destination=${ destinationLoc }
+            &key=${ "AIzaSyAQTzaFD-IjWN1V9RkHVwx---QVX4e8F8A" }`
+          )
+          let respJson = await resp.json();
+          //console.error(respJson);
+          let points = Polyline.decode(
+            respJson.routes[0]
+            .overview_polyline.points);
+          let coords = points.map((point, index) => {
+              return  {
+                  latitude : point[0],
+                  longitude : point[1]
+              }
+          })
+          this.setState({coords: coords})
+          this.setState({x: "true"})
+          return coords
+      } catch(error) {
+          this.setState({x: "error"})
+          return error
+      }
+  }
+
+  render() {
+    const marker_image = require('./lpiv_pin_29_44.png');
+
+    const bottomViewStyles = {
+      width: "100%",
+      height: 60,
+      backgroundColor: "rgba(255, 255, 255, 0)",
+      justifyContent: "center",
+      alignItems: "center",
+      position: "absolute",
+      bottom: 0,
+      flexDirection: 'row', flexWrap: 'wrap',
+      marginTop: 5,
+      marginBottom: 70
+    }
+
+    return (
+      <View style = { single_styles.container }>
+        <MapView 
+          provider={PROVIDER_GOOGLE} style={single_styles.map} 
+          initialRegion={VÄSTRA_GÖTALAND} >
+
+        {!!this.state.latitude && !!this.state.longitude && 
+          <MapView.Marker
+            coordinate={{"latitude":this.state.latitude,"longitude":this.state.longitude}}
+            color= "#446f6d"
+            title={"Du är här"}
+          />}
+
+        {!!this.state.cordLatitude && !!this.state.cordLongitude && 
+          <MapView.Marker
+            coordinate={{"latitude":this.state.cordLatitude,"longitude":this.state.cordLongitude}}
+            title={this.state.name} image={marker_image}
+          />}
+
+        {!!this.state.latitude && !!this.state.longitude && this.state.x == 'true' && 
+          <MapView.Polyline
+            coordinates={this.state.coords}
+            strokeWidth={2}
+            strokeColor="#446f6d"/>
+        }
+
+        {!!this.state.latitude && !!this.state.longitude && this.state.x == 'error' && 
+          <MapView.Polyline
+            coordinates={[
+                {latitude: this.state.latitude, longitude: this.state.longitude},
+                {latitude: this.state.cordLatitude, longitude: this.state.cordLongitude},
+            ]}
+            strokeWidth={2}
+            strokeColor="#446f6d"/>
+        }
+        </MapView>
+
+        <View style = {bottomViewStyles}>          
+          <Button title="Utförlig vägbeskrivning" buttonStyle = {{backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}} 
+            onPress = { () => {
+              const scheme = Platform.select({ ios: 'maps:0,0?q=', android: 'geo:0,0?q=' });
+              const latLng = `${this.state.cordLatitude},${this.state.cordLongitude}`;
+              const label = 'Custom Label';
+              const url = Platform.select({
+                ios: `${scheme}${label}@${latLng}`,
+                android: `${scheme}${latLng}(${label})`
+              });
+              Linking.openURL(url); 
+            }} > 
+          </Button>
+
+          <SafeAreaView />
+        </View>
+        <MenuScreen navigation={this.props.navigation} />
+      </View>
+    );
+  }
+}
+
 class SingleMapScreen extends Component {
 
   constructor(props) {
@@ -130,7 +288,8 @@ class SingleMapScreen extends Component {
       position: "absolute",
       bottom: 0,
       flexDirection: 'row', flexWrap: 'wrap',
-      marginTop: 5
+      marginTop: 5,
+      marginBottom: 70
     }
 
     return (
@@ -172,12 +331,12 @@ class SingleMapScreen extends Component {
 
         <View style = {bottomViewStyles}>
           <View style = {{ marginRight: 15 }}>
-            <Button title="Gå tillbaka" buttonStyle = {{backgroundColor: "#446f6d"}}
+            <Button title="Gå tillbaka" buttonStyle = {{backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}} 
               onPress = { () => { this.props.navigation.goBack() } }
             ></Button>
           </View>
           
-          <Button title="Utförlig vägbeskrivning" buttonStyle = {{backgroundColor: "#446f6d"}} 
+          <Button title="Utförlig vägbeskrivning" buttonStyle = {{backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}} 
             onPress = { () => {
               const scheme = Platform.select({ ios: 'maps:0,0?q=', android: 'geo:0,0?q=' });
               const latLng = `${this.state.cordLatitude},${this.state.cordLongitude}`;
@@ -192,6 +351,7 @@ class SingleMapScreen extends Component {
 
           <SafeAreaView />
         </View>
+        <MenuScreen navigation={this.props.navigation} />
       </View>
     );
   }
@@ -539,9 +699,12 @@ class ProducerScreen extends React.Component {
                     <Text style={{fontWeight: 'bold'}}>Öppettider</Text>
                     <Text style={{marginBottom: 20, marginTop: 5}}>{opening_hours}</Text>
                   </View>
+                  <Button title="Gå tillbaka"  buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}}
+                      onPress = { () => { this.props.navigation.goBack() } }
+                    ></Button>
                   <Button
                     backgroundColor='#37503c'
-                    buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "#446f6d"}}
+                    buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}}
                     title='Hitta oss på kartan'
                     onPress = {() => {
                       this.props.navigation.navigate('Map', {
@@ -657,7 +820,7 @@ class EventScreen extends React.Component {
                   </View>
                   <Button
                     backgroundColor='#37503c'
-                    buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "#446f6d"}}
+                    buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}}
                     title='Anslutna producenter'
                     onPress = {() => {
                       // Navigate to details route with parameter
@@ -1996,7 +2159,7 @@ const EventSwitch = createSwitchNavigator({
     }
   },
   Map: {
-    screen: SingleMapScreen,
+    screen: EventSingleMapScreen,
     navigationOptions: {
       header: null,
     }
