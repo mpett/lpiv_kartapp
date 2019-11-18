@@ -119,7 +119,7 @@ class SingleMapScreen extends Component {
   }
 
   render() {
-    const marker_image = require('./lpiv_pin_60_91.png');
+    const marker_image = require('./lpiv_pin_29_44.png');
 
     const bottomViewStyles = {
       width: "100%",
