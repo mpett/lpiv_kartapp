@@ -726,6 +726,121 @@ class ProducerScreen extends React.Component {
   }
 }
 
+class EventProducerScreen extends React.Component {
+  static navigationOptions = ({ navigation, navigationOptions }) => {
+    const { params } = navigation.state;
+
+    return {
+      title: params ? params.otherParam : 'Detaljskärm med parameter.',
+      // These values are used instead of the shared configuration
+      headerStyle: {
+        backgroundColor: navigationOptions.headerTintColor,
+      },
+      headerTintColor: navigationOptions.headerStyle.backgroundColor,
+    };
+  };  
+
+  render() {
+    const { navigation } = this.props;
+    const description = navigation.getParam('desc', 'Ingen beskrivning');
+    const logo_image = navigation.getParam('image', '404');
+    const background = navigation.getParam('cover', '404');
+    const latitude = navigation.getParam('lat', '58.2528');
+    const longitude = navigation.getParam('long', '12.77');
+    const producer_adress = navigation.getParam('adress', 'Kogatan 12 Timmersdala 15623');
+    const contact_person = navigation.getParam('contact_person', 'Anders Svensson');
+    const producer_city = navigation.getParam('producer_city', 'Tidaholm');
+    const producer_email = navigation.getParam('producer_email', 'anders@gmail.com');
+    const producer_phone = navigation.getParam('producer_phone', '0705727004');
+    const producer_website = navigation.getParam('producer_website', 'https://www.example.com');
+    const producer_name = navigation.getParam("name", "Producent AB");
+    const opening_hours = navigation.getParam("opening_hours", "00:00 - 23:00 torsdag - lördag")
+    const matfest = navigation.getParam("matfest", false);
+    const lpiv = navigation.getParam("lpiv", false);
+    
+    var category_string = "";
+
+    if (matfest) {
+      category_string += "Matfest ";
+    }
+
+    if (lpiv) {
+      category_string += "LPIV ";
+    }
+
+    return(
+      <View>
+        <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}}>
+          <ImageBackground source={{ uri: background }} style={{width: '100%', height: '100%'}}>
+            <HideStatusBar />
+            <ScrollView>
+              <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 100, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 200 }}>
+                <ScrollView>
+                  <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
+                    <Image
+                      source={ { uri: logo_image }}
+                      style={{ width: 300, height: 100, flex: 1, resizeMode: 'contain' }}
+                    />
+                  </View>
+                  <View style={{
+                    borderBottomColor: 'black',
+                    borderBottomWidth: 1,
+                    marginBottom: 15
+                  }}>
+                    <Text style={{fontWeight: 'bold'}}>{producer_name}</Text>
+                    <Text style={{marginBottom: 20, marginTop: 5}}>{description}</Text>
+                  </View>
+                  <View style={{
+                    borderBottomColor: 'black',
+                    borderBottomWidth: 1,
+                    marginBottom: 15,
+                  }}>
+                    <Text style={{fontWeight: 'bold'}}>Kontaktuppgifter</Text>
+                    <Text style={{marginBottom: 2, marginTop: 2}}>Besöksadress: {producer_adress}</Text>
+                    <Text style={{marginBottom: 2, marginTop: 2}}>Kontaktperson: {contact_person}</Text>
+                    <Text style={{marginBottom: 2, marginTop: 2}}>Besöksort: {producer_city}</Text>
+                    <Text style={{marginBottom: 2, marginTop: 2}}>E-post: {producer_email}</Text>
+                    <Text style={{marginBottom: 2, marginTop: 2}}>Telefon: {producer_phone}</Text>
+                    <Text style={{marginBottom: 17, marginTop: 2}}>Webbsida: {producer_website}</Text>
+                  </View>
+
+                  <View style={{
+                    borderBottomColor: 'black',
+                    borderBottomWidth: 1,
+                    marginBottom: 15,
+                  }}>
+                    <Text style={{fontWeight: 'bold'}}>Kategorier</Text>
+                    <Text style={{marginBottom: 17, marginTop: 2}}>{category_string}</Text>
+                  </View>
+                  
+                  <View>
+                    <Text style={{fontWeight: 'bold'}}>Öppettider</Text>
+                    <Text style={{marginBottom: 20, marginTop: 5}}>{opening_hours}</Text>
+                  </View>
+                  
+                  <Button
+                    backgroundColor='#37503c'
+                    buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}}
+                    title='Hitta oss på kartan'
+                    onPress = {() => {
+                      this.props.navigation.navigate('Map', {
+                        lat: latitude,
+                        long: longitude,
+                        adress: producer_adress,
+                        name: producer_name
+                      })}}
+                    />
+                </ScrollView>
+              </View>
+            </ScrollView>
+          </ImageBackground>
+        </ImageBackground>
+        <MenuScreen navigation={this.props.navigation} />
+      </View> 
+    )
+  }
+}
+
 class EventScreen extends React.Component {
   static navigationOptions = ({ navigation, navigationOptions }) => {
     const { params } = navigation.state;
@@ -1060,18 +1175,6 @@ class SearchScreen extends React.Component {
     this.search.clear();
   };
 
-  SearchFilterFunction(text) {
-    const newData = this.arrayholder.filter(function(item) {
-      const itemData = item.business_name ? item.business_name.toUpperCase() : ''.toUpperCase();
-      const textData = text.toUpperCase();
-      return itemData.indexOf(textData) > -1;
-    });
-    this.setState({
-      dataSource: newData,
-      search: text,
-    });
-  }
-
   ListViewItemSeparator = () => {
     return(
       <View 
@@ -1133,7 +1236,7 @@ class SearchScreen extends React.Component {
 
   SearchFilterFunction(text) {
     const newData = this.arrayholder.filter(function(item) {
-      const itemData = item.business_name ? item.business_name.toUpperCase() : ''.toUpperCase();
+      const itemData = item.search_tags ? item.search_tags.toUpperCase() + " " + item.business_name.toUpperCase() : ''.toUpperCase();
       const textData = text.toUpperCase();
       return itemData.indexOf(textData) > -1;
     });
@@ -1914,7 +2017,7 @@ class SplashScreen extends React.Component {
   }
 
   componentDidMount() {
-    var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v1/producerlist', {
+    var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v2/globallist', {
       method: 'get',
       headers: new global.Headers({
         'Authorization': 'Basic ' + Buffer.from('api_2jWTR5iTIHOOxdIVqV2HFLPDJ0aQOMydlSGNbdoneEXGcI39JNC9R2W:uf6He48ci0H92Y7E5T6dmKAGuOiGE0PGwBlp51drqFHYehQP9HKBftu').toString('base64'),
@@ -2172,7 +2275,7 @@ const EventSwitch = createSwitchNavigator({
     }
   },
   Producer: {
-    screen: ProducerScreen,
+    screen: EventProducerScreen,
     navigationOptions: {
       header: null,
     }
