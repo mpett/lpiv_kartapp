@@ -75,7 +75,7 @@ class EventSingleMapScreen extends Component {
          this.mergeLot();
        },
        (error) => this.setState({ error: error.message }),
-       { enableHighAccuracy: false, timeout: 200, maximumAge: 1000 },
+       { enableHighAccuracy: false, timeout: 200000, maximumAge: 1000 },
      );
    }
 
@@ -699,9 +699,7 @@ class ProducerScreen extends React.Component {
                     <Text style={{fontWeight: 'bold'}}>Öppettider</Text>
                     <Text style={{marginBottom: 20, marginTop: 5}}>{opening_hours}</Text>
                   </View>
-                  <Button title="Gå tillbaka"  buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}}
-                      onPress = { () => { this.props.navigation.goBack() } }
-                    ></Button>
+                  
                   <Button
                     backgroundColor='#37503c'
                     buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}}
@@ -714,6 +712,9 @@ class ProducerScreen extends React.Component {
                         name: producer_name
                       })}}
                     />
+                    <Button title="Gå tillbaka"  buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}}
+                      onPress = { () => { this.props.navigation.goBack() } }
+                    ></Button>
                 </ScrollView>
               </View>
             </ScrollView>
