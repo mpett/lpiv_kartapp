@@ -2113,7 +2113,7 @@ class RenderHeader extends React.Component {
           rightComponent={<Avatar
             small
             rounded
-            source={require("./search.png")}
+            source={require("./search-256x256-black-bg.png")}
             onPress={() => {this.props.navigation.navigate("Sök")}}
             activeOpacity={1.0}
         />}
