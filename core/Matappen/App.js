@@ -1043,7 +1043,7 @@ class EventListScreen extends React.Component {
         marginTop: 10, 
         borderRadius: 4, // adds the rounded corners
         backgroundColor: 'rgba(255,255,255,0.8)',
-        height: 60,
+        height: 100,
         borderWidth: 1,
         borderColor: '#f2f2f2'
       }}
