@@ -886,57 +886,40 @@ class EventScreen extends React.Component {
     }
 
     return(
-      <View>
+      <View style = {styles.container}>
+        <RenderHeader navigation={this.props.navigation} />
         <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}}>
-          <ImageBackground source={{ uri: background }} style={{width: '100%', height: '100%'}}>
+          <ScrollView>
+          <ImageBackground source={{ uri: background }} style={{width: '100%', height: 250}}>
             <HideStatusBar />
-            <ScrollView>
-              <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 100, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 200 }}>
-                <ScrollView>
-                  <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
-                    <Image
-                      source={ { uri: logo_image }}
-                      style={{ width: 300, height: 100, flex: 1, resizeMode: 'contain' }}
-                    />
-                  </View>
-                  <View style={{
-                    borderBottomColor: 'black',
-                    borderBottomWidth: 1,
-                    marginBottom: 15
-                  }}>
-                    <Text style={{fontWeight: 'bold'}}>{producer_name}</Text>
-                    <Text style={{marginBottom: 20, marginTop: 5}}>{description}</Text>
-                  </View>
-                  <View style={{
-                    borderBottomColor: 'black',
-                    borderBottomWidth: 1,
-                    marginBottom: 15,
-                  }}>
-                    <Text style={{fontWeight: 'bold'}}>Kontaktuppgifter</Text>
-                    <Text style={{marginBottom: 2, marginTop: 2}}>Besöksadress: {producer_adress}</Text>
-                    <Text style={{marginBottom: 2, marginTop: 2}}>Kontaktperson: {contact_person}</Text>
-                    <Text style={{marginBottom: 2, marginTop: 2}}>Besöksort: {producer_city}</Text>
-                    <Text style={{marginBottom: 2, marginTop: 2}}>E-post: {producer_email}</Text>
-                    <Text style={{marginBottom: 2, marginTop: 2}}>Telefon: {producer_phone}</Text>
-                    <Text style={{marginBottom: 17, marginTop: 2}}>Webbsida: {producer_website}</Text>
-                  </View>
 
-                  <View style={{
-                    borderBottomColor: 'black',
-                    borderBottomWidth: 1,
-                    marginBottom: 15,
-                  }}>
-                    <Text style={{fontWeight: 'bold'}}>Kategorier</Text>
-                    <Text style={{marginBottom: 17, marginTop: 2}}>{category_string}</Text>
-                  </View>
-                  
-                  <View>
-                    <Text style={{fontWeight: 'bold'}}>Öppettider</Text>
-                    <Text style={{marginBottom: 20, marginTop: 5}}>{opening_hours}</Text>
-                  </View>
-                  <Button
+            <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 40, marginBottom: 20, marginRight: 40, marginTop: 5, borderRadius: 30, marginTop: 80, flexDirection: 'row' }}>
+              <Image source = {{ uri: logo_image }} style={{width: 50, height: 50}}/>
+              <View>
+                <Text style={{ fontSize: 20, fontStyle: 'bold', marginLeft: 5, marginRight: 10 }}>Smaka på Västsverige</Text>
+                <Text style={{ fontSize: 14, fontStyle: 'italic', marginLeft: 5, marginRight: 10 }}>2019-01-01 - 2019-01-05</Text>
+              </View>
+              
+              
+            </View>
+            
+          </ImageBackground>
+          
+              <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 20 }}>
+                <View>
+                  <Text style={{ fontSize: 20, fontStyle: 'bold', marginLeft: 5, marginRight: 10 }}>Evenemang</Text>
+                    <Text style={{ fontSize: 15, marginLeft: 5, marginRight: 10 }}>Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai </Text>
+                </View>
+              </View>
+              <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 20 }}>
+                <View>
+                  <Text style={{ fontSize: 20, fontStyle: 'bold', marginLeft: 5, marginRight: 10 }}>Information</Text>
+                    <Text style={{ fontSize: 15, marginLeft: 5, marginRight: 10 }}>Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai </Text>
+                </View>
+              </View>
+              <Button
                     backgroundColor='#37503c'
-                    buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}}
+                    buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: screenHeight * 0.2, marginTop: 20, backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}}
                     title='Anslutna producenter'
                     onPress = {() => {
                       // Navigate to details route with parameter
@@ -948,10 +931,7 @@ class EventScreen extends React.Component {
                         connected_producer_list: connected_producer_list
                       })}}
                     />
-                </ScrollView>
-              </View>
             </ScrollView>
-          </ImageBackground>
         </ImageBackground>
         <MenuScreen navigation={this.props.navigation} />
       </View> 
@@ -1053,7 +1033,7 @@ class EventListScreen extends React.Component {
           itemId: 86,
           otherParam: item.business_name,
           desc: item.description,
-          image: item.logo_url,
+          image: item.logo_image_url,
           cover: item.cover_image_url,
           lat: item.latitude,
           long: item.longitude,
@@ -1121,7 +1101,7 @@ class EventListScreen extends React.Component {
               data={this.state.dataSource}
               renderItem={this.renderItem}
               enableEmptySections={false}
-              style={{ marginBottom: 380 }}
+              style={{ marginBottom: screenHeight * 0.37 }}
               keyExtractor = {(item, index) => index.toString()}
             />
           </View>
@@ -1451,6 +1431,8 @@ class FoodListScreen extends React.Component {
     return d;
   }
 
+  tmp = false;
+
   NearbyProducers() {
     const geo_lat = 58.3903;
     const geo_long = 13.8461;
@@ -1498,41 +1480,62 @@ class FoodListScreen extends React.Component {
       padding:10
     };
 
+    const topMenuStyles = {
+      color: 'white',
+      width: screenWidth,
+      height: 35,
+      paddingLeft: 20,
+      paddingRight: 20,
+      justifyContent: 'center'
+    }
+
+    const iconStyles = {
+      width: 90,
+      height: 27.368
+    }
+
     //const store_type = this.props.navigation.dangerouslyGetParent().getParam("store_type");
 
     return(
-      <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
-        <HideStatusBar />
-        <View style={{marginTop: 80}}>
-          <View style = {{justifyContent: 'center', alignItems: 'center', marginTop: 65}}>
-            <Text style={descriptionStyles}>{"Äta2"}</Text>
-            <Text style={{ color: "#282828", fontSize: 10, fontStyle: "italic" }}>Sortera efter avstånd...</Text>
+      <View style={styles.container}>
+        <RenderHeader navigation={this.props.navigation} />
+        <View style = {topMenuStyles}>
+          
+          <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
+            <Text>Test test test</Text>
+            <TouchableOpacity onPress={() => {this.NearbyProducers()}}>
+              <Image source={require("./checked.png")} style={ iconStyles } />
+            </TouchableOpacity>
           </View>
-          <View>
-            <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
-                <Button
-                  backgroundColor='black'
-                  buttonStyle={{borderRadius: 5, width: 270, backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}}
-                  title='Producenter nära mig'
-                  onPress = {() => {
-                  // Navigate to details route with parameter
-                  this.NearbyProducers()}}
-                />
+          
+        </View>
+        <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
+          <HideStatusBar />
+          <View style={{marginTop: 80}}>
+            <View style = {{justifyContent: 'center', alignItems: 'center', marginTop: 65}}>
+              <Text style={descriptionStyles}>{"Äta2"}</Text>
+              <Text style={{ color: "#282828", fontSize: 10, fontStyle: "italic" }}>Sortera efter avstånd...</Text>
+            </View>
+            <View>
+              <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
+                  
+              </View>
+            </View>
+            <View style={{marginTop:5}}>
+              <FlatList 
+                data={this.state.dataSource}
+                //ItemSeparatorComponent={this.ListViewItemSeparator}
+                renderItem={this.renderItem}
+                enableEmptySections={false}
+                style={{ marginBottom: screenHeight * 0.37 }}
+                keyExtractor = {(item, index) => index.toString()}
+              />
             </View>
           </View>
-          <View style={{marginTop:5}}>
-            <FlatList 
-              data={this.state.dataSource}
-              //ItemSeparatorComponent={this.ListViewItemSeparator}
-              renderItem={this.renderItem}
-              enableEmptySections={false}
-              style={{ marginBottom: screenHeight * 0.37 }}
-              keyExtractor = {(item, index) => index.toString()}
-            />
-          </View>
-        </View>
-        <MenuScreen navigation={this.props.navigation} />
-      </ImageBackground>
+          <MenuScreen navigation={this.props.navigation} />
+        </ImageBackground>
+      </View>
+      
     );
   }
 }
@@ -2192,10 +2195,11 @@ class MenuScreen extends React.Component {
     const iconStyles = {
       flexDirection: 'row', 
       flexWrap: 'wrap', 
-      height: 30, 
-      width: 30, 
-      marginRight: 25,
-      marginTop: 10
+      height: 35, 
+      width: 35, 
+      marginRight: screenWidth / 7,
+      marginTop: 10,
+      marginBottom: -5
     }
 
     return (
@@ -2203,11 +2207,11 @@ class MenuScreen extends React.Component {
         <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Start"), this.props.navigation.navigate("Start")}}>
           <Image source={this.state.dGardsbutik} style={ iconStyles } />
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => {this.ResetStack(), this.props.navigation.navigate("EventScreen")}}>
+        <TouchableOpacity onPress={() => {this.ResetStack(),  this.props.navigation.navigate("EventScreen")}}>
           <Image source={this.state.dSok} style={ iconStyles } />
         </TouchableOpacity>
         <TouchableOpacity onPress={() => {this.StoreCategoryFilterFunction("Karta"), this.props.navigation.navigate("Karta")}}>
-          <Image source={this.state.dKarta} style={{ flexDirection: 'row', flexWrap: 'wrap', height: 30, width: 30, marginTop: 10, marginRight: 0 }} />
+          <Image source={this.state.dKarta} style={{ flexDirection: 'row', flexWrap: 'wrap', height: 35, width: 35, marginTop: 10, marginRight: 0, marginBottom: -5 }} />
         </TouchableOpacity>
       </View>
     );
