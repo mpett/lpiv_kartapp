@@ -597,7 +597,7 @@ class ConnectedProducers extends React.Component {
               data={this.state.dataSource}
               renderItem={this.renderItem}
               enableEmptySections={false}
-              style={{ marginBottom: screenHeight * 0.1 }}
+              style={{ marginBottom: screenHeight * 0.37 }}
               keyExtractor = {(item, index) => index.toString()}
             />
           </View>
@@ -1526,7 +1526,7 @@ class FoodListScreen extends React.Component {
               //ItemSeparatorComponent={this.ListViewItemSeparator}
               renderItem={this.renderItem}
               enableEmptySections={false}
-              style={{ marginBottom: screenHeight * 0.1 }}
+              style={{ marginBottom: screenHeight * 0.37 }}
               keyExtractor = {(item, index) => index.toString()}
             />
           </View>
@@ -1762,7 +1762,7 @@ class StoreListScreen extends React.Component {
               //ItemSeparatorComponent={this.ListViewItemSeparator}
               renderItem={this.renderItem}
               enableEmptySections={false}
-              style={{ marginBottom: screenHeight * 0.1 }}
+              style={{ marginBottom: screenHeight * 0.37 }}
               keyExtractor = {(item, index) => index.toString()}
             />
           </View>
@@ -1998,7 +1998,7 @@ class ProducerListScreen extends React.Component {
               //ItemSeparatorComponent={this.ListViewItemSeparator}
               renderItem={this.renderItem}
               enableEmptySections={false}
-              style={{ marginBottom: 342 }}
+              style={{ marginBottom: screenHeight * 0.37 }}
               keyExtractor = {(item, index) => index.toString()}
             />
           </View>
