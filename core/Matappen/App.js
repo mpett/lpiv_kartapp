@@ -2106,7 +2106,7 @@ class RenderHeader extends React.Component {
           leftComponent={<Avatar
             small
             rounded
-            source={require("./logo-transparent.png")}
+            source={require("./logo.png")}
             activeOpacity={1.0}
         />}
           centerComponent={{ text: 'Västsvenska Matappen', style: { color: '#fff', fontSize: 20 } }}
