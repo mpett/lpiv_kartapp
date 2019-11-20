@@ -1021,9 +1021,9 @@ class EventListScreen extends React.Component {
       containerStyle = {{ marginLeft: 0,
         marginRight: 0, 
         marginTop: 10, 
-        borderRadius: 4, // adds the rounded corners
+        borderRadius: 9, // adds the rounded corners
         backgroundColor: 'rgba(255,255,255,0.8)',
-        height: 100,
+        height: 85,
         borderWidth: 1,
         borderColor: '#f2f2f2'
       }}
@@ -1085,29 +1085,42 @@ class EventListScreen extends React.Component {
       padding:10
     };
 
+    const topMenuStyles = {
+      color: 'white',
+      width: screenWidth,
+      height: 35,
+      paddingLeft: 20,
+      paddingRight: 20,
+      justifyContent: 'center'
+    }
+
     return(
-      <ImageBackground source={require('./field2.png')} style={viewStyles}>
-        <View style={{marginTop: 105}}>
-          <View style = {{justifyContent: 'center', alignItems: 'center', marginTop: 45, marginBottom: 20}}>
-            <Text style={descriptionStyles}>Event</Text>
-            <Text style={{ color: "#282828", fontSize: 10, fontStyle: "italic" }}>Sök bland alla producenter...</Text>
+      <View style={styles.container}>
+        <RenderHeader navigation={this.props.navigation} />
+          <View style = {topMenuStyles}>
+            <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
+              <Text>Evenemang</Text>
+            </View>
           </View>
-        <View>
-          <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
+          <ImageBackground source={require('./field2.png')} style={viewStyles}>
+          <View style={{marginTop: 0}}>
+            <View>
+              <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
+              </View>
+            </View>
+              <View style={{marginTop:5}}>
+                <FlatList 
+                  data={this.state.dataSource}
+                  renderItem={this.renderItem}
+                  enableEmptySections={false}
+                  style={{ marginBottom: screenHeight * 0.1 }}
+                  keyExtractor = {(item, index) => index.toString()}
+                />
+              </View>
           </View>
-        </View>
-          <View style={{marginTop:5}}>
-            <FlatList 
-              data={this.state.dataSource}
-              renderItem={this.renderItem}
-              enableEmptySections={false}
-              style={{ marginBottom: screenHeight * 0.37 }}
-              keyExtractor = {(item, index) => index.toString()}
-            />
-          </View>
-        </View>
-        <MenuScreen navigation={this.props.navigation} />
-      </ImageBackground>
+          <MenuScreen navigation={this.props.navigation} />
+        </ImageBackground>
+      </View>
     );
   }
 }
