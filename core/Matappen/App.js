@@ -652,8 +652,10 @@ class ProducerScreen extends React.Component {
     const producer_website = navigation.getParam('producer_website', 'https://www.example.com');
     const producer_name = navigation.getParam("name", "Producent AB");
     const opening_hours = navigation.getParam("opening_hours", "00:00 - 23:00 torsdag - lördag")
-    const matfest = navigation.getParam("matfest", false);
-    const lpiv = navigation.getParam("lpiv", false);
+    const matfest = true;
+    const lpiv = true;
+    const smaka = true;
+    const meny = true;
     
     var category_string = "";
 
@@ -665,106 +667,68 @@ class ProducerScreen extends React.Component {
       category_string += "LPIV ";
     }
 
+    const matfest_rendering = <Image source = {require("./memberlogos/mf.png")} style= {{ width: 48.36, height: 48.36, marginRight: 20 }}></Image>
+    const lpiv_rendering = <Image source = {require("./memberlogos/lpiv.png")} style= {{ width: 48.36, height: 48.36, marginRight: 20 }}></Image>
+    const smaka_rendering = <Image source = {require("./memberlogos/spv.png")} style= {{ width: 48.36, height: 48.36, marginRight: 20 }}></Image>
+    const meny_rendering = <Image source = {require("./memberlogos/lm.png")} style= {{ width: 33.33, height: 48.36 }}></Image>
+
+    const void_rendering = <View></View>
+
     return(
       <View>
         <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}}>
           <ImageBackground source={{ uri: background }} style={{width: '100%', height: '100%'}}>
             <HideStatusBar />
             <ScrollView>
-                <Image
-                      source={ { uri: logo_image }}
-                      style={{ width: 300, height: 100, flex: 1, resizeMode: 'contain' }}
-                />
-              <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 20 }}>
-                      <Text style={{fontWeight: 'bold'}}>{producer_name}</Text>
-                      <Text style={{marginBottom: 20, marginTop: 5}}>{description}</Text>
-              </View>
-              <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 20 }}>
-                    <Text style={{fontWeight: 'bold'}}>{producer_name}</Text>
-                    <Text style={{marginBottom: 20, marginTop: 5}}>{description}</Text>
-              </View>
-              <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 20 }}>
-                    <Text style={{fontWeight: 'bold'}}>{producer_name}</Text>
-                    <Text style={{marginBottom: 20, marginTop: 5}}>{description}</Text>
-              </View>
+              <Image
+                        source={ { uri: logo_image }}
+                        style={{ width: 300, height: 100, resizeMode: 'contain', marginLeft: screenWidth/9, marginTop: 30 }}
+                  />
+                <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 20 }}>
+                        <Text style={{fontWeight: 'bold'}}>{producer_name}</Text>
+                        <Text style={{marginBottom: 20, marginTop: 5}}>{description}</Text>
+                </View>
+                <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 20 }}>
+                      <Text style={{fontWeight: 'bold', marginBottom: 5}}>Kontaktuppgifter</Text>
+                      <Text>{contact_person}</Text>
+                      <Text>{producer_adress}</Text>
+                      <Text>{producer_city}</Text>
+                      <Text>{producer_email}</Text>
+                      <Text>{producer_phone}</Text>
+                      <Text>{producer_website}</Text>
+                      <Text>{opening_hours}</Text>
+                </View>
+                <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 20}}>
+                      <Text style={{fontWeight: 'bold', marginBottom: 5}}>Vi är medlem i</Text>
+                      <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+                        { matfest ? matfest_rendering : void_rendering }
+                        { lpiv ? lpiv_rendering : void_rendering }
+                        { smaka ? smaka_rendering : void_rendering }
+                        { meny ? meny_rendering : void_rendering }
+                      </View>
+                      
+                </View>
 
+                
+                
+              <View style = {{flexDirection: "row", flexWrap: "wrap" }}>
+              <Button title="Gå tillbaka"  buttonStyle={{borderRadius: 5, marginLeft: 70, marginRight: 10, marginBottom: 0, marginTop: 20, backgroundColor: "#282828", text:{color: "black"}}}
+                  onPress = { () => { this.props.navigation.goBack() } }
+                ></Button>
               <Button
-                    backgroundColor='#37503c'
-                    buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}}
-                    title='Hitta oss på kartan'
-                    onPress = {() => {
-                      this.props.navigation.navigate('Map', {
-                        lat: latitude,
-                        long: longitude,
-                        adress: producer_adress,
-                        name: producer_name
-                      })}}
-                    />
-              <Button title="Gå tillbaka"  buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}}
-                onPress = { () => { this.props.navigation.goBack() } }
-              ></Button>
-
-              <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 100, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 200 }}>
-                <ScrollView>
-                  <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
-                    <Image
-                      source={ { uri: logo_image }}
-                      style={{ width: 300, height: 100, flex: 1, resizeMode: 'contain' }}
-                    />
-                  </View>
-                  <View style={{
-                    borderBottomColor: 'black',
-                    borderBottomWidth: 1,
-                    marginBottom: 15
-                  }}>
-                    <Text style={{fontWeight: 'bold'}}>{producer_name}</Text>
-                    <Text style={{marginBottom: 20, marginTop: 5}}>{description}</Text>
-                  </View>
-                  <View style={{
-                    borderBottomColor: 'black',
-                    borderBottomWidth: 1,
-                    marginBottom: 15,
-                  }}>
-                    <Text style={{fontWeight: 'bold'}}>Kontaktuppgifter</Text>
-                    <Text style={{marginBottom: 2, marginTop: 2}}>Besöksadress: {producer_adress}</Text>
-                    <Text style={{marginBottom: 2, marginTop: 2}}>Kontaktperson: {contact_person}</Text>
-                    <Text style={{marginBottom: 2, marginTop: 2}}>Besöksort: {producer_city}</Text>
-                    <Text style={{marginBottom: 2, marginTop: 2}}>E-post: {producer_email}</Text>
-                    <Text style={{marginBottom: 2, marginTop: 2}}>Telefon: {producer_phone}</Text>
-                    <Text style={{marginBottom: 17, marginTop: 2}}>Webbsida: {producer_website}</Text>
-                  </View>
-
-                  <View style={{
-                    borderBottomColor: 'black',
-                    borderBottomWidth: 1,
-                    marginBottom: 15,
-                  }}>
-                    <Text style={{fontWeight: 'bold'}}>Kategorier</Text>
-                    <Text style={{marginBottom: 17, marginTop: 2}}>{category_string}</Text>
-                  </View>
-                  
-                  <View>
-                    <Text style={{fontWeight: 'bold'}}>Öppettider</Text>
-                    <Text style={{marginBottom: 20, marginTop: 5}}>{opening_hours}</Text>
-                  </View>
-                  
-                  <Button
-                    backgroundColor='#37503c'
-                    buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}}
-                    title='Hitta oss på kartan'
-                    onPress = {() => {
-                      this.props.navigation.navigate('Map', {
-                        lat: latitude,
-                        long: longitude,
-                        adress: producer_adress,
-                        name: producer_name
-                      })}}
-                    />
-                    <Button title="Gå tillbaka"  buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}}
-                      onPress = { () => { this.props.navigation.goBack() } }
-                    ></Button>
-                </ScrollView>
+                      backgroundColor='#37503c'
+                      buttonStyle={{borderRadius: 5, marginLeft: 70, marginRight: 10, marginBottom: 0, marginTop: 20, backgroundColor: "#282828", text:{color: "black"}}}
+                      title='Hitta oss'
+                      onPress = {() => {
+                        this.props.navigation.navigate('Map', {
+                          lat: latitude,
+                          long: longitude,
+                          adress: producer_adress,
+                          name: producer_name
+                        })}}
+                      />
               </View>
+              <View style = {{marginTop: 200}}></View>
             </ScrollView>
           </ImageBackground>
         </ImageBackground>
@@ -1470,7 +1434,9 @@ class FoodListScreen extends React.Component {
           producer_website: item.website,
           opening_hours: item.opening_hours,
           matfest: item.producer_category_1,
-          lpiv: item.producer_category_2
+          lpiv: item.producer_category_2,
+          smaka: item.producer_category_3,
+          meny: item.producer_category_4
         });
       }} 
     />
