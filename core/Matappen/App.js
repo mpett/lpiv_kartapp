@@ -1502,7 +1502,7 @@ class FoodListScreen extends React.Component {
         <View style = {topMenuStyles}>
           
           <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
-            <Text>Test test test</Text>
+            <Text>Restauranger</Text>
             <TouchableOpacity onPress={() => {this.NearbyProducers()}}>
               <Image source={require("./checked.png")} style={ iconStyles } />
             </TouchableOpacity>
@@ -1511,14 +1511,9 @@ class FoodListScreen extends React.Component {
         </View>
         <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
           <HideStatusBar />
-          <View style={{marginTop: 80}}>
-            <View style = {{justifyContent: 'center', alignItems: 'center', marginTop: 65}}>
-              <Text style={descriptionStyles}>{"Äta2"}</Text>
-              <Text style={{ color: "#282828", fontSize: 10, fontStyle: "italic" }}>Sortera efter avstånd...</Text>
-            </View>
+          <View style={{marginTop: 0}}>
             <View>
               <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
-                  
               </View>
             </View>
             <View style={{marginTop:5}}>
@@ -1527,7 +1522,7 @@ class FoodListScreen extends React.Component {
                 //ItemSeparatorComponent={this.ListViewItemSeparator}
                 renderItem={this.renderItem}
                 enableEmptySections={false}
-                style={{ marginBottom: screenHeight * 0.37 }}
+                style={{ marginBottom: screenHeight * 0.10 }}
                 keyExtractor = {(item, index) => index.toString()}
               />
             </View>
@@ -1690,6 +1685,8 @@ class StoreListScreen extends React.Component {
     return d;
   }
 
+  tmp = false;
+
   NearbyProducers() {
     const geo_lat = 58.3903;
     const geo_long = 13.8461;
@@ -1737,41 +1734,57 @@ class StoreListScreen extends React.Component {
       padding:10
     };
 
+    const topMenuStyles = {
+      color: 'white',
+      width: screenWidth,
+      height: 35,
+      paddingLeft: 20,
+      paddingRight: 20,
+      justifyContent: 'center'
+    }
+
+    const iconStyles = {
+      width: 90,
+      height: 27.368
+    }
+
     //const store_type = this.props.navigation.dangerouslyGetParent().getParam("store_type");
 
     return(
-      <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
-        <HideStatusBar />
-        <View style={{marginTop: 80}}>
-          <View style = {{justifyContent: 'center', alignItems: 'center', marginTop: 65}}>
-            <Text style={descriptionStyles}>{"Gårdsbutik2"}</Text>
-            <Text style={{ color: "#282828", fontSize: 10, fontStyle: "italic" }}>Sortera efter avstånd...</Text>
+      <View style={styles.container}>
+        <RenderHeader navigation={this.props.navigation} />
+        <View style = {topMenuStyles}>
+          
+          <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
+            <Text>Gårdsbutiker</Text>
+            <TouchableOpacity onPress={() => {this.NearbyProducers()}}>
+              <Image source={require("./checked.png")} style={ iconStyles } />
+            </TouchableOpacity>
           </View>
-          <View>
-            <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
-                <Button
-                  backgroundColor='black'
-                  buttonStyle={{borderRadius: 5, width: 270, backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}}
-                  title='Producenter nära mig'
-                  onPress = {() => {
-                  // Navigate to details route with parameter
-                  this.NearbyProducers()}}
-                />
+          
+        </View>
+        <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
+          <HideStatusBar />
+          <View style={{marginTop: 0}}>
+            <View>
+              <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
+              </View>
+            </View>
+            <View style={{marginTop:5}}>
+              <FlatList 
+                data={this.state.dataSource}
+                //ItemSeparatorComponent={this.ListViewItemSeparator}
+                renderItem={this.renderItem}
+                enableEmptySections={false}
+                style={{ marginBottom: screenHeight * 0.10 }}
+                keyExtractor = {(item, index) => index.toString()}
+              />
             </View>
           </View>
-          <View style={{marginTop:5}}>
-            <FlatList 
-              data={this.state.dataSource}
-              //ItemSeparatorComponent={this.ListViewItemSeparator}
-              renderItem={this.renderItem}
-              enableEmptySections={false}
-              style={{ marginBottom: screenHeight * 0.37 }}
-              keyExtractor = {(item, index) => index.toString()}
-            />
-          </View>
-        </View>
-        <MenuScreen navigation={this.props.navigation} />
-      </ImageBackground>
+          <MenuScreen navigation={this.props.navigation} />
+        </ImageBackground>
+      </View>
+      
     );
   }
 }
@@ -1926,6 +1939,8 @@ class ProducerListScreen extends React.Component {
     return d;
   }
 
+  tmp = false;
+
   NearbyProducers() {
     const geo_lat = 58.3903;
     const geo_long = 13.8461;
@@ -1973,41 +1988,57 @@ class ProducerListScreen extends React.Component {
       padding:10
     };
 
-    const store_type = this.props.navigation.dangerouslyGetParent().getParam("store_type");
+    const topMenuStyles = {
+      color: 'white',
+      width: screenWidth,
+      height: 35,
+      paddingLeft: 20,
+      paddingRight: 20,
+      justifyContent: 'center'
+    }
+
+    const iconStyles = {
+      width: 90,
+      height: 27.368
+    }
+
+    //const store_type = this.props.navigation.dangerouslyGetParent().getParam("store_type");
 
     return(
-      <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
-        <HideStatusBar />
-        <View style={{marginTop: 80}}>
-          <View style = {{justifyContent: 'center', alignItems: 'center', marginTop: 65}}>
-            <Text style={descriptionStyles}>{"Producent2"}</Text>
-            <Text style={{ color: "#282828", fontSize: 10, fontStyle: "italic" }}>Sortera efter avstånd...</Text>
+      <View style={styles.container}>
+        <RenderHeader navigation={this.props.navigation} />
+        <View style = {topMenuStyles}>
+          
+          <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
+            <Text>Producenter</Text>
+            <TouchableOpacity onPress={() => {this.NearbyProducers()}}>
+              <Image source={require("./checked.png")} style={ iconStyles } />
+            </TouchableOpacity>
           </View>
-          <View>
-            <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
-                <Button
-                  backgroundColor='black'
-                  buttonStyle={{borderRadius: 5, width: 270, backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}}
-                  title='Producenter nära mig'
-                  onPress = {() => {
-                  // Navigate to details route with parameter
-                  this.NearbyProducers()}}
-                />
+          
+        </View>
+        <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
+          <HideStatusBar />
+          <View style={{marginTop: 0}}>
+            <View>
+              <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
+              </View>
+            </View>
+            <View style={{marginTop:5}}>
+              <FlatList 
+                data={this.state.dataSource}
+                //ItemSeparatorComponent={this.ListViewItemSeparator}
+                renderItem={this.renderItem}
+                enableEmptySections={false}
+                style={{ marginBottom: screenHeight * 0.10 }}
+                keyExtractor = {(item, index) => index.toString()}
+              />
             </View>
           </View>
-          <View style={{marginTop:5}}>
-            <FlatList 
-              data={this.state.dataSource}
-              //ItemSeparatorComponent={this.ListViewItemSeparator}
-              renderItem={this.renderItem}
-              enableEmptySections={false}
-              style={{ marginBottom: screenHeight * 0.37 }}
-              keyExtractor = {(item, index) => index.toString()}
-            />
-          </View>
-        </View>
-        <MenuScreen navigation={this.props.navigation} />
-      </ImageBackground>
+          <MenuScreen navigation={this.props.navigation} />
+        </ImageBackground>
+      </View>
+      
     );
   }
 }
