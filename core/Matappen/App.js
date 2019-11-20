@@ -857,21 +857,19 @@ class EventScreen extends React.Component {
 
   render() {
     const { navigation } = this.props;
-    const description = navigation.getParam('desc', 'Ingen beskrivning');
     const logo_image = navigation.getParam('image', '404');
     const background = navigation.getParam('cover', '404');
     const latitude = navigation.getParam('lat', '58.2528');
     const longitude = navigation.getParam('long', '12.77');
     const producer_adress = navigation.getParam('adress', 'Kogatan 12 Timmersdala 15623');
-    const contact_person = navigation.getParam('contact_person', 'Anders Svensson');
-    const producer_city = navigation.getParam('producer_city', 'Tidaholm');
-    const producer_email = navigation.getParam('producer_email', 'anders@gmail.com');
-    const producer_phone = navigation.getParam('producer_phone', '0705727004');
-    const producer_website = navigation.getParam('producer_website', 'https://www.example.com');
     const producer_name = navigation.getParam("name", "Producent AB");
-    const opening_hours = navigation.getParam("opening_hours", "00:00 - 23:00 torsdag - lördag")
     const matfest = navigation.getParam("matfest", false);
     const lpiv = navigation.getParam("lpiv", false);
+    const info = navigation.getParam("information", "Information om producent");
+    const contact_info = navigation.getParam("contact_information", "Kontaktinformation om producenten");
+    const name = navigation.getParam("event_name", "Eventnamn");
+    const event_subtitle = navigation.getParam("event_subtitle", "Subtitel");
+    const has_connected_producers = navigation.getParam("has_connected_producers", false);
 
     const connected_producer_list = navigation.getParam("connected_producers", []);
     
@@ -885,53 +883,55 @@ class EventScreen extends React.Component {
       category_string += "LPIV ";
     }
 
+    const button_rendering = <Button
+                                backgroundColor='#37503c'
+                                buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: screenHeight * 0.2, marginTop: 20, backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}}
+                                title='Anslutna producenter'
+                                onPress = {() => {
+                                  // Navigate to details route with parameter
+                                  this.props.navigation.navigate('Connected', {
+                                    lat: latitude,
+                                    long: longitude,
+                                    adress: producer_adress,
+                                    name: producer_name,
+                                    connected_producer_list: connected_producer_list
+                                  })}}
+                                />
+
+    const void_rendering = <View style = {{marginBottom: screenHeight * 0.2}}></View>
+
     return(
       <View style = {styles.container}>
         <RenderHeader navigation={this.props.navigation} />
         <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}}>
           <ScrollView>
-          <ImageBackground source={{ uri: background }} style={{width: '100%', height: 250}}>
-            <HideStatusBar />
-
-            <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 40, marginBottom: 20, marginRight: 40, marginTop: 5, borderRadius: 30, marginTop: 80, flexDirection: 'row' }}>
-              <Image source = {{ uri: logo_image }} style={{width: 50, height: 50}}/>
-              <View>
-                <Text style={{ fontSize: 20, fontStyle: 'bold', marginLeft: 5, marginRight: 10 }}>Smaka på Västsverige</Text>
-                <Text style={{ fontSize: 14, fontStyle: 'italic', marginLeft: 5, marginRight: 10 }}>2019-01-01 - 2019-01-05</Text>
-              </View>
-              
-              
-            </View>
+            <ImageBackground source={{ uri: background }} style={{width: '100%', height: 250}}>
+              <HideStatusBar />
+              <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 40, marginBottom: 20, marginRight: 40, marginTop: 5, borderRadius: 30, marginTop: 80, flexDirection: 'row' }}>
+                <Image source = {{ uri: logo_image }} style={{width: 50, height: 50}}/>
+                <View>
+    <Text style={{ fontSize: 20, fontStyle: 'bold', marginLeft: 5, marginRight: 10 }}>{name}</Text>
+                  <Text style={{ fontSize: 14, fontStyle: 'italic', marginLeft: 5, marginRight: 10 }}>{event_subtitle}</Text>
+                </View>
+              </View>  
+            </ImageBackground>
             
-          </ImageBackground>
-          
-              <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 20 }}>
-                <View>
-                  <Text style={{ fontSize: 20, fontStyle: 'bold', marginLeft: 5, marginRight: 10 }}>Evenemang</Text>
-                    <Text style={{ fontSize: 15, marginLeft: 5, marginRight: 10 }}>Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai </Text>
-                </View>
+            <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 20 }}>
+              <View>
+                <Text style={{ fontSize: 20, fontStyle: 'bold', marginLeft: 5, marginRight: 10 }}>Evenemang</Text>
+                <Text style={{ fontSize: 15, marginLeft: 5, marginRight: 10 }}>{info}</Text>
               </View>
-              <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 20 }}>
-                <View>
-                  <Text style={{ fontSize: 20, fontStyle: 'bold', marginLeft: 5, marginRight: 10 }}>Information</Text>
-                    <Text style={{ fontSize: 15, marginLeft: 5, marginRight: 10 }}>Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai Lorem ipsum lorem quai </Text>
-                </View>
+            </View>
+            <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginRight: 20, borderRadius: 10, marginBottom: 5, marginTop: 5 }}>
+              <View>
+                <Text style={{ fontSize: 20, fontStyle: 'bold', marginLeft: 5, marginRight: 10 }}>Information</Text>
+                <Text style={{ fontSize: 15, marginLeft: 5, marginRight: 10 }}>{contact_info}</Text>
               </View>
-              <Button
-                    backgroundColor='#37503c'
-                    buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: screenHeight * 0.2, marginTop: 20, backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}}
-                    title='Anslutna producenter'
-                    onPress = {() => {
-                      // Navigate to details route with parameter
-                      this.props.navigation.navigate('Connected', {
-                        lat: latitude,
-                        long: longitude,
-                        adress: producer_adress,
-                        name: producer_name,
-                        connected_producer_list: connected_producer_list
-                      })}}
-                    />
-            </ScrollView>
+            </View>
+
+            { has_connected_producers ? button_rendering : void_rendering }
+
+          </ScrollView>
         </ImageBackground>
         <MenuScreen navigation={this.props.navigation} />
       </View> 
@@ -1049,7 +1049,12 @@ class EventListScreen extends React.Component {
           opening_hours: item.opening_hours,
           matfest: item.producer_category_1,
           lpiv: item.producer_category_2,
-          connected_producers: item.connected_producers
+          connected_producers: item.connected_producers,
+          information: item.event_information,
+          contact_information: item.event_contact_information,
+          event_name: item.event_name,
+          event_subtitle: item.event_sub_title,
+          has_connected_producers: item.has_connected_producers
         });
       }} 
     />
