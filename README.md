@@ -137,6 +137,7 @@ Base URL: `https://lokalproducerativast.se/wp-json/tivala/v2`
   "event_contact_information": '',
   "logo_image_url": 'https://lokalproducerativast.se/wp-content/uploads/logo.png',
   "cover_image_url": 'https://lokalproducerativast.se/wp-content/uploads/cover.png',
+  "has_connected_producers": true,
   "connected_producers": ["producer"],
 }
 ```
