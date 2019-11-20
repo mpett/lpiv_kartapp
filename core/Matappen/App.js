@@ -708,8 +708,6 @@ class ProducerScreen extends React.Component {
                       </View>
                       
                 </View>
-
-                
                 
               <View style = {{flexDirection: "row", flexWrap: "wrap" }}>
               <Button title="Gå tillbaka"  buttonStyle={{borderRadius: 5, marginLeft: 70, marginRight: 10, marginBottom: 0, marginTop: 20, backgroundColor: "#282828", text:{color: "black"}}}
@@ -728,7 +726,7 @@ class ProducerScreen extends React.Component {
                         })}}
                       />
               </View>
-              <View style = {{marginTop: 200}}></View>
+              <View style = {{marginTop: screenHeight * 0.12}}></View>
             </ScrollView>
           </ImageBackground>
         </ImageBackground>
