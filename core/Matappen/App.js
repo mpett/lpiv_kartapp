@@ -581,13 +581,27 @@ class ConnectedProducers extends React.Component {
       padding:10
     };
 
+    const topMenuStyles = {
+      color: 'white',
+      width: screenWidth,
+      height: 35,
+      paddingLeft: 20,
+      paddingRight: 20,
+      justifyContent: 'center'
+    }
+
     return(
-      <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
-        <View style={{marginTop: 105}}>
-          <View style = {{justifyContent: 'center', alignItems: 'center', marginTop: 45, marginBottom: 20}}>
-            <Text style={descriptionStyles}>Anslutna Producenter</Text>
-            <Text style={{ color: "#282828", fontSize: 10, fontStyle: "italic" }}>Sök bland alla producenter...</Text>
+      <View style = {styles.container}>
+        <RenderHeader navigation={this.props.navigation} />
+        <View style = {topMenuStyles}>
+          
+          <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
+            <Text>Anslutna producenter</Text>
           </View>
+          
+        </View>
+      <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
+        <View style={{marginTop: 5}}>
         <View>
           <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
           </View>
@@ -604,6 +618,7 @@ class ConnectedProducers extends React.Component {
         </View>
         <MenuScreen navigation={this.props.navigation} />
       </ImageBackground>
+      </View>
     );
   }
 }
@@ -656,6 +671,39 @@ class ProducerScreen extends React.Component {
           <ImageBackground source={{ uri: background }} style={{width: '100%', height: '100%'}}>
             <HideStatusBar />
             <ScrollView>
+                <Image
+                      source={ { uri: logo_image }}
+                      style={{ width: 300, height: 100, flex: 1, resizeMode: 'contain' }}
+                />
+              <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 20 }}>
+                      <Text style={{fontWeight: 'bold'}}>{producer_name}</Text>
+                      <Text style={{marginBottom: 20, marginTop: 5}}>{description}</Text>
+              </View>
+              <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 20 }}>
+                    <Text style={{fontWeight: 'bold'}}>{producer_name}</Text>
+                    <Text style={{marginBottom: 20, marginTop: 5}}>{description}</Text>
+              </View>
+              <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 20 }}>
+                    <Text style={{fontWeight: 'bold'}}>{producer_name}</Text>
+                    <Text style={{marginBottom: 20, marginTop: 5}}>{description}</Text>
+              </View>
+
+              <Button
+                    backgroundColor='#37503c'
+                    buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}}
+                    title='Hitta oss på kartan'
+                    onPress = {() => {
+                      this.props.navigation.navigate('Map', {
+                        lat: latitude,
+                        long: longitude,
+                        adress: producer_adress,
+                        name: producer_name
+                      })}}
+                    />
+              <Button title="Gå tillbaka"  buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}}
+                onPress = { () => { this.props.navigation.goBack() } }
+              ></Button>
+
               <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 100, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 200 }}>
                 <ScrollView>
                   <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
@@ -885,7 +933,7 @@ class EventScreen extends React.Component {
 
     const button_rendering = <Button
                                 backgroundColor='#37503c'
-                                buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: screenHeight * 0.2, marginTop: 20, backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}}
+                                buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: screenHeight * 0.25, marginTop: 20, backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}}
                                 title='Anslutna producenter'
                                 onPress = {() => {
                                   // Navigate to details route with parameter
@@ -898,11 +946,27 @@ class EventScreen extends React.Component {
                                   })}}
                                 />
 
-    const void_rendering = <View style = {{marginBottom: screenHeight * 0.2}}></View>
+    const void_rendering = <View style = {{marginBottom: screenHeight * 0.25}}></View>
+
+    const topMenuStyles = {
+      color: 'white',
+      width: screenWidth,
+      height: 35,
+      paddingLeft: 20,
+      paddingRight: 20,
+      justifyContent: 'center'
+    }
 
     return(
       <View style = {styles.container}>
         <RenderHeader navigation={this.props.navigation} />
+        <View style = {topMenuStyles}>
+          
+          <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
+            <Text>Evenemang</Text>
+          </View>
+          
+        </View>
         <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}}>
           <ScrollView>
             <ImageBackground source={{ uri: background }} style={{width: '100%', height: 250}}>
@@ -910,7 +974,7 @@ class EventScreen extends React.Component {
               <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 40, marginBottom: 20, marginRight: 40, marginTop: 5, borderRadius: 30, marginTop: 80, flexDirection: 'row' }}>
                 <Image source = {{ uri: logo_image }} style={{width: 50, height: 50}}/>
                 <View>
-    <Text style={{ fontSize: 20, fontStyle: 'bold', marginLeft: 5, marginRight: 10 }}>{name}</Text>
+                  <Text style={{ fontSize: 20, fontStyle: 'bold', marginLeft: 5, marginRight: 10 }}>{name}</Text>
                   <Text style={{ fontSize: 14, fontStyle: 'italic', marginLeft: 5, marginRight: 10 }}>{event_subtitle}</Text>
                 </View>
               </View>  
