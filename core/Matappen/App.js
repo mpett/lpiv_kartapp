@@ -680,53 +680,58 @@ class ProducerScreen extends React.Component {
           <ImageBackground source={{ uri: background }} style={{width: '100%', height: '100%'}}>
             <HideStatusBar />
             <ScrollView>
-              <Image
-                        source={ { uri: logo_image }}
-                        style={{ width: 300, height: 100, resizeMode: 'contain', marginLeft: screenWidth/9, marginTop: 30 }}
-                  />
+                <Image
+                  source={ { uri: logo_image }}
+                  style={{ width: 300, height: 100, resizeMode: 'contain', marginLeft: screenWidth/9, marginTop: 30 }}
+                />
+              
                 <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 20 }}>
-                        <Text style={{fontWeight: 'bold'}}>{producer_name}</Text>
-                        <Text style={{marginBottom: 20, marginTop: 5}}>{description}</Text>
+                  <Text style={{fontWeight: 'bold'}}>{producer_name}</Text>
+                  <Text style={{marginBottom: 20, marginTop: 5}}>{description}</Text>
                 </View>
+              
                 <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 20 }}>
-                      <Text style={{fontWeight: 'bold', marginBottom: 5}}>Kontaktuppgifter</Text>
-                      <Text>{contact_person}</Text>
-                      <Text>{producer_adress}</Text>
-                      <Text>{producer_city}</Text>
-                      <Text>{producer_email}</Text>
-                      <Text>{producer_phone}</Text>
-                      <Text>{producer_website}</Text>
-                      <Text>{opening_hours}</Text>
+                  <Text style={{fontWeight: 'bold', marginBottom: 5}}>Kontaktuppgifter</Text>
+                  <Text>{contact_person}</Text>
+                  <Text>{producer_adress}</Text>
+                  <Text>{producer_city}</Text>
+                  <Text>{producer_email}</Text>
+                  <Text>{producer_phone}</Text>
+                  <Text>{producer_website}</Text>
+                  <Text>{opening_hours}</Text>
                 </View>
+              
                 <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 20}}>
-                      <Text style={{fontWeight: 'bold', marginBottom: 5}}>Vi är medlem i</Text>
-                      <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
-                        { matfest ? matfest_rendering : void_rendering }
-                        { lpiv ? lpiv_rendering : void_rendering }
-                        { smaka ? smaka_rendering : void_rendering }
-                        { meny ? meny_rendering : void_rendering }
-                      </View>
-                      
+                  <Text style={{fontWeight: 'bold', marginBottom: 5}}>Vi är medlem i</Text>
+                  <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+                    { matfest ? matfest_rendering : void_rendering }
+                    { lpiv ? lpiv_rendering : void_rendering }
+                    { smaka ? smaka_rendering : void_rendering }
+                    { meny ? meny_rendering : void_rendering }
+                  </View>
                 </View>
-                
               <View style = {{flexDirection: "row", flexWrap: "wrap" }}>
-              <Button title="Gå tillbaka"  buttonStyle={{borderRadius: 5, marginLeft: 70, marginRight: 10, marginBottom: 0, marginTop: 20, backgroundColor: "#282828", text:{color: "black"}}}
-                  onPress = { () => { this.props.navigation.goBack() } }
-                ></Button>
-              <Button
-                      backgroundColor='#37503c'
-                      buttonStyle={{borderRadius: 5, marginLeft: 70, marginRight: 10, marginBottom: 0, marginTop: 20, backgroundColor: "#282828", text:{color: "black"}}}
-                      title='Hitta oss'
-                      onPress = {() => {
-                        this.props.navigation.navigate('Map', {
-                          lat: latitude,
-                          long: longitude,
-                          adress: producer_adress,
-                          name: producer_name
-                        })}}
-                      />
+                
+                <Button title="Gå tillbaka"  buttonStyle={{borderRadius: 5, marginLeft: 70, marginRight: 10, marginBottom: 0, marginTop: 20, backgroundColor: "#282828", text:{color: "black"}}}
+                    onPress = { () => { this.props.navigation.goBack() } }>
+                </Button>
+                
+                <Button
+                  backgroundColor='#37503c'
+                  buttonStyle={{borderRadius: 5, marginLeft: 70, marginRight: 10, marginBottom: 0, marginTop: 20, backgroundColor: "#282828", text:{color: "black"}}}
+                  title='Hitta oss'
+                  onPress = {() => {
+                    this.props.navigation.navigate('Map', {
+                      lat: latitude,
+                      long: longitude,
+                      adress: producer_adress,
+                      name: producer_name
+                  })}}
+                />
               </View>
+              
               <View style = {{marginTop: screenHeight * 0.12}}></View>
+            
             </ScrollView>
           </ImageBackground>
         </ImageBackground>
@@ -1329,7 +1334,7 @@ class FoodListScreen extends React.Component {
   
   constructor(props) {
     super(props);
-    this.state = { isLoading: true, search: '' };
+    this.state = { isLoading: true, search: '', rand_old: -1 };
     this.arrayholder = [];
   }
 
@@ -1362,6 +1367,55 @@ class FoodListScreen extends React.Component {
 
     return return_array;
   }  
+
+  componentDidUpdate() {
+    
+  }
+
+  async UpdateList() {
+    console.log("UPPDATERAR UPPDATERAR UPPDATERAR UPPDATERAR UPPDATERAR UPPDATERAR UPPDATERAR UPPDATERAR ");
+    var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v2/producerlist/1', {
+      method: 'get',
+      headers: new global.Headers({
+        'Authorization': 'Basic ' + Buffer.from('api_2jWTR5iTIHOOxdIVqV2HFLPDJ0aQOMydlSGNbdoneEXGcI39JNC9R2W:uf6He48ci0H92Y7E5T6dmKAGuOiGE0PGwBlp51drqFHYehQP9HKBftu').toString('base64'),
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }),
+      body: undefined
+    })
+    .then(response => response.json())
+    .then(responseJson => {
+      //console.log(responseJson);
+
+      this.setState(
+        {
+          isLoading: false,
+          dataSource: responseJson,
+          update: false
+        },
+        function() {
+          this.arrayholder = responseJson;
+        }
+      );
+    })
+    .catch(error => {
+      console.log(error);
+      //alert("Matappen kräver anslutning till internet för att kunna visa innehåll. Vänligen anslut dig och starta om appen.");
+    });
+
+    return return_array;
+  }
+
+  PrepareUpdate() {
+    navigation_rand = this.props.navigation.dangerouslyGetParent().getParam("rand");
+
+    console.log("HÄR ÄR SLUMPVÄRDET!!!!!!!!!!!!!!: " + navigation_rand);
+    
+    current_rand_old = this.state.rand_old;
+    if (navigation_rand != current_rand_old) {
+      this.setState({ rand_old: navigation_rand });
+      this.UpdateList();
+    }  
+  }
 
   search = text => {};
 
@@ -1413,29 +1467,34 @@ class FoodListScreen extends React.Component {
       }}
 
       onPress = {() => {
-        this.props.navigation.navigate('Producer', {
-          itemId: 86,
-          otherParam: item.business_name,
-          desc: item.description,
-          image: item.logo_url,
-          cover: item.cover_image_url,
-          lat: item.latitude,
-          long: item.longitude,
-          direction: item.map_direction_link,
-          adress: item.visiting_adress,
-          name: item.business_name,
-          adress: item.visiting_adress,
-          contact_person: item.contact_person,
-          producer_city: item.city,
-          producer_email: item.email,
-          producer_phone: item.phone,
-          producer_website: item.website,
-          opening_hours: item.opening_hours,
-          matfest: item.producer_category_1,
-          lpiv: item.producer_category_2,
-          smaka: item.producer_category_3,
-          meny: item.producer_category_4
-        });
+        {
+          this.UpdateList(),
+          this.props.navigation.navigate('Producer', {
+            itemId: 86,
+            otherParam: item.business_name,
+            desc: item.description,
+            image: item.logo_url,
+            cover: item.cover_image_url,
+            lat: item.latitude,
+            long: item.longitude,
+            direction: item.map_direction_link,
+            adress: item.visiting_adress,
+            name: item.business_name,
+            adress: item.visiting_adress,
+            contact_person: item.contact_person,
+            producer_city: item.city,
+            producer_email: item.email,
+            producer_phone: item.phone,
+            producer_website: item.website,
+            opening_hours: item.opening_hours,
+            matfest: item.producer_category_1,
+            lpiv: item.producer_category_2,
+            smaka: item.producer_category_3,
+            meny: item.producer_category_4
+          });
+        }
+
+        
       }} 
     />
   )
@@ -1540,13 +1599,19 @@ class FoodListScreen extends React.Component {
       height: 27.368
     }
 
-    //const store_type = this.props.navigation.dangerouslyGetParent().getParam("store_type");
+    
+
+    const void_rendering = <View></View>
 
     return(
       <View style={styles.container}>
         <RenderHeader navigation={this.props.navigation} />
         <View style = {topMenuStyles}>
-          
+
+          {
+            this.PrepareUpdate()
+          }
+
           <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
             <Text>Restauranger</Text>
             <TouchableOpacity onPress={() => {this.NearbyProducers()}}>
@@ -1803,7 +1868,7 @@ class StoreListScreen extends React.Component {
           
           <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
             <Text>Gårdsbutiker</Text>
-            <TouchableOpacity onPress={() => {this.NearbyProducers()}}>
+            <TouchableOpacity onPress={() => { { this.UpdateList(), this.NearbyProducers() } }}>
               <Image source={require("./checked.png")} style={ iconStyles } />
             </TouchableOpacity>
           </View>
@@ -2147,7 +2212,7 @@ class SplashScreen extends React.Component {
         <HideStatusBar />
         <RenderHeader navigation={this.props.navigation} />
           <ImageBackground source={field} style={{width: '100%', height: '100%'}} style={viewStyles}>
-            <TouchableOpacity onPress={() => {this.props.navigation.navigate("Äta", {store_type:"Äta"})}}>
+            <TouchableOpacity onPress={() => {this.props.navigation.navigate("Äta", {rand: Math.floor(Math.random() * (1 + 1000))})}}>
               <Image
                 source={require('./menu_icons4/äta.png')}
                 style={{ marginBottom: 50, marginTop: 0, width: 314, height: 114,
@@ -2179,6 +2244,9 @@ class RenderHeader extends React.Component {
   constructor(props) {
     super(props);
   }
+
+  //source={require("./search-256x256-black-bg.png")}
+
   render() {
     return (
       <Header
@@ -2190,13 +2258,12 @@ class RenderHeader extends React.Component {
             activeOpacity={1.0}
         />}
           centerComponent={{ text: 'Västsvenska Matappen', style: { color: '#fff', fontSize: 20 } }}
-          rightComponent={<Avatar
-            small
-            rounded
-            source={require("./search-256x256-black-bg.png")}
-            onPress={() => {this.props.navigation.navigate("Sök")}}
-            activeOpacity={1.0}
-        />}
+          rightComponent={<TouchableOpacity onPress={() => {this.props.navigation.navigate("Sök")}}>
+            <Image source={require("./search-256x256-black-bg.png")} style={{ resizeMode: "contain", width: 30, height: 30 }}>
+
+            </Image>
+
+          </TouchableOpacity>}
           statusBarProps={{ barStyle: 'light-content' }}
           containerStyle={{
             backgroundColor: '#282828',
