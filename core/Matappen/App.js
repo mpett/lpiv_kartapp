@@ -900,7 +900,7 @@ class EventScreen extends React.Component {
 
     const button_rendering = <Button
                                 backgroundColor='#37503c'
-                                buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: screenHeight * 0.25, marginTop: 20, backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}}
+                                buttonStyle={{borderRadius: 5, marginLeft: screenWidth/20, marginRight: screenWidth/20, marginBottom: screenHeight * 0.25, marginTop: 20, backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}}
                                 title='Anslutna producenter'
                                 onPress = {() => {
                                   // Navigate to details route with parameter
@@ -927,13 +927,14 @@ class EventScreen extends React.Component {
     return(
       <View style = {styles.container}>
         <RenderHeader navigation={this.props.navigation} />
+        
         <View style = {topMenuStyles}>
-          
-          <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
-            <Text>Evenemang</Text>
+        <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
+            <Image source = {require("./symboler/events-512x512.png")} style = {{ width: 20, height: 20, marginTop: 3 }}></Image>
+            <Text style = {{ marginRight: screenWidth/1.7, marginTop: 2 }}>Evenemang</Text>
           </View>
-          
         </View>
+        
         <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}}>
           <ScrollView>
             <ImageBackground source={{ uri: background }} style={{width: '100%', height: 250}}>
@@ -1135,7 +1136,8 @@ class EventListScreen extends React.Component {
         <RenderHeader navigation={this.props.navigation} />
           <View style = {topMenuStyles}>
             <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
-              <Text>Evenemang</Text>
+              <Image source = {require("./symboler/events-512x512.png")} style = {{ width: 20, height: 20, marginTop: 3 }}></Image>
+              <Text style = {{ marginRight: screenWidth/1.7, marginTop: 2 }}>Evenemang</Text>
             </View>
           </View>
           <ImageBackground source={require('./field2.png')} style={viewStyles}>
@@ -1613,7 +1615,8 @@ class FoodListScreen extends React.Component {
           }
 
           <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
-            <Text>Restauranger</Text>
+            <Image source = {require("./symboler/eat-512x512.png")} style = {{ width: 20, height: 20, marginTop: 3 }}></Image>
+            <Text style = {{ marginRight: screenWidth/3.5, marginTop: 2 }}>Restauranger</Text>
             <TouchableOpacity onPress={() => {this.NearbyProducers()}}>
               <Image source={require("./checked.png")} style={ iconStyles } />
             </TouchableOpacity>
@@ -1866,9 +1869,10 @@ class StoreListScreen extends React.Component {
         <RenderHeader navigation={this.props.navigation} />
         <View style = {topMenuStyles}>
           
-          <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
-            <Text>Gårdsbutiker</Text>
-            <TouchableOpacity onPress={() => { { this.UpdateList(), this.NearbyProducers() } }}>
+        <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
+            <Image source = {require("./symboler/eat-512x512.png")} style = {{ width: 20, height: 20, marginTop: 3 }}></Image>
+            <Text style = {{ marginRight: screenWidth/3.5, marginTop: 2 }}>Gårdsbutiker</Text>
+            <TouchableOpacity onPress={() => {this.NearbyProducers()}}>
               <Image source={require("./checked.png")} style={ iconStyles } />
             </TouchableOpacity>
           </View>
@@ -2120,8 +2124,9 @@ class ProducerListScreen extends React.Component {
         <RenderHeader navigation={this.props.navigation} />
         <View style = {topMenuStyles}>
           
-          <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
-            <Text>Producenter</Text>
+        <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
+            <Image source = {require("./symboler/eat-512x512.png")} style = {{ width: 20, height: 20, marginTop: 3 }}></Image>
+            <Text style = {{ marginRight: screenWidth/5, marginTop: 2 }}>Lokala producenter</Text>
             <TouchableOpacity onPress={() => {this.NearbyProducers()}}>
               <Image source={require("./checked.png")} style={ iconStyles } />
             </TouchableOpacity>
@@ -2215,14 +2220,14 @@ class SplashScreen extends React.Component {
             <TouchableOpacity onPress={() => {this.props.navigation.navigate("Äta", {rand: Math.floor(Math.random() * (1 + 1000))})}}>
               <Image
                 source={require('./menu_icons4/äta.png')}
-                style={{ marginBottom: 50, marginTop: 0, width: 314, height: 114,
+                style={{ marginBottom: 25, marginTop: 0, width: 314, height: 114,
                   borderColor: '#99994d' }}
               />
             </TouchableOpacity>
             <TouchableOpacity onPress={() => {this.props.navigation.navigate("Handla", {store_type:"Gårdsbutik"})}}>
               <Image
                 source={require('./menu_icons4/handla.png')}
-                style={{ width: 314, height: 114, marginBottom: 50, 
+                style={{ width: 314, height: 114, marginBottom: 25, 
                   borderColor: '#99994d' }}
               />
             </TouchableOpacity>
