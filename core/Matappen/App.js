@@ -404,7 +404,8 @@ class MapScreen extends React.Component {
                     producer_email: location.email,
                     producer_phone: location.phone,
                     producer_website: location.website,
-                    opening_hours: location.opening_hours
+                    opening_hours: location.opening_hours,
+                    ableToGoBack: true,
                   });
                 }} >
               <View>
@@ -524,6 +525,7 @@ class ConnectedProducers extends React.Component {
           producer_phone: item.phone,
           producer_website: item.website,
           opening_hours: item.opening_hours,
+          ableToGoBack: false,
           matfest: item.producer_category_1,
           lpiv: item.producer_category_2
         });
@@ -656,6 +658,7 @@ class ProducerScreen extends React.Component {
     const lpiv = true;
     const smaka = true;
     const meny = true;
+    const ableToGoBack = navigation.getParam("ableToGoBack", true);
     
     var category_string = "";
 
@@ -672,7 +675,11 @@ class ProducerScreen extends React.Component {
     const smaka_rendering = <Image source = {require("./memberlogos/spv.png")} style= {{ width: 48.36, height: 48.36, marginRight: 20 }}></Image>
     const meny_rendering = <Image source = {require("./memberlogos/lm.png")} style= {{ width: 33.33, height: 48.36 }}></Image>
 
-    const void_rendering = <View></View>
+    const void_rendering = <Button title="Gå tillbaka"  buttonStyle={{borderRadius: 5, marginLeft: 70, marginRight: 10, marginBottom: 0, marginTop: 20, backgroundColor: "#282828", text:{color: "black"}}}
+    onPress = { () => { this.props.navigation.navigate("ProducerList") } }></Button>
+
+    const button_rendering = <Button title="Gå tillbaka"  buttonStyle={{borderRadius: 5, marginLeft: 70, marginRight: 10, marginBottom: 0, marginTop: 20, backgroundColor: "#282828", text:{color: "black"}}}
+        onPress = { () => { this.props.navigation.goBack() } }></Button>
 
     return(
       <View>
@@ -713,9 +720,7 @@ class ProducerScreen extends React.Component {
                   </View>
                 <View style = {{flexDirection: "row", flexWrap: "wrap" }}>
                   
-                  <Button title="Gå tillbaka"  buttonStyle={{borderRadius: 5, marginLeft: 70, marginRight: 10, marginBottom: 0, marginTop: 20, backgroundColor: "#282828", text:{color: "black"}}}
-                      onPress = { () => { this.props.navigation.goBack() } }>
-                  </Button>
+                  { ableToGoBack ? button_rendering : void_rendering }
                   
                   <Button
                     backgroundColor='#37503c'
@@ -732,121 +737,6 @@ class ProducerScreen extends React.Component {
                 </View>
                 <View style = {{marginTop: screenHeight * 0.12}}></View>
             </View>
-            </ScrollView>
-          </ImageBackground>
-        </ImageBackground>
-        <MenuScreen navigation={this.props.navigation} />
-      </View> 
-    )
-  }
-}
-
-class EventProducerScreen extends React.Component {
-  static navigationOptions = ({ navigation, navigationOptions }) => {
-    const { params } = navigation.state;
-
-    return {
-      title: params ? params.otherParam : 'Detaljskärm med parameter.',
-      // These values are used instead of the shared configuration
-      headerStyle: {
-        backgroundColor: navigationOptions.headerTintColor,
-      },
-      headerTintColor: navigationOptions.headerStyle.backgroundColor,
-    };
-  };  
-
-  render() {
-    const { navigation } = this.props;
-    const description = navigation.getParam('desc', 'Ingen beskrivning');
-    const logo_image = navigation.getParam('image', '404');
-    const background = navigation.getParam('cover', '404');
-    const latitude = navigation.getParam('lat', '58.2528');
-    const longitude = navigation.getParam('long', '12.77');
-    const producer_adress = navigation.getParam('adress', 'Kogatan 12 Timmersdala 15623');
-    const contact_person = navigation.getParam('contact_person', 'Anders Svensson');
-    const producer_city = navigation.getParam('producer_city', 'Tidaholm');
-    const producer_email = navigation.getParam('producer_email', 'anders@gmail.com');
-    const producer_phone = navigation.getParam('producer_phone', '0705727004');
-    const producer_website = navigation.getParam('producer_website', 'https://www.example.com');
-    const producer_name = navigation.getParam("name", "Producent AB");
-    const opening_hours = navigation.getParam("opening_hours", "00:00 - 23:00 torsdag - lördag")
-    const matfest = navigation.getParam("matfest", false);
-    const lpiv = navigation.getParam("lpiv", false);
-    
-    var category_string = "";
-
-    if (matfest) {
-      category_string += "Matfest ";
-    }
-
-    if (lpiv) {
-      category_string += "LPIV ";
-    }
-
-    return(
-      <View>
-        <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}}>
-          <ImageBackground source={{ uri: background }} style={{width: '100%', height: '100%'}}>
-            <HideStatusBar />
-            <ScrollView>
-              <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 100, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 200 }}>
-                <ScrollView>
-                  <View style={{ justifyContent: 'center', alignItems: 'center', padding: 10 }}>
-                    <Image
-                      source={ { uri: logo_image }}
-                      style={{ width: 300, height: 100, flex: 1, resizeMode: 'contain' }}
-                    />
-                  </View>
-                  <View style={{
-                    borderBottomColor: 'black',
-                    borderBottomWidth: 1,
-                    marginBottom: 15
-                  }}>
-                    <Text style={{fontWeight: 'bold'}}>{producer_name}</Text>
-                    <Text style={{marginBottom: 20, marginTop: 5}}>{description}</Text>
-                  </View>
-                  <View style={{
-                    borderBottomColor: 'black',
-                    borderBottomWidth: 1,
-                    marginBottom: 15,
-                  }}>
-                    <Text style={{fontWeight: 'bold'}}>Kontaktuppgifter</Text>
-                    <Text style={{marginBottom: 2, marginTop: 2}}>Besöksadress: {producer_adress}</Text>
-                    <Text style={{marginBottom: 2, marginTop: 2}}>Kontaktperson: {contact_person}</Text>
-                    <Text style={{marginBottom: 2, marginTop: 2}}>Besöksort: {producer_city}</Text>
-                    <Text style={{marginBottom: 2, marginTop: 2}}>E-post: {producer_email}</Text>
-                    <Text style={{marginBottom: 2, marginTop: 2}}>Telefon: {producer_phone}</Text>
-                    <Text style={{marginBottom: 17, marginTop: 2}}>Webbsida: {producer_website}</Text>
-                  </View>
-
-                  <View style={{
-                    borderBottomColor: 'black',
-                    borderBottomWidth: 1,
-                    marginBottom: 15,
-                  }}>
-                    <Text style={{fontWeight: 'bold'}}>Kategorier</Text>
-                    <Text style={{marginBottom: 17, marginTop: 2}}>{category_string}</Text>
-                  </View>
-                  
-                  <View>
-                    <Text style={{fontWeight: 'bold'}}>Öppettider</Text>
-                    <Text style={{marginBottom: 20, marginTop: 5}}>{opening_hours}</Text>
-                  </View>
-                  
-                  <Button
-                    backgroundColor='#37503c'
-                    buttonStyle={{borderRadius: 5, marginLeft: 40, marginRight: 40, marginBottom: 0, marginTop: 20, backgroundColor: "rgba(0, 0, 0, 0.7)", text:{color: "black"}}}
-                    title='Hitta oss på kartan'
-                    onPress = {() => {
-                      this.props.navigation.navigate('Map', {
-                        lat: latitude,
-                        long: longitude,
-                        adress: producer_adress,
-                        name: producer_name
-                      })}}
-                    />
-                </ScrollView>
-              </View>
             </ScrollView>
           </ImageBackground>
         </ImageBackground>
@@ -1072,6 +962,7 @@ class EventListScreen extends React.Component {
           producer_phone: item.phone,
           producer_website: item.website,
           opening_hours: item.opening_hours,
+          ableToGoBack: true,
           matfest: item.producer_category_1,
           lpiv: item.producer_category_2,
           connected_producers: item.connected_producers,
@@ -1251,6 +1142,7 @@ class SearchScreen extends React.Component {
           producer_phone: item.phone,
           producer_website: item.website,
           opening_hours: item.opening_hours,
+          ableToGoBack: true,
           matfest: item.producer_category_1,
           lpiv: item.producer_category_2
         });
@@ -1482,6 +1374,7 @@ class FoodListScreen extends React.Component {
             producer_phone: item.phone,
             producer_website: item.website,
             opening_hours: item.opening_hours,
+            ableToGoBack: true,
             matfest: item.producer_category_1,
             lpiv: item.producer_category_2,
             smaka: item.producer_category_3,
@@ -1748,6 +1641,7 @@ class StoreListScreen extends React.Component {
           producer_phone: item.phone,
           producer_website: item.website,
           opening_hours: item.opening_hours,
+          ableToGoBack: true,
           matfest: item.producer_category_1,
           lpiv: item.producer_category_2
         });
@@ -2003,6 +1897,7 @@ class ProducerListScreen extends React.Component {
           producer_phone: item.phone,
           producer_website: item.website,
           opening_hours: item.opening_hours,
+          ableToGoBack: true,
           matfest: item.producer_category_1,
           lpiv: item.producer_category_2
         });
@@ -2362,7 +2257,7 @@ class MenuScreen extends React.Component {
 
 const SearchStack = createStackNavigator(
   {
-    ProducerList: {
+    Connected: {
       screen: SearchScreen,
       navigationOptions: {
         header: null,
@@ -2421,7 +2316,7 @@ const EventSwitch = createSwitchNavigator({
     }
   },
   Producer: {
-    screen: EventProducerScreen,
+    screen: ProducerScreen,
     navigationOptions: {
       header: null,
     }
@@ -2437,7 +2332,7 @@ const EventSwitch = createSwitchNavigator({
     headerTitleStyle: {
       fontWeight: 'bold',
     },
-    initialRouteName: 'ProducerList'
+    initialRouteName: 'Connected'
   },  
 },
 {headerMode: 'screen'}
@@ -2446,7 +2341,7 @@ const EventSwitch = createSwitchNavigator({
 
 const FoodStack = createStackNavigator(
   {
-    FoodList: {
+    Connected: {
       screen: FoodListScreen,
       navigationOptions: {
         header: null,
@@ -2481,7 +2376,7 @@ const FoodStack = createStackNavigator(
 
 const StoreStack = createStackNavigator(
   {
-    StoreList: {
+    Connected: {
       screen: StoreListScreen,
       navigationOptions: {
         header: null,
@@ -2516,7 +2411,7 @@ const StoreStack = createStackNavigator(
 
 const ProducerStack = createStackNavigator(
   {
-    ProducerList: {
+    Connected: {
       screen: ProducerListScreen,
       navigationOptions: {
         header: null,
