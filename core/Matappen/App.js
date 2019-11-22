@@ -680,58 +680,58 @@ class ProducerScreen extends React.Component {
           <ImageBackground source={{ uri: background }} style={{width: '100%', height: '100%'}}>
             <HideStatusBar />
             <ScrollView>
-                <Image
-                  source={ { uri: logo_image }}
-                  style={{ width: 300, height: 100, resizeMode: 'contain', marginLeft: screenWidth/9, marginTop: 30 }}
-                />
-              
-                <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 20 }}>
-                  <Text style={{fontWeight: 'bold'}}>{producer_name}</Text>
-                  <Text style={{marginBottom: 20, marginTop: 5}}>{description}</Text>
-                </View>
-              
-                <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 20 }}>
-                  <Text style={{fontWeight: 'bold', marginBottom: 5}}>Kontaktuppgifter</Text>
-                  <Text>{contact_person}</Text>
-                  <Text>{producer_adress}</Text>
-                  <Text>{producer_city}</Text>
-                  <Text>{producer_email}</Text>
-                  <Text>{producer_phone}</Text>
-                  <Text>{producer_website}</Text>
-                  <Text>{opening_hours}</Text>
-                </View>
-              
-                <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 20}}>
-                  <Text style={{fontWeight: 'bold', marginBottom: 5}}>Vi är medlem i</Text>
-                  <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
-                    { matfest ? matfest_rendering : void_rendering }
-                    { lpiv ? lpiv_rendering : void_rendering }
-                    { smaka ? smaka_rendering : void_rendering }
-                    { meny ? meny_rendering : void_rendering }
+            <View style = {{ marginTop: 200 }}>
+                  <Image
+                    source={ { uri: logo_image }}
+                    style={{ width: 300, height: 100, resizeMode: 'contain', marginLeft: screenWidth/9, marginTop: 30 }}
+                  />
+                
+                  <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 20 }}>
+                    <Text style={{fontWeight: 'bold'}}>{producer_name}</Text>
+                    <Text style={{marginBottom: 20, marginTop: 5}}>{description}</Text>
                   </View>
+                
+                  <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 20 }}>
+                    <Text style={{fontWeight: 'bold', marginBottom: 5}}>Kontaktuppgifter</Text>
+                    <Text>{contact_person}</Text>
+                    <Text>{producer_adress}</Text>
+                    <Text>{producer_city}</Text>
+                    <Text>{producer_email}</Text>
+                    <Text>{producer_phone}</Text>
+                    <Text>{producer_website}</Text>
+                    <Text>{opening_hours}</Text>
+                  </View>
+                
+                  <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 20}}>
+                    <Text style={{fontWeight: 'bold', marginBottom: 5}}>Vi är medlem i</Text>
+                    <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+                      { matfest ? matfest_rendering : void_rendering }
+                      { lpiv ? lpiv_rendering : void_rendering }
+                      { smaka ? smaka_rendering : void_rendering }
+                      { meny ? meny_rendering : void_rendering }
+                    </View>
+                  </View>
+                <View style = {{flexDirection: "row", flexWrap: "wrap" }}>
+                  
+                  <Button title="Gå tillbaka"  buttonStyle={{borderRadius: 5, marginLeft: 70, marginRight: 10, marginBottom: 0, marginTop: 20, backgroundColor: "#282828", text:{color: "black"}}}
+                      onPress = { () => { this.props.navigation.goBack() } }>
+                  </Button>
+                  
+                  <Button
+                    backgroundColor='#37503c'
+                    buttonStyle={{borderRadius: 5, marginLeft: 70, marginRight: 10, marginBottom: 0, marginTop: 20, backgroundColor: "#282828", text:{color: "black"}}}
+                    title='Hitta oss'
+                    onPress = {() => {
+                      this.props.navigation.navigate('Map', {
+                        lat: latitude,
+                        long: longitude,
+                        adress: producer_adress,
+                        name: producer_name
+                    })}}
+                  />
                 </View>
-              <View style = {{flexDirection: "row", flexWrap: "wrap" }}>
-                
-                <Button title="Gå tillbaka"  buttonStyle={{borderRadius: 5, marginLeft: 70, marginRight: 10, marginBottom: 0, marginTop: 20, backgroundColor: "#282828", text:{color: "black"}}}
-                    onPress = { () => { this.props.navigation.goBack() } }>
-                </Button>
-                
-                <Button
-                  backgroundColor='#37503c'
-                  buttonStyle={{borderRadius: 5, marginLeft: 70, marginRight: 10, marginBottom: 0, marginTop: 20, backgroundColor: "#282828", text:{color: "black"}}}
-                  title='Hitta oss'
-                  onPress = {() => {
-                    this.props.navigation.navigate('Map', {
-                      lat: latitude,
-                      long: longitude,
-                      adress: producer_adress,
-                      name: producer_name
-                  })}}
-                />
-              </View>
-              
-              <View style = {{marginTop: screenHeight * 0.12}}></View>
-            
+                <View style = {{marginTop: screenHeight * 0.12}}></View>
+            </View>
             </ScrollView>
           </ImageBackground>
         </ImageBackground>
@@ -927,13 +927,6 @@ class EventScreen extends React.Component {
     return(
       <View style = {styles.container}>
         <RenderHeader navigation={this.props.navigation} />
-        
-        <View style = {topMenuStyles}>
-        <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
-            <Image source = {require("./symboler/events-512x512.png")} style = {{ width: 20, height: 20, marginTop: 3 }}></Image>
-            <Text style = {{ marginRight: screenWidth/1.7, marginTop: 2 }}>Evenemang</Text>
-          </View>
-        </View>
         
         <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}}>
           <ScrollView>
@@ -1870,7 +1863,7 @@ class StoreListScreen extends React.Component {
         <View style = {topMenuStyles}>
           
         <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
-            <Image source = {require("./symboler/eat-512x512.png")} style = {{ width: 20, height: 20, marginTop: 3 }}></Image>
+            <Image source = {require("./symboler/shop-512x512.png")} style = {{ width: 20, height: 20, marginTop: 3 }}></Image>
             <Text style = {{ marginRight: screenWidth/3.5, marginTop: 2 }}>Gårdsbutiker</Text>
             <TouchableOpacity onPress={() => {this.NearbyProducers()}}>
               <Image source={require("./checked.png")} style={ iconStyles } />
@@ -2125,7 +2118,7 @@ class ProducerListScreen extends React.Component {
         <View style = {topMenuStyles}>
           
         <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
-            <Image source = {require("./symboler/eat-512x512.png")} style = {{ width: 20, height: 20, marginTop: 3 }}></Image>
+            <Image source = {require("./symboler/producer-512x512.png")} style = {{ width: 20, height: 20, marginTop: 3 }}></Image>
             <Text style = {{ marginRight: screenWidth/5, marginTop: 2 }}>Lokala producenter</Text>
             <TouchableOpacity onPress={() => {this.NearbyProducers()}}>
               <Image source={require("./checked.png")} style={ iconStyles } />
@@ -2450,56 +2443,6 @@ const EventSwitch = createSwitchNavigator({
 {headerMode: 'screen'}
 
 );
-
-const EventStack = createStackNavigator(
-  {
-    ProducerList: {
-      screen: EventListScreen,
-      navigationOptions: {
-        header: null,
-      }
-    },
-    Event: {
-      screen: EventScreen,
-      navigationOptions: {
-        header: null,
-      }
-    },
-    Map: {
-      screen: SingleMapScreen,
-      navigationOptions: {
-        header: null,
-      }
-    },
-    Connected: {
-      screen: ConnectedProducers,
-      navigationOptions: {
-        header:null
-      }
-    },
-    Producer: {
-      screen: ProducerScreen,
-      navigationOptions: {
-        header: null,
-      }
-    },
-    
-        
-  },
-  {
-    defaultNavigationOptions: {
-      headerStyle: {
-        backgroundColor: '#f4511e',
-      },
-      headerTintColor: '#fff',
-      headerTitleStyle: {
-        fontWeight: 'bold',
-      },
-      initialRouteName: 'ProducerList'
-    },  
-  },
-  {headerMode: 'screen'}
-)
 
 const FoodStack = createStackNavigator(
   {
