@@ -409,6 +409,10 @@ class MapScreen extends React.Component {
                     producer_website: location.website,
                     opening_hours: location.opening_hours,
                     ableToGoBack: true,
+                    matfest: item.producer_category_1,
+                    lpiv: item.producer_category_2,
+                    smaka: item.producer_category_3,
+                    meny: item.producer_category_4
                   });
                 }} >
               <View>
@@ -530,7 +534,9 @@ class ConnectedProducers extends React.Component {
           opening_hours: item.opening_hours,
           ableToGoBack: false,
           matfest: item.producer_category_1,
-          lpiv: item.producer_category_2
+          lpiv: item.producer_category_2,
+          smaka: item.producer_category_3,
+          meny: item.producer_category_4
         });
       }} 
     />
@@ -657,10 +663,10 @@ class ProducerScreen extends React.Component {
     const producer_website = navigation.getParam('producer_website', 'https://www.example.com');
     const producer_name = navigation.getParam("name", "Producent AB");
     const opening_hours = navigation.getParam("opening_hours", "00:00 - 23:00 torsdag - lördag")
-    const matfest = true;
-    const lpiv = true;
-    const smaka = true;
-    const meny = true;
+    const matfest = navigation.getParam("matfest", true);
+    const lpiv = navigation.getParam("lpiv", true);
+    const smaka = navigation.getParam("smaka", true);
+    const meny = navigation.getParam("meny", true);
     const ableToGoBack = navigation.getParam("ableToGoBack", true);
     
     var category_string = "";
@@ -678,7 +684,9 @@ class ProducerScreen extends React.Component {
     const smaka_rendering = <Image source = {require("./memberlogos/spv.png")} style= {{ width: 48.36, height: 48.36, marginRight: 20 }}></Image>
     const meny_rendering = <Image source = {require("./memberlogos/lm.png")} style= {{ width: 33.33, height: 48.36 }}></Image>
 
-    const void_rendering = <Button title="Gå tillbaka"  buttonStyle={{borderRadius: 5, width: screenWidth / 2.5, marginLeft: 25, marginRight: 20, marginBottom: 0, marginTop: 20, backgroundColor: "#282828", text:{color: "black"}}}
+    const void_rendering = <View></View>
+
+    const other_button_rendering = <Button title="Gå tillbaka"  buttonStyle={{borderRadius: 5, width: screenWidth / 2.5, marginLeft: 25, marginRight: 20, marginBottom: 0, marginTop: 20, backgroundColor: "#282828", text:{color: "black"}}}
     onPress = { () => { this.props.navigation.navigate("ProducerList") } }></Button>
 
     const button_rendering = <Button title="Gå tillbaka"  buttonStyle={{borderRadius: 5, width: screenWidth / 2.5, marginLeft: 25, marginRight: 20, marginBottom: 0, marginTop: 20, backgroundColor: "#282828", text:{color: "black"}}}
@@ -723,7 +731,7 @@ class ProducerScreen extends React.Component {
                   </View>
                   <View style = {{flexDirection: "row", flexWrap: "wrap" }}>
                   
-                  { ableToGoBack ? button_rendering : void_rendering }
+                  { ableToGoBack ? button_rendering : other_button_rendering }
                   
                   <Button
                     backgroundColor='#37503c'
@@ -894,6 +902,36 @@ class EventListScreen extends React.Component {
     return return_array;
   }
 
+  async UpdateList() {
+    var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v2/eventlist', {
+      method: 'get',
+      headers: new global.Headers({
+        'Authorization': 'Basic ' + Buffer.from('api_2jWTR5iTIHOOxdIVqV2HFLPDJ0aQOMydlSGNbdoneEXGcI39JNC9R2W:uf6He48ci0H92Y7E5T6dmKAGuOiGE0PGwBlp51drqFHYehQP9HKBftu').toString('base64'),
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }),
+      body: undefined
+    })
+    .then(response => response.json())
+    .then(responseJson => {
+      //console.log(responseJson);
+      this.setState(
+        {
+          isLoading: false,
+          dataSource: responseJson,
+        },
+        function() {
+          this.arrayholder = responseJson;
+        }
+      );
+    })
+    .catch(error => {
+      console.log(error);
+      alert("Matappen kräver anslutning till internet för att kunna visa innehåll. Vänligen anslut dig och starta om appen.");
+    });
+
+    return return_array;
+  }
+
   search = text => {};
 
   clear = () => {
@@ -968,6 +1006,8 @@ class EventListScreen extends React.Component {
           ableToGoBack: true,
           matfest: item.producer_category_1,
           lpiv: item.producer_category_2,
+          smaka: item.producer_category_3,
+          meny: item.producer_category_4,
           connected_producers: item.connected_producers,
           information: item.event_information,
           contact_information: item.event_contact_information,
@@ -1018,13 +1058,23 @@ class EventListScreen extends React.Component {
       justifyContent: 'center'
     }
 
+    const iconStyles2 = {
+      width: 27.368,
+      height: 27.368,
+      marginLeft: 7,
+      resizeMode: "contain"
+    }
+
     return(
       <View style={styles.container}>
         <RenderHeader navigation={this.props.navigation} />
           <View style = {topMenuStyles}>
             <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
               <Image source = {require("./symboler/events-512x512.png")} style = {{ width: 20, height: 20, marginTop: 3 }}></Image>
-              <Text style = {{ marginRight: screenWidth/1.7, marginTop: 2 }}>Evenemang</Text>
+              <Text style = {{ marginRight: screenWidth/2.1, marginTop: 2 }}>Evenemang</Text>
+              <TouchableOpacity onPress={() => {this.UpdateList()}}>
+              <Image source={require("./update.png")} style={ iconStyles2 } />
+            </TouchableOpacity>
             </View>
           </View>
           <ImageBackground source={require('./field2.png')} style={viewStyles}>
@@ -1147,7 +1197,9 @@ class SearchScreen extends React.Component {
           opening_hours: item.opening_hours,
           ableToGoBack: true,
           matfest: item.producer_category_1,
-          lpiv: item.producer_category_2
+          lpiv: item.producer_category_2,
+          smaka: item.producer_category_1,
+          meny: item.producer_category_2
         });
       }} 
     />
@@ -1731,7 +1783,9 @@ class StoreListScreen extends React.Component {
           opening_hours: item.opening_hours,
           ableToGoBack: true,
           matfest: item.producer_category_1,
-          lpiv: item.producer_category_2
+          lpiv: item.producer_category_2,
+          smaka: item.producer_category_3,
+          meny: item.producer_category_4
         });
       }} 
     />
@@ -1834,21 +1888,29 @@ class StoreListScreen extends React.Component {
       height: 27.368
     }
 
+    const iconStyles2 = {
+      width: 27.368,
+      height: 27.368,
+      marginLeft: 7,
+      resizeMode: "contain"
+    }
+
     //const store_type = this.props.navigation.dangerouslyGetParent().getParam("store_type");
 
     return(
       <View style={styles.container}>
         <RenderHeader navigation={this.props.navigation} />
         <View style = {topMenuStyles}>
-          
-        <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
-            <Image source = {require("./symboler/shop-512x512.png")} style = {{ width: 20, height: 20, marginTop: 3 }}></Image>
-            <Text style = {{ marginRight: screenWidth/3.5, marginTop: 2 }}>Gårdsbutiker</Text>
+          <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
+            <Image source = {require("./symboler/shop-512x512.png")} style = {{ width: 14, height: 14, marginTop: 6 }}></Image>
+            <Text style = {{ marginRight: screenWidth/3.7, marginTop: 2, marginLeft: 7 }}>Gårdsbutiker</Text>
             <TouchableOpacity onPress={() => {this.NearbyProducers()}}>
-              <Image source={require("./checked.png")} style={ iconStyles } />
+              <Image source={require("./close.png")} style={ iconStyles } />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => {this.UpdateList()}}>
+              <Image source={require("./update.png")} style={ iconStyles2 } />
             </TouchableOpacity>
           </View>
-          
         </View>
         <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
           <HideStatusBar />
@@ -2031,7 +2093,9 @@ class ProducerListScreen extends React.Component {
           opening_hours: item.opening_hours,
           ableToGoBack: true,
           matfest: item.producer_category_1,
-          lpiv: item.producer_category_2
+          lpiv: item.producer_category_2,
+          smaka: item.producer_category_3,
+          meny: item.producer_category_4
         });
       }} 
     />
@@ -2134,21 +2198,29 @@ class ProducerListScreen extends React.Component {
       height: 27.368
     }
 
+    const iconStyles2 = {
+      width: 27.368,
+      height: 27.368,
+      marginLeft: 7,
+      resizeMode: "contain"
+    }
+
     //const store_type = this.props.navigation.dangerouslyGetParent().getParam("store_type");
 
     return(
       <View style={styles.container}>
         <RenderHeader navigation={this.props.navigation} />
         <View style = {topMenuStyles}>
-          
-        <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
-            <Image source = {require("./symboler/producer-512x512.png")} style = {{ width: 20, height: 20, marginTop: 3 }}></Image>
-            <Text style = {{ marginRight: screenWidth/5, marginTop: 2 }}>Lokala producenter</Text>
+          <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
+            <Image source = {require("./symboler/producer-512x512.png")} style = {{ width: 14, height: 14, marginTop: 6 }}></Image>
+            <Text style = {{ marginRight: screenWidth/5.7, marginTop: 2, marginLeft: 7 }}>Lokala producenter</Text>
             <TouchableOpacity onPress={() => {this.NearbyProducers()}}>
-              <Image source={require("./checked.png")} style={ iconStyles } />
+              <Image source={require("./close.png")} style={ iconStyles } />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => {this.UpdateList()}}>
+              <Image source={require("./update.png")} style={ iconStyles2 } />
             </TouchableOpacity>
           </View>
-          
         </View>
         <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
           <HideStatusBar />
