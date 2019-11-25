@@ -721,7 +721,7 @@ class ProducerScreen extends React.Component {
                       { meny ? meny_rendering : void_rendering }
                     </View>
                   </View>
-                <View style = {{flexDirection: "row", flexWrap: "wrap" }}>
+                  <View style = {{flexDirection: "row", flexWrap: "wrap" }}>
                   
                   { ableToGoBack ? button_rendering : void_rendering }
                   
@@ -826,10 +826,10 @@ class EventScreen extends React.Component {
             <ImageBackground source={{ uri: background }} style={{width: '100%', height: 250}}>
               <HideStatusBar />
               <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 40, marginBottom: 20, marginRight: 40, marginTop: 5, borderRadius: 30, marginTop: 80, flexDirection: 'row' }}>
-                <Image source = {{ uri: logo_image }} style={{width: 50, height: 50}}/>
+                <Image source = {{ uri: logo_image }} style={{width: 50, height: 50, resizeMode: "contain"}}/>
                 <View>
-                  <Text style={{ fontSize: 20, fontStyle: 'bold', marginLeft: 5, marginRight: 10 }}>{name}</Text>
-                  <Text style={{ fontSize: 14, fontStyle: 'italic', marginLeft: 5, marginRight: 10 }}>{event_subtitle}</Text>
+                  <Text style={{ fontSize: 20, fontStyle: 'bold', marginLeft: 15, marginRight: 10 }}>{name}</Text>
+                  <Text style={{ fontSize: 14, fontStyle: 'italic', marginLeft: 15, marginRight: 10 }}>{event_subtitle}</Text>
                 </View>
               </View>  
             </ImageBackground>
@@ -2651,7 +2651,6 @@ const TabNavigator = createBottomTabNavigator(
         tabBarVisible: false
       }
     },
-
   },
   {
     tabBarOptions: {
