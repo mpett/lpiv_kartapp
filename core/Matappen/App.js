@@ -1226,7 +1226,7 @@ class SearchScreen extends React.Component {
             />
 
         <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
-          <View style={{marginTop: 105}}>
+          <View style={{marginTop: 5}}>
           <View>
       
             <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
@@ -1237,7 +1237,7 @@ class SearchScreen extends React.Component {
                 data={this.state.dataSource}
                 renderItem={this.renderItem}
                 enableEmptySections={false}
-                style={{ marginBottom: screenHeight * 0.07 }}
+                style={{ marginBottom: screenHeight * 0.10 }}
                 keyExtractor = {(item, index) => index.toString()}
               />
             </View>
