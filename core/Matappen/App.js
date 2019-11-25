@@ -1292,7 +1292,6 @@ class FoodListScreen extends React.Component {
   }
 
   async UpdateList() {
-    console.log("UPPDATERAR UPPDATERAR UPPDATERAR UPPDATERAR UPPDATERAR UPPDATERAR UPPDATERAR UPPDATERAR ");
     var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v2/producerlist/1', {
       method: 'get',
       headers: new global.Headers({
@@ -1645,6 +1644,38 @@ class StoreListScreen extends React.Component {
     );
   };
 
+  async UpdateList() {
+    var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v2/producerlist/3', {
+      method: 'get',
+      headers: new global.Headers({
+        'Authorization': 'Basic ' + Buffer.from('api_2jWTR5iTIHOOxdIVqV2HFLPDJ0aQOMydlSGNbdoneEXGcI39JNC9R2W:uf6He48ci0H92Y7E5T6dmKAGuOiGE0PGwBlp51drqFHYehQP9HKBftu').toString('base64'),
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }),
+      body: undefined
+    })
+    .then(response => response.json())
+    .then(responseJson => {
+      //console.log(responseJson);
+
+      this.setState(
+        {
+          isLoading: false,
+          dataSource: responseJson,
+          update: false
+        },
+        function() {
+          this.arrayholder = responseJson;
+        }
+      );
+    })
+    .catch(error => {
+      console.log(error);
+      //alert("Matappen kräver anslutning till internet för att kunna visa innehåll. Vänligen anslut dig och starta om appen.");
+    });
+
+    return return_array;
+  }
+
   renderItem = ({ item }) => (
     <ListItem
       Component = {TouchableScale}
@@ -1665,6 +1696,7 @@ class StoreListScreen extends React.Component {
       }}
 
       onPress = {() => {
+        this.UpdateList();
         this.props.navigation.navigate('Producer', {
           itemId: 86,
           otherParam: item.business_name,
@@ -1901,6 +1933,38 @@ class ProducerListScreen extends React.Component {
     );
   };
 
+  async UpdateList() {
+    var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v2/producerlist/2', {
+      method: 'get',
+      headers: new global.Headers({
+        'Authorization': 'Basic ' + Buffer.from('api_2jWTR5iTIHOOxdIVqV2HFLPDJ0aQOMydlSGNbdoneEXGcI39JNC9R2W:uf6He48ci0H92Y7E5T6dmKAGuOiGE0PGwBlp51drqFHYehQP9HKBftu').toString('base64'),
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }),
+      body: undefined
+    })
+    .then(response => response.json())
+    .then(responseJson => {
+      //console.log(responseJson);
+
+      this.setState(
+        {
+          isLoading: false,
+          dataSource: responseJson,
+          update: false
+        },
+        function() {
+          this.arrayholder = responseJson;
+        }
+      );
+    })
+    .catch(error => {
+      console.log(error);
+      //alert("Matappen kräver anslutning till internet för att kunna visa innehåll. Vänligen anslut dig och starta om appen.");
+    });
+
+    return return_array;
+  }
+
   renderItem = ({ item }) => (
     <ListItem
       Component = {TouchableScale}
@@ -1921,6 +1985,7 @@ class ProducerListScreen extends React.Component {
       }}
 
       onPress = {() => {
+        this.UpdateList();
         this.props.navigation.navigate('Producer', {
           itemId: 86,
           otherParam: item.business_name,
