@@ -678,10 +678,10 @@ class ProducerScreen extends React.Component {
     const smaka_rendering = <Image source = {require("./memberlogos/spv.png")} style= {{ width: 48.36, height: 48.36, marginRight: 20 }}></Image>
     const meny_rendering = <Image source = {require("./memberlogos/lm.png")} style= {{ width: 33.33, height: 48.36 }}></Image>
 
-    const void_rendering = <Button title="Gå tillbaka"  buttonStyle={{borderRadius: 5, marginLeft: 70, marginRight: 10, marginBottom: 0, marginTop: 20, backgroundColor: "#282828", text:{color: "black"}}}
+    const void_rendering = <Button title="Gå tillbaka"  buttonStyle={{borderRadius: 5, width: screenWidth / 2.5, marginLeft: 25, marginRight: 20, marginBottom: 0, marginTop: 20, backgroundColor: "#282828", text:{color: "black"}}}
     onPress = { () => { this.props.navigation.navigate("ProducerList") } }></Button>
 
-    const button_rendering = <Button title="Gå tillbaka"  buttonStyle={{borderRadius: 5, marginLeft: 70, marginRight: 10, marginBottom: 0, marginTop: 20, backgroundColor: "#282828", text:{color: "black"}}}
+    const button_rendering = <Button title="Gå tillbaka"  buttonStyle={{borderRadius: 5, width: screenWidth / 2.5, marginLeft: 25, marginRight: 20, marginBottom: 0, marginTop: 20, backgroundColor: "#282828", text:{color: "black"}}}
         onPress = { () => { this.props.navigation.goBack() } }></Button>
 
     return(
@@ -727,7 +727,7 @@ class ProducerScreen extends React.Component {
                   
                   <Button
                     backgroundColor='#37503c'
-                    buttonStyle={{borderRadius: 5, marginLeft: 70, marginRight: 10, marginBottom: 0, marginTop: 20, backgroundColor: "#282828", text:{color: "black"}}}
+                    buttonStyle={{borderRadius: 5, marginLeft: 5, marginRight: 10, marginBottom: 0, marginTop: 20, width: screenWidth/2.5, backgroundColor: "#282828", text:{color: "black"}}}
                     title='Hitta oss'
                     onPress = {() => {
                       this.props.navigation.navigate('Map', {
