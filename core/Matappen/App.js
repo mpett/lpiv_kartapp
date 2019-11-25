@@ -18,6 +18,9 @@ import type { Region } from 'react-native-maps';
 const screenWidth = Math.round(Dimensions.get('window').width);
 const screenHeight = Math.round(Dimensions.get('window').height);
 
+geo_lat = 0;
+geo_long = 0;
+
 export interface LatLng {
   latitude: number;
   longitude: number
@@ -1180,39 +1183,68 @@ class SearchScreen extends React.Component {
       padding:10
     };
 
+    const topMenuStyles = {
+      color: 'white',
+      width: screenWidth,
+      height: 35,
+      paddingLeft: 20,
+      paddingRight: 20,
+      justifyContent: 'center'
+    }
+
+    const iconStyles = {
+      width: 90,
+      height: 27.368
+    }
+
     return(
-      <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
-        <View style={{marginTop: 105}}>
-          <View style = {{justifyContent: 'center', alignItems: 'center', marginTop: 45, marginBottom: 20}}>
-            <Text style={descriptionStyles}>Sök</Text>
-            <Text style={{ color: "#282828", fontSize: 10, fontStyle: "italic" }}>Sök bland alla producenter...</Text>
-          </View>
-        <View>
-          <SearchBar
-            round
-            searchIcon={{ size: 24 }}
-            onChangeText = {text => this.SearchFilterFunction(text)}
-            onClear={text => this.SearchFilterFunction('')}
-            placeholder="Sök..."
-            value={this.state.search}
-            width="100%"
-            lightTheme = {true}
-          />
-          <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
-          </View>
-        </View>
-          <View style={{marginTop:5}}>
-            <FlatList 
-              data={this.state.dataSource}
-              renderItem={this.renderItem}
-              enableEmptySections={false}
-              style={{ marginBottom: 380 }}
-              keyExtractor = {(item, index) => index.toString()}
+      <View style = {styles.container}>
+        <RenderHeader  navigation = {this.props.navigation} />
+
+        <SearchBar
+              round
+              searchIcon={{ size: 24 }}
+              onChangeText = {text => this.SearchFilterFunction(text)}
+              onClear={text => this.SearchFilterFunction('')}
+              containerStyle = {{
+                backgroundColor: 'white',
+                borderColor:'rgba(0,0,0,0)',
+                borderBottomColor: 'rgba(0,0,0,0)',
+                borderTopColor: 'rgba(0,0,0,0)',
+                borderWidth: 0,
+              }}
+              inputContainerStyle = {{
+                borderWidth: 0,
+                backgroundColor: 'rgba(0,0,0,0)',
+                borderColor:'rgba(0,0,0,0)',
+
+              }}
+              placeholder="Sök..."
+              value={this.state.search}
+              width="100%"
+              lightTheme = {true}
             />
+
+        <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
+          <View style={{marginTop: 105}}>
+          <View>
+      
+            <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
+            </View>
           </View>
-        </View>
-        <MenuScreen navigation={this.props.navigation} />
-      </ImageBackground>
+            <View style={{marginTop:5}}>
+              <FlatList 
+                data={this.state.dataSource}
+                renderItem={this.renderItem}
+                enableEmptySections={false}
+                style={{ marginBottom: screenHeight * 0.07 }}
+                keyExtractor = {(item, index) => index.toString()}
+              />
+            </View>
+          </View>
+          <MenuScreen navigation={this.props.navigation} />
+        </ImageBackground>
+      </View>
     );
   }
 }
@@ -1221,7 +1253,7 @@ class FoodListScreen extends React.Component {
   
   constructor(props) {
     super(props);
-    this.state = { isLoading: true, search: '', rand_old: -1 };
+    this.state = { isLoading: true, search: '', rand_old: -1, latitude: 0.0, longitude: 0.0, location: "" };
     this.arrayholder = [];
   }
 
@@ -1294,8 +1326,6 @@ class FoodListScreen extends React.Component {
 
   PrepareUpdate() {
     navigation_rand = this.props.navigation.dangerouslyGetParent().getParam("rand");
-
-    console.log("HÄR ÄR SLUMPVÄRDET!!!!!!!!!!!!!!: " + navigation_rand);
     
     current_rand_old = this.state.rand_old;
     if (navigation_rand != current_rand_old) {
@@ -1427,8 +1457,22 @@ class FoodListScreen extends React.Component {
   tmp = false;
 
   NearbyProducers() {
-    const geo_lat = 58.3903;
-    const geo_long = 13.8461;
+    Geolocation.getCurrentPosition(
+      position => {
+        const currentLongitude = JSON.stringify(position.coords.longitude);
+       //getting the Longitude from the location json
+       const currentLatitude = JSON.stringify(position.coords.latitude);
+       //getting the Latitude from the location json
+        this.setState({ latitude: parseFloat(currentLatitude), longitude: parseFloat(currentLongitude) });
+        geo_lat = parseFloat(currentLatitude);
+        geo_long = parseFloat(currentLongitude);
+        console.log("AAAAAAAAAAAAAAAA" + geo_lat + " " + geo_long);
+      },
+      error => Alert.alert(error.message),
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+    );
+
+    console.log(this.state.latitude + " " + geo_long + " KOORDINATER KOORDINATER KOORDINATER KOORDINATER KOORDINATER KOORDINATER ");
     
     const newData = this.arrayholder.sort((a, b) => {
       const latA = a.latitude;
@@ -1486,8 +1530,6 @@ class FoodListScreen extends React.Component {
       width: 90,
       height: 27.368
     }
-
-    
 
     const void_rendering = <View></View>
 
