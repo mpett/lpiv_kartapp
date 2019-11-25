@@ -1253,7 +1253,7 @@ class FoodListScreen extends React.Component {
   
   constructor(props) {
     super(props);
-    this.state = { isLoading: true, search: '', rand_old: -1, latitude: 0.0, longitude: 0.0, location: "" };
+    this.state = { isLoading: true, search: '', rand_old: -1, latitude: 0.0, longitude: 0.0, location: "", checked: false };
     this.arrayholder = [];
   }
 
@@ -1529,25 +1529,27 @@ class FoodListScreen extends React.Component {
       height: 27.368
     }
 
-    const void_rendering = <View></View>
+    const iconStyles2 = {
+      width: 27.368,
+      height: 27.368,
+      marginLeft: 7,
+      resizeMode: "contain"
+    }
 
     return(
       <View style={styles.container}>
         <RenderHeader navigation={this.props.navigation} />
         <View style = {topMenuStyles}>
-
-          {
-            this.PrepareUpdate()
-          }
-
           <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
-            <Image source = {require("./symboler/eat-512x512.png")} style = {{ width: 20, height: 20, marginTop: 3 }}></Image>
-            <Text style = {{ marginRight: screenWidth/3.5, marginTop: 2 }}>Restauranger</Text>
+            <Image source = {require("./symboler/eat-512x512.png")} style = {{ width: 14, height: 14, marginTop: 6 }}></Image>
+            <Text style = {{ marginRight: screenWidth/3.7, marginTop: 2, marginLeft: 7 }}>Restauranger</Text>
             <TouchableOpacity onPress={() => {this.NearbyProducers()}}>
-              <Image source={require("./checked.png")} style={ iconStyles } />
+              <Image source={require("./close.png")} style={ iconStyles } />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => {this.UpdateList()}}>
+              <Image source={require("./update.png")} style={ iconStyles2 } />
             </TouchableOpacity>
           </View>
-          
         </View>
         <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
           <HideStatusBar />
@@ -1570,7 +1572,6 @@ class FoodListScreen extends React.Component {
           <MenuScreen navigation={this.props.navigation} />
         </ImageBackground>
       </View>
-      
     );
   }
 }
