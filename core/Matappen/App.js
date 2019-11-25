@@ -409,10 +409,10 @@ class MapScreen extends React.Component {
                     producer_website: location.website,
                     opening_hours: location.opening_hours,
                     ableToGoBack: true,
-                    matfest: item.producer_category_1,
-                    lpiv: item.producer_category_2,
-                    smaka: item.producer_category_3,
-                    meny: item.producer_category_4
+                    matfest: location.producer_category_1,
+                    lpiv: location.producer_category_2,
+                    smaka: location.producer_category_3,
+                    meny: location.producer_category_4
                   });
                 }} >
               <View>
