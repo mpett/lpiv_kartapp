@@ -1258,6 +1258,20 @@ class FoodListScreen extends React.Component {
   }
 
   componentDidMount() {
+    Geolocation.getCurrentPosition(
+      position => {
+        const currentLongitude = JSON.stringify(position.coords.longitude);
+       //getting the Longitude from the location json
+       const currentLatitude = JSON.stringify(position.coords.latitude);
+       //getting the Latitude from the location json
+        this.setState({ latitude: parseFloat(currentLatitude), longitude: parseFloat(currentLongitude) });
+        geo_lat = parseFloat(currentLatitude);
+        geo_long = parseFloat(currentLongitude);
+      },
+      error => Alert.alert(error.message),
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+    );
+
     var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v2/producerlist/1', {
       method: 'get',
       headers: new global.Headers({
@@ -1456,21 +1470,6 @@ class FoodListScreen extends React.Component {
   tmp = false;
 
   NearbyProducers() {
-    Geolocation.getCurrentPosition(
-      position => {
-        const currentLongitude = JSON.stringify(position.coords.longitude);
-       //getting the Longitude from the location json
-       const currentLatitude = JSON.stringify(position.coords.latitude);
-       //getting the Latitude from the location json
-        this.setState({ latitude: parseFloat(currentLatitude), longitude: parseFloat(currentLongitude) });
-        geo_lat = parseFloat(currentLatitude);
-        geo_long = parseFloat(currentLongitude);
-        console.log("AAAAAAAAAAAAAAAA" + geo_lat + " " + geo_long);
-      },
-      error => Alert.alert(error.message),
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
-    );
-
     console.log(this.state.latitude + " " + geo_long + " KOORDINATER KOORDINATER KOORDINATER KOORDINATER KOORDINATER KOORDINATER ");
     
     const newData = this.arrayholder.sort((a, b) => {
@@ -1585,6 +1584,20 @@ class StoreListScreen extends React.Component {
   }
 
   componentDidMount() {
+    Geolocation.getCurrentPosition(
+      position => {
+        const currentLongitude = JSON.stringify(position.coords.longitude);
+       //getting the Longitude from the location json
+       const currentLatitude = JSON.stringify(position.coords.latitude);
+       //getting the Latitude from the location json
+        this.setState({ latitude: parseFloat(currentLatitude), longitude: parseFloat(currentLongitude) });
+        geo_lat = parseFloat(currentLatitude);
+        geo_long = parseFloat(currentLongitude);
+      },
+      error => Alert.alert(error.message),
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+    );
+
     var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v2/producerlist/3', {
       method: 'get',
       headers: new global.Headers({
@@ -1763,9 +1776,6 @@ class StoreListScreen extends React.Component {
   tmp = false;
 
   NearbyProducers() {
-    const geo_lat = 58.3903;
-    const geo_long = 13.8461;
-    
     const newData = this.arrayholder.sort((a, b) => {
       const latA = a.latitude;
       const longA = a.longitude;
@@ -1874,6 +1884,20 @@ class ProducerListScreen extends React.Component {
   }
 
   componentDidMount() {
+    Geolocation.getCurrentPosition(
+      position => {
+        const currentLongitude = JSON.stringify(position.coords.longitude);
+       //getting the Longitude from the location json
+       const currentLatitude = JSON.stringify(position.coords.latitude);
+       //getting the Latitude from the location json
+        this.setState({ latitude: parseFloat(currentLatitude), longitude: parseFloat(currentLongitude) });
+        geo_lat = parseFloat(currentLatitude);
+        geo_long = parseFloat(currentLongitude);
+      },
+      error => Alert.alert(error.message),
+      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+    );
+
     var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v2/producerlist/2', {
       method: 'get',
       headers: new global.Headers({
@@ -2051,10 +2075,7 @@ class ProducerListScreen extends React.Component {
 
   tmp = false;
 
-  NearbyProducers() {
-    const geo_lat = 58.3903;
-    const geo_long = 13.8461;
-    
+  NearbyProducers() {    
     const newData = this.arrayholder.sort((a, b) => {
       const latA = a.latitude;
       const longA = a.longitude;
