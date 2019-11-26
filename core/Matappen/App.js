@@ -699,10 +699,12 @@ class ProducerScreen extends React.Component {
             <HideStatusBar />
             <ScrollView>
             <View style = {{ marginTop: 200 }}>
-                  <Image
-                    source={ { uri: logo_image }}
-                    style={{ width: 300, height: 100, resizeMode: 'contain', marginLeft: screenWidth/9, marginTop: 30 }}
-                  />
+                  <View style = {{ justifyContent: "center", alignItems: "center" }}>
+                    <Image
+                      source={ { uri: logo_image }}
+                      style={{ resizeMode: 'contain', width: 300, height: 100 }}
+                    />
+                  </View>
                 
                   <View style = {{ backgroundColor: 'rgba(255, 255, 255, 0.75)', padding: 20, marginLeft: 20, marginBottom: 20, marginRight: 20, marginTop: 5, borderRadius: 10, marginTop: 20 }}>
                     <Text style={{fontWeight: 'bold'}}>{producer_name}</Text>
@@ -1062,6 +1064,7 @@ class EventListScreen extends React.Component {
       width: 27.368,
       height: 27.368,
       marginLeft: 7,
+      marginRight: 7,
       resizeMode: "contain"
     }
 
@@ -1569,7 +1572,6 @@ class FoodListScreen extends React.Component {
 
     const topMenuStyles = {
       color: 'white',
-      width: screenWidth,
       height: 35,
       paddingLeft: 20,
       paddingRight: 20,
@@ -1584,7 +1586,7 @@ class FoodListScreen extends React.Component {
     const iconStyles2 = {
       width: 27.368,
       height: 27.368,
-      marginLeft: 7,
+      marginLeft: 10,
       resizeMode: "contain"
     }
 
@@ -1593,14 +1595,18 @@ class FoodListScreen extends React.Component {
         <RenderHeader navigation={this.props.navigation} />
         <View style = {topMenuStyles}>
           <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
-            <Image source = {require("./symboler/eat-512x512.png")} style = {{ width: 14, height: 14, marginTop: 6 }}></Image>
-            <Text style = {{ marginRight: screenWidth/3.7, marginTop: 2, marginLeft: 7 }}>Restauranger</Text>
-            <TouchableOpacity onPress={() => {this.NearbyProducers()}}>
-              <Image source={require("./close.png")} style={ iconStyles } />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => {this.UpdateList()}}>
-              <Image source={require("./update.png")} style={ iconStyles2 } />
-            </TouchableOpacity>
+            <View style = {{ flexDirection: "row" }}>
+              <Image source = {require("./symboler/eat-512x512.png")} style = {{ width: 14, height: 14, marginTop: 6 }}></Image>
+              <Text style = {{ marginLeft: 10, marginTop: 2 }}>Restauranger</Text>  
+            </View> 
+            <View style = {{ flexDirection: "row" }}>
+              <TouchableOpacity onPress={() => {this.NearbyProducers()}}>
+                <Image source={require("./close.png")} style={ iconStyles } />
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => {this.UpdateList()}}>
+                <Image source={require("./update.png")} style={ iconStyles2 } />
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
         <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
@@ -1892,6 +1898,7 @@ class StoreListScreen extends React.Component {
       width: 27.368,
       height: 27.368,
       marginLeft: 7,
+      marginRight: 7,
       resizeMode: "contain"
     }
 
@@ -2202,6 +2209,7 @@ class ProducerListScreen extends React.Component {
       width: 27.368,
       height: 27.368,
       marginLeft: 7,
+      marginRight: 7,
       resizeMode: "contain"
     }
 
