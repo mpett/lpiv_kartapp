@@ -702,7 +702,7 @@ class ProducerScreen extends React.Component {
                   <View style = {{ justifyContent: "center", alignItems: "center" }}>
                     <Image
                       source={ { uri: logo_image }}
-                      style={{ resizeMode: 'contain', width: 300, height: 100 }}
+                      style={{ resizeMode: 'center', width: 300, height: 100 }}
                     />
                   </View>
                 
@@ -1053,18 +1053,21 @@ class EventListScreen extends React.Component {
 
     const topMenuStyles = {
       color: 'white',
-      width: screenWidth,
       height: 35,
       paddingLeft: 20,
       paddingRight: 20,
       justifyContent: 'center'
     }
 
+    const iconStyles = {
+      width: 90,
+      height: 27.368
+    }
+
     const iconStyles2 = {
       width: 27.368,
       height: 27.368,
-      marginLeft: 7,
-      marginRight: 7,
+      marginLeft: 10,
       resizeMode: "contain"
     }
 
@@ -1073,11 +1076,15 @@ class EventListScreen extends React.Component {
         <RenderHeader navigation={this.props.navigation} />
           <View style = {topMenuStyles}>
             <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
-              <Image source = {require("./symboler/events-512x512.png")} style = {{ width: 20, height: 20, marginTop: 3 }}></Image>
-              <Text style = {{ marginRight: screenWidth/2.1, marginTop: 2 }}>Evenemang</Text>
-              <TouchableOpacity onPress={() => {this.UpdateList()}}>
-              <Image source={require("./update.png")} style={ iconStyles2 } />
-            </TouchableOpacity>
+              <View style = {{ flexDirection: "row" }}>
+                <Image source = {require("./symboler/events-512x512.png")} style = {{ width: 14, height: 14, marginTop: 6 }}></Image>
+                <Text style = {{ marginLeft: 10, marginTop: 2 }}>Evenemang</Text>  
+              </View> 
+              <View style = {{ flexDirection: "row" }}>
+                <TouchableOpacity onPress={() => {this.UpdateList()}}>
+                  <Image source={require("./update.png")} style={ iconStyles2 } />
+                </TouchableOpacity>
+              </View>
             </View>
           </View>
           <ImageBackground source={require('./field2.png')} style={viewStyles}>
@@ -1091,7 +1098,7 @@ class EventListScreen extends React.Component {
                   data={this.state.dataSource}
                   renderItem={this.renderItem}
                   enableEmptySections={false}
-                  style={{ marginBottom: screenHeight * 0.11 }}
+                  style={{ marginBottom: screenHeight * 0.1 }}
                   keyExtractor = {(item, index) => index.toString()}
                 />
               </View>
@@ -1292,7 +1299,7 @@ class SearchScreen extends React.Component {
                 data={this.state.dataSource}
                 renderItem={this.renderItem}
                 enableEmptySections={false}
-                style={{ marginBottom: screenHeight * 0.10 }}
+                style={{ marginBottom: screenHeight * 0.11 }}
                 keyExtractor = {(item, index) => index.toString()}
               />
             </View>
@@ -1622,7 +1629,7 @@ class FoodListScreen extends React.Component {
                 //ItemSeparatorComponent={this.ListViewItemSeparator}
                 renderItem={this.renderItem}
                 enableEmptySections={false}
-                style={{ marginBottom: screenHeight * 0.10 }}
+                style={{ marginBottom: screenHeight * 0.11 }}
                 keyExtractor = {(item, index) => index.toString()}
               />
             </View>
@@ -1882,7 +1889,6 @@ class StoreListScreen extends React.Component {
 
     const topMenuStyles = {
       color: 'white',
-      width: screenWidth,
       height: 35,
       paddingLeft: 20,
       paddingRight: 20,
@@ -1897,8 +1903,7 @@ class StoreListScreen extends React.Component {
     const iconStyles2 = {
       width: 27.368,
       height: 27.368,
-      marginLeft: 7,
-      marginRight: 7,
+      marginLeft: 10,
       resizeMode: "contain"
     }
 
@@ -1909,14 +1914,18 @@ class StoreListScreen extends React.Component {
         <RenderHeader navigation={this.props.navigation} />
         <View style = {topMenuStyles}>
           <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
-            <Image source = {require("./symboler/shop-512x512.png")} style = {{ width: 14, height: 14, marginTop: 6 }}></Image>
-            <Text style = {{ marginRight: screenWidth/3.7, marginTop: 2, marginLeft: 7 }}>Gårdsbutiker</Text>
-            <TouchableOpacity onPress={() => {this.NearbyProducers()}}>
-              <Image source={require("./close.png")} style={ iconStyles } />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => {this.UpdateList()}}>
-              <Image source={require("./update.png")} style={ iconStyles2 } />
-            </TouchableOpacity>
+            <View style = {{ flexDirection: "row" }}>
+              <Image source = {require("./symboler/eat-512x512.png")} style = {{ width: 14, height: 14, marginTop: 6 }}></Image>
+              <Text style = {{ marginLeft: 10, marginTop: 2 }}>Gårdsbutiker</Text>  
+            </View> 
+            <View style = {{ flexDirection: "row" }}>
+              <TouchableOpacity onPress={() => {this.NearbyProducers()}}>
+                <Image source={require("./close.png")} style={ iconStyles } />
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => {this.UpdateList()}}>
+                <Image source={require("./update.png")} style={ iconStyles2 } />
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
         <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
@@ -1932,7 +1941,7 @@ class StoreListScreen extends React.Component {
                 //ItemSeparatorComponent={this.ListViewItemSeparator}
                 renderItem={this.renderItem}
                 enableEmptySections={false}
-                style={{ marginBottom: screenHeight * 0.10 }}
+                style={{ marginBottom: screenHeight * 0.11 }}
                 keyExtractor = {(item, index) => index.toString()}
               />
             </View>
@@ -2193,7 +2202,6 @@ class ProducerListScreen extends React.Component {
 
     const topMenuStyles = {
       color: 'white',
-      width: screenWidth,
       height: 35,
       paddingLeft: 20,
       paddingRight: 20,
@@ -2208,8 +2216,7 @@ class ProducerListScreen extends React.Component {
     const iconStyles2 = {
       width: 27.368,
       height: 27.368,
-      marginLeft: 7,
-      marginRight: 7,
+      marginLeft: 10,
       resizeMode: "contain"
     }
 
@@ -2220,14 +2227,18 @@ class ProducerListScreen extends React.Component {
         <RenderHeader navigation={this.props.navigation} />
         <View style = {topMenuStyles}>
           <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
-            <Image source = {require("./symboler/producer-512x512.png")} style = {{ width: 14, height: 14, marginTop: 6 }}></Image>
-            <Text style = {{ marginRight: screenWidth/5.7, marginTop: 2, marginLeft: 7 }}>Lokala producenter</Text>
-            <TouchableOpacity onPress={() => {this.NearbyProducers()}}>
-              <Image source={require("./close.png")} style={ iconStyles } />
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => {this.UpdateList()}}>
-              <Image source={require("./update.png")} style={ iconStyles2 } />
-            </TouchableOpacity>
+            <View style = {{ flexDirection: "row" }}>
+              <Image source = {require("./symboler/eat-512x512.png")} style = {{ width: 14, height: 14, marginTop: 6 }}></Image>
+              <Text style = {{ marginLeft: 10, marginTop: 2 }}>Lokala producenter</Text>  
+            </View> 
+            <View style = {{ flexDirection: "row" }}>
+              <TouchableOpacity onPress={() => {this.NearbyProducers()}}>
+                <Image source={require("./close.png")} style={ iconStyles } />
+              </TouchableOpacity>
+              <TouchableOpacity onPress={() => {this.UpdateList()}}>
+                <Image source={require("./update.png")} style={ iconStyles2 } />
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
         <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
@@ -2243,7 +2254,7 @@ class ProducerListScreen extends React.Component {
                 //ItemSeparatorComponent={this.ListViewItemSeparator}
                 renderItem={this.renderItem}
                 enableEmptySections={false}
-                style={{ marginBottom: screenHeight * 0.10 }}
+                style={{ marginBottom: screenHeight * 0.11 }}
                 keyExtractor = {(item, index) => index.toString()}
               />
             </View>
@@ -2328,7 +2339,7 @@ class SplashScreen extends React.Component {
                   borderColor: '#99994d' }}
               />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => {this.props.navigation.navigate("WouldYouKindly", {store_type:"Producent"})}}>
+            <TouchableOpacity onPress={() => {this.props.navigation.navigate("Fika", {store_type:"Producent"})}}>
               <Image
                 source={require('./menu_icons4/hitta.png')}
                 style={{ width: 314, height: 114, marginBottom: 100, 
@@ -2696,7 +2707,7 @@ const TabNavigator = createBottomTabNavigator(
         tabBarVisible: false
       }
     },
-    WouldYouKindly: {
+    Fika: {
       screen: ProducerStack,
       navigationOptions: {
         tabBarVisible: false
