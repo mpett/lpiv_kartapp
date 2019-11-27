@@ -622,7 +622,7 @@ class ConnectedProducers extends React.Component {
               data={this.state.dataSource}
               renderItem={this.renderItem}
               enableEmptySections={false}
-              style={{ marginBottom: screenHeight * 0.37 }}
+              style={{ marginBottom: screenHeight * 0.11 }}
               keyExtractor = {(item, index) => index.toString()}
             />
           </View>
@@ -1091,7 +1091,7 @@ class EventListScreen extends React.Component {
                   data={this.state.dataSource}
                   renderItem={this.renderItem}
                   enableEmptySections={false}
-                  style={{ marginBottom: screenHeight * 0.1 }}
+                  style={{ marginBottom: screenHeight * 0.11 }}
                   keyExtractor = {(item, index) => index.toString()}
                 />
               </View>
@@ -2328,7 +2328,7 @@ class SplashScreen extends React.Component {
                   borderColor: '#99994d' }}
               />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => {this.props.navigation.navigate("Fika", {store_type:"Producent"})}}>
+            <TouchableOpacity onPress={() => {this.props.navigation.navigate("WouldYouKindly", {store_type:"Producent"})}}>
               <Image
                 source={require('./menu_icons4/hitta.png')}
                 style={{ width: 314, height: 114, marginBottom: 100, 
@@ -2696,7 +2696,7 @@ const TabNavigator = createBottomTabNavigator(
         tabBarVisible: false
       }
     },
-    Fika: {
+    WouldYouKindly: {
       screen: ProducerStack,
       navigationOptions: {
         tabBarVisible: false
