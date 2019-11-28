@@ -1074,19 +1074,19 @@ class EventListScreen extends React.Component {
     return(
       <View style={styles.container}>
         <RenderHeader navigation={this.props.navigation} />
-          <View style = {topMenuStyles}>
-            <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
-              <View style = {{ flexDirection: "row" }}>
-                <Image source = {require("./symboler/events-512x512.png")} style = {{ width: 14, height: 14, marginTop: 6 }}></Image>
-                <Text style = {{ marginLeft: 10, marginTop: 2 }}>Evenemang</Text>  
-              </View> 
-              <View style = {{ flexDirection: "row" }}>
-                <TouchableOpacity onPress={() => {this.UpdateList()}}>
-                  <Image source={require("./update.png")} style={ iconStyles2 } />
-                </TouchableOpacity>
-              </View>
+        <View style = {topMenuStyles}>
+          <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
+            <View style = {{ flexDirection: "row" }}>
+              <Image source = {require("./symboler/events-512x512.png")} style = {{ width: 14, height: 14, marginTop: 6 }}></Image>
+              <Text style = {{ marginLeft: 10, marginTop: 2 }}>Evenemang</Text>  
+            </View> 
+            <View style = {{ flexDirection: "row" }}>
+              <TouchableOpacity onPress={() => {this.UpdateList()}}>
+                <Image source={require("./update.png")} style={ iconStyles2 } />
+              </TouchableOpacity>
             </View>
           </View>
+         </View>
           <ImageBackground source={require('./field2.png')} style={viewStyles}>
           <View style={{marginTop: 0}}>
             <View>
@@ -1915,7 +1915,7 @@ class StoreListScreen extends React.Component {
         <View style = {topMenuStyles}>
           <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
             <View style = {{ flexDirection: "row" }}>
-              <Image source = {require("./symboler/eat-512x512.png")} style = {{ width: 14, height: 14, marginTop: 6 }}></Image>
+              <Image source = {require("./symboler/shop-512x512.png")} style = {{ width: 14, height: 14, marginTop: 6 }}></Image>
               <Text style = {{ marginLeft: 10, marginTop: 2 }}>Gårdsbutiker</Text>  
             </View> 
             <View style = {{ flexDirection: "row" }}>
@@ -2228,8 +2228,8 @@ class ProducerListScreen extends React.Component {
         <View style = {topMenuStyles}>
           <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
             <View style = {{ flexDirection: "row" }}>
-              <Image source = {require("./symboler/eat-512x512.png")} style = {{ width: 14, height: 14, marginTop: 6 }}></Image>
-              <Text style = {{ marginLeft: 10, marginTop: 2 }}>Lokala producenter</Text>  
+              <Image source = {require("./symboler/fika-512x512.png")} style = {{ width: 14, height: 14, marginTop: 6 }}></Image>
+              <Text style = {{ marginLeft: 10, marginTop: 2 }}>Producenter</Text>  
             </View> 
             <View style = {{ flexDirection: "row" }}>
               <TouchableOpacity onPress={() => {this.NearbyProducers()}}>
@@ -2332,16 +2332,16 @@ class SplashScreen extends React.Component {
                   borderColor: '#99994d' }}
               />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => {this.props.navigation.navigate("Handla", {store_type:"Gårdsbutik"})}}>
+            <TouchableOpacity onPress={() => {this.props.navigation.navigate("Fika", {store_type:"Producent"})}}>
               <Image
-                source={require('./menu_icons4/handla.png')}
+                source={require('./menu_icons4/hitta.png')}
                 style={{ width: 314, height: 114, marginBottom: 25, 
                   borderColor: '#99994d' }}
               />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => {this.props.navigation.navigate("Fika", {store_type:"Producent"})}}>
+            <TouchableOpacity onPress={() => {this.props.navigation.navigate("Handla", {store_type:"Gårdsbutik"})}}>
               <Image
-                source={require('./menu_icons4/hitta.png')}
+                source={require('./menu_icons4/handla.png')}
                 style={{ width: 314, height: 114, marginBottom: 100, 
                   borderColor: '#99994d' }}
               />
