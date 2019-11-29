@@ -1321,19 +1321,23 @@ class FoodListScreen extends React.Component {
   }
 
   componentDidMount() {
-    Geolocation.getCurrentPosition(
-      position => {
-        const currentLongitude = JSON.stringify(position.coords.longitude);
-       //getting the Longitude from the location json
-       const currentLatitude = JSON.stringify(position.coords.latitude);
-       //getting the Latitude from the location json
-        this.setState({ latitude: parseFloat(currentLatitude), longitude: parseFloat(currentLongitude) });
-        geo_lat = parseFloat(currentLatitude);
-        geo_long = parseFloat(currentLongitude);
-      },
-      error => Alert.alert(error.message),
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
-    );
+    try {
+      Geolocation.getCurrentPosition(
+        position => {
+          const currentLongitude = JSON.stringify(position.coords.longitude);
+         //getting the Longitude from the location json
+         const currentLatitude = JSON.stringify(position.coords.latitude);
+         //getting the Latitude from the location json
+          this.setState({ latitude: parseFloat(currentLatitude), longitude: parseFloat(currentLongitude) });
+          geo_lat = parseFloat(currentLatitude);
+          geo_long = parseFloat(currentLongitude);
+        },
+        error => Alert.alert(error.message),
+        { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+      );
+    } catch(error) {
+      console.log(error);
+    }
 
     var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v2/producerlist/1', {
       method: 'get',
@@ -1534,30 +1538,36 @@ class FoodListScreen extends React.Component {
 
   NearbyProducers() {
     console.log(this.state.latitude + " " + geo_long + " KOORDINATER KOORDINATER KOORDINATER KOORDINATER KOORDINATER KOORDINATER ");
-    
-    const newData = this.arrayholder.sort((a, b) => {
-      const latA = a.latitude;
-      const longA = a.longitude;
-      const latB = b.latitude;
-      const longB = b.longitude;
-    
-      const distanceA = 
-        this.Distance(geo_lat, geo_long, 
-                              latA, longA);
-      const distanceB = 
-        this.Distance(geo_lat, geo_long, 
-                              latB, longB);
-    
-      if (distanceA > distanceB) {
-        return 1;
-      } else {
-        return -1;
-      }
 
-    });
-    this.setState({
-      dataSource: newData
-    });
+    try {
+      const newData = this.arrayholder.sort((a, b) => {
+        const latA = a.latitude;
+        const longA = a.longitude;
+        const latB = b.latitude;
+        const longB = b.longitude;
+      
+        const distanceA = 
+          this.Distance(geo_lat, geo_long, 
+                                latA, longA);
+        const distanceB = 
+          this.Distance(geo_lat, geo_long, 
+                                latB, longB);
+      
+        if (distanceA > distanceB) {
+          return 1;
+        } else {
+          return -1;
+        }
+  
+      });
+      this.setState({
+        dataSource: newData
+      });
+
+    } catch(error) {
+      console.log(error);
+
+    }
   }
 
   render() {
@@ -1651,19 +1661,23 @@ class StoreListScreen extends React.Component {
   }
 
   componentDidMount() {
-    Geolocation.getCurrentPosition(
-      position => {
-        const currentLongitude = JSON.stringify(position.coords.longitude);
-       //getting the Longitude from the location json
-       const currentLatitude = JSON.stringify(position.coords.latitude);
-       //getting the Latitude from the location json
-        this.setState({ latitude: parseFloat(currentLatitude), longitude: parseFloat(currentLongitude) });
-        geo_lat = parseFloat(currentLatitude);
-        geo_long = parseFloat(currentLongitude);
-      },
-      error => Alert.alert(error.message),
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
-    );
+    try {
+      Geolocation.getCurrentPosition(
+        position => {
+          const currentLongitude = JSON.stringify(position.coords.longitude);
+         //getting the Longitude from the location json
+         const currentLatitude = JSON.stringify(position.coords.latitude);
+         //getting the Latitude from the location json
+          this.setState({ latitude: parseFloat(currentLatitude), longitude: parseFloat(currentLongitude) });
+          geo_lat = parseFloat(currentLatitude);
+          geo_long = parseFloat(currentLongitude);
+        },
+        error => Alert.alert(error.message),
+        { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+      );
+    } catch(error) {
+      console.log(error);
+    }    
 
     var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v2/producerlist/3', {
       method: 'get',
@@ -1845,29 +1859,37 @@ class StoreListScreen extends React.Component {
   tmp = false;
 
   NearbyProducers() {
-    const newData = this.arrayholder.sort((a, b) => {
-      const latA = a.latitude;
-      const longA = a.longitude;
-      const latB = b.latitude;
-      const longB = b.longitude;
-    
-      const distanceA = 
-        this.Distance(geo_lat, geo_long, 
-                              latA, longA);
-      const distanceB = 
-        this.Distance(geo_lat, geo_long, 
-                              latB, longB);
-    
-      if (distanceA > distanceB) {
-        return 1;
-      } else {
-        return -1;
-      }
+    console.log(this.state.latitude + " " + geo_long + " KOORDINATER KOORDINATER KOORDINATER KOORDINATER KOORDINATER KOORDINATER ");
 
-    });
-    this.setState({
-      dataSource: newData
-    });
+    try {
+      const newData = this.arrayholder.sort((a, b) => {
+        const latA = a.latitude;
+        const longA = a.longitude;
+        const latB = b.latitude;
+        const longB = b.longitude;
+      
+        const distanceA = 
+          this.Distance(geo_lat, geo_long, 
+                                latA, longA);
+        const distanceB = 
+          this.Distance(geo_lat, geo_long, 
+                                latB, longB);
+      
+        if (distanceA > distanceB) {
+          return 1;
+        } else {
+          return -1;
+        }
+  
+      });
+      this.setState({
+        dataSource: newData
+      });
+
+    } catch(error) {
+      console.log(error);
+
+    }
   }
 
   render() {
@@ -1964,19 +1986,23 @@ class ProducerListScreen extends React.Component {
   }
 
   componentDidMount() {
-    Geolocation.getCurrentPosition(
-      position => {
-        const currentLongitude = JSON.stringify(position.coords.longitude);
-       //getting the Longitude from the location json
-       const currentLatitude = JSON.stringify(position.coords.latitude);
-       //getting the Latitude from the location json
-        this.setState({ latitude: parseFloat(currentLatitude), longitude: parseFloat(currentLongitude) });
-        geo_lat = parseFloat(currentLatitude);
-        geo_long = parseFloat(currentLongitude);
-      },
-      error => Alert.alert(error.message),
-      { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
-    );
+    try {
+      Geolocation.getCurrentPosition(
+        position => {
+          const currentLongitude = JSON.stringify(position.coords.longitude);
+         //getting the Longitude from the location json
+         const currentLatitude = JSON.stringify(position.coords.latitude);
+         //getting the Latitude from the location json
+          this.setState({ latitude: parseFloat(currentLatitude), longitude: parseFloat(currentLongitude) });
+          geo_lat = parseFloat(currentLatitude);
+          geo_long = parseFloat(currentLongitude);
+        },
+        error => Alert.alert(error.message),
+        { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+      );
+    } catch(error) {
+      console.log(error);
+    }
 
     var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v2/producerlist/2', {
       method: 'get',
@@ -2157,30 +2183,38 @@ class ProducerListScreen extends React.Component {
 
   tmp = false;
 
-  NearbyProducers() {    
-    const newData = this.arrayholder.sort((a, b) => {
-      const latA = a.latitude;
-      const longA = a.longitude;
-      const latB = b.latitude;
-      const longB = b.longitude;
-    
-      const distanceA = 
-        this.Distance(geo_lat, geo_long, 
-                              latA, longA);
-      const distanceB = 
-        this.Distance(geo_lat, geo_long, 
-                              latB, longB);
-    
-      if (distanceA > distanceB) {
-        return 1;
-      } else {
-        return -1;
-      }
+  NearbyProducers() {
+    console.log(this.state.latitude + " " + geo_long + " KOORDINATER KOORDINATER KOORDINATER KOORDINATER KOORDINATER KOORDINATER ");
 
-    });
-    this.setState({
-      dataSource: newData
-    });
+    try {
+      const newData = this.arrayholder.sort((a, b) => {
+        const latA = a.latitude;
+        const longA = a.longitude;
+        const latB = b.latitude;
+        const longB = b.longitude;
+      
+        const distanceA = 
+          this.Distance(geo_lat, geo_long, 
+                                latA, longA);
+        const distanceB = 
+          this.Distance(geo_lat, geo_long, 
+                                latB, longB);
+      
+        if (distanceA > distanceB) {
+          return 1;
+        } else {
+          return -1;
+        }
+  
+      });
+      this.setState({
+        dataSource: newData
+      });
+
+    } catch(error) {
+      console.log(error);
+
+    }
   }
 
   render() {
@@ -2264,64 +2298,6 @@ class ProducerListScreen extends React.Component {
         </ImageBackground>
       </View>
       
-    );
-  }
-}
-
-class WelcomeScreen extends React.Component {
-  constructor(props) {
-    super(props);
-    this.arrayholder = [];
-  }
-
-  componentDidMount() {
-    SplashScreen.show();
-    setTimeout(this.UpdateList(),
-      2000
-    );
-    SplashScreen.hide();
-    //this.props.navigation.navigate("Start");
-  }
-
-  async UpdateList() {
-    var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v2/globallist', {
-      method: 'get',
-      headers: new global.Headers({
-        'Authorization': 'Basic ' + Buffer.from('api_2jWTR5iTIHOOxdIVqV2HFLPDJ0aQOMydlSGNbdoneEXGcI39JNC9R2W:uf6He48ci0H92Y7E5T6dmKAGuOiGE0PGwBlp51drqFHYehQP9HKBftu').toString('base64'),
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }),
-      body: undefined
-    })
-    .then(response => response.json())
-    .then(responseJson => {
-      //console.log(responseJson);
-      this.setState(
-        {
-          isLoading: false,
-          dataSource: responseJson,
-        },
-        function() {
-          this.arrayholder = responseJson;
-          producer_list = responseJson;
-          full_producer_list = producer_list;
-        }
-      );
-    })
-    .catch(error => {
-      console.log(error);
-      alert("Matappen kräver anslutning till internet för att kunna visa innehåll. Vänligen anslut dig och starta om appen.");
-    });
-
-    return return_array;
-  }
-
-  render() {
-    return(
-      <View>
-        <Text>
-          Test
-        </Text>
-      </View>
     );
   }
 }
