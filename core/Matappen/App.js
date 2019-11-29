@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, {Component, useEffect} from 'react';
 import {View, Image, StyleSheet, ScrollView, FlatList, Platform, ImageBackground, TouchableOpacity, StatusBar, Dimensions, SafeAreaView, Linking} from 'react-native';
 import { createAppContainer, NavigationActions, StackActions, createSwitchNavigator } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -7,6 +7,7 @@ import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import { Button, ListItem, SearchBar, Header, Avatar } from 'react-native-elements';
 import TouchableScale from 'react-native-touchable-scale';
 import Geolocation from '@react-native-community/geolocation';
+import SplashScreen from "react-native-splash-screen";
 
 import { Text } from "native-base";
 import Polyline from "@mapbox/polyline";
@@ -2267,14 +2268,22 @@ class ProducerListScreen extends React.Component {
   }
 }
 
-class SplashScreen extends React.Component {
+class WelcomeScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { isLoading: true, search: '', descColor: '#282828', descShadow: 'rgba(255, 255, 255, 0.85)', descTitle: 'Västsvenska\nMatappen', dField: require('./field2.png'), dLogo: require('./menu_icons3/1t.png'), dFontSize: 27 };
     this.arrayholder = [];
   }
 
   componentDidMount() {
+    SplashScreen.show();
+    setTimeout(this.UpdateList(),
+      2000
+    );
+    SplashScreen.hide();
+    //this.props.navigation.navigate("Start");
+  }
+
+  async UpdateList() {
     var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v2/globallist', {
       method: 'get',
       headers: new global.Headers({
@@ -2304,6 +2313,169 @@ class SplashScreen extends React.Component {
     });
 
     return return_array;
+  }
+
+  render() {
+    return(
+      <View>
+        <Text>
+          Test
+        </Text>
+      </View>
+    );
+  }
+}
+
+class StartScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { isLoading: true, search: '', descColor: '#282828', descShadow: 'rgba(255, 255, 255, 0.85)', descTitle: 'Västsvenska\nMatappen', dField: require('./field2.png'), dLogo: require('./menu_icons3/1t.png'), dFontSize: 27 };
+    this.arrayholder = [];
+  }
+
+  someMethod() {
+    console.log("Hej");
+  }
+
+  shuffle(a) {
+    var n = a.length;
+    for (var i = n - 1; i >= 0; i--) {
+        var j = Math.floor(Math.random() * (i + 1));
+        var tmp = a[i];
+        a[i] = a[j];
+        a[j] = tmp;
+    }
+  }
+  sieve(n) {
+      var a = new Array(n);
+      for (var i = 2; i < n; i++) {
+          a[i] = true;
+      }
+      for (var i = 2; i < Math.sqrt(n); i++) {
+          for (var j = i * i; j < n; j += i) {
+              if (a[j]) {
+                  a[j] = false;
+              }
+          }
+      }
+      var b = new Array();
+      for (var i = 0; i < n; i++) {
+          if (a[i]) {
+              b.push(i);
+          }
+      }
+      return b;
+  }
+  heapsort(a) {
+      var n = a.length;
+      for (var i = Math.floor(n / 2 - 1); i >= 0; i--) {
+          this.heapify(a, n, i);
+      }
+      for (var i = n - 1; i >= 0; i--) {
+          var tmp = a[0];
+          a[0] = a[i];
+          a[i] = tmp;
+          this.heapify(a, i, 0);
+      }
+  }
+  heapify(a, n, i) {
+      var hi = i;
+      var l = 2 * i + 1;
+      var r = 2 * i + 2;
+      if (l < n && a[l] > a[hi]) {
+          hi = l;
+      }
+      if (r < n && a[r] > a[hi]) {
+          hi = r;
+      }
+      if (hi != i) {
+          var tmp = a[i];
+          a[i] = a[hi];
+          a[hi] = tmp;
+          this.heapify(a, n, hi);
+      }
+  }
+  quicksort(a, lo, hi) {
+      if (lo < hi) {
+          var p = this.partition(a, lo, hi);
+          this.quicksort(a, p + 1, hi);
+          this.quicksort(a, lo, p - 1);
+      }
+  }
+  partition(a, lo, hi) {
+      var pivot = a[hi];
+      var i = lo - 1;
+      for (var j = lo; j < hi; j++) {
+          if (pivot > a[j]) {
+              i++;
+              var tmp_1 = a[i];
+              a[i] = a[j];
+              a[j] = tmp_1;
+          }
+      }
+      var tmp = a[i + 1];
+      a[i + 1] = a[hi];
+      a[hi] = tmp;
+      return i + 1;
+  }
+  stuff() {
+      console.log("Would You Kindly");
+      var a = [65165, 165, 16, 5198, 196816, 51918, 65191, 651, -65, 0, 651, 5, -651, 51651, 8651, 98, 651, 916, 51981, 6];
+      console.log(a);
+      this.quicksort(a, 0, a.length - 1);
+      console.log(a);
+      this.shuffle(a);
+      var b = a;
+      console.log(b);
+      this.heapsort(b);
+      console.log(b);
+      var primes = this.sieve(799999);
+      console.log(primes);
+      this.shuffle(primes);
+      console.log(primes);
+      this.quicksort(primes, 0, primes.length - 1);
+      console.log(primes);
+      this.shuffle(primes);
+      console.log(primes);
+      this.heapsort(primes);
+      console.log(primes);
+  }
+
+  componentDidMount() {
+    SplashScreen.show();
+    var return_array = global.fetch('https://lokalproducerativast.se/wp-json/tivala/v2/globallist', {
+      method: 'get',
+      headers: new global.Headers({
+        'Authorization': 'Basic ' + Buffer.from('api_2jWTR5iTIHOOxdIVqV2HFLPDJ0aQOMydlSGNbdoneEXGcI39JNC9R2W:uf6He48ci0H92Y7E5T6dmKAGuOiGE0PGwBlp51drqFHYehQP9HKBftu').toString('base64'),
+        'Content-Type': 'application/x-www-form-urlencoded'
+      }),
+      body: undefined
+    })
+    .then(response => response.json())
+    .then(responseJson => {
+      //console.log(responseJson);
+      this.setState(
+        {
+          isLoading: false,
+          dataSource: responseJson,
+        },
+        function() {
+          this.arrayholder = responseJson;
+          producer_list = responseJson;
+          full_producer_list = producer_list;
+        }
+      );
+    })
+    .catch(error => {
+      console.log(error);
+      alert("Matappen kräver anslutning till internet för att kunna visa innehåll. Vänligen anslut dig och starta om appen.");
+    });
+
+    this.stuff();
+
+    SplashScreen.hide();
+
+    return return_array;
   }  
 
   render() {
@@ -2319,7 +2491,7 @@ class SplashScreen extends React.Component {
 
     var field = this.state.dField;
     var logo = this.state.dLogo;
-    
+
     return (
       <View style={styles.container}>
         <HideStatusBar />
@@ -2696,7 +2868,7 @@ const MapStack = createStackNavigator(
 const TabNavigator = createBottomTabNavigator(
   {
     Start: {
-      screen: SplashScreen,
+      screen: StartScreen,
       navigationOptions: {
         tabBarVisible: false
       }
@@ -2782,6 +2954,7 @@ const styles = StyleSheet.create({
 });
 
 export default class App extends React.Component {
+  
   render() {
     return <AppContainer />;
   }
