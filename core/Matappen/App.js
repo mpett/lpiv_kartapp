@@ -1239,62 +1239,39 @@ class SearchScreen extends React.Component {
       { backgroundColor: '#827c34' }
     ];
 
-    const descriptionStyles = {
-      color: '#282828',
-      fontSize: 25,
-      fontWeight: 'bold',
-      padding:10
-    };
-
-    const topMenuStyles = {
-      color: 'white',
-      width: screenWidth,
-      height: 35,
-      paddingLeft: 20,
-      paddingRight: 20,
-      justifyContent: 'center'
-    }
-
-    const iconStyles = {
-      width: 90,
-      height: 27.368
-    }
-
     return(
       <View style = {styles.container}>
         <RenderHeader  navigation = {this.props.navigation} />
 
         <SearchBar
-              round
-              searchIcon={{ size: 24 }}
-              onChangeText = {text => this.SearchFilterFunction(text)}
-              onClear={text => this.SearchFilterFunction('')}
-              containerStyle = {{
-                backgroundColor: 'white',
-                borderColor:'rgba(0,0,0,0)',
-                borderBottomColor: 'rgba(0,0,0,0)',
-                borderTopColor: 'rgba(0,0,0,0)',
-                borderWidth: 0,
-              }}
-              inputContainerStyle = {{
-                borderWidth: 0,
-                backgroundColor: 'rgba(0,0,0,0)',
-                borderColor:'rgba(0,0,0,0)',
-
-              }}
-              placeholder="Sök..."
-              value={this.state.search}
-              width="100%"
-              lightTheme = {true}
-            />
+          round
+          searchIcon={{ size: 24 }}
+          onChangeText = {text => this.SearchFilterFunction(text)}
+          onClear={text => this.SearchFilterFunction('')}
+          containerStyle = {{
+            backgroundColor: 'white',
+            borderColor:'rgba(0,0,0,0)',
+            borderBottomColor: 'rgba(0,0,0,0)',
+            borderTopColor: 'rgba(0,0,0,0)',
+            borderWidth: 0,
+          }}
+          inputContainerStyle = {{
+            borderWidth: 0,
+            backgroundColor: 'rgba(0,0,0,0)',
+            borderColor:'rgba(0,0,0,0)',
+          }}
+          placeholder="Sök..."
+          value={this.state.search}
+          width="100%"
+          lightTheme = {true}
+        />
 
         <ImageBackground source={require('./field2.png')} style={{width: '100%', height: '100%'}} style={viewStyles}>
           <View style={{marginTop: 5}}>
-          <View>
-      
-            <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
+            <View>
+              <View style = {{flexDirection: 'row', justifyContent: 'center', alignItems: 'center', marginTop: 15, width: screenWidth - 40}}>
+              </View>
             </View>
-          </View>
             <View style={{marginTop:5}}>
               <FlatList 
                 data={this.state.dataSource}
@@ -1491,8 +1468,6 @@ class FoodListScreen extends React.Component {
             meny: item.producer_category_4
           });
         }
-
-        
       }} 
     />
   )
@@ -1972,7 +1947,6 @@ class StoreListScreen extends React.Component {
           <MenuScreen navigation={this.props.navigation} />
         </ImageBackground>
       </View>
-      
     );
   }
 }
@@ -2473,21 +2447,21 @@ class StartScreen extends React.Component {
         <HideStatusBar />
         <RenderHeader navigation={this.props.navigation} />
           <ImageBackground source={field} style={{width: '100%', height: '100%'}} style={viewStyles}>
-            <TouchableOpacity onPress={() => {this.props.navigation.navigate("Äta", {rand: Math.floor(Math.random() * (1 + 1000))})}}>
+            <TouchableOpacity onPress={() => {this.props.navigation.navigate("Would", {rand: Math.floor(Math.random() * (1 + 1000))})}}>
               <Image
                 source={require('./menu_icons4/äta.png')}
                 style={{ marginBottom: 25, marginTop: 0, width: 314, height: 114,
                   borderColor: '#99994d' }}
               />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => {this.props.navigation.navigate("Fika", {store_type:"Producent"})}}>
+            <TouchableOpacity onPress={() => {this.props.navigation.navigate("You", {store_type:"Producent"})}}>
               <Image
                 source={require('./menu_icons4/hitta.png')}
                 style={{ width: 314, height: 114, marginBottom: 25, 
                   borderColor: '#99994d' }}
               />
             </TouchableOpacity>
-            <TouchableOpacity onPress={() => {this.props.navigation.navigate("Handla", {store_type:"Gårdsbutik"})}}>
+            <TouchableOpacity onPress={() => {this.props.navigation.navigate("Kindly", {store_type:"Gårdsbutik"})}}>
               <Image
                 source={require('./menu_icons4/handla.png')}
                 style={{ width: 314, height: 114, marginBottom: 100, 
@@ -2849,19 +2823,19 @@ const TabNavigator = createBottomTabNavigator(
         tabBarVisible: false
       }
     },
-    Äta: {
+    Would: {
       screen: FoodStack,
       navigationOptions: {
         tabBarVisible: false
       }
     },
-    Fika: {
+    You: {
       screen: ProducerStack,
       navigationOptions: {
         tabBarVisible: false
       }
     },
-    Handla: {
+    Kindly: {
       screen: StoreStack,
       navigationOptions: {
         tabBarVisible: false
