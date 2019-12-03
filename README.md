@@ -1,4 +1,42 @@
-# Lokalproducerat i Väst AB
+﻿# Lokalproducerat i Väst AB
+
+## Dokumentation, Android
+
+1. Klona projektets repository.
+
+2. Installera Android studio.
+Instruktioner finns på deras sida.
+
+3. Se till att ordna en fungerande emulator:
+I Android Studio:
+Tools -> AVD Manager, Välj en emulator i listan eller skapa en ny.
+Se till att den kör. Man kan behöva slå på en virtualiseringskonfiguration inuti
+BIOS, AS kommer isådana fall att fråga om detta.
+
+4. Installera react native (följ instruktioner under Getting Started på deras sida 
+och bli bekant med de vanligaste kommandon som beskrivs där).
+
+5. Normalt byggs appen med föjande steg:
+	1. Starta emulatorn
+	2. cd android && ./gradlew clean
+	3. react-native run-android
+	Om man fortfarande får ett fel här har man antingen gjort något galet eller
+	så måste man mounta om emulatorn med följande steg:
+		1. Stäng av emulatorn, koppla ur ev. telefon
+		2. adb uninstall android
+		3. Vid output "success" kan man starta samma emulator på nytt
+
+6. För att bygga en APK
+	1. cd android && ./gradlew clean
+	2. ./gradlew assembleRelease
+	3. APK:n finns sparad i android/app/build/outputs/apk
+
+7. För att bygga en AAB (Krävs för att ladda upp till google)
+	1. Öka versionCode i android/build.gradle
+	2. ./gradlew clean
+	3. ./gradlew bundleRelease
+	4  android/app/build/outputs/aab
+
 
 ## API V1
 
