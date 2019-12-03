@@ -586,13 +586,6 @@ class ConnectedProducers extends React.Component {
       { backgroundColor: '#827c34' }
     ];
 
-    const descriptionStyles = {
-      color: '#282828',
-      fontSize: 25,
-      fontWeight: 'bold',
-      padding:10
-    };
-
     const topMenuStyles = {
       color: 'white',
       width: screenWidth,
@@ -819,15 +812,6 @@ class EventScreen extends React.Component {
 
     const void_rendering = <View style = {{marginBottom: screenHeight * 0.25}}></View>
 
-    const topMenuStyles = {
-      color: 'white',
-      width: screenWidth,
-      height: 35,
-      paddingLeft: 20,
-      paddingRight: 20,
-      justifyContent: 'center'
-    }
-
     return(
       <View style = {styles.container}>
         <RenderHeader navigation={this.props.navigation} />
@@ -1045,24 +1029,12 @@ class EventListScreen extends React.Component {
       { backgroundColor: '#827c34' }
     ];
 
-    const descriptionStyles = {
-      color: '#282828',
-      fontSize: 25,
-      fontWeight: 'bold',
-      padding:10
-    };
-
     const topMenuStyles = {
       color: 'white',
       height: 35,
       paddingLeft: 20,
       paddingRight: 20,
       justifyContent: 'center'
-    }
-
-    const iconStyles = {
-      width: 90,
-      height: 27.368
     }
 
     const iconStyles2 = {
@@ -1556,13 +1528,6 @@ class FoodListScreen extends React.Component {
       { backgroundColor: '#827c34' }
     ];
 
-    const descriptionStyles = {
-      color: '#282828',
-      fontSize: 25,
-      fontWeight: 'bold',
-      padding:10
-    };
-
     const topMenuStyles = {
       color: 'white',
       height: 35,
@@ -1877,13 +1842,6 @@ class StoreListScreen extends React.Component {
       },
       { backgroundColor: '#827c34' }
     ];
-
-    const descriptionStyles = {
-      color: '#282828',
-      fontSize: 25,
-      fontWeight: 'bold',
-      padding:10
-    };
 
     const topMenuStyles = {
       color: 'white',
@@ -2271,7 +2229,6 @@ class ProducerListScreen extends React.Component {
           <MenuScreen navigation={this.props.navigation} />
         </ImageBackground>
       </View>
-      
     );
   }
 }
@@ -2493,9 +2450,7 @@ class RenderHeader extends React.Component {
           centerComponent={{ text: 'Västsvenska Matappen', style: { color: '#fff', fontSize: 20 } }}
           rightComponent={<TouchableOpacity onPress={() => {this.props.navigation.navigate("Sök")}}>
             <Image source={require("./search-256x256-black-bg.png")} style={{ resizeMode: "contain", width: 30, height: 30 }}>
-
             </Image>
-
           </TouchableOpacity>}
           statusBarProps={{ barStyle: 'light-content' }}
           containerStyle={{
