@@ -2238,7 +2238,7 @@ class ProducerListScreen extends React.Component {
           <View style = {{ justifyContent: 'space-between', flexDirection: 'row' }}>
             <View style = {{ flexDirection: "row" }}>
               <Image source = {require("./symboler/fika-512x512.png")} style = {{ width: 14, height: 14, marginTop: 6 }}></Image>
-              <Text style = {{ marginLeft: 10, marginTop: 2 }}>Producenter</Text>  
+              <Text style = {{ marginLeft: 10, marginTop: 2 }}>Lokala producenter</Text>  
             </View> 
             <View style = {{ flexDirection: "row" }}>
               <TouchableOpacity onPress={() => {this.NearbyProducers()}}>
