@@ -2486,12 +2486,10 @@ class RenderHeader extends React.Component {
     return (
       <Header
           placement="left"
-          leftComponent={<Avatar
-            small
-            rounded
-            source={require("./logo.png")}
-            activeOpacity={1.0}
-        />}
+          leftComponent={<TouchableOpacity>
+          <Image source={require("./logo.png")} style={{ resizeMode: "contain", width: 30, height: 30 }}>
+          </Image>
+          </TouchableOpacity>}
           centerComponent={{ text: 'Västsvenska Matappen', style: { color: '#fff', fontSize: 20 } }}
           rightComponent={<TouchableOpacity onPress={() => {this.props.navigation.navigate("Sök")}}>
             <Image source={require("./search-256x256-black-bg.png")} style={{ resizeMode: "contain", width: 30, height: 30 }}>
